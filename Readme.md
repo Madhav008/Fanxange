@@ -4,22 +4,31 @@
     [] Design the Points table
         [] Only for T20 
         [] Only for last 5 years
-        [] Deciding factors
+        [] Deciding factors for Current performance
             [] Batting
+                [] Singles
                 [] Sixes
                 [] Fours
-                [] Strike rate
+                [!] Strike rate
                 [] Out
+                [] 100
+                [] 50
+                [] Duck
             [] Filding
                 [] Catches
                 [] Run Out
                 [] Direct hit
+                [] Stumping
                 [] Overthrow  
             [] Bowling
                 [] Wickets
-                [] Economy Rate
+                [!] Economy Rate
                 [] Median over
                 [] Hatrik    
-
     [] Decide the Player Share Factor
     [] Design the Algorithm that takes input as Player and output player share
+
+# Problems
+    [] How to decide the current price on the basis of past performance
+    
+    [*] We are able to calculate the current performace of the player using the points system 
