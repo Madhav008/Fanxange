@@ -1,8 +1,17 @@
-let player = {
+let player_past_performance = {
+    selling_amount :'',
+    followes : '',
+    strike_rate:'',
+    economy_rate:'',
+    batting_average: '',
+    bowling_average:''
+}
+
+
+let player_current_performace = {
     singles:'',
     sixes: '',
     fours: '',
-    strike_rate:'',
     out:'',
     hundred:'',
     fifty:'',
@@ -13,7 +22,6 @@ let player = {
     direct_hit_out:'',
     overthrow:'',
     wickets:'',
-    economy_rate:'',
     median_over:'',
     hatrik:'',
 }
@@ -37,10 +45,20 @@ let player_points = {
 }
 
 
-function getPlayerPoints(player){
+function getCurrentPerformacePoints(player_current_performace){
     let points;
 
 
 
     return points;
+}
+
+
+function getPastPerformacePoints(player_past_performance){
+    let points;
+
+
+
+    return points;
+
 }

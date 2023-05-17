@@ -11,6 +11,8 @@
             [] Performace of the player in last 30 matches
                 [] Strike rate
                 [] Economy rate
+                [] Batting average
+                [] Bowling average
         [] Deciding factors for Current performance
             [] Batting
                 [] Singles
@@ -33,7 +35,7 @@
                 [] Median over
                 [] Hatrik    
     [] Decide the Player Share Factor
-    [] Design the Algorithm that takes input as Player and output player share
+    [] Design the Algorithm that takes input as Player and output player share price
 
 # Problems
     [] How to decide the current price on the basis of past performance
