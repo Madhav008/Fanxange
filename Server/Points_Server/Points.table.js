@@ -1,27 +1,16 @@
 let player_current_performance = {
     "bat_runs": 35,
-    "bat_runs_2": 0,
     "balls_faced": 22,
-    "balls_faced_2": 0,
     "fours_hit": 3,
-    "fours_hit_2": 0,
     "sixes_hit": 1,
-    "sixes_hit_2": 0,
     "bowl_wickets": 0,
-    "bowl_wickets_2": 0,
-    "balls_bowled": 0,
-    "balls_bowled_2": 0,
+    "balls_bowled": 1,
     "bowl_runs": 0,
     "dot_balls": 6,
-    "dot_balls_2": 0,
     "maidens": 0,
-    "maidens_2": 0,
     "catch": 1,
-    "catch_2": 0,
     "stumping": 0,
-    "stumping_2": 0,
     "run_out": null,
-    "run_out_2": null,
     "run_points": 0,
     "milestone_bonus": 0,
     "batting_participation_points": 0,
@@ -30,7 +19,7 @@ let player_current_performance = {
   
   function calculateBattingPoints(playerPerformance) {
     let battingPoints = 0;
-    let { bat_runs, balls_faced, fours_hit, sixes_hit } = playerPerformance;
+    let { bat_runs, fours_hit, sixes_hit } = playerPerformance;
   
     const runPointsMapping = [
       { runs: 15, points: 1.8 },
@@ -54,8 +43,8 @@ let player_current_performance = {
     battingPoints += fours_hit * 1; // Boundary Bonus Points for fours
     battingPoints += sixes_hit * 2; // Boundary Bonus Points for sixes
   
-    // const { balls_faced } = playerPerformance;
-    const strikeRate = bat_runs / balls_faced;
+    const { balls_faced } = playerPerformance;
+    const strikeRate = balls_faced > 0 ? bat_runs / balls_faced : 0;
   
     const strikeRatePointsMapping = [
       { upperBound: 0.7, over5Balls: -6, over25Balls: -12 },
@@ -100,7 +89,7 @@ let player_current_performance = {
   
     bowlingPoints += dotBallPoints + ballsBowledPoints + maidenOverPoints;
   
-    const economy = bowl_runs / balls_bowled;
+    const economy = balls_bowled > 0 ? bowl_runs / balls_bowled : 0;
   
     const economyPointsMapping = [
       { upperBound: 0.7, over36Balls: 8, under36Balls: 16 },
@@ -127,11 +116,16 @@ let player_current_performance = {
     return bowlingPoints;
   }
   
+
   function calculateFieldingPoints(playerPerformance) {
     let fieldingPoints = 0;
-    let  catches = playerPerformance.catch;
+    let { catch: catches, run_out: runOuts, stumping: stumpings } = playerPerformance;
   
-    fieldingPoints += catches * 4; // Catch Points
+    const catchPoints = 4;
+    const runOutPoints = 4;
+    const stumpingPoints = 4;
+  
+    fieldingPoints = (catches * catchPoints) + (runOuts * runOutPoints) + (stumpings * stumpingPoints);
   
     return fieldingPoints;
   }
@@ -151,4 +145,3 @@ let player_current_performance = {
   console.log("Bowling Points:", bowlingPoints);
   console.log("Fielding Points:", fieldingPoints);
   console.log("Match Points =", matchPoints);
-  
