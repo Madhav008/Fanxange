@@ -46,7 +46,7 @@ function getPlayerData() {
 }
 
 
-const PlayerStats = require('./v_kohli.json');
+const PlayerStats = require('../v_kohli.json');
 const getMatchStats = require('./Match.stats');
 
 function getPlayerMatchStats() {
