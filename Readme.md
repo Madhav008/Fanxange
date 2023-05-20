@@ -1,5 +1,7 @@
 <!-- Shree GaneshNamh -->
 
+# Setup the server
+    ./hasura.exe console
 # Design the System 
     [] Design the Points table
         [] Only for T20 
