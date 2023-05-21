@@ -3,6 +3,7 @@
 # Setup the server
 
     ./hasura.exe console
+    .\hasura.exe console --admin-secret haCaYJWE3MIHL6a78hY71vOi6QapNZ7ceICmqET2UcORoQRkX1IkICi8qeiYoYcy
 
 # SEED THE DATA
 
