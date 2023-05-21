@@ -34,8 +34,29 @@ let order = {
     orderBook.open_orders++;
   }
   
+ function matchOrder(orderBook){
+    let {buy_orders,sell_orders} = orderBook;
+
+    sell_orders.sort()
+    buy_orders.sort()
+    buy_orders.reverse()
+
+    if(buy_orders[0].buy_price>=sell_orders[0].sell_price){
+      console.log("ORDER FILLED at: "+buy_orders[0].buy_price+" Volume: "+(buy_orders[0].volume-sell_orders[0].volume));
+      orderBook.stock_price = buy_orders[0].buy_price;
+      buy_orders.shift()
+      sell_orders.shift()
+      orderBook.open_orders =orderBook.open_orders-2;
+    }
+    
+ }
+
+ 
   // Usage example:
   createBuyOrder(OrderBook, buy_order);
   createSellOrder(OrderBook, sell_order);
   console.log(OrderBook);
+  matchOrder(OrderBook)
+  console.log(OrderBook);
+
   
