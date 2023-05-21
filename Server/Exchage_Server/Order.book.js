@@ -5,17 +5,7 @@ let order = {
     sell_volume: 0
   };
   
-  let buy_order = {
-    buy_price: 132,
-    volume: 1,
-    timestamp: Date.now()
-  };
-  
-  let sell_order = {
-    sell_price: 126,
-    volume: 1,
-    timestamp: Date.now()
-  };
+ 
   
   let OrderBook = {
     buy_orders: [],
@@ -51,9 +41,24 @@ let order = {
     
  }
 
- 
+ let buy_order = {
+  buy_price: 132,
+  volume: 1,
+  timestamp: Date.now()
+};
+let buy_order1 = {
+  buy_price: 133,
+  volume: 1,
+  timestamp: Date.now()
+};
+let sell_order = {
+  sell_price: 126,
+  volume: 1,
+  timestamp: Date.now()
+};
   // Usage example:
   createBuyOrder(OrderBook, buy_order);
+  createBuyOrder(OrderBook, buy_order1);
   createSellOrder(OrderBook, sell_order);
   console.log(OrderBook);
   matchOrder(OrderBook)
