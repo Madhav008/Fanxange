@@ -1,4 +1,6 @@
 const getPlayerStats = require('./Player.info');
+const getCrickvizPlayer = require('./Cricviz.player');
+
 var MarketData = require('./market-info.json')
 const fs = require('fs')
 
@@ -27,26 +29,31 @@ function getPlayerData() {
             console.log("Symbol:", player.symbol);
             console.log();
 
-            getPlayerStats(player.cricviz_id).then((player_stats) => {
 
-                fs.writeFile(`${player.symbol}.json`, JSON.stringify(player_stats), (err) => {
-                    if (err) {
-                        console.error('Error writing JSON file:', err);
-                    } else {
-                        console.log('JSON file has been written successfully.');
-                    }
-                });
-
-
-
+            getCrickvizPlayer(player.symbol,player.cricviz_id).then((player_stats) => {
+                console.log("Teams:", player_stats.data.sixergame_sixers[0].allTeams);
             })
+
+            // getPlayerStats(player.cricviz_id).then((player_stats) => {
+
+            //     fs.writeFile(`${player.symbol}.json`, JSON.stringify(player_stats), (err) => {
+            //         if (err) {
+            //             console.error('Error writing JSON file:', err);
+            //         } else {
+            //             console.log('JSON file has been written successfully.');
+            //         }
+            //     });
+
+
+
+            // })
         }
         // Access other keys as needed
     });
 }
+getPlayerData()
 
-
-const PlayerStats = require('../v_kohli.json');
+const PlayerStats = require('./v_kohli.json');
 const getMatchStats = require('./Match.stats');
 
 function getPlayerMatchStats() {
@@ -69,4 +76,4 @@ function getPlayerMatchStats() {
         })
     });
 }
-
+// getPlayerMatchStats()
