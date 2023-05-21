@@ -18,20 +18,20 @@ function getPlayerData() {
         const player = players[playerKey];
 
         if (player.name == "V Kohli") {
-            console.log("Player:", playerKey);
-            console.log("Name:", player.name);
-            console.log("Player Type:", player.playerType);
-            console.log("Tournaments:", player.tournaments);
-            console.log("Jersy Number", player.jersey_number);
-            console.log("Sixer ID:", player.sixer_id);
-            console.log("Cricviz ID:", player.cricviz_id);
-            console.log("Sport ID:", player.sportId);
-            console.log("Symbol:", player.symbol);
-            console.log();
-
-
-            getCrickvizPlayer(player.symbol,player.cricviz_id).then((player_stats) => {
-                console.log("Teams:", player_stats.data.sixergame_sixers[0].allTeams);
+            getCrickvizPlayer(player.symbol, player.cricviz_id).then((player_stats) => {
+                let player_info = {
+                    "Player": playerKey,
+                    "Name": player.name,
+                    "Player Type": player.playerType,
+                    "Tournaments": player.tournaments,
+                    "Jersy Number": player.jersey_number,
+                    "Sixer ID": player.sixer_id,
+                    "Cricviz ID": player.cricviz_id,
+                    "Sport ID": player.sportId,
+                    "Symbol": player.symbol,
+                    "Teams": player_stats.data.sixergame_sixers[0].allTeams
+                }
+                console.log(player_info)
             })
 
             getPlayerStats(player.cricviz_id).then((player_stats) => {
@@ -44,7 +44,7 @@ function getPlayerData() {
                 //     }
 
 
-                });
+            });
 
 
 
@@ -59,8 +59,8 @@ const getMatchStats = require('./Match.stats');
 
 function getPlayerMatchStats(player_stats) {
     player_stats.data.datascience_cricviz_player_match.forEach(match => {
-        console.log("Start Time:", match.start_timestamp);
-        console.log("Match Id:", match.match_scoring.sixer_player_match_id);
+        // console.log("Start Time:", match.start_timestamp);
+        // console.log("Match Id:", match.match_scoring.sixer_player_match_id);
         // console.log("Start Time:", match.start_timestamp);
         getMatchStats(match.match_scoring.sixer_player_match_id).then((player_stats) => {
 
@@ -72,7 +72,7 @@ function getPlayerMatchStats(player_stats) {
             //     }
             // });
 
-            
+
             let player_current_performance = {
                 "bat_runs": player_stats.data.datascience_cricviz_match_scoring[0].bat_runs,
                 "balls_faced": player_stats.data.datascience_cricviz_match_scoring[0].balls_faced,
@@ -89,10 +89,10 @@ function getPlayerMatchStats(player_stats) {
                 "run_points": player_stats.data.datascience_cricviz_match_scoring[0].run_points,
                 "milestone_bonus": player_stats.data.datascience_cricviz_match_scoring[0].milestone_bonus,
                 "batting_participation_points": player_stats.data.datascience_cricviz_match_scoring[0].batting_participation_points,
-                "batting_multiplier":player_stats.data.datascience_cricviz_match_scoring[0].batting_multiplier,
-                "match":match.match_scoring.match,
-                "Date":match.start_timestamp
-              };
+                "batting_multiplier": player_stats.data.datascience_cricviz_match_scoring[0].batting_multiplier,
+                "match": match.match_scoring.match,
+                "Date": match.start_timestamp
+            };
 
             console.log(player_current_performance)
 
