@@ -17,7 +17,7 @@ function getPlayerData() {
     Object.keys(players).forEach(playerKey => {
         const player = players[playerKey];
 
-        if (player.name == "V Kohli") {
+        if (player.name == "Jasprit Bumrah") {
             getCrickvizPlayer(player.symbol, player.cricviz_id).then((player_stats) => {
                 let player_info = {
                     "Player": playerKey,
@@ -34,7 +34,7 @@ function getPlayerData() {
                 console.log(player_info)
             })
 
-            getPlayerStats(player.cricviz_id).then((player_stats) => {
+            getPlayerStats(player?.cricviz_id).then((player_stats) => {
                 getPlayerMatchStats(player_stats)
                 // fs.writeFile(`${player.symbol}.json`, JSON.stringify(player_stats), (err) => {
                 //     if (err) {
@@ -61,11 +61,11 @@ const getPlayerPoints = require('./Points.table');
 const { Console } = require('console');
 
 function getPlayerMatchStats(player_stats) {
-    player_stats.data.datascience_cricviz_player_match.forEach(match => {
+    player_stats?.data?.datascience_cricviz_player_match.forEach(match => {
         // console.log("Start Time:", match.start_timestamp);
         // console.log("Match Id:", match.match_scoring.sixer_player_match_id);
         // console.log("Start Time:", match.start_timestamp);
-        getMatchStats(match.match_scoring.sixer_player_match_id).then((player_stats) => {
+        getMatchStats(match?.match_scoring?.sixer_player_match_id).then((player_stats) => {
 
             // fs.writeFile(`${match.match_scoring.match}.json`, JSON.stringify(player_stats), (err) => {
             //     if (err) {
@@ -75,7 +75,7 @@ function getPlayerMatchStats(player_stats) {
             //     }
             // });
 
-            player_stats.data.datascience_cricviz_match_scoring.forEach(element => {
+            player_stats?.data?.datascience_cricviz_match_scoring.forEach(element => {
                 let player_current_performance = {
                 "bat_runs": player_stats.data.datascience_cricviz_match_scoring[0].bat_runs,
                 "balls_faced": player_stats.data.datascience_cricviz_match_scoring[0].balls_faced,
@@ -110,3 +110,37 @@ function getPlayerMatchStats(player_stats) {
     });
 }
 // getPlayerMatchStats()
+
+
+
+// Function to insert player info into Hasura table
+async function insertPlayerInfo(playerInfo) {
+  const query = `
+    mutation InsertPlayerInfo($info: player_info_insert_input!) {
+      insert_player_info_one(object: $info) {
+        id
+      }
+    }
+  `;
+  const variables = {
+    info: playerInfo
+  };
+
+  try {
+    const response = await fetch(YOUR_API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables
+      }),
+    });
+
+    const data = await response.json();
+    console.log('Player info inserted:', data);
+  } catch (error) {
+    console.error('Error inserting player info:', error);
+  }
+}
