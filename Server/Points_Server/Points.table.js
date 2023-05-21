@@ -1,22 +1,4 @@
-let player_current_performance = {
-    "bat_runs": 35,
-    "balls_faced": 22,
-    "fours_hit": 3,
-    "sixes_hit": 1,
-    "bowl_wickets": 0,
-    "balls_bowled": 1,
-    "bowl_runs": 0,
-    "dot_balls": 6,
-    "maidens": 0,
-    "catch": 1,
-    "stumping": 0,
-    "run_out": null,
-    "run_points": 0,
-    "milestone_bonus": 0,
-    "batting_participation_points": 0,
-    "batting_multiplier": 1,
-  };
-  
+ 
   function calculateBattingPoints(playerPerformance) {
     let battingPoints = 0;
     let { bat_runs, fours_hit, sixes_hit } = playerPerformance;
@@ -130,6 +112,7 @@ let player_current_performance = {
     return fieldingPoints;
   }
   
+  function getPlayerPoints(player_current_performance){
   // Calculate Batting Points
   const battingPoints = calculateBattingPoints(player_current_performance);
   
@@ -145,3 +128,6 @@ let player_current_performance = {
   console.log("Bowling Points:", bowlingPoints);
   console.log("Fielding Points:", fieldingPoints);
   console.log("Match Points =", matchPoints);
+
+  }
+  module.exports = getPlayerPoints

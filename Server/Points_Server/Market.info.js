@@ -56,6 +56,8 @@ function getPlayerData() {
 getPlayerData()
 
 const getMatchStats = require('./Match.stats');
+const { calculateBattingPoints, calculateFieldingPoints } = require('./Points.table');
+const getPlayerPoints = require('./Points.table');
 
 function getPlayerMatchStats(player_stats) {
     player_stats.data.datascience_cricviz_player_match.forEach(match => {
@@ -95,6 +97,9 @@ function getPlayerMatchStats(player_stats) {
             };
 
             console.log(player_current_performance)
+
+
+            getPlayerPoints(player_current_performance)
 
         })
     });
