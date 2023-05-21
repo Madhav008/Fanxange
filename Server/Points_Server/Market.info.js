@@ -58,6 +58,7 @@ getPlayerData()
 const getMatchStats = require('./Match.stats');
 const { calculateBattingPoints, calculateFieldingPoints } = require('./Points.table');
 const getPlayerPoints = require('./Points.table');
+const { Console } = require('console');
 
 function getPlayerMatchStats(player_stats) {
     player_stats.data.datascience_cricviz_player_match.forEach(match => {
@@ -74,8 +75,8 @@ function getPlayerMatchStats(player_stats) {
             //     }
             // });
 
-
-            let player_current_performance = {
+            player_stats.data.datascience_cricviz_match_scoring.forEach(element => {
+                let player_current_performance = {
                 "bat_runs": player_stats.data.datascience_cricviz_match_scoring[0].bat_runs,
                 "balls_faced": player_stats.data.datascience_cricviz_match_scoring[0].balls_faced,
                 "fours_hit": player_stats.data.datascience_cricviz_match_scoring[0].fours_hit,
@@ -96,10 +97,14 @@ function getPlayerMatchStats(player_stats) {
                 "Date": match.start_timestamp
             };
 
+            console.log("\nPLAYER Performace\n")
             console.log(player_current_performance)
 
-
+            console.log("\nPLAYER POINTS\n")
             getPlayerPoints(player_current_performance)
+            });
+
+            
 
         })
     });
