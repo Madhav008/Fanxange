@@ -6,7 +6,7 @@
 
 # SEED THE DATA
 
-    Run this command
+    Run this command to seed the data
 
      node Server/Points_Server/Market.info.js
             {
