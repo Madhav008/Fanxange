@@ -269,7 +269,7 @@ function calculatet10ParticipationPoints(isBall) {
 
 
 
-exports.default = {
+module.exports = {
     calculatetestWicketPoints, calculatetestBonusPoints, calculatetestBoundryPoints, calculatetestParticipationPoints,
 
 
