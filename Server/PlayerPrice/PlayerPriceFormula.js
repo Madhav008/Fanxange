@@ -18,7 +18,7 @@ function PriceChangeFactor(MatchPoints,Performance_avg){
 
 }
 
-function calculatePlayerPrice(){
+function calculatePlayerPrice(MatchPoints,Performance_avg){
     /* Price New = Price OLD  + Price Change Factor */
 
     let new_price = PriceChangeFactor(MatchPoints,Performance_avg)+calculatePlayerOldPrice();
