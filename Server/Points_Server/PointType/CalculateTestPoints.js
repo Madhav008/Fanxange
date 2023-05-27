@@ -1,10 +1,11 @@
 const { calculateTestRunPoints, calculatettestBoundryFacePoints, calculatettestMilestonePoints, calculatettestBattingPartipantPoints, calculateBallFacedPoints } = require("../PointsSystem/BattingPoint");
 
-const { calculatetestWicketPoints, calculatetestBonusPoints, calculatetestBoundryPoints, calculatetestParticipationPoints } = require("../PointsSystem/BollwingPoints")
+const { calculatetestWicketPoints, calculatetestBonusPoints, calculatetestBoundryPoints, calculatetestParticipationPoints } = require("../PointsSystem/BollwingPoints");
+const { calculateCatchPoints, calculateRunOutPoints, calculateStumpingPoints } = require("../PointsSystem/FieldingPoints");
 
 function calculateTestPoints(playerPerformance) {
     let points = 0;
-    let { isBall,four_faces,six_faces,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
+    let { catches,runouts,stumping,isBall,four_faces,six_faces,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
 
     /* All Batting Points  */
     calculateTestRunPoints(bat_runs);
@@ -20,8 +21,12 @@ function calculateTestPoints(playerPerformance) {
     calculatetestBoundryPoints(four_faces,six_faces);
     calculatetestParticipationPoints(isBall);
 
-    
+
     /* All Fielding Points */
+    
+    calculateCatchPoints(catches);
+    calculateRunOutPoints(runouts);
+    calculateStumpingPoints(stumping);
 
 
     return points;

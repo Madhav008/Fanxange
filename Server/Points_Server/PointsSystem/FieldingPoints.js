@@ -10,4 +10,4 @@ function calculateStumpingPoints(stuping){
     return stuping  * 4;
 }
 
-exports.default = {calculateCatchPoints,calculateRunOutPoints,calculateStumpingPoints}
+module.exports = {calculateCatchPoints,calculateRunOutPoints,calculateStumpingPoints}

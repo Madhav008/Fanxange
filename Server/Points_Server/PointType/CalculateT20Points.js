@@ -1,9 +1,10 @@
 const { calculatet20RunPoints, calculatet20BoundryFacePoints, calculatet20MilestonePoints, calculatet20StrikeRatePoints } = require("../PointsSystem/BattingPoint");
 const { calculatet20WicketPoints, calculatet20BonusPoints, calculatet20BoundryPoints, calculatet20EconomyPoints, calculatet20ParticipationPoints } = require("../PointsSystem/BollwingPoints");
+const { calculateCatchPoints, calculateRunOutPoints, calculateStumpingPoints } = require("../PointsSystem/FieldingPoints");
 
 function calculateT20Points(playerPerformance) {
     let points = 0;
-    let { isBall,runs_given,four_faces,six_faces,ball_bowled,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
+    let { catches,runouts,stumping,isBall,runs_given,four_faces,six_faces,ball_bowled,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
 
     /* All Batting Points  */
     calculatet20RunPoints(bat_runs);
@@ -21,6 +22,10 @@ function calculateT20Points(playerPerformance) {
     calculatet20ParticipationPoints(isBall);
 
     /* All Fielding Points */
+    
+    calculateCatchPoints(catches);
+    calculateRunOutPoints(runouts);
+    calculateStumpingPoints(stumping);
 
 
     return points;

@@ -1,8 +1,9 @@
 const { calculateOnedayRunPoints, calculatetoneBoundryFacePoints, calculatetoneMilestonePoints, calculatetoneBattingPartipantPoints, calculateoneStrikeRatePoints } = require("../PointsSystem/BattingPoint");
+const { calculateCatchPoints, calculateRunOutPoints, calculateStumpingPoints } = require("../PointsSystem/FieldingPoints");
 
 function calculateOneDayPoints(playerPerformance) {
     let points = 0;
-    let { isBall,runs_given,four_faces,six_faces,ball_bowled,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit,ball_faced,fifty,hundred,isBat,isOut } = playerPerformance;
+    let { catches,runouts,stumping,isBall,runs_given,four_faces,six_faces,ball_bowled,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit,ball_faced,fifty,hundred,isBat,isOut } = playerPerformance;
 
 
     /* All Batting Points  */
@@ -21,7 +22,10 @@ function calculateOneDayPoints(playerPerformance) {
     calculateoneParticipationPoints(isBall);
 
     /* All Fielding Points */
-
+    
+    calculateCatchPoints(catches);
+    calculateRunOutPoints(runouts);
+    calculateStumpingPoints(stumping);
 
     return points;
 }
