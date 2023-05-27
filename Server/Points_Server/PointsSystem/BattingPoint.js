@@ -299,7 +299,7 @@ const t10MilestonePoints = {
     centuary: 5,
 }
 
-function calculatet20BoundryFacePoints(no_of_fifty,no_of_hundred) {
+function calculatet20MilestonePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
     // let no_of_fifty = 1;
@@ -310,7 +310,7 @@ function calculatet20BoundryFacePoints(no_of_fifty,no_of_hundred) {
     console.log(MilestonePoints)
     return MilestonePoints;
 }
-function calculatet10BoundryFacePoints(no_of_fifty,no_of_hundred) {
+function calculatet10MilestonePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
     // let no_of_fifty = 1;
@@ -321,7 +321,7 @@ function calculatet10BoundryFacePoints(no_of_fifty,no_of_hundred) {
     console.log(MilestonePoints)
     return MilestonePoints;
 }
-function calculatetoneBoundryFacePoints(no_of_fifty,no_of_hundred) {
+function calculatetoneMilestonePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
     // let no_of_fifty = 1;
@@ -332,7 +332,7 @@ function calculatetoneBoundryFacePoints(no_of_fifty,no_of_hundred) {
     console.log(MilestonePoints)
     return MilestonePoints;
 }
-function calculatettestBoundryFacePoints(no_of_fifty,no_of_hundred) {
+function calculatettestMilestonePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
     // let no_of_fifty = 1;
@@ -371,7 +371,7 @@ const t10BattingParticipationPoints = {
     did_not_bat: 7.5
 }
 
-function calculatet20BoundryFacePoints(batting,out) {
+function calculatet20BattingPartipantPoints(batting,out) {
     let BattingParticipationPoints = 0;
     // let batting = true
     // let out = true
@@ -388,7 +388,7 @@ function calculatet20BoundryFacePoints(batting,out) {
 
     return BattingParticipationPoints;
 }
-function calculatet10BoundryFacePoints(batting,out) {
+function calculatet10BattingPartipantPoints(batting,out) {
     let BattingParticipationPoints = 0;
     // let batting = true
     // let out = true
@@ -404,7 +404,7 @@ function calculatet10BoundryFacePoints(batting,out) {
     }
     return BattingParticipationPoints;
 }
-function calculatetoneBoundryFacePoints(batting,out) {
+function calculatetoneBattingPartipantPoints(batting,out) {
     let BattingParticipationPoints = 0;
     // let batting = true
     // let out = true
@@ -420,7 +420,7 @@ function calculatetoneBoundryFacePoints(batting,out) {
     }
     return BattingParticipationPoints;
 }
-function calculatettestBoundryFacePoints(batting,out) {
+function calculatettestBattingPartipantPoints(batting,out) {
     let BattingParticipationPoints = 0;
     // let batting = true
     // let out = true
@@ -562,4 +562,4 @@ function calculateStrikeRatePoints(ballsFaced, runsScored) {
 
 
 
-module.exports = { calculateBallFacedPoints, calculateBattingPoints, calculateOnedayRunPoints, calculateStrikeRatePoints, calculateT10RunPoints, calculateTestRunPoints ,calculateoneStrikeRatePoints,calculatet10BoundryFacePoints,calculatet20BoundryFacePoints,calculatet20RunPoints,calculatet20StrikeRatePoints,calculatetoneBoundryFacePoints,calculatettestBoundryFacePoints}
+module.exports = { calculateBallFacedPoints, calculateBattingPoints, calculateOnedayRunPoints, calculateStrikeRatePoints, calculateT10RunPoints, calculateTestRunPoints ,calculateoneStrikeRatePoints,calculatet10BoundryFacePoints,calculatet20BoundryFacePoints,calculatet20RunPoints,calculatet20StrikeRatePoints,calculatetoneBoundryFacePoints,calculatettestBoundryFacePoints,calculatetoneMilestonePoints,calculatetoneBattingPartipantPoints,calculatet20MilestonePoints,calculatet20BattingPartipantPoints,calculatet10BattingPartipantPoints,calculatettestMilestonePoints,calculatettestBattingPartipantPoints,calculatet10MilestonePoints}
