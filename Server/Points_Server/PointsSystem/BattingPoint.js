@@ -34,11 +34,11 @@ const t20RunPoints = [
     { lowerLimit: 71, upperLimit: 100, points: 0.2 },
 ];
 //Create the Funtion for the t20RunPoins
-function calculatet20RunPoints() {
+function calculatet20RunPoints(bat_runs) {
     let runPoints = 0;
 
     // let {bat_runs} = playerPerformance;
-    let bat_runs = 35;
+    // let bat_runs = 35;
     let intial_bat_runs = bat_runs;
     for (let i = 0; i < t20RunPoints.length; i++) {
 
@@ -79,11 +79,14 @@ function calculatet20RunPoints() {
     }
     console.log(runPoints);
 
+    return runPoints;
+
+
 }
 
-function calculateTestRunPoints() {
+function calculateTestRunPoints(bat_runs) {
     let runPoints = 0;
-    let bat_runs = 26;
+    // let bat_runs = 26;
     let intial_bat_runs = bat_runs;
 
     for (let i = 0; i < testRunPoints.length; i++) {
@@ -118,11 +121,14 @@ function calculateTestRunPoints() {
     }
 
     console.log(runPoints);
+
+    return runPoints;
+
 }
 
-function calculateOnedayRunPoints() {
+function calculateOnedayRunPoints(bat_runs) {
     let runPoints = 0;
-    let bat_runs = 52;
+    // let bat_runs = 52;
     let intial_bat_runs = bat_runs;
 
     for (let i = 0; i < OnedayRunPoints.length; i++) {
@@ -157,11 +163,13 @@ function calculateOnedayRunPoints() {
     }
 
     console.log(runPoints);
+    return runPoints;
+    
 }
 
-function calculateT10RunPoints() {
+function calculateT10RunPoints(bat_runs) {
     let runPoints = 0;
-    let bat_runs = 48;
+    // let bat_runs = 48;
     let intial_bat_runs = bat_runs;
 
     for (let i = 0; i < t10RunPoints.length; i++) {
@@ -196,6 +204,7 @@ function calculateT10RunPoints() {
     }
 
     console.log(runPoints);
+    return runPoints;
 }
 
 const t20BoundryPoints = {
@@ -218,45 +227,53 @@ const t10BoundryPoints = {
     six: 2,
 }
 //Create the function for the boundry face points
-function calculatet20BoundryFacePoints() {
+function calculatet20BoundryFacePoints(no_of_4,no_of_6) {
     let boundryPoints = 0;
 
-    let no_of_4 = 1;
-    let no_of_6 = 2;
+    // let no_of_4 = 1;
+    // let no_of_6 = 2;
 
     boundryPoints = (no_of_4 * t20BoundryPoints.four) + (no_of_6 * t20BoundryPoints.six)
 
     console.log(boundryPoints)
+    return boundryPoints;
 }
-function calculatet10BoundryFacePoints() {
+function calculatet10BoundryFacePoints(no_of_4,no_of_6) {
     let boundryPoints = 0;
 
-    let no_of_4 = 1;
-    let no_of_6 = 2;
+    // let no_of_4 = 1;
+    // let no_of_6 = 2;
 
     boundryPoints = (no_of_4 * t10BoundryPoints.four) + (no_of_6 * t10BoundryPoints.six)
 
     console.log(boundryPoints)
+    return boundryPoints;
+
 }
-function calculatetoneBoundryFacePoints() {
+function calculatetoneBoundryFacePoints(no_of_4,no_of_6) {
     let boundryPoints = 0;
 
-    let no_of_4 = 1;
-    let no_of_6 = 2;
+    // let no_of_4 = 1;
+    // let no_of_6 = 2;
 
     boundryPoints = (no_of_4 * oneBoundryPoints.four) + (no_of_6 * oneBoundryPoints.six)
 
     console.log(boundryPoints)
+
+    return boundryPoints;
+
 }
-function calculatettestBoundryFacePoints() {
+function calculatettestBoundryFacePoints(no_of_4,no_of_6) {
     let boundryPoints = 0;
 
-    let no_of_4 = 1;
-    let no_of_6 = 2;
+    // let no_of_4 = 1;
+    // let no_of_6 = 2;
 
     boundryPoints = (no_of_4 * testBoundryPoints.four) + (no_of_6 * testBoundryPoints.six)
 
     console.log(boundryPoints)
+    return boundryPoints;
+
 }
 
 
@@ -282,45 +299,49 @@ const t10MilestonePoints = {
     centuary: 5,
 }
 
-function calculatet20BoundryFacePoints() {
+function calculatet20BoundryFacePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
-    let no_of_fifty = 1;
-    let no_of_hundred = 2;
+    // let no_of_fifty = 1;
+    // let no_of_hundred = 2;
 
     MilestonePoints = (no_of_fifty * t20MilestonePoints.half_centuary) + (no_of_hundred * t20MilestonePoints.centuary)
 
     console.log(MilestonePoints)
+    return MilestonePoints;
 }
-function calculatet10BoundryFacePoints() {
+function calculatet10BoundryFacePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
-    let no_of_fifty = 1;
-    let no_of_hundred = 2;
+    // let no_of_fifty = 1;
+    // let no_of_hundred = 2;
 
     MilestonePoints = (no_of_fifty * t10MilestonePoints.half_centuary) + (no_of_hundred * t10MilestonePoints.centuary)
 
     console.log(MilestonePoints)
+    return MilestonePoints;
 }
-function calculatetoneBoundryFacePoints() {
+function calculatetoneBoundryFacePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
-    let no_of_fifty = 1;
-    let no_of_hundred = 2;
+    // let no_of_fifty = 1;
+    // let no_of_hundred = 2;
 
     MilestonePoints = (no_of_fifty * oneMilestonePoints.half_centuary) + (no_of_hundred * oneMilestonePoints.centuary)
 
     console.log(MilestonePoints)
+    return MilestonePoints;
 }
-function calculatettestBoundryFacePoints() {
+function calculatettestBoundryFacePoints(no_of_fifty,no_of_hundred) {
     let MilestonePoints = 0;
 
-    let no_of_fifty = 1;
-    let no_of_hundred = 2;
+    // let no_of_fifty = 1;
+    // let no_of_hundred = 2;
 
     MilestonePoints = (no_of_fifty * testMilestonePoints.half_centuary) + (no_of_hundred * testMilestonePoints.centuary)
 
     console.log(MilestonePoints)
+    return MilestonePoints
 }
 
 
@@ -350,10 +371,10 @@ const t10BattingParticipationPoints = {
     did_not_bat: 7.5
 }
 
-function calculatet20BoundryFacePoints() {
+function calculatet20BoundryFacePoints(batting,out) {
     let BattingParticipationPoints = 0;
-    let batting = true
-    let out = true
+    // let batting = true
+    // let out = true
 
     if (batting) {
         BattingParticipationPoints += t20BattingParticipationPoints.start_batting
@@ -365,12 +386,12 @@ function calculatet20BoundryFacePoints() {
         BattingParticipationPoints += t20BattingParticipationPoints.dismissal
     }
 
-    console.log(BattingParticipationPoints)
+    return BattingParticipationPoints;
 }
-function calculatet10BoundryFacePoints() {
+function calculatet10BoundryFacePoints(batting,out) {
     let BattingParticipationPoints = 0;
-    let batting = true
-    let out = true
+    // let batting = true
+    // let out = true
 
     if (batting) {
         BattingParticipationPoints += t10BattingParticipationPoints.start_batting
@@ -381,12 +402,12 @@ function calculatet10BoundryFacePoints() {
     if (out) {
         BattingParticipationPoints += t10BattingParticipationPoints.dismissal
     }
-    console.log(BattingParticipationPoints)
+    return BattingParticipationPoints;
 }
-function calculatetoneBoundryFacePoints() {
+function calculatetoneBoundryFacePoints(batting,out) {
     let BattingParticipationPoints = 0;
-    let batting = true
-    let out = true
+    // let batting = true
+    // let out = true
 
     if (batting) {
         BattingParticipationPoints += oneBattingParticipationPoints.start_batting
@@ -397,12 +418,12 @@ function calculatetoneBoundryFacePoints() {
     if (out) {
         BattingParticipationPoints += oneBattingParticipationPoints.dismissal
     }
-    console.log(BattingParticipationPoints)
+    return BattingParticipationPoints;
 }
-function calculatettestBoundryFacePoints() {
+function calculatettestBoundryFacePoints(batting,out) {
     let BattingParticipationPoints = 0;
-    let batting = true
-    let out = true
+    // let batting = true
+    // let out = true
 
     if (batting) {
         BattingParticipationPoints += testBattingParticipationPoints.start_batting
@@ -413,7 +434,7 @@ function calculatettestBoundryFacePoints() {
     if (out) {
         BattingParticipationPoints += testBattingParticipationPoints.dismissal
     }
-    console.log(BattingParticipationPoints)
+    return BattingParticipationPoints;
 }
 
 
@@ -428,9 +449,9 @@ const customRunPoints = [
 ];
 
 //Create the fuction for test matches to ball faced points
-function calculateBallFacedPoints() {
+function calculateBallFacedPoints(balls_faced) {
     let runPoints = 0;
-    let balls_faced = 47;
+    // let balls_faced = 47;
 
     for (let i = 0; i < customRunPoints.length; i++) {
         if (balls_faced >= customRunPoints[i].lowerLimit) {
@@ -473,6 +494,7 @@ function calculateoneStrikeRatePoints(ballsPlayed, runsScored) {
     }
 
     console.log("Strike Points: " + points);
+    return points;
 }
 
 const t20strikeRateTable = [
@@ -499,6 +521,9 @@ function calculatet20StrikeRatePoints(ballsFaced, runsScored) {
     }
 
     console.log("Strike Points: " + points);
+
+    return points;
+
 }
 
 
@@ -527,61 +552,14 @@ function calculateStrikeRatePoints(ballsFaced, runsScored) {
     }
 
     console.log("Strike Points: " + points);
+
+    return points;
+
 }
 
 //   calculateStrikeRatePoints(21, 48);
 
 
-function calculateBattingPoints(playerPerformance) {
-    let battingPoints = 0;
-    let { bat_runs, fours_hit, sixes_hit } = playerPerformance;
 
-
-    for (let i = 0; i < runPointsMapping.length; i++) {
-        if (bat_runs <= runPointsMapping[i].runs) {
-            battingPoints += bat_runs * runPointsMapping[i].points;
-            break;
-        } else {
-            battingPoints += runPointsMapping[i].runs * runPointsMapping[i].points;
-            bat_runs -= runPointsMapping[i].runs;
-        }
-    }
-
-    battingPoints += fours_hit * 1; // Boundary Bonus Points for fours
-    battingPoints += sixes_hit * 2; // Boundary Bonus Points for sixes
-
-    const { balls_faced } = playerPerformance;
-    const strikeRate = balls_faced > 0 ? bat_runs / balls_faced : 0;
-
-    const strikeRatePointsMapping = [
-        { upperBound: 0.7, over5Balls: -6, over25Balls: -12 },
-        { upperBound: 1, over5Balls: -3, over25Balls: -6 },
-        { upperBound: 1.1, over5Balls: 0, over25Balls: 0 },
-        { upperBound: 1.3, over5Balls: 2, over25Balls: 4 },
-        { upperBound: 1.6, over5Balls: 4, over25Balls: 8 },
-        { upperBound: Infinity, over5Balls: 8, over25Balls: 16 }
-    ];
-
-    let strikeRatePoints;
-    for (let i = 0; i < strikeRatePointsMapping.length; i++) {
-        if (balls_faced > 25 && strikeRate <= strikeRatePointsMapping[i].upperBound) {
-            strikeRatePoints = strikeRatePointsMapping[i].over25Balls;
-            break;
-        } else if (balls_faced <= 25 && strikeRate <= strikeRatePointsMapping[i].upperBound) {
-            strikeRatePoints = strikeRatePointsMapping[i].over5Balls;
-            break;
-        }
-    }
-
-    battingPoints += strikeRatePoints;
-
-    if (bat_runs > 0) {
-        battingPoints += 8; // Batting Participation Points for starting batting
-    } else if (bat_runs === 0 && balls_faced === 0) {
-        battingPoints += 5; // Batting Participation Points for not batting
-    }
-
-    return battingPoints;
-}
 
 module.exports = { calculateBallFacedPoints, calculateBattingPoints, calculateOnedayRunPoints, calculateStrikeRatePoints, calculateT10RunPoints, calculateTestRunPoints ,calculateoneStrikeRatePoints,calculatet10BoundryFacePoints,calculatet20BoundryFacePoints,calculatet20RunPoints,calculatet20StrikeRatePoints,calculatetoneBoundryFacePoints,calculatettestBoundryFacePoints}
