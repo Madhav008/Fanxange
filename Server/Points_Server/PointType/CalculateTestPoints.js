@@ -8,26 +8,27 @@ function calculateTestPoints(playerPerformance) {
     let { catches,runouts,stumping,isBall,four_faces,six_faces,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
 
     /* All Batting Points  */
-    calculateTestRunPoints(bat_runs);
-    calculatettestBoundryFacePoints(fours_hit, sixes_hit);
-    calculatettestMilestonePoints(fifty, hundred);
-    calculatettestBattingPartipantPoints(isBat, isOut);
-    calculateBallFacedPoints(ball_faced);
+    points += calculateTestRunPoints(bat_runs);
+    points += calculatettestBoundryFacePoints(fours_hit, sixes_hit);
+    points += calculatettestMilestonePoints(fifty, hundred);
+    points += calculatettestBattingPartipantPoints(isBat, isOut);
+    points += calculateBallFacedPoints(ball_faced);
 
 
     /* All Bowling Points */
-    calculatetestWicketPoints(wickets)
-    calculatetestBonusPoints(dot_balls,madian_over);
-    calculatetestBoundryPoints(four_faces,six_faces);
-    calculatetestParticipationPoints(isBall);
+    points += calculatetestWicketPoints(wickets)
+    points += calculatetestBonusPoints(dot_balls,madian_over);
+    points += calculatetestBoundryPoints(four_faces,six_faces);
+    points += calculatetestParticipationPoints(isBall);
 
 
     /* All Fielding Points */
     
-    calculateCatchPoints(catches);
-    calculateRunOutPoints(runouts);
-    calculateStumpingPoints(stumping);
+    points += calculateCatchPoints(catches);
+    points += calculateRunOutPoints(runouts);
+    points += calculateStumpingPoints(stumping);
 
 
     return points;
 }
+module.exports = calculateTestPoints;

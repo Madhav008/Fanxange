@@ -7,25 +7,26 @@ function calculateT10Points(playerPerformance) {
     let { catches,runouts,stumping,isBall,runs_given,four_faces,six_faces,ball_bowled,dot_balls,madian_over,wickets,bat_runs, fours_hit, sixes_hit, ball_faced, fifty, hundred, isBat, isOut } = playerPerformance;
 
     /* All Batting Points  */
-    calculateT10RunPoints(bat_runs);
-    calculatet10BoundryFacePoints(fours_hit, sixes_hit);
-    calculatet10MilestonePoints(fifty, hundred);
-    calculatet10BattingPartipantPoints(isBat, isOut);
-    calculateStrikeRatePoints(ball_faced, bat_runs);
+    points +=calculateT10RunPoints(bat_runs);
+    points +=calculatet10BoundryFacePoints(fours_hit, sixes_hit);
+    points +=calculatet10MilestonePoints(fifty, hundred);
+    points +=calculatet10BattingPartipantPoints(isBat, isOut);
+    points +=calculateStrikeRatePoints(ball_faced, bat_runs);
 
 
     /* All Bowling Points */
-    calculatet10WicketPoints(wickets);
-    calculatet10BonusPoints(dot_balls,ball_bowled,madian_over);
-    calculatet10BoundryPoints(four_faces,six_faces);
-    calculatet10EconomyPoints(ball_bowled,runs_given);
-    calculatet10ParticipationPoints(isBall);
+    points +=calculatet10WicketPoints(wickets);
+    points +=calculatet10BonusPoints(dot_balls,ball_bowled,madian_over);
+    points +=calculatet10BoundryPoints(four_faces,six_faces);
+    points +=calculatet10EconomyPoints(ball_bowled,runs_given);
+    points +=calculatet10ParticipationPoints(isBall);
 
     /* All Fielding Points */
-    calculateCatchPoints(catches);
-    calculateRunOutPoints(runouts);
-    calculateStumpingPoints(stumping);
+    points +=calculateCatchPoints(catches);
+    points +=calculateRunOutPoints(runouts);
+    points +=calculateStumpingPoints(stumping);
 
 
     return points;
 }
+module.exports = calculateT10Points;
