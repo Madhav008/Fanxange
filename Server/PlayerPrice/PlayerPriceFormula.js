@@ -25,3 +25,5 @@ function calculatePlayerPrice(MatchPoints,Performance_avg){
 
     return new_price;
 }
+
+console.log(calculatePlayerPrice(52.2,50))
