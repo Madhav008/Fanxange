@@ -1,3 +1,10 @@
 table:
   name: player_has_teams
   schema: public
+object_relationships:
+  - name: player_info
+    using:
+      foreign_key_constraint_on: player_id
+  - name: team
+    using:
+      foreign_key_constraint_on: team_id

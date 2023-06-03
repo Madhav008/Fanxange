@@ -1,3 +1,4 @@
+- "!include public_match_types.yaml"
 - "!include public_player_has_teams.yaml"
 - "!include public_player_info.yaml"
 - "!include public_player_performance.yaml"

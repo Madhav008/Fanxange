@@ -1,0 +1,2 @@
+CREATE TABLE "Players"."Batting_stats" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "player_id" uuid NOT NULL, "bat_runs" integer NOT NULL, "four_hit" integer NOT NULL, "six_hit" integer NOT NULL, "balls_faced" integer NOT NULL, "fifty" integer NOT NULL, "hundred" integer NOT NULL, "is_bat" boolean NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("player_id") REFERENCES "Players"."Players"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"));COMMENT ON TABLE "Players"."Batting_stats" IS E'All Player Batting Stats';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

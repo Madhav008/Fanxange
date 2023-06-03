@@ -1,3 +1,10 @@
 table:
   name: player_performance
   schema: public
+object_relationships:
+  - name: matchTypeByMatchType
+    using:
+      foreign_key_constraint_on: match_type
+  - name: player_info
+    using:
+      foreign_key_constraint_on: player_id

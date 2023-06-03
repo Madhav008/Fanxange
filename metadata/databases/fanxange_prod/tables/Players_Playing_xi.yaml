@@ -1,0 +1,10 @@
+table:
+  name: Playing_xi
+  schema: Players
+object_relationships:
+  - name: Match
+    using:
+      foreign_key_constraint_on: match_id
+  - name: Player
+    using:
+      foreign_key_constraint_on: player_id

@@ -1,0 +1,1 @@
+CREATE TABLE "Players"."Players" ("id" uuid NOT NULL, "name" text NOT NULL, "price" text NOT NULL, "avg_points" text NOT NULL, "current_match_points" text NOT NULL, "is_injured" boolean NOT NULL, "is_playing_xi" boolean NOT NULL, "is_in_squad" boolean NOT NULL, PRIMARY KEY ("id") , UNIQUE ("id"));COMMENT ON TABLE "Players"."Players" IS E'All players info';

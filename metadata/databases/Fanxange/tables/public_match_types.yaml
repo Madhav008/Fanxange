@@ -1,11 +1,12 @@
 table:
-  name: teams
+  name: match_types
   schema: public
+is_enum: true
 array_relationships:
-  - name: player_has_teams
+  - name: player_performances
     using:
       foreign_key_constraint_on:
-        column: team_id
+        column: match_type
         table:
-          name: player_has_teams
+          name: player_performance
           schema: public

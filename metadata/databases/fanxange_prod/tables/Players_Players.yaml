@@ -1,0 +1,46 @@
+table:
+  name: Players
+  schema: Players
+array_relationships:
+  - name: Batting_stats
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Batting_stats
+          schema: Players
+  - name: Bowling_stats
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Bowling_stats
+          schema: Players
+  - name: Filding_stats
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Filding_stats
+          schema: Players
+  - name: Player_match_stats
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Player_match_stats
+          schema: Players
+  - name: Playing_squads
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Playing_squad
+          schema: Players
+  - name: Playing_xis
+    using:
+      foreign_key_constraint_on:
+        column: player_id
+        table:
+          name: Playing_xi
+          schema: Players

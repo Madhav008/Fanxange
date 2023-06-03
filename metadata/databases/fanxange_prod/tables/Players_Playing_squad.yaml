@@ -1,0 +1,10 @@
+table:
+  name: Playing_squad
+  schema: Players
+object_relationships:
+  - name: Player
+    using:
+      foreign_key_constraint_on: player_id
+  - name: Tournament
+    using:
+      foreign_key_constraint_on: tournament_id
