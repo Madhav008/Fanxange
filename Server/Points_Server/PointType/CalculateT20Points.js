@@ -44,49 +44,49 @@ function calculateT20Points(playerPerformance) {
     isOut
   } = playerPerformance;
 
-  /* All Batting Points */
-  if (bat_runs !== undefined) {
-    points += calculatet20RunPoints(bat_runs);
-    //console.log("Batting Points:", points);
-  }
-  if (fours_hit !== undefined && sixes_hit !== undefined) {
-    points += calculatet20BoundryFacePoints(fours_hit, sixes_hit);
-    //console.log("Boundry Face Points:", points);
-  }
-  if (fifty !== undefined && hundred !== undefined) {
-    points += calculatet20MilestonePoints(fifty, hundred);
-    //console.log("Milestone Points:", points);
-  }
-  if (isBat !== undefined && isOut !== undefined) {
-    points += calculatet20BattingPartipantPoints(isBat, isOut);
-    //console.log("Batting Participation Points:", points);
-  }
-  if (ball_faced !== undefined && bat_runs !== undefined) {
-    points += calculatet20StrikeRatePoints(ball_faced, bat_runs);
-    //console.log("Strike Rate Points:", points);
-  }
-  let temp_batPoints = points;
+    /* All Batting Points */
+    if (bat_runs !== undefined) {
+      points += calculatet20RunPoints(bat_runs);
+      //console.log("Batting Points:", points);
+    }
+    if (fours_hit !== undefined && sixes_hit !== undefined) {
+      points += calculatet20BoundryFacePoints(fours_hit, sixes_hit);
+      //console.log("Boundry Face Points:", points);
+    }
+    if (fifty !== undefined && hundred !== undefined) {
+      points += calculatet20MilestonePoints(fifty, hundred);
+      //console.log("Milestone Points:", points);
+    }
+    if (isBat !== undefined && isOut !== undefined) {
+      points += calculatet20BattingPartipantPoints(isBat, isOut);
+      //console.log("Batting Participation Points:", points);
+    }
+    if (ball_faced !== undefined && bat_runs !== undefined) {
+      points += calculatet20StrikeRatePoints(ball_faced, bat_runs);
+      //console.log("Strike Rate Points:", points);
+    }
+    let temp_batPoints = points;
 
   /* All Bowling Points */
   if (wickets !== undefined) {
     points += calculatet20WicketPoints(wickets);
-    //console.log("Wickets Points:", points);
+    console.log("Wickets Points:", points);
   }
   if (dot_balls !== undefined && ball_bowled !== undefined && madian_over !== undefined) {
     points += calculatet20BonusPoints(dot_balls, ball_bowled, madian_over);
-    //console.log("T20 Bonus Points:", points - temp_batPoints);
+    console.log("T20 Bonus Points:", points - temp_batPoints);
   }
   if (four_faces !== undefined && six_faces !== undefined) {
     points += calculatet20BoundryPoints(four_faces, six_faces);
-    //console.log("Bowling Boundry Points:", points);
+    console.log("Bowling Boundry Points:", points);
   }
   if (ball_bowled !== undefined && runs_given !== undefined) {
     points += calculatet20EconomyPoints(ball_bowled, runs_given);
-    //console.log("Economy Points:", points);
+    console.log("Economy Points:", points);
   }
   if (isBall !== undefined) {
     points += calculatet20ParticipationPoints(isBall);
-    //console.log("Bowling Participation Points:", points);
+    console.log("Bowling Participation Points:", points);
   }
 
   /* All Fielding Points */

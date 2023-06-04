@@ -1,6 +1,6 @@
 // const {calculateT20Points} = require("./PointType/CalculateT20Points");
 
-const {calculateT20Points} = require("./PointType/CalculateT20Points");
+const { calculateT20Points } = require("./PointType/CalculateT20Points");
 
 
 
@@ -60,58 +60,66 @@ const playerStats = [];
 //   }
 // }
 const axios = require('axios');
+const startExecuteInsertFildingStats = require("./SeedData/UpdateStats");
 
 axios.get('https://hasura.depthfirstsearch.tk/api/rest/players')
-  .then(response => {
-    const playerStats = response.data["Players_Players"];
+    .then(response => {
+        const playerStats = response.data["Players_Matches"];
 
-    playerStats.forEach(player => {
-        // if(player.name==="Washington Sundar"){
+        playerStats.forEach(player => {
+            // if(player.name==="Washington Sundar"){
+            const matchId = player.id;
             let { name, Batting_stats, Bowling_stats, Filding_stats } = player;
             if (Batting_stats.length === 0 || Bowling_stats.length === 0 || Filding_stats.length === 0) {
-              // console.log(`Incomplete stats for player: ${name}`);
-              return; // Skip this player and move to the next iteration
+                // console.log(`Incomplete stats for player: ${name}`);
+                return; // Skip this player and move to the next iteration
             }
-      
-            let {
-              bat_runs, four_hit, six_hit, balls_faced, fifty, hundred, is_bat, is_out
-            } = Batting_stats[0];
-      
-            let {
-              is_ball, runs_given, four_given, six_given, balls_bowled,
-              dot_balls, maidian_over, wicket
-            } = Bowling_stats[0];
-      
-            let { catches, runouts, stumping } = Filding_stats[0];
-      
-            const playerPerformance = {
-              catches: catches,
-              runouts: runouts,
-              stumping: stumping,
-              isBall: Boolean(is_ball),
-              runs_given: runs_given,
-              four_faces: four_given,
-              six_faces: six_given,
-              ball_bowled: balls_bowled,
-              dot_balls: dot_balls,
-              madian_over: maidian_over,
-              wickets: wicket,
-              bat_runs: bat_runs,
-              fours_hit: four_hit,
-              sixes_hit: six_hit,
-              ball_faced: balls_faced,
-              fifty: fifty,
-              hundred: hundred,
-              isBat: is_bat,
-              isOut: is_out
-            };
-      
-            let points = calculateT20Points(playerPerformance);
-            console.log(name);
-            console.log(points);
-        // }
+
+
+            Filding_stats.forEach((stats) => {
+
+
+                // let {
+                //     bat_runs, four_hit, six_hit, balls_faced, fifty, hundred, is_bat, is_out, player_id,
+                // } = stats;
+
+                // let {
+                //   is_ball, runs_given, four_given, six_given, balls_bowled,
+                //   dot_balls, maidian_over, wicket,player_id
+                // } = stats;
+
+                let { catches, runouts, stumping ,player_id} = stats;
+
+                const playerPerformance = {
+                      catches: catches,
+                      runouts: runouts,
+                      stumping: stumping,
+                    //   isBall: Boolean(is_ball),
+                    //   runs_given: runs_given,
+                    //   four_faces: four_given,
+                    //   six_faces: six_given,
+                    //   ball_bowled: balls_bowled,
+                    //   dot_balls: dot_balls,
+                    //   madian_over: maidian_over,
+                    //   wickets: wicket,
+                    // bat_runs: bat_runs,
+                    // fours_hit: four_hit,
+                    // sixes_hit: six_hit,
+                    // ball_faced: balls_faced,
+                    // fifty: fifty,
+                    // hundred: hundred,
+                    // isBat: is_bat,
+                    // isOut: is_out
+                };
+
+                let points = calculateT20Points(playerPerformance);
+                console.log(points);
+                points = points.toFixed(2)
+                startExecuteInsertFildingStats(matchId, player_id, points)
+            })
+            // }
+        });
+    })
+    .catch(error => {
+        console.error(error.message);
     });
-  })
-  .catch(error => {
-    console.error(error.message);
-  });
