@@ -49,15 +49,15 @@ function calculatet20RunPoints(bat_runs) {
                     let runs = t20RunPoints[0].upperLimit;
                     intial_bat_runs -= runs;
                     runPoints += runs * t20RunPoints[0].points;
-                    console.log("RUNS SCORED =" + runs + " Run Points =" + runPoints + " Runs LEFT =" + intial_bat_runs)
+                    //console.log("RUNS SCORED =" + runs + " Run Points =" + runPoints + " Runs LEFT =" + intial_bat_runs)
                 } else {
                     let runs = t20RunPoints[0].lowerLimit;
                     intial_bat_runs -= runs - 1;
                     runPoints += runs * t20RunPoints[0].points;
-                    console.log("RUNS SCORED =" + runs + " Run Points =" + runPoints + " Runs LEFT =" + intial_bat_runs)
+                    //console.log("RUNS SCORED =" + runs + " Run Points =" + runPoints + " Runs LEFT =" + intial_bat_runs)
                 }
 
-                // console.log("RUNS SCORED >" + runs + " Run Points "+ runPoints)
+                // //console.log("RUNS SCORED >" + runs + " Run Points "+ runPoints)
             }
         } else {
             if (bat_runs >= t20RunPoints[i].lowerLimit) {
@@ -66,18 +66,18 @@ function calculatet20RunPoints(bat_runs) {
                     let runs = (t20RunPoints[i].upperLimit - t20RunPoints[i].lowerLimit) + 1;
                     intial_bat_runs -= runs;
                     runPoints += runs * t20RunPoints[i].points;
-                    console.log("RUNS SCORED =" + runs + " Run Points =" + (runs * t20RunPoints[i].points) + " Runs LEFT =" + intial_bat_runs)
+                    //console.log("RUNS SCORED =" + runs + " Run Points =" + (runs * t20RunPoints[i].points) + " Runs LEFT =" + intial_bat_runs)
                 } else {
                     let runs = intial_bat_runs;
                     runPoints += intial_bat_runs * t20RunPoints[i].points;
-                    console.log("RUNS SCORED =" + runs + " Run Points =" + (runs * t20RunPoints[i].points) + " Runs LEFT =" + intial_bat_runs)
+                    //console.log("RUNS SCORED =" + runs + " Run Points =" + (runs * t20RunPoints[i].points) + " Runs LEFT =" + intial_bat_runs)
                 }
 
             }
         }
 
     }
-    console.log(runPoints);
+    //console.log(runPoints);
 
     return runPoints;
 
@@ -96,12 +96,12 @@ function calculateTestRunPoints(bat_runs) {
                     let runs = testRunPoints[0].upperLimit;
                     intial_bat_runs -= runs;
                     runPoints += runs * testRunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = testRunPoints[0].lowerLimit;
                     intial_bat_runs -= runs - 1;
                     runPoints += runs * testRunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 }
             }
         } else {
@@ -110,17 +110,17 @@ function calculateTestRunPoints(bat_runs) {
                     let runs = (testRunPoints[i].upperLimit - testRunPoints[i].lowerLimit) + 1;
                     intial_bat_runs -= runs;
                     runPoints += runs * testRunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * testRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * testRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = intial_bat_runs;
                     runPoints += intial_bat_runs * testRunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * testRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * testRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 }
             }
         }
     }
 
-    console.log(runPoints);
+    //console.log(runPoints);
 
     return runPoints;
 
@@ -138,12 +138,12 @@ function calculateOnedayRunPoints(bat_runs) {
                     let runs = OnedayRunPoints[0].upperLimit;
                     intial_bat_runs -= runs;
                     runPoints += runs * OnedayRunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = OnedayRunPoints[0].lowerLimit;
                     intial_bat_runs -= runs - 1;
                     runPoints += runs * OnedayRunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 }
             }
         } else {
@@ -152,17 +152,17 @@ function calculateOnedayRunPoints(bat_runs) {
                     let runs = (OnedayRunPoints[i].upperLimit - OnedayRunPoints[i].lowerLimit) + 1;
                     intial_bat_runs -= runs;
                     runPoints += runs * OnedayRunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * OnedayRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * OnedayRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = intial_bat_runs;
                     runPoints += intial_bat_runs * OnedayRunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * OnedayRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * OnedayRunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 }
             }
         }
     }
 
-    console.log(runPoints);
+    //console.log(runPoints);
     return runPoints;
     
 }
@@ -179,12 +179,12 @@ function calculateT10RunPoints(bat_runs) {
                     let runs = t10RunPoints[0].upperLimit;
                     intial_bat_runs -= runs;
                     runPoints += runs * t10RunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = t10RunPoints[0].lowerLimit;
                     intial_bat_runs -= runs - 1;
                     runPoints += runs * t10RunPoints[0].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runPoints, "Runs LEFT =", intial_bat_runs);
                 }
             }
         } else {
@@ -193,17 +193,17 @@ function calculateT10RunPoints(bat_runs) {
                     let runs = (t10RunPoints[i].upperLimit - t10RunPoints[i].lowerLimit) + 1;
                     intial_bat_runs -= runs;
                     runPoints += runs * t10RunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * t10RunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * t10RunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 } else {
                     let runs = intial_bat_runs;
                     runPoints += intial_bat_runs * t10RunPoints[i].points;
-                    console.log("RUNS SCORED =", runs, "Run Points =", runs * t10RunPoints[i].points, "Runs LEFT =", intial_bat_runs);
+                    //console.log("RUNS SCORED =", runs, "Run Points =", runs * t10RunPoints[i].points, "Runs LEFT =", intial_bat_runs);
                 }
             }
         }
     }
 
-    console.log(runPoints);
+    //console.log(runPoints);
     return runPoints;
 }
 
@@ -235,7 +235,7 @@ function calculatet20BoundryFacePoints(no_of_4,no_of_6) {
 
     boundryPoints = (no_of_4 * t20BoundryPoints.four) + (no_of_6 * t20BoundryPoints.six)
 
-    console.log(boundryPoints)
+    //console.log(boundryPoints)
     return boundryPoints;
 }
 function calculatet10BoundryFacePoints(no_of_4,no_of_6) {
@@ -246,7 +246,7 @@ function calculatet10BoundryFacePoints(no_of_4,no_of_6) {
 
     boundryPoints = (no_of_4 * t10BoundryPoints.four) + (no_of_6 * t10BoundryPoints.six)
 
-    console.log(boundryPoints)
+    //console.log(boundryPoints)
     return boundryPoints;
 
 }
@@ -258,7 +258,7 @@ function calculatetoneBoundryFacePoints(no_of_4,no_of_6) {
 
     boundryPoints = (no_of_4 * oneBoundryPoints.four) + (no_of_6 * oneBoundryPoints.six)
 
-    console.log(boundryPoints)
+    //console.log(boundryPoints)
 
     return boundryPoints;
 
@@ -271,7 +271,7 @@ function calculatettestBoundryFacePoints(no_of_4,no_of_6) {
 
     boundryPoints = (no_of_4 * testBoundryPoints.four) + (no_of_6 * testBoundryPoints.six)
 
-    console.log(boundryPoints)
+    //console.log(boundryPoints)
     return boundryPoints;
 
 }
@@ -307,7 +307,7 @@ function calculatet20MilestonePoints(no_of_fifty,no_of_hundred) {
 
     MilestonePoints = (no_of_fifty * t20MilestonePoints.half_centuary) + (no_of_hundred * t20MilestonePoints.centuary)
 
-    console.log(MilestonePoints)
+    //console.log(MilestonePoints)
     return MilestonePoints;
 }
 function calculatet10MilestonePoints(no_of_fifty,no_of_hundred) {
@@ -318,7 +318,7 @@ function calculatet10MilestonePoints(no_of_fifty,no_of_hundred) {
 
     MilestonePoints = (no_of_fifty * t10MilestonePoints.half_centuary) + (no_of_hundred * t10MilestonePoints.centuary)
 
-    console.log(MilestonePoints)
+    //console.log(MilestonePoints)
     return MilestonePoints;
 }
 function calculatetoneMilestonePoints(no_of_fifty,no_of_hundred) {
@@ -329,7 +329,7 @@ function calculatetoneMilestonePoints(no_of_fifty,no_of_hundred) {
 
     MilestonePoints = (no_of_fifty * oneMilestonePoints.half_centuary) + (no_of_hundred * oneMilestonePoints.centuary)
 
-    console.log(MilestonePoints)
+    //console.log(MilestonePoints)
     return MilestonePoints;
 }
 function calculatettestMilestonePoints(no_of_fifty,no_of_hundred) {
@@ -340,7 +340,7 @@ function calculatettestMilestonePoints(no_of_fifty,no_of_hundred) {
 
     MilestonePoints = (no_of_fifty * testMilestonePoints.half_centuary) + (no_of_hundred * testMilestonePoints.centuary)
 
-    console.log(MilestonePoints)
+    //console.log(MilestonePoints)
     return MilestonePoints
 }
 
@@ -458,16 +458,16 @@ function calculateBallFacedPoints(balls_faced) {
             if (balls_faced >= customRunPoints[i].upperLimit) {
                 let runs = customRunPoints[i].upperLimit - customRunPoints[i].lowerLimit + 1;
                 runPoints += runs * customRunPoints[i].points;
-                console.log("RUNS SCORED =", runs, "Run Points =", runs * customRunPoints[i].points);
+                //console.log("RUNS SCORED =", runs, "Run Points =", runs * customRunPoints[i].points);
             } else {
                 let runs = balls_faced - customRunPoints[i].lowerLimit + 1;
                 runPoints += runs * customRunPoints[i].points;
-                console.log("RUNS SCORED =", runs, "Run Points =", runs * customRunPoints[i].points);
+                //console.log("RUNS SCORED =", runs, "Run Points =", runs * customRunPoints[i].points);
             }
         }
     }
 
-    console.log(runPoints);
+    //console.log(runPoints);
 }
 
 
@@ -493,7 +493,7 @@ function calculateoneStrikeRatePoints(ballsPlayed, runsScored) {
         }
     }
 
-    console.log("Strike Points: " + points);
+    //console.log("Strike Points: " + points);
     return points;
 }
 
@@ -509,7 +509,7 @@ const t20strikeRateTable = [
 function calculatet20StrikeRatePoints(ballsFaced, runsScored) {
     let strikeRate = (runsScored / ballsFaced).toFixed(2);
     let points = 0;
-    console.log(strikeRate)
+    //console.log(strikeRate)
     for (let i = 0; i < t20strikeRateTable.length; i++) {
         const entry = t20strikeRateTable[i];
 
@@ -520,7 +520,7 @@ function calculatet20StrikeRatePoints(ballsFaced, runsScored) {
 
     }
 
-    console.log("Strike Points: " + points);
+    //console.log("Strike Points: " + points);
 
     return points;
 
@@ -551,7 +551,7 @@ function calculateStrikeRatePoints(ballsFaced, runsScored) {
         }
     }
 
-    console.log("Strike Points: " + points);
+    //console.log("Strike Points: " + points);
 
     return points;
 

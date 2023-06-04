@@ -1,7 +1,3 @@
 table:
   name: Teams
   schema: Players
-object_relationships:
-  - name: Match
-    using:
-      foreign_key_constraint_on: match_id

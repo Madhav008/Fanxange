@@ -107,7 +107,7 @@ function calculateoneEconomyPoints(ballsFaced, runsScored) {
         }
     }
 
-    console.log("Strike Points: " + points);
+    //console.log("Strike Points: " + points);
 }
 
 
@@ -129,6 +129,7 @@ function calculateoneParticipationPoints(isBall) {
 
 
 const t20wicketsPointsMap = new Map([
+    [0, 0],
     [1, 15],
     [2, 28],
     [3, 42],
@@ -184,14 +185,15 @@ function calculatet20EconomyPoints(ballsFaced, runsScored) {
             break;
         }
     }
-
-    console.log("Strike Points: " + points);
+    return points;
 }
 
 function calculatet20ParticipationPoints(isBall) {
     if (!isBall) {
         return 5;
-    } 
+    }else{
+        return 0;
+    }
 }
 
 
@@ -256,7 +258,7 @@ function calculatet10EconomyPoints(ballsFaced, runsScored) {
         }
     }
 
-    console.log("Strike Points: " + points);
+    //console.log("Strike Points: " + points);
 }
 
 function calculatet10ParticipationPoints(isBall) {
