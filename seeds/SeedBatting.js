@@ -18,11 +18,13 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertBattingStats($is_bat: Boolean, $balls_faced: Int, $bat_runs: Int, $fifty: Int, $four_hit: Int, $hundred: Int, $six_hit: Int, $match_id: uuid, $player_id: uuid) {
-    insert_Players_Batting_stats(objects: {is_bat: $is_bat, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, six_hit: $six_hit, match_id: $match_id, player_id: $player_id}) {
+mutation InsertBattingStats($is_bat: Boolean, $is_out: Boolean, $balls_faced: Int, $bat_runs: Int, $fifty: Int, $four_hit: Int, $hundred: Int, $six_hit: Int, $match_id: String, $player_id: String) {
+    insert_Players_Batting_stats(objects: {is_bat: $is_bat, is_out: $is_out, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, six_hit: $six_hit, match_id: $match_id, player_id: $player_id}) {
       affected_rows
       returning {
         is_bat
+        is_out
+        batting_points
         balls_faced
         bat_runs
         fifty
@@ -37,25 +39,25 @@ const operationsDoc = `
   }
 `;
 
-function executeInsertBattingStats(is_bat, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
+function executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
     return fetchGraphQL(
-        operationsDoc,
-        "InsertBattingStats",
-        { "is_bat": is_bat, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "six_hit": six_hit, "match_id": match_id, "player_id": player_id }
+      operationsDoc,
+      "InsertBattingStats",
+      {"is_bat": is_bat, "is_out": is_out, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "six_hit": six_hit, "match_id": match_id, "player_id": player_id}
     );
-}
+  }
 
-async function startExecuteInsertBattingStats(is_bat, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
-    const { errors, data } = await executeInsertBattingStats(is_bat, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id);
-
+  async function startExecuteInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
+    const { errors, data } = await executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id);
+  
     if (errors) {
-        // handle those errors like a pro
-        console.error(errors);
+      // handle those errors like a pro
+      console.error(errors);
     }
-
+  
     // do something great with this precious data
     console.log(data);
-}
+  }
 
 
 

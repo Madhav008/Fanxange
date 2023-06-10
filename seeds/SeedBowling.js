@@ -59,11 +59,11 @@ async function startExecuteInsertBowlingStats(balls_bowled, dot_balls, four_give
   console.log(data);
 }
 
+module.exports = startExecuteInsertBowlingStats;
 
 
 
-
-async function seedData() {
+/* async function seedData() {
     let file_names = [
         1370351, 1370350, 1359543, 1359544, 1359541, 1359542, 1359540, 1359539,
         1359538, 1359537, 1359536, 1359534, 1359535, 1359532, 1359533, 1359531,
@@ -119,4 +119,4 @@ async function seedData() {
 
     });
 }
-seedData()
+seedData() */
