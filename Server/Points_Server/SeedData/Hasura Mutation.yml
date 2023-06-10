@@ -1,0 +1,139 @@
+mutation InsertTournaments($name: String, $type: String) {
+  insert_Players_Tournaments(objects: {name: $name, type: $type}) {
+    affected_rows
+    returning {
+      id
+			name
+			type
+    }
+  }
+}
+
+
+mutation InsertMatches($name: String, $date: String, $tournament_id: String) {
+  insert_Players_Matches(objects: {name: $name, date: $date, tournament_id: $tournament_id}) {
+    affected_rows
+    returning {
+      id
+			name
+			date
+			tournament_id
+    }
+  }
+}
+    
+
+mutation InsertPlayers($id: String, $name: String, $price: String, $avg_points: String, $current_match_points: String, $is_injured: Boolean, $images: String) {
+  insert_Players_Players(objects: {id: $id, name: $name, price: $price, avg_points: $avg_points, current_match_points: $current_match_points, is_injured: $is_injured, images: $images}) {
+    affected_rows
+    returning {
+      id
+      name
+      price
+      avg_points
+      current_match_points
+      is_injured
+      images
+    }
+  }
+}
+
+mutation InsertBattingStats($player_id: String, $bat_runs: Int, $four_hit: Int, $six_hit: Int, $balls_faced: Int, $fifty: Int, $hundred: Int, $is_bat: Boolean, $match_id: String) {
+  insert_Players_Batting_stats(objects: {player_id: $player_id, bat_runs: $bat_runs, four_hit: $four_hit, six_hit: $six_hit, balls_faced: $balls_faced, fifty: $fifty, hundred: $hundred, is_bat: $is_bat, match_id: $match_id}) {
+    affected_rows
+    returning {
+      id
+			player_id
+			bat_runs
+			four_hit
+			six_hit
+			balls_faced
+			fifty
+			hundred
+			is_bat
+			match_id
+    }
+  }
+}
+    
+
+mutation InsertBowlingStats($match_id: String, $player_id: String, $runs_given: Int, $four_given: Int, $six_given: Int, $balls_bowled: Int, $wicket: Int, $dot_balls: Int, $maidian_over: Int, $is_ball: String) {
+  insert_Players_Bowling_stats(objects: {match_id: $match_id, player_id: $player_id, runs_given: $runs_given, four_given: $four_given, six_given: $six_given, balls_bowled: $balls_bowled, wicket: $wicket, dot_balls: $dot_balls, maidian_over: $maidian_over, is_ball: $is_ball}) {
+    affected_rows
+    returning {
+      id
+			match_id
+			player_id
+			runs_given
+			four_given
+			six_given
+			balls_bowled
+			wicket
+			dot_balls
+			maidian_over
+			is_ball
+    }
+  }
+}
+    
+mutation InsertFildingStats($catches: Int, $runouts: Int, $stumping: Int, $match_id: String, $player_id: String) {
+  insert_Players_Filding_stats(objects: {catches: $catches, runouts: $runouts, stumping: $stumping, match_id: $match_id, player_id: $player_id}) {
+    affected_rows
+    returning {
+      catches
+			runouts
+			stumping
+			id
+			match_id
+			player_id
+    }
+  }
+}
+    
+
+mutation InsertPlayerMatchStats($batting_stats_id: String, $bowling_stats_id: String, $fielding_stats_id: String, $match_id: String, $player_id: String) {
+  insert_Players_Player_match_stats(objects: {batting_stats_id: $batting_stats_id, bowling_stats_id: $bowling_stats_id, fielding_stats_id: $fielding_stats_id, match_id: $match_id, player_id: $player_id}) {
+    affected_rows
+    returning {
+      id
+			batting_stats_id
+			bowling_stats_id
+			fielding_stats_id
+			match_id
+			player_id
+    }
+  }
+}
+    
+mutation InsertPlayingSquad($player_id: String, $tournament_id: String) {
+  insert_Players_Playing_squad(objects: {player_id: $player_id, tournament_id: $tournament_id}) {
+    affected_rows
+    returning {
+      id
+			player_id
+			tournament_id
+    }
+  }
+}
+    mutation InsertPlayingXi($player_id: String, $match_id: String) {
+  insert_Players_Playing_xi(objects: {player_id: $player_id, match_id: $match_id}) {
+    affected_rows
+    returning {
+      id
+			player_id
+			match_id
+    }
+  }
+}
+    
+mutation InsertTeams($name: String, $match_id: String) {
+  insert_Players_Teams(objects: {name: $name, match_id: $match_id}) {
+    affected_rows
+    returning {
+      name
+			id
+			match_id
+    }
+  }
+}
+    

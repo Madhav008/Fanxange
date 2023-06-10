@@ -21,9 +21,11 @@ function PriceChangeFactor(MatchPoints,Performance_avg){
 function calculatePlayerPrice(MatchPoints,Performance_avg){
     /* Price New = Price OLD  + Price Change Factor */
 
-    let new_price = PriceChangeFactor(MatchPoints,Performance_avg)+calculatePlayerOldPrice();
+    let new_price = PriceChangeFactor(MatchPoints,Performance_avg)+Performance_avg;
 
     return new_price;
 }
 
-console.log(calculatePlayerPrice(52.2,50))
+module.exports =  calculatePlayerPrice;
+
+// console.log(calculatePlayerPrice(52.2,50))

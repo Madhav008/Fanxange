@@ -3,7 +3,6 @@
 const { calculateT20Points } = require("./PointType/CalculateT20Points");
 
 
-
 const playerStats = [];
 
 // // Extract batting stats
