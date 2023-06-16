@@ -15,44 +15,44 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertPlayers($name: String, $is_injured: Boolean) {
-    insert_Players_Players(objects: {name: $name, is_injured: $is_injured}) {
+  mutation InsertPlayerStats($id: Int, $teamId: Int, $full_name: String, $short_name: String) {
+    insert_EXPN_PlayerStats(objects: {id: $id, teamId: $teamId, full_name: $full_name, short_name: $short_name}) {
       affected_rows
       returning {
         id
-        name
-        price
-        avg_points
-        current_match_points
-        is_injured
-        images
+        teamId
+        full_name
+        short_name
       }
     }
   }
 `;
 
-function executeInsertPlayers(name, is_injured) {
-    return fetchGraphQL(
-        operationsDoc,
-        "InsertPlayers",
-        { "name": name, "is_injured": is_injured }
-    );
+function executeInsertPlayerStats(id, teamId, full_name, short_name) {
+  return fetchGraphQL(
+    operationsDoc,
+    "InsertPlayerStats",
+    {"id": id, "teamId": teamId, "full_name": full_name, "short_name": short_name}
+  );
 }
 
-async function startExecuteInsertPlayers(name, is_injured) {
-    const { errors, data } = await executeInsertPlayers(name, is_injured);
+async function startExecuteInsertPlayerStats(id, teamId, full_name, short_name) {
+  const { errors, data } = await executeInsertPlayerStats(id, teamId, full_name, short_name);
 
-    if (errors) {
-        // handle those errors like a pro
-        console.error(errors);
-    }
+  if (errors) {
+    // handle those errors like a pro
+    console.error(errors);
+  }
 
-    // do something great with this precious data
-    console.log(data);
+  // do something great with this precious data
+  console.log(data);
 }
-const uniquePlayers = new Set(); // Set to store unique player names
 
-async function seedData() {
+module.exports = startExecuteInsertPlayerStats;
+
+// const uniquePlayers = new Set(); // Set to store unique player names
+
+/* async function seedData() {
     let file_names = [
         1370351, 1370350, 1359543, 1359544, 1359541, 1359542, 1359540, 1359539,
         1359538, 1359537, 1359536, 1359534, 1359535, 1359532, 1359533, 1359531,
@@ -101,4 +101,4 @@ async function seedData() {
 
     console.log(uniquePlayers.size);
 }
-seedData()
+seedData() */

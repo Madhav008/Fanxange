@@ -1,3 +1,11 @@
+- name: HARI OM
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgresql://madhav:madhav@192.168.1.123:49157/postgres
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include HARI OM/tables/tables.yaml"
 - name: fanxange_prod
   kind: postgres
   configuration:

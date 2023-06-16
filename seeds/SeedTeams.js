@@ -13,10 +13,9 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 
   return await result.json();
 }
-
 const operationsDoc = `
-  mutation InsertTeams($name: String) {
-    insert_Players_Teams(objects: {name: $name}) {
+  mutation InsertTeams($id: Int, $name: String) {
+    insert_EXPN_Teams(objects: {id: $id, name: $name}) {
       affected_rows
       returning {
         id
@@ -26,16 +25,16 @@ const operationsDoc = `
   }
 `;
 
-function executeInsertTeams(name) {
+function executeInsertTeams(id, name) {
   return fetchGraphQL(
     operationsDoc,
     "InsertTeams",
-    {"name": name}
+    {"id": id, "name": name}
   );
 }
 
-async function startExecuteInsertTeams(name) {
-  const { errors, data } = await executeInsertTeams(name);
+async function startExecuteInsertTeams(id, name) {
+  const { errors, data } = await executeInsertTeams(id, name);
 
   if (errors) {
     // handle those errors like a pro
@@ -46,9 +45,10 @@ async function startExecuteInsertTeams(name) {
   console.log(data);
 }
 
+module.exports = startExecuteInsertTeams;
 
 
-async function seedData() {
+/* async function seedData() {
   let file_names = [
     1370351, 1370350, 1359543, 1359544, 1359541, 1359542, 1359540, 1359539,
       1359538, 1359537, 1359536, 1359534, 1359535, 1359532, 1359533, 1359531,
@@ -77,4 +77,4 @@ async function seedData() {
 
   });
 }
-seedData()
+seedData() */

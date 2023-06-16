@@ -1,0 +1,19 @@
+table:
+  name: Player_match_stats
+  schema: Players
+object_relationships:
+  - name: Batting_stat
+    using:
+      foreign_key_constraint_on: batting_stats_id
+  - name: Bowling_stat
+    using:
+      foreign_key_constraint_on: bowling_stats_id
+  - name: Filding_stat
+    using:
+      foreign_key_constraint_on: fielding_stats_id
+  - name: Match
+    using:
+      foreign_key_constraint_on: match_id
+  - name: Player
+    using:
+      foreign_key_constraint_on: player_id

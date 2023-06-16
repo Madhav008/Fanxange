@@ -18,50 +18,50 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-mutation InsertBattingStats($is_bat: Boolean, $is_out: Boolean, $balls_faced: Int, $bat_runs: Int, $fifty: Int, $four_hit: Int, $hundred: Int, $six_hit: Int, $match_id: String, $player_id: String) {
-    insert_Players_Batting_stats(objects: {is_bat: $is_bat, is_out: $is_out, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, six_hit: $six_hit, match_id: $match_id, player_id: $player_id}) {
+  mutation InsertBattingStats($is_bat: Boolean, $is_out: Boolean, $balls_faced: Int, $bat_runs: Int, $fifty: Int, $four_hit: Int, $hundred: Int, $matchId: Int, $playerId: Int, $points: float8, $six_hit: Int) {
+    insert_EXPN_BattingStats(objects: {is_bat: $is_bat, is_out: $is_out, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, matchId: $matchId, playerId: $playerId, points: $points, six_hit: $six_hit}) {
       affected_rows
       returning {
         is_bat
         is_out
-        batting_points
         balls_faced
         bat_runs
         fifty
         four_hit
         hundred
-        six_hit
         id
-        match_id
-        player_id
+        matchId
+        playerId
+        points
+        six_hit
       }
     }
   }
 `;
 
-function executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
-    return fetchGraphQL(
-      operationsDoc,
-      "InsertBattingStats",
-      {"is_bat": is_bat, "is_out": is_out, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "six_hit": six_hit, "match_id": match_id, "player_id": player_id}
-    );
+function executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, matchId, playerId, points, six_hit) {
+  return fetchGraphQL(
+    operationsDoc,
+    "InsertBattingStats",
+    {"is_bat": is_bat, "is_out": is_out, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "matchId": matchId, "playerId": playerId, "points": points, "six_hit": six_hit}
+  );
+}
+
+async function startExecuteInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, matchId, playerId, points, six_hit) {
+  const { errors, data } = await executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, matchId, playerId, points, six_hit);
+
+  if (errors) {
+    // handle those errors like a pro
+    console.error(errors);
   }
 
-  async function startExecuteInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id) {
-    const { errors, data } = await executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, six_hit, match_id, player_id);
-  
-    if (errors) {
-      // handle those errors like a pro
-      console.error(errors);
-    }
-  
-    // do something great with this precious data
-    console.log(data);
-  }
+  // do something great with this precious data
+  console.log(data);
+}
 
+module.exports =startExecuteInsertBattingStats;
 
-
-async function seedData() {
+/* async function seedData() {
     let file_names = [
         1370351, 1370350, 1359543, 1359544, 1359541, 1359542, 1359540, 1359539,
         1359538, 1359537, 1359536, 1359534, 1359535, 1359532, 1359533, 1359531,
@@ -118,4 +118,4 @@ async function seedData() {
 
     });
 }
-seedData()
+seedData() */

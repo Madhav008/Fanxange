@@ -15,14 +15,15 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertFildingStats($match_id: uuid, $player_id: uuid, $catches: Int, $runouts: Int, $stumping: Int) {
-    insert_Players_Filding_stats(objects: {match_id: $match_id, player_id: $player_id, catches: $catches, runouts: $runouts, stumping: $stumping}) {
+  mutation InsertFieldingStats($catches: Int, $matchId: Int, $playerId: Int, $points: float8, $runouts: Int, $stumping: Int) {
+    insert_EXPN_FieldingStats(objects: {catches: $catches, matchId: $matchId, playerId: $playerId, points: $points, runouts: $runouts, stumping: $stumping}) {
       affected_rows
       returning {
-        id
-        match_id
-        player_id
         catches
+        id
+        matchId
+        playerId
+        points
         runouts
         stumping
       }
@@ -30,16 +31,16 @@ const operationsDoc = `
   }
 `;
 
-function executeInsertFildingStats(match_id, player_id, catches, runouts, stumping) {
+function executeInsertFieldingStats(catches, matchId, playerId, points, runouts, stumping) {
   return fetchGraphQL(
     operationsDoc,
-    "InsertFildingStats",
-    {"match_id": match_id, "player_id": player_id, "catches": catches, "runouts": runouts, "stumping": stumping}
+    "InsertFieldingStats",
+    {"catches": catches, "matchId": matchId, "playerId": playerId, "points": points, "runouts": runouts, "stumping": stumping}
   );
 }
 
-async function startExecuteInsertFildingStats(match_id, player_id, catches, runouts, stumping) {
-  const { errors, data } = await executeInsertFildingStats(match_id, player_id, catches, runouts, stumping);
+async function startExecuteInsertFieldingStats(catches, matchId, playerId, points, runouts, stumping) {
+  const { errors, data } = await executeInsertFieldingStats(catches, matchId, playerId, points, runouts, stumping);
 
   if (errors) {
     // handle those errors like a pro
@@ -50,6 +51,4 @@ async function startExecuteInsertFildingStats(match_id, player_id, catches, runo
   console.log(data);
 }
 
-
-
-module.exports = startExecuteInsertFildingStats;
+module.exports = startExecuteInsertFieldingStats;

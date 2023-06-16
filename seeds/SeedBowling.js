@@ -19,36 +19,37 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertBowlingStats($balls_bowled: Int, $dot_balls: Int, $four_given: Int, $maidian_over: Int, $runs_given: Int, $six_given: Int, $wicket: Int, $is_ball: String, $match_id: uuid, $player_id: uuid) {
-    insert_Players_Bowling_stats(objects: {balls_bowled: $balls_bowled, dot_balls: $dot_balls, four_given: $four_given, maidian_over: $maidian_over, runs_given: $runs_given, six_given: $six_given, wicket: $wicket, is_ball: $is_ball, match_id: $match_id, player_id: $player_id}) {
+  mutation InsertBowlingStats($balls_bowled: Int, $dot_balls: Int, $four_given: Int, $is_ball: Boolean, $maidian_over: Int, $matchId: Int, $playerId: Int, $points: float8, $runs_given: Int, $six_given: Int, $wicket: Int) {
+    insert_EXPN_BowlingStats(objects: {balls_bowled: $balls_bowled, dot_balls: $dot_balls, four_given: $four_given, is_ball: $is_ball, maidian_over: $maidian_over, matchId: $matchId, playerId: $playerId, points: $points, runs_given: $runs_given, six_given: $six_given, wicket: $wicket}) {
       affected_rows
       returning {
         balls_bowled
         dot_balls
         four_given
+        id
+        is_ball
         maidian_over
+        matchId
+        playerId
+        points
         runs_given
         six_given
         wicket
-        is_ball
-        id
-        match_id
-        player_id
       }
     }
   }
 `;
 
-function executeInsertBowlingStats(balls_bowled, dot_balls, four_given, maidian_over, runs_given, six_given, wicket, is_ball, match_id, player_id) {
+function executeInsertBowlingStats(balls_bowled, dot_balls, four_given, is_ball, maidian_over, matchId, playerId, points, runs_given, six_given, wicket) {
   return fetchGraphQL(
     operationsDoc,
     "InsertBowlingStats",
-    {"balls_bowled": balls_bowled, "dot_balls": dot_balls, "four_given": four_given, "maidian_over": maidian_over, "runs_given": runs_given, "six_given": six_given, "wicket": wicket, "is_ball": is_ball, "match_id": match_id, "player_id": player_id}
+    {"balls_bowled": balls_bowled, "dot_balls": dot_balls, "four_given": four_given, "is_ball": is_ball, "maidian_over": maidian_over, "matchId": matchId, "playerId": playerId, "points": points, "runs_given": runs_given, "six_given": six_given, "wicket": wicket}
   );
 }
 
-async function startExecuteInsertBowlingStats(balls_bowled, dot_balls, four_given, maidian_over, runs_given, six_given, wicket, is_ball, match_id, player_id) {
-  const { errors, data } = await executeInsertBowlingStats(balls_bowled, dot_balls, four_given, maidian_over, runs_given, six_given, wicket, is_ball, match_id, player_id);
+async function startExecuteInsertBowlingStats(balls_bowled, dot_balls, four_given, is_ball, maidian_over, matchId, playerId, points, runs_given, six_given, wicket) {
+  const { errors, data } = await executeInsertBowlingStats(balls_bowled, dot_balls, four_given, is_ball, maidian_over, matchId, playerId, points, runs_given, six_given, wicket);
 
   if (errors) {
     // handle those errors like a pro
@@ -58,6 +59,7 @@ async function startExecuteInsertBowlingStats(balls_bowled, dot_balls, four_give
   // do something great with this precious data
   console.log(data);
 }
+
 
 module.exports = startExecuteInsertBowlingStats;
 

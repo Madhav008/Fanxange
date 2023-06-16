@@ -1,0 +1,15 @@
+table:
+  name: Filding_stats
+  schema: Players
+object_relationships:
+  - name: Match
+    using:
+      foreign_key_constraint_on: match_id
+array_relationships:
+  - name: Player_match_stats
+    using:
+      foreign_key_constraint_on:
+        column: fielding_stats_id
+        table:
+          name: Player_match_stats
+          schema: Players

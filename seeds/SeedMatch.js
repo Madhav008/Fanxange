@@ -26,37 +26,37 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertMatches($date: String, $name: String, $tournament_id: uuid) {
-    insert_Players_Matches(objects: {date: $date, name: $name, tournament_id: $tournament_id}) {
+  mutation InsertMatches($id: Int, $start_date: String, $seriesId: Int, $name: String) {
+    insert_EXPN_Matches(objects: {id: $id, start_date: $start_date, seriesId: $seriesId, name: $name}) {
       affected_rows
       returning {
-        date
-        name
         id
-        tournament_id
+        start_date
+        seriesId
+        name
       }
     }
   }
 `;
 
-function executeInsertMatches(date, name, tournament_id) {
-    return fetchGraphQL(
-        operationsDoc,
-        "InsertMatches",
-        { "date": date, "name": name, "tournament_id": tournament_id }
-    );
+function executeInsertMatches(id, start_date, seriesId, name) {
+  return fetchGraphQL(
+    operationsDoc,
+    "InsertMatches",
+    {"id": id, "start_date": start_date, "seriesId": seriesId, "name": name}
+  );
 }
 
-async function startExecuteInsertMatches(date, name, tournament_id) {
-    const { errors, data } = await executeInsertMatches(date, name, tournament_id);
+async function startExecuteInsertMatches(id, start_date, seriesId, name) {
+  const { errors, data } = await executeInsertMatches(id, start_date, seriesId, name);
 
-    if (errors) {
-        // handle those errors like a pro
-        console.error(errors);
-    }
+  if (errors) {
+    // handle those errors like a pro
+    console.error(errors);
+  }
 
-    // do something great with this precious data
-    console.log(data);
+  // do something great with this precious data
+  console.log(data);
 }
 
 module.exports = startExecuteInsertMatches;
