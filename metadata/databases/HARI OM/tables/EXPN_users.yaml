@@ -1,0 +1,31 @@
+table:
+  name: users
+  schema: EXPN
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userid:
+          _eq: x-hasura-user-id
+      columns:
+        - userid
+        - name
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - userid
+        - name
+      filter:
+        userid:
+          _eq: x-hasura-user-id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - userid
+        - name
+      filter:
+        userid:
+          _eq: x-hasura-user-id
+      check: null

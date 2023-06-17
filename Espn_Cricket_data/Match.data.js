@@ -63,11 +63,11 @@ async function getAllMatchesData(seriesId) {
 
     matches.forEach(async ele => {
         // console.log(ele.startDate, ele.slug, ele.objectId, ele.series.objectId);
-        // if (ele.objectId !== undefined && ele.series.objectId !== undefined) {
-        //     await getMatchData(ele.series.objectId, ele.objectId);
-        // }
+        if (ele.objectId !== undefined && ele.series.objectId !== undefined) {
+            await getMatchData(ele.series.objectId, ele.objectId);
+        }
         // await startExecuteInsertMatches(ele.objectId, ele.startDate, seriesId, ele.slug)
-        const data = {
+     /*    const data = {
             start_date: ele.startDate,
             seriesId: seriesId,
             name: ele.slug,
@@ -80,10 +80,11 @@ async function getAllMatchesData(seriesId) {
         const collectionId = "648c6ce86632be598253";        
         createDocument(databaseId, collectionId, data)
         wait(6000);
+         */
     });
 
 }
-// getAllMatchesData(1347399)
+getAllMatchesData(1347399)
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
