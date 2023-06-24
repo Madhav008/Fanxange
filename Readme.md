@@ -13,7 +13,6 @@
 ## Run this command to start the API
 
     node index.js
-
 # Design the System
 
     [] One Time rates of the player factors
@@ -48,22 +47,9 @@
                 [*] Median over    
 
 # TODO
-    [] Saturday
-        [] Authenticatication with frontend
-        [] Homepage screen
-        [] Display the player with price on screen
-        [] Display the tournament
-        [] Display the matches
-        [] Display the players stats and chart of performance
-    [] Sunday
-        [] Made the Trading exchange api
-        [] Do the trade 
-        [] Add the payment gateway 
-        [] Make the wallet backend
 
-    [*] DESIGN POINTS TABLE FOR OTHER FORMAT
+    [] DESIGN POINTS TABLE FOR OTHER FORMAT
         [] T10
-        [*] T20
         [] ODay
         [] Test
     [] Design the Algorithm that takes input as Player and output player share price
