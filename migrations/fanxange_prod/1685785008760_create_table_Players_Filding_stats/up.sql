@@ -1,2 +1,0 @@
-CREATE TABLE "Players"."Filding_stats" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "match_id" uuid NOT NULL, "player_id" UUID NOT NULL, "catches" integer NOT NULL, "runouts" integer NOT NULL, "stumping" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("match_id") REFERENCES "Players"."Matches"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("player_id") REFERENCES "Players"."Players"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"));COMMENT ON TABLE "Players"."Filding_stats" IS E'All Player Fielding Stats';
-CREATE EXTENSION IF NOT EXISTS pgcrypto;

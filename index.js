@@ -18,7 +18,7 @@ passport.use(
       const user = {
         id: profile.id,
         email: profile.emails[0].value,
-        hasuraRole: 'user', // Example Hasura role
+        hasuraRole: 'admin', // Example Hasura role
         hasuraUserId: '1234', // Example Hasura user ID
       };
 
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 // Authenticate with Google
 app.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', { scope: ['profile', 'email'], })
 );
 
 // Google callback URL
@@ -46,9 +46,9 @@ app.get(
       {
         ...req.user,
         "https://hasura.io/jwt/claims": {
-          "x-hasura-user-id": req.user.hasuraUserId,  
-          "x-hasura-allowed-roles":["user"],
-          "x-hasura-default-role": "user",
+          "x-hasura-user-id": req.user.hasuraUserId,
+          "x-hasura-allowed-roles": ["admin"],
+          "x-hasura-default-role": "admin",
           "x-hasura-org-id": "123",
           "x-hasura-custom": "custom-value"
         }

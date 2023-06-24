@@ -7,11 +7,8 @@ const startExecuteInsertPlayerStats = require("../seeds/SeedPlayers");
 const startExecuteInsertBattingStats = require("../seeds/SeedBatting");
 const startExecuteInsertBowlingStats = require("../seeds/SeedBowling");
 const startExecuteInsertFieldingStats = require("../seeds/SeedFilding");
-const createDocument = require("../backend/appwrite/graph");
 
 async function getAllSeriesData() {
-    const databaseId = "648c6cd2577988d9fb09";
-    const collectionId = "648c6cda0a95e984f6ad";
 
     const url = "https://hs-consumer-api.espncricinfo.com/v1/ui/edition/details?&keySeriesItems=true&edition=in&lang=en"
 
@@ -20,39 +17,18 @@ async function getAllSeriesData() {
     const series = seriesData.keySeriesItems;
 
     series.forEach(async ele => {
+        getAllMatchesData(ele.objectId)
+        const url = `https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=${ele.objectId}`;
 
+        const matchesData = await getEspnData(url);
 
+        const type = matchesData.series?.matchClass?.name;
 
-
-        // let type = ele.typeId;
-         
-
-        // await getAllMatchesData(ele.objectId)
-
-        /*    const url = `https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=${ele.objectId}`;
-   
-           const matchesData = await getEspnData(url);
-   
-           const type = matchesData.series?.matchClass?.name;
-           const data = {
-               title: ele.title,
-               tournament_type: type
-           };
-   
-           // console.log(data)
-   
-   
-           createDocument(databaseId, collectionId, data) */
-
-
-
-
-
-
+        startExecuteInsertSeries(ele.objectId, ele.title, type)
     });
 }
 
-// getAllSeriesData()
+getAllSeriesData()
 
 async function getAllMatchesData(seriesId) {
     const url = `https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=${seriesId}`;
@@ -66,25 +42,13 @@ async function getAllMatchesData(seriesId) {
         if (ele.objectId !== undefined && ele.series.objectId !== undefined) {
             await getMatchData(ele.series.objectId, ele.objectId);
         }
-        // await startExecuteInsertMatches(ele.objectId, ele.startDate, seriesId, ele.slug)
-     /*    const data = {
-            start_date: ele.startDate,
-            seriesId: seriesId,
-            name: ele.slug,
-            matchId: ele.objectId,
-        }
+        await startExecuteInsertMatches(ele.objectId, ele.startDate, seriesId, ele.slug)
 
-        
-        console.log(ele.objectId, ele.title);
-        const databaseId = "648c6cd2577988d9fb09";
-        const collectionId = "648c6ce86632be598253";        
-        createDocument(databaseId, collectionId, data)
         wait(6000);
-         */
     });
 
 }
-getAllMatchesData(1347399)
+// getAllMatchesData(1347399)
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

@@ -1,0 +1,32 @@
+table:
+  name: Users
+  schema: Fanxange
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - image
+        - name
+        - userid
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - image
+        - name
+        - userid
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - image
+        - name
+        - userid
+      filter: {}
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

@@ -1,4 +1,0 @@
--- Could not auto-generate a down migration.
--- Please write an appropriate down migration for the SQL below:
--- alter table "Players"."Player_match_stats" add column "bowling_stats_id" uuid
---  not null;

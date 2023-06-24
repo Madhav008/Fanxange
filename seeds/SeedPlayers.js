@@ -1,22 +1,26 @@
 async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch(
-        "https://hasura.depthfirstsearch.tk/v1/graphql",
-        {
-            method: "POST",
-            body: JSON.stringify({
-                query: operationsDoc,
-                variables: variables,
-                operationName: operationName
-            })
-        }
-    );
+  const result = await fetch(
+    "https://hasura.depthfirstsearch.tk/v1/graphql",
+    {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
+      body: JSON.stringify({
+        query: operationsDoc,
+        variables: variables,
+        operationName: operationName
+      })
+    }
+  );
 
-    return await result.json();
+  return await result.json();
 }
 
 const operationsDoc = `
   mutation InsertPlayerStats($id: Int, $teamId: Int, $full_name: String, $short_name: String) {
-    insert_EXPN_PlayerStats(objects: {id: $id, teamId: $teamId, full_name: $full_name, short_name: $short_name}) {
+    insert_Fanxange_Players(objects: {id: $id, teamId: $teamId, full_name: $full_name, short_name: $short_name}) {
       affected_rows
       returning {
         id
@@ -32,7 +36,7 @@ function executeInsertPlayerStats(id, teamId, full_name, short_name) {
   return fetchGraphQL(
     operationsDoc,
     "InsertPlayerStats",
-    {"id": id, "teamId": teamId, "full_name": full_name, "short_name": short_name}
+    { "id": id, "teamId": teamId, "full_name": full_name, "short_name": short_name }
   );
 }
 

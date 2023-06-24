@@ -1,13 +1,12 @@
-/*
-This is an example snippet - you should consider tailoring it
-to your service.
-*/
-
 async function fetchGraphQL(operationsDoc, operationName, variables) {
   const result = await fetch(
     "https://hasura.depthfirstsearch.tk/v1/graphql",
     {
       method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
       body: JSON.stringify({
         query: operationsDoc,
         variables: variables,
@@ -21,7 +20,7 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 
 const operationsDoc = `
   mutation InsertSeries($id: Int, $title: String, $type: String) {
-    insert_EXPN_Series(objects: {id: $id, title: $title, type: $type}) {
+    insert_Fanxange_Series(objects: {id: $id, title: $title, type: $type}) {
       affected_rows
       returning {
         id

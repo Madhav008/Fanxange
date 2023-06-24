@@ -1,2 +1,0 @@
-CREATE TABLE "Players"."Playing_squad" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "player_id" uuid NOT NULL, "tournament_id" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("tournament_id") REFERENCES "Players"."Tournaments"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("player_id") REFERENCES "Players"."Players"("id") ON UPDATE cascade ON DELETE cascade);COMMENT ON TABLE "Players"."Playing_squad" IS E'All Playing Squad for tournament';
-CREATE EXTENSION IF NOT EXISTS pgcrypto;

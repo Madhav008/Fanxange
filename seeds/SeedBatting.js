@@ -2,24 +2,28 @@ const startFetchGetMatches = require("./GetMatchId");
 const startFetchGetPlayerbyName = require("./GetPlayerId");
 
 async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch(
-        "https://hasura.depthfirstsearch.tk/v1/graphql",
-        {
-            method: "POST",
-            body: JSON.stringify({
-                query: operationsDoc,
-                variables: variables,
-                operationName: operationName
-            })
-        }
-    );
+  const result = await fetch(
+    "https://hasura.depthfirstsearch.tk/v1/graphql",
+    {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
+      body: JSON.stringify({
+        query: operationsDoc,
+        variables: variables,
+        operationName: operationName
+      })
+    }
+  );
 
-    return await result.json();
+  return await result.json();
 }
 
 const operationsDoc = `
   mutation InsertBattingStats($is_bat: Boolean, $is_out: Boolean, $balls_faced: Int, $bat_runs: Int, $fifty: Int, $four_hit: Int, $hundred: Int, $matchId: Int, $playerId: Int, $points: float8, $six_hit: Int) {
-    insert_EXPN_BattingStats(objects: {is_bat: $is_bat, is_out: $is_out, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, matchId: $matchId, playerId: $playerId, points: $points, six_hit: $six_hit}) {
+    insert_Fanxange_BattingStats(objects: {is_bat: $is_bat, is_out: $is_out, balls_faced: $balls_faced, bat_runs: $bat_runs, fifty: $fifty, four_hit: $four_hit, hundred: $hundred, matchId: $matchId, playerId: $playerId, points: $points, six_hit: $six_hit}) {
       affected_rows
       returning {
         is_bat
@@ -43,7 +47,7 @@ function executeInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty,
   return fetchGraphQL(
     operationsDoc,
     "InsertBattingStats",
-    {"is_bat": is_bat, "is_out": is_out, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "matchId": matchId, "playerId": playerId, "points": points, "six_hit": six_hit}
+    { "is_bat": is_bat, "is_out": is_out, "balls_faced": balls_faced, "bat_runs": bat_runs, "fifty": fifty, "four_hit": four_hit, "hundred": hundred, "matchId": matchId, "playerId": playerId, "points": points, "six_hit": six_hit }
   );
 }
 
@@ -59,7 +63,7 @@ async function startExecuteInsertBattingStats(is_bat, is_out, balls_faced, bat_r
   console.log(data);
 }
 
-module.exports =startExecuteInsertBattingStats;
+module.exports = startExecuteInsertBattingStats;
 
 /* async function seedData() {
     let file_names = [

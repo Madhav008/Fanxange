@@ -3,6 +3,10 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
     "https://hasura.depthfirstsearch.tk/v1/graphql",
     {
       method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
       body: JSON.stringify({
         query: operationsDoc,
         variables: variables,
@@ -15,8 +19,8 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = `
-  mutation InsertFieldingStats($catches: Int, $matchId: Int, $playerId: Int, $points: float8, $runouts: Int, $stumping: Int) {
-    insert_EXPN_FieldingStats(objects: {catches: $catches, matchId: $matchId, playerId: $playerId, points: $points, runouts: $runouts, stumping: $stumping}) {
+  mutation InsertFieldingStats($catches: Int, $matchId: Int, $playerId: Int, $points: Int, $runouts: Int, $stumping: Int) {
+    insert_Fanxange_FieldingStats(objects: {catches: $catches, matchId: $matchId, playerId: $playerId, points: $points, runouts: $runouts, stumping: $stumping}) {
       affected_rows
       returning {
         catches
@@ -35,7 +39,7 @@ function executeInsertFieldingStats(catches, matchId, playerId, points, runouts,
   return fetchGraphQL(
     operationsDoc,
     "InsertFieldingStats",
-    {"catches": catches, "matchId": matchId, "playerId": playerId, "points": points, "runouts": runouts, "stumping": stumping}
+    { "catches": catches, "matchId": matchId, "playerId": playerId, "points": points, "runouts": runouts, "stumping": stumping }
   );
 }
 

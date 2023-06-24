@@ -1,1 +1,0 @@
-CREATE TABLE "Players"."Player_match_stats" ("id" serial NOT NULL, "player_id" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("player_id") REFERENCES "Players"."Players"("id") ON UPDATE cascade ON DELETE cascade);COMMENT ON TABLE "Players"."Player_match_stats" IS E'All Player Match Stats';

@@ -7,6 +7,10 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
     "https://hasura.depthfirstsearch.tk/v1/graphql",
     {
       method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
       body: JSON.stringify({
         query: operationsDoc,
         variables: variables,
@@ -20,7 +24,7 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 
 const operationsDoc = `
   mutation InsertBowlingStats($balls_bowled: Int, $dot_balls: Int, $four_given: Int, $is_ball: Boolean, $maidian_over: Int, $matchId: Int, $playerId: Int, $points: float8, $runs_given: Int, $six_given: Int, $wicket: Int) {
-    insert_EXPN_BowlingStats(objects: {balls_bowled: $balls_bowled, dot_balls: $dot_balls, four_given: $four_given, is_ball: $is_ball, maidian_over: $maidian_over, matchId: $matchId, playerId: $playerId, points: $points, runs_given: $runs_given, six_given: $six_given, wicket: $wicket}) {
+    insert_Fanxange_BowlingStats(objects: {balls_bowled: $balls_bowled, dot_balls: $dot_balls, four_given: $four_given, is_ball: $is_ball, maidian_over: $maidian_over, matchId: $matchId, playerId: $playerId, points: $points, runs_given: $runs_given, six_given: $six_given, wicket: $wicket}) {
       affected_rows
       returning {
         balls_bowled
@@ -44,7 +48,7 @@ function executeInsertBowlingStats(balls_bowled, dot_balls, four_given, is_ball,
   return fetchGraphQL(
     operationsDoc,
     "InsertBowlingStats",
-    {"balls_bowled": balls_bowled, "dot_balls": dot_balls, "four_given": four_given, "is_ball": is_ball, "maidian_over": maidian_over, "matchId": matchId, "playerId": playerId, "points": points, "runs_given": runs_given, "six_given": six_given, "wicket": wicket}
+    { "balls_bowled": balls_bowled, "dot_balls": dot_balls, "four_given": four_given, "is_ball": is_ball, "maidian_over": maidian_over, "matchId": matchId, "playerId": playerId, "points": points, "runs_given": runs_given, "six_given": six_given, "wicket": wicket }
   );
 }
 

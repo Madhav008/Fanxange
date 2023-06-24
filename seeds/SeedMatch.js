@@ -10,24 +10,28 @@ Add these to your `package.json`:
 // Node doesn't implement fetch so we have to import it
 
 async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch(
-        "https://hasura.depthfirstsearch.tk/v1/graphql",
-        {
-            method: "POST",
-            body: JSON.stringify({
-                query: operationsDoc,
-                variables: variables,
-                operationName: operationName
-            })
-        }
-    );
+  const result = await fetch(
+    "https://hasura.depthfirstsearch.tk/v1/graphql",
+    {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMjgzODUyODY1NDMzMTkwMTIwOSIsImVtYWlsIjoibWFkaGF2amluZGFsMjFAZ21haWwuY29tIiwiaGFzdXJhUm9sZSI6InVzZXIiLCJoYXN1cmFVc2VySWQiOiIxMjM0IiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS11c2VyLWlkIjoiMTIzNCIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIiwieC1oYXN1cmEtY3VzdG9tIjoiY3VzdG9tLXZhbHVlIn0sImlhdCI6MTY4NzYwMTE0Mn0.YaKgGIs-twbtx5RYUqjM6YJRTzjgK5R_AHgFiLUNQwU`,
+      },
+      body: JSON.stringify({
+        query: operationsDoc,
+        variables: variables,
+        operationName: operationName
+      })
+    }
+  );
 
-    return await result.json();
+  return await result.json();
 }
 
 const operationsDoc = `
   mutation InsertMatches($id: Int, $start_date: String, $seriesId: Int, $name: String) {
-    insert_EXPN_Matches(objects: {id: $id, start_date: $start_date, seriesId: $seriesId, name: $name}) {
+    insert_Fanxange_Matches(objects: {id: $id, start_date: $start_date, seriesId: $seriesId, name: $name}) {
       affected_rows
       returning {
         id
@@ -43,7 +47,7 @@ function executeInsertMatches(id, start_date, seriesId, name) {
   return fetchGraphQL(
     operationsDoc,
     "InsertMatches",
-    {"id": id, "start_date": start_date, "seriesId": seriesId, "name": name}
+    { "id": id, "start_date": start_date, "seriesId": seriesId, "name": name }
   );
 }
 
