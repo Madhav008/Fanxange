@@ -10,7 +10,7 @@ const Hero = () => {
                     <span className='text-accent'>Fan</span>Xange
                 </div>
 
-                <div className='btn bg-primary text-secondary'>
+                <div className='btn bg-primary text-white'>
                     Login With Google
                 </div>
             </div>
@@ -34,7 +34,7 @@ const Hero = () => {
                 </div>
                 </div>
 
-                <div className='btn btn-primary text-secondary  w-[250px]'>
+                <div className='btn btn-primary w-[250px]'>
                     Login With Google
                 </div>
                 <div className='mt-3'>

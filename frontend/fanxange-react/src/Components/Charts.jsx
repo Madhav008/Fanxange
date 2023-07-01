@@ -34,12 +34,13 @@ const Charts = () => {
     return (
         <div>
             <div className="row ">
-                <div className="mixed-chart text-black">
+                <div className="mixed-chart text-black ">
                     <Chart
-
+                        height="400px"
                         options={chart.options}
                         series={chart.series}
                         type="area" />
+                        
                 </div>
             </div>
         </div>
