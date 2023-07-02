@@ -1,8 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PlayerStats from './PlayerStats'
 import Tabbar from './Tabbar'
-
+import axios from 'axios';
+import Matches from './Macthes.json'
 const Navbar = () => {
+
+    function getSeries() {
+        const res = Matches
+
+        try {
+            // console.log(res);
+            // if(res.matches.status!=="RESULT"){
+            //     console.log(res.matches)
+            //     return res.matches;
+            // }
+            let matchdata = [];
+            res.matches.map((series) => {
+                if ( (series.coverage==="Y" || series.coverage==="U") || (series.stage==="RUNNING" || series.stage==="LIVE")) {
+                    // console.log(series)
+                    matchdata.push(series);
+                }
+            });
+
+            let seriesmap = new Map();
+            matchdata.map((series) => {
+                const alternateName = series.series.alternateName;
+                if (!seriesmap.has(alternateName)) {
+                  seriesmap.set(alternateName, []);
+                }
+                seriesmap.get(alternateName).push(series);
+            })
+
+            console.log(seriesmap);
+
+            return seriesmap;
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    useEffect(() => {
+        const data = getSeries();
+
+        setSeies(data);
+
+    }, [])
+
+    const [Seies, setSeies] = useState()
+
     return (
         <div>
             <nav className='w-full'>
@@ -21,15 +66,22 @@ const Navbar = () => {
                     </div>
 
                 </div>
-                <div className='mx-5 flex justify-center space-x-3'>
-                    <span className='text-white font-bold'>Series 1</span>
+                <div className='mx-5 flex flex-col justify-center space-x-3 overflow-x-auto'>
+
+                    {
+                        // console.log(Seies)
+                        // Array.from(Seies)?.map(([key]) => {
+                        //     return <span className='text-white '>{key}</span>
+                        // })
+                    }
+                    {/* 
                     <span>Series</span>
                     <span>Series</span>
                     <span>Series</span>
-                
+                 */}
                 </div>
 
-                <Tabbar/>
+                <Tabbar />
             </nav>
         </div>
     )

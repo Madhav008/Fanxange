@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Charts from '../Components/Charts'
 import Navbar from '../Components/Navbar'
 import Tabbar from '../Components/Tabbar'
@@ -7,6 +7,7 @@ import Order from '../Components/Order'
 import BuySell from '../Components/BuySell'
 import TradeHistory from '../Components/TradeHistory'
 import OrderBook from '../Components/OrderBook'
+import axios from 'axios'
 
 const Dashboard = () => {
   return (
@@ -21,7 +22,7 @@ const Dashboard = () => {
 
         {/* Player stats */}
         <div className='w-[20%]'>
-        <PlayerStats />  
+          <PlayerStats />
         </div>
 
         <div className='m-5 w-[60%] flex flex-col h-[800px]'>

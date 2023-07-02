@@ -42,7 +42,12 @@ function calculatetestBoundryPoints(boundry, six) {
 }
 
 function calculatetestParticipationPoints(isBall) {
-    if (!isBall) return 2;
+    if (!isBall){
+        return 2
+    }else{
+        return 0;
+    }
+
 }
 
 
@@ -106,7 +111,7 @@ function calculateoneEconomyPoints(ballsFaced, runsScored) {
             break;
         }
     }
-
+    return points;
     //console.log("Strike Points: " + points);
 }
 
@@ -247,6 +252,7 @@ const t10EconomyTable = [
 
 function calculatet10EconomyPoints(ballsFaced, runsScored) {
     let Economy = (runsScored / ballsFaced).toFixed(2);
+    // console.log(Economy)
     let points = 0;
 
     for (let i = 0; i < t10EconomyTable.length; i++) {
@@ -258,13 +264,17 @@ function calculatet10EconomyPoints(ballsFaced, runsScored) {
         }
     }
 
-    //console.log("Strike Points: " + points);
+    // console.log("Strike Points: " + points);
+
+    return points;
 }
 
 function calculatet10ParticipationPoints(isBall) {
     if (!isBall) {
         return 7.5;
-    } 
+    }else{
+        return 0;
+    }
 }
 
 

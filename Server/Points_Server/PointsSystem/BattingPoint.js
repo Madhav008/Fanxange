@@ -468,6 +468,7 @@ function calculateBallFacedPoints(balls_faced) {
     }
 
     //console.log(runPoints);
+    return runPoints;
 }
 
 

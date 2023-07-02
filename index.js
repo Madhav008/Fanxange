@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const jwt = require('jsonwebtoken');
-
+const axios = require('axios');
 const app = express();
 
 // Configure passport Google strategy
@@ -60,6 +60,28 @@ app.get(
     res.json({ token });
   }
 );
+
+
+app.get('/api/matches/getRecent', async function (req, res) {
+  const matchesData = await getRecentMatches();
+
+
+})
+
+
+
+async function getRecentMatches() {
+  try {
+    const res = await axios.get('https://hs-consumer-api.espncricinfo.com/v1/ui/matches/current?lang=en&latest=true');
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}
+
+function seedRecentMatches(){
+  
+}
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
