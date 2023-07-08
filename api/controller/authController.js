@@ -2,14 +2,14 @@ const passport = require('passport');
 const { Strategy: GoogleStrategy } = require('passport-google-oauth20');
 require('dotenv').config();
 const User = require('../models/User'); // Import the User model
-const mongoose = require('mongoose'); // Import mongoose
+
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -21,7 +21,8 @@ passport.use(
           user = new User({
             googleId: profile.id,
             displayName: profile.displayName,
-            email: profile.emails[0].value
+            email: profile.emails[0].value,
+            image: profile.photos[0].value
           });
 
           // Save the user to the database
@@ -38,20 +39,35 @@ passport.use(
   )
 );
 
+
+passport.serializeUser((user, done) => {
+  // Store the user ID in the session
+  done(null, user);
+});
+
+passport.deserializeUser(async (user, done) => {
+  // Retrieve the user from the database based on the stored ID
+  done(null, user);
+});
+
 // Google login controller
 const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] });
 
 // Google callback controller
 const googleCallback = passport.authenticate('google', {
-  successRedirect: '/api/success', // Redirect to a success endpoint
-  failureRedirect: '/api/failure' // Redirect to a failure endpoint
+  successRedirect: '/auth/success', // Redirect to a success endpoint
+  failureRedirect: '/auth/failure', // Redirect to a failure endpoint
 });
-
 
 // Success endpoint controller
 const successEndpoint = (req, res) => {
   // Handle the successful authentication response
-  res.json({ message: 'Authentication successful' });
+  res.json({
+    message: 'Authentication successful',
+    user: req.user,
+  });
+
+  console.log(req.user)
 };
 
 // Failure endpoint controller
@@ -64,5 +80,5 @@ module.exports = {
   googleLogin,
   googleCallback,
   successEndpoint,
-  failureEndpoint
+  failureEndpoint,
 };
