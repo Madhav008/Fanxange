@@ -1,0 +1,8 @@
+- "!include Fanxange_BattingStats.yaml"
+- "!include Fanxange_BowlingStats.yaml"
+- "!include Fanxange_FieldingStats.yaml"
+- "!include Fanxange_Matches.yaml"
+- "!include Fanxange_Players.yaml"
+- "!include Fanxange_Series.yaml"
+- "!include Fanxange_Teams.yaml"
+- "!include Fanxange_Users.yaml"

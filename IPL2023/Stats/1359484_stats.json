@@ -1,0 +1,420 @@
+{
+    "Player": 1359484,
+    "Match Date": "2023-04-07",
+    "Teams": [
+        "Sunrisers Hyderabad",
+        "Lucknow Super Giants"
+    ],
+    "Stats": {
+        "Batting Stats": {
+            "Anmolpreet Singh": {
+                "Bat Runs": 31,
+                "Fours Hit": 3,
+                "Sixes Hit": 1,
+                "Balls Faced": 27,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "MA Agarwal": {
+                "Bat Runs": 8,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 7,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "RA Tripathi": {
+                "Bat Runs": 34,
+                "Fours Hit": 4,
+                "Sixes Hit": 0,
+                "Balls Faced": 41,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "AK Markram": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "HC Brook": {
+                "Bat Runs": 3,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 4,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Washington Sundar": {
+                "Bat Runs": 16,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 29,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Abdul Samad": {
+                "Bat Runs": 21,
+                "Fours Hit": 1,
+                "Sixes Hit": 2,
+                "Balls Faced": 10,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "AU Rashid": {
+                "Bat Runs": 4,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "KR Mayers": {
+                "Bat Runs": 13,
+                "Fours Hit": 2,
+                "Sixes Hit": 0,
+                "Balls Faced": 14,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "KL Rahul": {
+                "Bat Runs": 35,
+                "Fours Hit": 4,
+                "Sixes Hit": 0,
+                "Balls Faced": 32,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "DJ Hooda": {
+                "Bat Runs": 7,
+                "Fours Hit": 0,
+                "Sixes Hit": 1,
+                "Balls Faced": 9,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "KH Pandya": {
+                "Bat Runs": 34,
+                "Fours Hit": 4,
+                "Sixes Hit": 1,
+                "Balls Faced": 25,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "MP Stoinis": {
+                "Bat Runs": 10,
+                "Fours Hit": 2,
+                "Sixes Hit": 0,
+                "Balls Faced": 14,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "R Shepherd": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "N Pooran": {
+                "Bat Runs": 11,
+                "Fours Hit": 1,
+                "Sixes Hit": 1,
+                "Balls Faced": 6,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            }
+        },
+        "Bowling Stats": {
+            "KR Mayers": {
+                "Runs Given": 5,
+                "Fours Given": 0,
+                "Sixes Given": 0,
+                "Balls Bowled": 6,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "JD Unadkat": {
+                "Runs Given": 26,
+                "Fours Given": 0,
+                "Sixes Given": 3,
+                "Balls Bowled": 19,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "KH Pandya": {
+                "Runs Given": 18,
+                "Fours Given": 3,
+                "Sixes Given": 0,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 3
+            },
+            "Yash Thakur": {
+                "Runs Given": 24,
+                "Fours Given": 3,
+                "Sixes Given": 0,
+                "Balls Bowled": 18,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Ravi Bishnoi": {
+                "Runs Given": 16,
+                "Fours Given": 0,
+                "Sixes Given": 0,
+                "Balls Bowled": 25,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "DJ Hooda": {
+                "Runs Given": 8,
+                "Fours Given": 1,
+                "Sixes Given": 0,
+                "Balls Bowled": 6,
+                "Catches Taken": 3,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "A Mishra": {
+                "Runs Given": 24,
+                "Fours Given": 3,
+                "Sixes Given": 0,
+                "Balls Bowled": 24,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "B Kumar": {
+                "Runs Given": 19,
+                "Fours Given": 1,
+                "Sixes Given": 1,
+                "Balls Bowled": 13,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Washington Sundar": {
+                "Runs Given": 11,
+                "Fours Given": 2,
+                "Sixes Given": 0,
+                "Balls Bowled": 6,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "Fazalhaq Farooqi": {
+                "Runs Given": 14,
+                "Fours Given": 2,
+                "Sixes Given": 0,
+                "Balls Bowled": 19,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "AK Markram": {
+                "Runs Given": 14,
+                "Fours Given": 2,
+                "Sixes Given": 0,
+                "Balls Bowled": 12,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "AU Rashid": {
+                "Runs Given": 23,
+                "Fours Given": 2,
+                "Sixes Given": 1,
+                "Balls Bowled": 18,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "T Natarajan": {
+                "Runs Given": 24,
+                "Fours Given": 1,
+                "Sixes Given": 1,
+                "Balls Bowled": 19,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "Umran Malik": {
+                "Runs Given": 22,
+                "Fours Given": 3,
+                "Sixes Given": 0,
+                "Balls Bowled": 14,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            }
+        },
+        "Fielding Stats": {
+            "KR Mayers": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "JD Unadkat": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "KH Pandya": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "MP Stoinis": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "Yash Thakur": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Ravi Bishnoi": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "N Pooran": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "DJ Hooda": {
+                "Catches Taken": 3,
+                "Runouts": 0
+            },
+            "A Mishra": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "B Kumar": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Washington Sundar": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Fazalhaq Farooqi": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "AK Markram": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "MA Agarwal": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AU Rashid": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "T Natarajan": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Umran Malik": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Anmolpreet Singh": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            }
+        }
+    }
+}

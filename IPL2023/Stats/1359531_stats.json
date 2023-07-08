@@ -1,0 +1,385 @@
+{
+    "Player": 1359531,
+    "Match Date": "2023-05-12",
+    "Teams": [
+        "Mumbai Indians",
+        "Gujarat Titans"
+    ],
+    "Stats": {
+        "Batting Stats": {
+            "Ishan Kishan": {
+                "Bat Runs": 31,
+                "Fours Hit": 4,
+                "Sixes Hit": 1,
+                "Balls Faced": 20,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "RG Sharma": {
+                "Bat Runs": 29,
+                "Fours Hit": 3,
+                "Sixes Hit": 2,
+                "Balls Faced": 18,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "SA Yadav": {
+                "Bat Runs": 103,
+                "Fours Hit": 11,
+                "Sixes Hit": 6,
+                "Balls Faced": 49,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "N Wadhera": {
+                "Bat Runs": 15,
+                "Fours Hit": 1,
+                "Sixes Hit": 1,
+                "Balls Faced": 7,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Vishnu Vinod": {
+                "Bat Runs": 30,
+                "Fours Hit": 2,
+                "Sixes Hit": 2,
+                "Balls Faced": 20,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "TH David": {
+                "Bat Runs": 5,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "C Green": {
+                "Bat Runs": 3,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "WP Saha": {
+                "Bat Runs": 2,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 5,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Shubman Gill": {
+                "Bat Runs": 6,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 9,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "HH Pandya": {
+                "Bat Runs": 4,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "V Shankar": {
+                "Bat Runs": 29,
+                "Fours Hit": 6,
+                "Sixes Hit": 0,
+                "Balls Faced": 14,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "DA Miller": {
+                "Bat Runs": 41,
+                "Fours Hit": 4,
+                "Sixes Hit": 2,
+                "Balls Faced": 26,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "A Manohar": {
+                "Bat Runs": 2,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "R Tewatia": {
+                "Bat Runs": 14,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 13,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Noor Ahmad": {
+                "Bat Runs": 1,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Rashid Khan": {
+                "Bat Runs": 79,
+                "Fours Hit": 3,
+                "Sixes Hit": 10,
+                "Balls Faced": 35,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "AS Joseph": {
+                "Bat Runs": 7,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 12,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            }
+        },
+        "Bowling Stats": {
+            "Mohammed Shami": {
+                "Runs Given": 55,
+                "Fours Given": 5,
+                "Sixes Given": 4,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "MM Sharma": {
+                "Runs Given": 43,
+                "Fours Given": 6,
+                "Sixes Given": 2,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Rashid Khan": {
+                "Runs Given": 30,
+                "Fours Given": 5,
+                "Sixes Given": 0,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 4
+            },
+            "Noor Ahmad": {
+                "Runs Given": 38,
+                "Fours Given": 4,
+                "Sixes Given": 1,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "AS Joseph": {
+                "Runs Given": 52,
+                "Fours Given": 2,
+                "Sixes Given": 5,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "JP Behrendorff": {
+                "Runs Given": 37,
+                "Fours Given": 5,
+                "Sixes Given": 1,
+                "Balls Bowled": 25,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Akash Madhwal": {
+                "Runs Given": 32,
+                "Fours Given": 4,
+                "Sixes Given": 1,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 3
+            },
+            "CJ Jordan": {
+                "Runs Given": 36,
+                "Fours Given": 3,
+                "Sixes Given": 2,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "PP Chawla": {
+                "Runs Given": 36,
+                "Fours Given": 4,
+                "Sixes Given": 1,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "K Kartikeya": {
+                "Runs Given": 37,
+                "Fours Given": 0,
+                "Sixes Given": 5,
+                "Balls Bowled": 20,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "C Green": {
+                "Runs Given": 13,
+                "Fours Given": 0,
+                "Sixes Given": 2,
+                "Balls Bowled": 6,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            }
+        },
+        "Fielding Stats": {
+            "Mohammed Shami": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "MM Sharma": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Rashid Khan": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Noor Ahmad": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "R Tewatia": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AS Joseph": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "A Manohar": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "JP Behrendorff": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Akash Madhwal": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Ishan Kishan": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "CJ Jordan": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "PP Chawla": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "K Kartikeya": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "C Green": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            }
+        }
+    }
+}
