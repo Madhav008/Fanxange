@@ -2,8 +2,6 @@ const passport = require('passport');
 const { Strategy: GoogleStrategy } = require('passport-google-oauth20');
 require('dotenv').config();
 const User = require('../models/User'); // Import the User model
-
-
 passport.use(
   new GoogleStrategy(
     {
@@ -68,7 +66,7 @@ const successEndpoint = (req, res) => {
   });
 
   console.log(req.user)
-};
+});
 
 // Failure endpoint controller
 const failureEndpoint = (req, res) => {
