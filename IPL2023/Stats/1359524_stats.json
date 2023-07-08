@@ -1,0 +1,359 @@
+{
+    "Player": 1359524,
+    "Match Date": "2023-05-06",
+    "Teams": [
+        "Royal Challengers Bangalore",
+        "Delhi Capitals"
+    ],
+    "Stats": {
+        "Batting Stats": {
+            "V Kohli": {
+                "Bat Runs": 55,
+                "Fours Hit": 5,
+                "Sixes Hit": 0,
+                "Balls Faced": 47,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "F du Plessis": {
+                "Bat Runs": 45,
+                "Fours Hit": 5,
+                "Sixes Hit": 1,
+                "Balls Faced": 33,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "GJ Maxwell": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "MK Lomror": {
+                "Bat Runs": 54,
+                "Fours Hit": 6,
+                "Sixes Hit": 3,
+                "Balls Faced": 32,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "KD Karthik": {
+                "Bat Runs": 11,
+                "Fours Hit": 0,
+                "Sixes Hit": 1,
+                "Balls Faced": 9,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Anuj Rawat": {
+                "Bat Runs": 8,
+                "Fours Hit": 0,
+                "Sixes Hit": 1,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "DA Warner": {
+                "Bat Runs": 22,
+                "Fours Hit": 3,
+                "Sixes Hit": 1,
+                "Balls Faced": 14,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "PD Salt": {
+                "Bat Runs": 87,
+                "Fours Hit": 8,
+                "Sixes Hit": 6,
+                "Balls Faced": 46,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "MR Marsh": {
+                "Bat Runs": 26,
+                "Fours Hit": 3,
+                "Sixes Hit": 1,
+                "Balls Faced": 17,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "RR Rossouw": {
+                "Bat Runs": 35,
+                "Fours Hit": 1,
+                "Sixes Hit": 3,
+                "Balls Faced": 23,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "AR Patel": {
+                "Bat Runs": 8,
+                "Fours Hit": 0,
+                "Sixes Hit": 1,
+                "Balls Faced": 3,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            }
+        },
+        "Bowling Stats": {
+            "KK Ahmed": {
+                "Runs Given": 46,
+                "Fours Given": 3,
+                "Sixes Given": 3,
+                "Balls Bowled": 25,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "AR Patel": {
+                "Runs Given": 17,
+                "Fours Given": 2,
+                "Sixes Given": 0,
+                "Balls Bowled": 18,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "I Sharma": {
+                "Runs Given": 30,
+                "Fours Given": 4,
+                "Sixes Given": 0,
+                "Balls Bowled": 20,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "Mukesh Kumar": {
+                "Runs Given": 30,
+                "Fours Given": 5,
+                "Sixes Given": 0,
+                "Balls Bowled": 19,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "MR Marsh": {
+                "Runs Given": 21,
+                "Fours Given": 0,
+                "Sixes Given": 1,
+                "Balls Bowled": 19,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "Kuldeep Yadav": {
+                "Runs Given": 37,
+                "Fours Given": 2,
+                "Sixes Given": 2,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "Mohammed Siraj": {
+                "Runs Given": 29,
+                "Fours Given": 3,
+                "Sixes Given": 2,
+                "Balls Bowled": 13,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "GJ Maxwell": {
+                "Runs Given": 15,
+                "Fours Given": 1,
+                "Sixes Given": 1,
+                "Balls Bowled": 10,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "JR Hazlewood": {
+                "Runs Given": 29,
+                "Fours Given": 2,
+                "Sixes Given": 2,
+                "Balls Bowled": 19,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "PWH de Silva": {
+                "Runs Given": 32,
+                "Fours Given": 2,
+                "Sixes Given": 2,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "KV Sharma": {
+                "Runs Given": 37,
+                "Fours Given": 4,
+                "Sixes Given": 1,
+                "Balls Bowled": 18,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "MK Lomror": {
+                "Runs Given": 13,
+                "Fours Given": 1,
+                "Sixes Given": 1,
+                "Balls Bowled": 6,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "HV Patel": {
+                "Runs Given": 32,
+                "Fours Given": 2,
+                "Sixes Given": 3,
+                "Balls Bowled": 13,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            }
+        },
+        "Fielding Stats": {
+            "KK Ahmed": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AR Patel": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "I Sharma": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Mukesh Kumar": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "MR Marsh": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Kuldeep Yadav": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "PD Salt": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "DA Warner": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "Mohammed Siraj": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "GJ Maxwell": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "JR Hazlewood": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "PWH de Silva": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "F du Plessis": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "KV Sharma": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "MK Lomror": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "HV Patel": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            }
+        }
+    }
+}

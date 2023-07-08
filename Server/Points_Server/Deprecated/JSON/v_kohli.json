@@ -1,0 +1,291 @@
+{
+    "data": {
+        "totalCount": {
+            "aggregate": {
+                "count": 113
+            }
+        },
+        "datascience_cricviz_player_match": [
+            {
+                "in_playing_xi": true,
+                "start_timestamp": "2023-05-18T14:00:00+00:00",
+                "match_detail": {
+                    "team1Abbreviation": "SRH",
+                    "team2Abbreviation": "RCB",
+                    "team1_name": "Sunrisers Hyderabad",
+                    "team2_name": "Royal Challengers Bangalore",
+                    "comp_name": "IPL",
+                    "scoring_system": "old",
+                    "rain_affected": false,
+                    "live_status_name": "end of match",
+                    "result_name": "won",
+                    "bat_multiplier_team_1": 1,
+                    "bat_multiplier_team_2": 1,
+                    "bowl_multiplier_team_1": 1,
+                    "bowl_multiplier_team_2": 1,
+                    "sport_id": 1,
+                    "general_class_id": 6
+                },
+                "match_scoring": {
+                    "bat_points": 112,
+                    "bowl_points": 5,
+                    "fielding_points": 0,
+                    "total_points": 100,
+                    "playing_xi_points": 5,
+                    "price": null,
+                    "team": "Royal Challengers Bangalore",
+                    "opposition": "Sunrisers Hyderabad",
+                    "player_id": 13144,
+                    "player": "V Kohli",
+                    "start_date": "2023-05-18",
+                    "comp": "IPL",
+                    "match_status": "complete",
+                    "match": "Sunrisers Hyderabad v Royal Chal Bangalore at Hyderabad (Ind), IPL, 18 May 2023",
+                    "match_player_id": 228868,
+                    "sixer_player_match_id": 13144215724,
+                    "balls_faced": 63,
+                    "balls_bowled": 0,
+                    "created": "2023-05-18T13:59:14.199+00:00",
+                    "short_name": "SRH v RCB, IPL, 18 May",
+                    "result_id": 1,
+                    "asset_price_changes": [
+                        {
+                            "total_points": 122,
+                            "prematch_points_average": 57.24,
+                            "points_average": 59.77
+                        },
+                        {
+                            "total_points": 122,
+                            "prematch_points_average": 57.24,
+                            "points_average": 59.77
+                        }
+                    ]
+                }
+            },
+            {
+                "in_playing_xi": true,
+                "start_timestamp": "2023-05-14T10:00:00+00:00",
+                "match_detail": {
+                    "team1Abbreviation": "RR",
+                    "team2Abbreviation": "RCB",
+                    "team1_name": "Rajasthan Royals",
+                    "team2_name": "Royal Challengers Bangalore",
+                    "comp_name": "IPL",
+                    "scoring_system": "old",
+                    "rain_affected": false,
+                    "live_status_name": "end of match",
+                    "result_name": "won",
+                    "bat_multiplier_team_1": 1,
+                    "bat_multiplier_team_2": 1,
+                    "bowl_multiplier_team_1": 1,
+                    "bowl_multiplier_team_2": 1,
+                    "sport_id": 1,
+                    "general_class_id": 6
+                },
+                "match_scoring": {
+                    "bat_points": 29.2,
+                    "bowl_points": 5,
+                    "fielding_points": 8,
+                    "total_points": 47.2,
+                    "playing_xi_points": 5,
+                    "price": null,
+                    "team": "Royal Challengers Bangalore",
+                    "opposition": "Rajasthan Royals",
+                    "player_id": 13144,
+                    "player": "V Kohli",
+                    "start_date": "2023-05-14",
+                    "comp": "IPL",
+                    "match_status": "complete",
+                    "match": "Rajasthan Royals v Royal Chal Bangalore at Jaipur, IPL, 14 May 2023",
+                    "match_player_id": 228863,
+                    "sixer_player_match_id": 13144215719,
+                    "balls_faced": 19,
+                    "balls_bowled": 0,
+                    "created": "2023-05-14T10:00:33.668+00:00",
+                    "short_name": "RR v RCB, IPL, 14 May",
+                    "result_id": 1,
+                    "asset_price_changes": [
+                        {
+                            "total_points": 47.2,
+                            "prematch_points_average": 58.43,
+                            "points_average": 57.24
+                        },
+                        {
+                            "total_points": 47.2,
+                            "prematch_points_average": 58.43,
+                            "points_average": 57.24
+                        }
+                    ]
+                }
+            },
+            {
+                "in_playing_xi": true,
+                "start_timestamp": "2023-05-09T14:00:00+00:00",
+                "match_detail": {
+                    "team1Abbreviation": "MI",
+                    "team2Abbreviation": "RCB",
+                    "team1_name": "Mumbai Indians",
+                    "team2_name": "Royal Challengers Bangalore",
+                    "comp_name": "IPL",
+                    "scoring_system": "old",
+                    "rain_affected": false,
+                    "live_status_name": "end of match",
+                    "result_name": "won",
+                    "bat_multiplier_team_1": 1,
+                    "bat_multiplier_team_2": 1,
+                    "bowl_multiplier_team_1": 1,
+                    "bowl_multiplier_team_2": 1,
+                    "sport_id": 1,
+                    "general_class_id": 6
+                },
+                "match_scoring": {
+                    "bat_points": 1.8,
+                    "bowl_points": 5,
+                    "fielding_points": 0,
+                    "total_points": 11.8,
+                    "playing_xi_points": 5,
+                    "price": null,
+                    "team": "Royal Challengers Bangalore",
+                    "opposition": "Mumbai Indians",
+                    "player_id": 13144,
+                    "player": "V Kohli",
+                    "start_date": "2023-05-09",
+                    "comp": "IPL",
+                    "match_status": "complete",
+                    "match": "Mumbai Indians v Royal Chal Bangalore at Mumbai (WS), IPL, 9 May 2023",
+                    "match_player_id": 228857,
+                    "sixer_player_match_id": 13144215713,
+                    "balls_faced": 4,
+                    "balls_bowled": 0,
+                    "created": "2023-05-09T14:02:11.11+00:00",
+                    "short_name": "MI v RCB, IPL, 9 May",
+                    "result_id": 2,
+                    "asset_price_changes": [
+                        {
+                            "total_points": 11.8,
+                            "prematch_points_average": 59.97,
+                            "points_average": 58.43
+                        },
+                        {
+                            "total_points": 11.8,
+                            "prematch_points_average": 59.97,
+                            "points_average": 58.43
+                        }
+                    ]
+                }
+            },
+            {
+                "in_playing_xi": true,
+                "start_timestamp": "2023-05-06T14:00:00+00:00",
+                "match_detail": {
+                    "team1Abbreviation": "DC",
+                    "team2Abbreviation": "RCB",
+                    "team1_name": "Delhi Capitals",
+                    "team2_name": "Royal Challengers Bangalore",
+                    "comp_name": "IPL",
+                    "scoring_system": "old",
+                    "rain_affected": false,
+                    "live_status_name": "end of match",
+                    "result_name": "won",
+                    "bat_multiplier_team_1": 1,
+                    "bat_multiplier_team_2": 1,
+                    "bowl_multiplier_team_1": 1,
+                    "bowl_multiplier_team_2": 1,
+                    "sport_id": 1,
+                    "general_class_id": 6
+                },
+                "match_scoring": {
+                    "bat_points": 74.5,
+                    "bowl_points": 5,
+                    "fielding_points": 0,
+                    "total_points": 84.5,
+                    "playing_xi_points": 5,
+                    "price": null,
+                    "team": "Royal Challengers Bangalore",
+                    "opposition": "Delhi Capitals",
+                    "player_id": 13144,
+                    "player": "V Kohli",
+                    "start_date": "2023-05-06",
+                    "comp": "IPL",
+                    "match_status": "complete",
+                    "match": "Delhi Capitals v Royal Chal Bangalore at Delhi, IPL, 6 May 2023",
+                    "match_player_id": 228853,
+                    "sixer_player_match_id": 13144215709,
+                    "balls_faced": 46,
+                    "balls_bowled": 0,
+                    "created": "2023-05-06T14:01:25.288+00:00",
+                    "short_name": "DC v RCB, IPL, 6 May",
+                    "result_id": 2,
+                    "asset_price_changes": [
+                        {
+                            "total_points": 84.5,
+                            "prematch_points_average": 60.49,
+                            "points_average": 59.97
+                        },
+                        {
+                            "total_points": 84.5,
+                            "prematch_points_average": 60.49,
+                            "points_average": 59.97
+                        }
+                    ]
+                }
+            },
+            {
+                "in_playing_xi": true,
+                "start_timestamp": "2023-05-01T14:00:00+00:00",
+                "match_detail": {
+                    "team1Abbreviation": "LSG",
+                    "team2Abbreviation": "RCB",
+                    "team1_name": "Lucknow Super Giants",
+                    "team2_name": "Royal Challengers Bangalore",
+                    "comp_name": "IPL",
+                    "scoring_system": "old",
+                    "rain_affected": false,
+                    "live_status_name": "end of match",
+                    "result_name": "won",
+                    "bat_multiplier_team_1": 1,
+                    "bat_multiplier_team_2": 1,
+                    "bowl_multiplier_team_1": 1,
+                    "bowl_multiplier_team_2": 1,
+                    "sport_id": 1,
+                    "general_class_id": 6
+                },
+                "match_scoring": {
+                    "bat_points": 50,
+                    "bowl_points": 5,
+                    "fielding_points": 8,
+                    "total_points": 68,
+                    "playing_xi_points": 5,
+                    "price": null,
+                    "team": "Royal Challengers Bangalore",
+                    "opposition": "Lucknow Super Giants",
+                    "player_id": 13144,
+                    "player": "V Kohli",
+                    "start_date": "2023-05-01",
+                    "comp": "IPL",
+                    "match_status": "complete",
+                    "match": "Lucknow Super Giants v Royal Chal Bangalore at Lucknow, IPL, 1 May 2023",
+                    "match_player_id": 228846,
+                    "sixer_player_match_id": 13144215702,
+                    "balls_faced": 30,
+                    "balls_bowled": 0,
+                    "created": "2023-05-01T14:00:18.853+00:00",
+                    "short_name": "LSG v RCB, IPL, 1 May",
+                    "result_id": 1,
+                    "asset_price_changes": [
+                        {
+                            "total_points": 68,
+                            "prematch_points_average": 59.34,
+                            "points_average": 60.49
+                        },
+                        {
+                            "total_points": 68,
+                            "prematch_points_average": 59.34,
+                            "points_average": 60.49
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

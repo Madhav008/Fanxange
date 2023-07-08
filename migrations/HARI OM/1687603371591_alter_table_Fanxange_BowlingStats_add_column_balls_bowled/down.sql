@@ -1,0 +1,4 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- alter table "Fanxange"."BowlingStats" add column "balls_bowled" integer
+--  not null;

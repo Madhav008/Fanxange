@@ -1,0 +1,387 @@
+{
+    "Player": 1359541,
+    "Match Date": "2023-05-20",
+    "Teams": [
+        "Chennai Super Kings",
+        "Delhi Capitals"
+    ],
+    "Stats": {
+        "Batting Stats": {
+            "RD Gaikwad": {
+                "Bat Runs": 79,
+                "Fours Hit": 3,
+                "Sixes Hit": 7,
+                "Balls Faced": 51,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "DP Conway": {
+                "Bat Runs": 87,
+                "Fours Hit": 11,
+                "Sixes Hit": 3,
+                "Balls Faced": 53,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "S Dube": {
+                "Bat Runs": 22,
+                "Fours Hit": 0,
+                "Sixes Hit": 3,
+                "Balls Faced": 12,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "RA Jadeja": {
+                "Bat Runs": 20,
+                "Fours Hit": 3,
+                "Sixes Hit": 1,
+                "Balls Faced": 8,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "MS Dhoni": {
+                "Bat Runs": 5,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 5,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "PP Shaw": {
+                "Bat Runs": 5,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 7,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "DA Warner": {
+                "Bat Runs": 86,
+                "Fours Hit": 7,
+                "Sixes Hit": 5,
+                "Balls Faced": 60,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "PD Salt": {
+                "Bat Runs": 3,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 6,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "RR Rossouw": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "YV Dhull": {
+                "Bat Runs": 13,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 15,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "AR Patel": {
+                "Bat Runs": 15,
+                "Fours Hit": 1,
+                "Sixes Hit": 1,
+                "Balls Faced": 9,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Aman Hakim Khan": {
+                "Bat Runs": 7,
+                "Fours Hit": 1,
+                "Sixes Hit": 0,
+                "Balls Faced": 11,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "Lalit Yadav": {
+                "Bat Runs": 6,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 14,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "A Nortje": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            },
+            "Kuldeep Yadav": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 1,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": true
+            },
+            "C Sakariya": {
+                "Bat Runs": 0,
+                "Fours Hit": 0,
+                "Sixes Hit": 0,
+                "Balls Faced": 2,
+                "Fifty": 0,
+                "Hundred": 0,
+                "Is Batting": true,
+                "Is Out": false
+            }
+        },
+        "Bowling Stats": {
+            "KK Ahmed": {
+                "Runs Given": 46,
+                "Fours Given": 4,
+                "Sixes Given": 3,
+                "Balls Bowled": 27,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Lalit Yadav": {
+                "Runs Given": 32,
+                "Fours Given": 3,
+                "Sixes Given": 2,
+                "Balls Bowled": 14,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "AR Patel": {
+                "Runs Given": 32,
+                "Fours Given": 0,
+                "Sixes Given": 3,
+                "Balls Bowled": 18,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "A Nortje": {
+                "Runs Given": 43,
+                "Fours Given": 4,
+                "Sixes Given": 3,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "C Sakariya": {
+                "Runs Given": 36,
+                "Fours Given": 5,
+                "Sixes Given": 0,
+                "Balls Bowled": 28,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "Kuldeep Yadav": {
+                "Runs Given": 34,
+                "Fours Given": 1,
+                "Sixes Given": 3,
+                "Balls Bowled": 18,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 0
+            },
+            "DL Chahar": {
+                "Runs Given": 22,
+                "Fours Given": 2,
+                "Sixes Given": 1,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 3
+            },
+            "TU Deshpande": {
+                "Runs Given": 28,
+                "Fours Given": 4,
+                "Sixes Given": 0,
+                "Balls Bowled": 25,
+                "Catches Taken": 1,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "M Theekshana": {
+                "Runs Given": 23,
+                "Fours Given": 1,
+                "Sixes Given": 1,
+                "Balls Bowled": 24,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            },
+            "RA Jadeja": {
+                "Runs Given": 50,
+                "Fours Given": 3,
+                "Sixes Given": 4,
+                "Balls Bowled": 25,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 1
+            },
+            "M Pathirana": {
+                "Runs Given": 23,
+                "Fours Given": 1,
+                "Sixes Given": 0,
+                "Balls Bowled": 29,
+                "Catches Taken": 0,
+                "Runouts": 0,
+                "Stumping": 0,
+                "Is Ball": true,
+                "Dot Balls": 0,
+                "Maiden Over": 0,
+                "Wickets Taken": 2
+            }
+        },
+        "Fielding Stats": {
+            "KK Ahmed": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Lalit Yadav": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AR Patel": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "A Nortje": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "C Sakariya": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "Kuldeep Yadav": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "RR Rossouw": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "Aman Hakim Khan": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "DL Chahar": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "TU Deshpande": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AT Rayudu": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "AM Rahane": {
+                "Catches Taken": 1,
+                "Runouts": 0
+            },
+            "M Theekshana": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "RA Jadeja": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "M Pathirana": {
+                "Catches Taken": 0,
+                "Runouts": 0
+            },
+            "RD Gaikwad": {
+                "Catches Taken": 2,
+                "Runouts": 0
+            },
+            "MM Ali": {
+                "Catches Taken": 2,
+                "Runouts": 0
+            }
+        }
+    }
+}

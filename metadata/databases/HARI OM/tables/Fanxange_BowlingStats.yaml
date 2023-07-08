@@ -1,0 +1,59 @@
+table:
+  name: BowlingStats
+  schema: Fanxange
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - dot_balls
+        - four_given
+        - is_ball
+        - maidian_over
+        - matchId
+        - playerId
+        - points
+        - runs_given
+        - six_given
+        - wicket
+        - balls_bowled
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - dot_balls
+        - four_given
+        - is_ball
+        - maidian_over
+        - matchId
+        - playerId
+        - points
+        - runs_given
+        - six_given
+        - wicket
+        - balls_bowled
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_ball
+        - points
+        - balls_bowled
+        - dot_balls
+        - four_given
+        - maidian_over
+        - matchId
+        - playerId
+        - runs_given
+        - six_given
+        - wicket
+        - id
+      filter: {}
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

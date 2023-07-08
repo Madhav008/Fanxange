@@ -1,0 +1,47 @@
+table:
+  name: Players
+  schema: Fanxange
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - is_injured
+        - avg_points
+        - current_match_points
+        - price
+        - teamId
+        - full_name
+        - short_name
+        - id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_injured
+        - avg_points
+        - current_match_points
+        - price
+        - teamId
+        - full_name
+        - short_name
+        - id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_injured
+        - avg_points
+        - current_match_points
+        - price
+        - teamId
+        - full_name
+        - short_name
+        - id
+      filter: {}
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}
