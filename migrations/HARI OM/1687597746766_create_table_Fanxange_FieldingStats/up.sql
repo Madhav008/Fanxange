@@ -1,1 +1,0 @@
-CREATE TABLE "Fanxange"."FieldingStats" ("id" uuid NOT NULL, "catches" integer NOT NULL, "matchId" integer NOT NULL, "playerId" integer NOT NULL, "points" float8 NOT NULL, "runouts" integer NOT NULL, "stumping" integer NOT NULL, PRIMARY KEY ("id") );

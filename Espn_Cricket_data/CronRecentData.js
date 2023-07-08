@@ -1,8 +1,10 @@
 const { calculateOneDayBowlingPoints, calculateOneDayBattingPoints, calculateOneDayFieldingPoints } = require("../Server/Points_Server/PointType/CalculateOnedayPoints");
 const { calculateT10FieldingPoints, calculateT10BattingPoints, calculateT10BowlingPoints } = require("../Server/Points_Server/PointType/CalculateT10Points");
-const { calculateBattingPoints, calculateBowlingPoints, calculateFieldingPoints } = require("../Server/Points_Server/PointType/CalculateT20Points");
+const { calculateBattingPoints, calculateBowlingPoints, calculateFieldingPoints } = require("../Server/Points_Server/Deprecated/CalculateT20Points");
 const axios = require("axios");
 const { calculateTestBattingPoints, calculateTestBowlingPoints, calculateTestFieldingPoints } = require("../Server/Points_Server/PointType/CalculateTestPoints");
+
+
 async function getRecentMacthes() {
     const recentMatches = await getEspnData("https://hs-consumer-api.espncricinfo.com/v1/ui/edition/details?trendingMatches=true&keySeriesItems=true&edition=in&lang=en");
 
@@ -17,28 +19,22 @@ async function getRecentMacthes() {
         5. Fielding Stats of each player in map
     */
 
-        const seriesId = matches[0].series.objectId;
-        const matchId = matches[0].objectId;
+    const seriesId = matches[0].series.objectId;
+    const matchId = matches[0].objectId;
 
-        const data = await getMatchData(seriesId, matchId);
-        console.log(data);
+    const data = await getMatchData(seriesId, matchId);
+    console.log(data);
 
 
-   /*  matches.forEach(async (match) => {
-        const seriesId = match.series.objectId;
-        const matchId = match.objectId;
-
-        const data = await getMatchData(seriesId, matchId);
-        console.log(data);
-
-    }) */
+    /*  matches.forEach(async (match) => {
+         const seriesId = match.series.objectId;
+         const matchId = match.objectId;
+ 
+         const data = await getMatchData(seriesId, matchId);
+         console.log(data);
+ 
+     }) */
 }
-
-getRecentMacthes()
-async function getSeries() { }
-
-
-
 /* 
 Returns 
 1.playerid
@@ -240,6 +236,7 @@ async function getMatchData(seriesId, matchId) {
     })
 
 
+
     var fielding = mapToJSON(fieldingStats)
     var batting = mapToJSON(battingStats)
     var bowling = mapToJSON(bowlingStats)
@@ -265,16 +262,57 @@ async function getMatchData(seriesId, matchId) {
         } = value
 
 
-        const bowlingPoints = calculateTestBowlingPoints({
-            wickets: wicket,
-            dot_balls: dot_balls,
-            ball_bowled: balls_bowled,
-            madian_over: maidian_over,
-            four_faces: four_given,
-            six_faces: six_given,
-            runs_given: runs_given,
-            isBall: is_ball
-        })
+        let bowlingPoints = 0;
+        if (matchData.format == "T20") {
+            bowlingPoints = calculateBowlingPoints({
+                wickets: wicket,
+                dot_balls: dot_balls,
+                ball_bowled: balls_bowled,
+                madian_over: maidian_over,
+                four_faces: four_given,
+                six_faces: six_given,
+                runs_given: runs_given,
+                isBall: is_ball
+            })
+
+        } else if (matchData.format == "TEST") {
+            bowlingPoints = calculateTestBowlingPoints({
+                wickets: wicket,
+                dot_balls: dot_balls,
+                ball_bowled: balls_bowled,
+                madian_over: maidian_over,
+                four_faces: four_given,
+                six_faces: six_given,
+                runs_given: runs_given,
+                isBall: is_ball
+            })
+
+        } else if (matchData.format == "ODI") {
+            bowlingPoints = calculateOneDayBowlingPoints({
+                wickets: wicket,
+                dot_balls: dot_balls,
+                ball_bowled: balls_bowled,
+                madian_over: maidian_over,
+                four_faces: four_given,
+                six_faces: six_given,
+                runs_given: runs_given,
+                isBall: is_ball
+            })
+
+        } else {
+            bowlingPoints = calculateT10BowlingPoints({
+                wickets: wicket,
+                dot_balls: dot_balls,
+                ball_bowled: balls_bowled,
+                madian_over: maidian_over,
+                four_faces: four_given,
+                six_faces: six_given,
+                runs_given: runs_given,
+                isBall: is_ball
+            })
+
+        }
+
 
         bowlingPointMap.set(player_id, bowlingPoints)
         // console.log(bowlingPoints)
@@ -297,16 +335,54 @@ async function getMatchData(seriesId, matchId) {
 
         } = value
 
-        const battingPoints = calculateTestBattingPoints({
-            bat_runs,
-            fours_hit: four_hit,
-            sixes_hit: six_hit,
-            fifty,
-            hundred,
-            isBat: is_bat,
-            isOut: is_out,
-            ball_faced: balls_faced
-        })
+
+        let battingPoints = 0;
+        if (matchData.format === "T20") {
+            battingPoints = calculateBattingPoints({
+                bat_runs,
+                fours_hit: four_hit,
+                sixes_hit: six_hit,
+                fifty,
+                hundred,
+                isBat: is_bat,
+                isOut: is_out,
+                balls_faced
+            });
+        } else if (matchData.format === "TEST") {
+            battingPoints = calculateTestBattingPoints({
+                bat_runs,
+                fours_hit: four_hit,
+                sixes_hit: six_hit,
+                fifty,
+                hundred,
+                isBat: is_bat,
+                isOut: is_out,
+                balls_faced
+            });
+        } else if (matchData.format === "ODI") {
+            battingPoints = calculateOneDayBattingPoints({
+                bat_runs,
+                fours_hit: four_hit,
+                sixes_hit: six_hit,
+                fifty,
+                hundred,
+                isBat: is_bat,
+                isOut: is_out,
+                balls_faced
+            });
+        } else {
+            battingPoints = calculateT10BattingPoints({
+                bat_runs,
+                fours_hit: four_hit,
+                sixes_hit: six_hit,
+                fifty,
+                hundred,
+                isBat: is_bat,
+                isOut: is_out,
+                balls_faced
+            });
+        }
+
 
         battingPointMap.set(playerId, battingPoints)
 
@@ -322,9 +398,17 @@ async function getMatchData(seriesId, matchId) {
 
         } = value
         // console.log(value)
-        const fieldingPoints = calculateTestFieldingPoints({
-            catches, runouts, stumping
-        })
+
+        let fieldingPoints = 0;
+        if (matchData.format === "T20") {
+            fieldingPoints = calculateFieldingPoints({ catches, runouts, stumping });
+        } else if (matchData.format === "TEST") {
+            fieldingPoints = calculateTestFieldingPoints({ catches, runouts, stumping });
+        } else if (matchData.format === "ODI") {
+            fieldingPoints = calculateOneDayFieldingPoints({ catches, runouts, stumping });
+        } else {
+            fieldingPoints = calculateT10FieldingPoints({ catches, runouts, stumping });
+        }
 
         fieldingPointMap.set(playerId, fieldingPoints)
 
@@ -385,42 +469,6 @@ function mapToJSON(map) {
 
 
 
-/* Return MatchIds Ids as array 
-    [
-        "123",
-        "235"
-    ]
-*/
-async function getMatchIds(data) {
-    let matchIds = [];
-
-    data.forEach((match) => {
-        const matchId = match.objectId;
-
-        matchIds.push(matchId);
-    })
-
-    return matchIds;
-}
-
-
-/* Return Series Ids as array 
-    [
-        "123",
-        "235"
-    ]
-*/
-async function getSeriesId(data) {
-    let seriesId = [];
-
-    data.forEach((match) => {
-        const seriesId = match.series.objectId;
-
-        seriesId.push(seriesId);
-    })
-
-    return seriesId;
-}
 
 async function getEspnData(url) {
     try {

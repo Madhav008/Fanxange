@@ -1,7 +1,0 @@
-version: 3
-# endpoint: https://deciding-dodo-66.hasura.app
-endpoint: https://hasura.depthfirstsearch.tk/
-metadata_directory: metadata
-actions:
-  kind: synchronous
-  handler_webhook_baseurl: http://localhost:3000
