@@ -58,7 +58,7 @@ const googleCallback = passport.authenticate('google', {
 });
 
 // Success endpoint controller
-const successEndpoint = (req, res) => {
+const successEndpoint = ((req, res) => {
   // Handle the successful authentication response
   res.json({
     message: 'Authentication successful',
