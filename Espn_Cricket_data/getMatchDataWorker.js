@@ -173,7 +173,6 @@ async function getMatchData(seriesId, matchId) {
 
       let bowlingPoints = 0;
       if (matchData.match.format==="T20") {
-          console.log("Calculating T20 points");
           bowlingPoints = calculateBowlingPoints({
               wickets: wicket,
               dot_balls: dot_balls,
@@ -226,9 +225,7 @@ async function getMatchData(seriesId, matchId) {
 
 
       bowlingPointMap.set(player_id, bowlingPoints)
-      // console.log(bowlingPoints)
-      // await startExecuteInsertBowlingStats(balls_bowled, dot_balls, four_given, is_ball, maidian_over, match_id, player_id, bowlingPoints, runs_given, six_given, wicket)
-
+   
   }
 
   for (let [key, value] of battingStats) {
@@ -299,8 +296,6 @@ async function getMatchData(seriesId, matchId) {
 
       battingPointMap.set(playerId, battingPoints)
 
-      // console.log(battingPoints)
-      // await startExecuteInsertBattingStats(is_bat, is_out, balls_faced, bat_runs, fifty, four_hit, hundred, matchId, playerId, battingPoints, six_hit)
   }
 
   for (let [key, value] of fieldingStats) {
@@ -327,24 +322,15 @@ async function getMatchData(seriesId, matchId) {
 
       fieldingPointMap.set(playerId, fieldingPoints)
 
-      // console.log(fieldingPoints)
-      // await startExecuteInsertFieldingStats(catches, matchId, playerId, fieldingPoints, runouts, stumping)
-
   }
-  //Seed the Teams
-  // console.log(teams)
-  // teams.forEach(async team => {
-  //     await startExecuteInsertTeams(team.objectId, team.longName)
-  // })
 
-  //Seed the Players
-  // console.log(teamPlayers)
-  // teamPlayers.forEach(async player => {
-  //     await startExecuteInsertPlayerStats(player.playerId, player.teamId, player.name, player.shortName)
-  // })
 
 
   return {
+      "matchId": matchId,
+      "name": matchData.match.slug,
+      "seriesId": seriesId,
+      "seriesName": matchData.match.series.longName,
       "teams": teams,
       "teamPlayers": teamPlayers,
       "batting": batting,

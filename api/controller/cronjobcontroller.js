@@ -32,6 +32,7 @@ const checkCronJobStatus = async (req, res) => {
     } else {
       try {
         const data = await getRecentMacthes();
+        //Save the data in the database
         res.json(data);
       } catch (error) {
         console.error('Error occurred while retrieving recent matches:', error);

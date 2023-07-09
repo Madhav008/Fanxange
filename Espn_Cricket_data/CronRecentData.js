@@ -80,6 +80,7 @@ async function getRecentMacthes() {
     7. bowlPoints
     8. fieldoints
     */
+
     return data;
 }
 /* 
@@ -127,12 +128,7 @@ async function getPlayerData(playerId) {
 
 
 
-
-
-
-
 /* 
-
 Returns 
 1. Teams 
 2. Players 
@@ -495,7 +491,6 @@ async function getMatchData(seriesId, matchId) {
 }
 
 
-
 function searchFielderName(fielderName, teamPlayers) {
     let foundPlayer = null;
 
@@ -521,8 +516,6 @@ function mapToJSON(map) {
 }
 
 
-
-
 async function getEspnData(url) {
     try {
         const res = await axios.get(url);
@@ -532,7 +525,5 @@ async function getEspnData(url) {
     }
 
 }
-
-
 
 module.exports = { getRecentMacthes, getPlayerData }
