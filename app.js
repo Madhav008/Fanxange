@@ -5,9 +5,11 @@ const apiRoutes = require('./api/routes/api');
 const cookieSession = require("cookie-session");
 const passport = require('passport');
 const isAuthenticated = require('./api/midleware/authmiddlware');
+const morgan = require('morgan');
 
 require('./initDB')();
 
+app.use(morgan('dev'));
 
 // Middleware and other configurations
 // Add express-session middleware
@@ -26,7 +28,8 @@ app.use('/auth', authRoutes);
 // Use the API routes
 app.use('/', isAuthenticated, apiRoutes);
 
-
+const cronJob = require('./api/routes/cronjob')
+app.use('/corn',cronJob);
 
 
 
