@@ -1,4 +1,5 @@
 const cron = require('node-cron');
+const { getRecentMacthes } = require('../../Espn_Cricket_data/CronRecentData');
 
 let cronJob;
 
@@ -25,14 +26,19 @@ const stopCronJob = (req, res) => {
     }
 };
 
-// Controller for checking the status of the cron job
-const checkCronJobStatus = (req, res) => {
+const checkCronJobStatus = async (req, res) => {
     if (cronJob) {
-        res.json({"message":'Cron job is running.'});
+      res.json({ message: 'Cron job is running.' });
     } else {
-        res.json({"message":'Cron job is not running.'});
+      try {
+        const data = await getRecentMacthes();
+        res.json(data);
+      } catch (error) {
+        console.error('Error occurred while retrieving recent matches:', error);
+        res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
+      }
     }
-};
+  };
 
 module.exports = {
     startCronJob, stopCronJob, checkCronJobStatus

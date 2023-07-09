@@ -34,7 +34,6 @@ const { calculateCatchPoints, calculateRunOutPoints, calculateStumpingPoints } =
 // module.exports = calculateTestPoints;
 
 
-
 // Batting Points
 function calculateTestBattingPoints(playerPerformance) {
     let points = 0;

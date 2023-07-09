@@ -1,14 +1,14 @@
+const { Worker } = require('worker_threads');
+const axios = require("axios");
 const { calculateOneDayBowlingPoints, calculateOneDayBattingPoints, calculateOneDayFieldingPoints } = require("../Server/Points_Server/PointType/CalculateOnedayPoints");
 const { calculateT10FieldingPoints, calculateT10BattingPoints, calculateT10BowlingPoints } = require("../Server/Points_Server/PointType/CalculateT10Points");
-const { calculateBattingPoints, calculateBowlingPoints, calculateFieldingPoints } = require("../Server/Points_Server/Deprecated/CalculateT20Points");
-const axios = require("axios");
+const { calculateBattingPoints, calculateBowlingPoints, calculateFieldingPoints } = require("../Server/Points_Server/PointType/CalculatedT20Point");
 const { calculateTestBattingPoints, calculateTestBowlingPoints, calculateTestFieldingPoints } = require("../Server/Points_Server/PointType/CalculateTestPoints");
-
 
 async function getRecentMacthes() {
     const recentMatches = await getEspnData("https://hs-consumer-api.espncricinfo.com/v1/ui/edition/details?trendingMatches=true&keySeriesItems=true&edition=in&lang=en");
 
-    const matches = recentMatches.trendingMatches.matches;
+    const matches = recentMatches?.trendingMatches.matches;
 
     /* Iterate over the each match and get the MatchData by Series Id and Match Id
     Returns 
@@ -19,12 +19,46 @@ async function getRecentMacthes() {
         5. Fielding Stats of each player in map
     */
 
-    const seriesId = matches[0].series.objectId;
-    const matchId = matches[0].objectId;
+    // const seriesId = matches[0].series.objectId;
+    // const matchId = matches[0].objectId;
 
-    const data = await getMatchData(seriesId, matchId);
-    console.log(data);
+    // const data = await getMatchData(seriesId, matchId);
 
+    const data = [];
+
+    const promises = [];
+
+    for (const match of matches) {
+        const seriesId = match.series.objectId;
+        const matchId = match.objectId;
+
+        const promise = new Promise((resolve, reject) => {
+            const worker = new Worker('./Espn_Cricket_data/getMatchDataWorker.js', {
+                workerData: { seriesId, matchId },
+            });
+
+            worker.on('message', (matchData) => {
+                data.push(matchData);
+                resolve();
+            });
+
+            worker.on('error', (error) => {
+                console.error(`Error occurred in worker for seriesId: ${seriesId} and matchId: ${matchId}`, error);
+                reject(error);
+            });
+
+            worker.on('exit', (code) => {
+                if (code !== 0) {
+                    console.error(`Worker stopped with exit code ${code} for seriesId: ${seriesId} and matchId: ${matchId}`);
+                    reject(`Worker stopped with exit code ${code}`);
+                }
+            });
+        });
+
+        promises.push(promise);
+    }
+
+    await Promise.all(promises);
 
     /*  matches.forEach(async (match) => {
          const seriesId = match.series.objectId;
@@ -34,6 +68,19 @@ async function getRecentMacthes() {
          console.log(data);
  
      }) */
+    /* 
+    
+    Returns 
+    1. Teams 
+    2. Players 
+    3. Batting Stats
+    4. Bowling Stats
+    5. Fielding Stats
+    6. batPoints
+    7. bowlPoints
+    8. fieldoints
+    */
+    return data;
 }
 /* 
 Returns 
@@ -92,8 +139,9 @@ Returns
 3. Batting Stats
 4. Bowling Stats
 5. Fielding Stats
-
-
+6. batPoints
+7. bowlPoints
+8. fieldoints
 */
 
 
@@ -106,7 +154,6 @@ async function getMatchData(seriesId, matchId) {
     // const url = "https://hs-consumer-api.espncricinfo.com/v1/ui/match/details?latest=true&lang=en&seriesId=1347399&matchId=1347569"
     console.log(url)
     const matchData = await getEspnData(url);
-
     let fieldingStats = new Map();
     let battingStats = new Map();
     let bowlingStats = new Map();
@@ -263,7 +310,8 @@ async function getMatchData(seriesId, matchId) {
 
 
         let bowlingPoints = 0;
-        if (matchData.format == "T20") {
+        if (matchData.match.format === "T20") {
+            console.log("Calculating T20 points");
             bowlingPoints = calculateBowlingPoints({
                 wickets: wicket,
                 dot_balls: dot_balls,
@@ -275,7 +323,7 @@ async function getMatchData(seriesId, matchId) {
                 isBall: is_ball
             })
 
-        } else if (matchData.format == "TEST") {
+        } else if (matchData.match.format === "TEST") {
             bowlingPoints = calculateTestBowlingPoints({
                 wickets: wicket,
                 dot_balls: dot_balls,
@@ -287,7 +335,7 @@ async function getMatchData(seriesId, matchId) {
                 isBall: is_ball
             })
 
-        } else if (matchData.format == "ODI") {
+        } else if (matchData.match.format === "ODI") {
             bowlingPoints = calculateOneDayBowlingPoints({
                 wickets: wicket,
                 dot_balls: dot_balls,
@@ -300,6 +348,7 @@ async function getMatchData(seriesId, matchId) {
             })
 
         } else {
+
             bowlingPoints = calculateT10BowlingPoints({
                 wickets: wicket,
                 dot_balls: dot_balls,
@@ -337,7 +386,8 @@ async function getMatchData(seriesId, matchId) {
 
 
         let battingPoints = 0;
-        if (matchData.format === "T20") {
+        if (matchData.match.format === "T20") {
+            console
             battingPoints = calculateBattingPoints({
                 bat_runs,
                 fours_hit: four_hit,
@@ -348,7 +398,7 @@ async function getMatchData(seriesId, matchId) {
                 isOut: is_out,
                 balls_faced
             });
-        } else if (matchData.format === "TEST") {
+        } else if (matchData.match.format === "TEST") {
             battingPoints = calculateTestBattingPoints({
                 bat_runs,
                 fours_hit: four_hit,
@@ -359,7 +409,7 @@ async function getMatchData(seriesId, matchId) {
                 isOut: is_out,
                 balls_faced
             });
-        } else if (matchData.format === "ODI") {
+        } else if (matchData.match.format === "ODI") {
             battingPoints = calculateOneDayBattingPoints({
                 bat_runs,
                 fours_hit: four_hit,
@@ -371,6 +421,7 @@ async function getMatchData(seriesId, matchId) {
                 balls_faced
             });
         } else {
+
             battingPoints = calculateT10BattingPoints({
                 bat_runs,
                 fours_hit: four_hit,
@@ -400,13 +451,15 @@ async function getMatchData(seriesId, matchId) {
         // console.log(value)
 
         let fieldingPoints = 0;
-        if (matchData.format === "T20") {
+        if (matchData.match.format === "T20") {
+            console
             fieldingPoints = calculateFieldingPoints({ catches, runouts, stumping });
-        } else if (matchData.format === "TEST") {
+        } else if (matchData.match.format === "TEST") {
             fieldingPoints = calculateTestFieldingPoints({ catches, runouts, stumping });
-        } else if (matchData.format === "ODI") {
+        } else if (matchData.match.format === "ODI") {
             fieldingPoints = calculateOneDayFieldingPoints({ catches, runouts, stumping });
         } else {
+
             fieldingPoints = calculateT10FieldingPoints({ catches, runouts, stumping });
         }
 
@@ -479,3 +532,7 @@ async function getEspnData(url) {
     }
 
 }
+
+
+
+module.exports = { getRecentMacthes, getPlayerData }

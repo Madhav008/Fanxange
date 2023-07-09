@@ -34,7 +34,6 @@ const { calculateCatchPoints, calculateRunOutPoints, calculateStumpingPoints } =
 // module.exports = calculateOneDayPoints;
 
 
-
 // One-Day Batting Points
 function calculateOneDayBattingPoints(playerPerformance) {
     let points = 0;

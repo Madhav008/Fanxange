@@ -53,33 +53,32 @@ function calculateT10BowlingPoints(playerPerformance) {
   
     if (typeof wickets !== 'undefined') {
       points += calculatet10WicketPoints(wickets);
-    //   console.log("Wicket Points:", points);
+      // console.log("Wicket Points:", points);
     }
   
     if (typeof dot_balls !== 'undefined' && typeof ball_bowled !== 'undefined' && typeof madian_over !== 'undefined') {
       points += calculatet10BonusPoints(dot_balls, ball_bowled, madian_over);
-    //   console.log("Bonus Points:", points);
+      // console.log("Bonus Points:", points);
     }
   
     if (typeof four_faces !== 'undefined' && typeof six_faces !== 'undefined') {
       points += calculatet10BoundryPoints(four_faces, six_faces);
-    //   console.log("Boundary Points:", points);
+      // console.log("Boundary Points:", points);
     }
   
     if (typeof ball_bowled !== 'undefined' && typeof runs_given !== 'undefined') {
       points += calculatet10EconomyPoints(ball_bowled, runs_given);
-    //   console.log("Economy Points:", points);
+      // console.log("Economy Points:", points);
     }
   
     if (typeof isBall !== 'undefined') {
       points += calculatet10ParticipationPoints(isBall);
-    //   console.log("Participation Points:", points);
+      // console.log("Participation Points:", points);
     }
   
     return points;
   }
   
-
 // T10 Fielding Points
 function calculateT10FieldingPoints(playerPerformance) {
     let points = 0;

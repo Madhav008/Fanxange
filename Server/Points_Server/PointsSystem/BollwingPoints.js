@@ -1,4 +1,5 @@
 const testwicketsPointsMap = new Map([
+    [0, 0],
     [1, 14],
     [2, 25],
     [3, 35],
@@ -56,6 +57,7 @@ function calculatetestParticipationPoints(isBall) {
 
 
 const onewicketsPointsMap = new Map([
+    [0, 0],
     [1, 15],
     [2, 22],
     [3, 28],
@@ -207,6 +209,7 @@ function calculatet20ParticipationPoints(isBall) {
 
 
 const t10wicketsPointsMap = new Map([
+    [0, 0],
     [1, 30],
     [2, 55],
     [3, 80],
