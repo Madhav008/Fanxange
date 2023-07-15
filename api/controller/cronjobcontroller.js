@@ -14,31 +14,27 @@ const startCronJob = async (req, res) => {
   if (!cronJob) {
     cronJob = cron.schedule('*/30 * * * *', async () => {
       console.log('Cron job is running...');
-    });
 
-
-    try {
-      const data = await getRecentMacthes();
-      //Save the data in the database
-
-      for (const match of data) {
-        try {
-          await saveRecentMatchesData(match);
-        } catch (error) {
-          console.log(error.message);
+      try {
+        const data = await getRecentMacthes();
+        //Save the data in the database
+        
+        for (const match of data) {
+          try {
+            await saveRecentMatchesData(match);
+          } catch (error) {
+            console.log(error.message);
+          }
         }
+
+        // res.json(data);
+      } catch (error) {
+        console.error('Error occurred while retrieving recent matches:', error);
+        // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
       }
+    });
+    res.json({ "message": 'Cron job started.' });
 
-      res.json(data);
-    } catch (error) {
-      console.error('Error occurred while retrieving recent matches:', error);
-      res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
-    }
-
-
-
-
-    // res.json({ "message": 'Cron job started.' });
   } else {
     res.json({ "message": 'Cron job is already running.' });
   }
@@ -77,7 +73,7 @@ async function saveRecentMatchesData(data) {
     if (existingMatch) {
       // Update the fields that are not in the database
       existingMatch.name = data.name;
-      existingMatch.startdate = data.startDate;
+      existingMatch.startDate = data.startDate;
       existingMatch.endDate = data.endDate;
       existingMatch.seriesName = data.seriesName;
       existingMatch.seriesId = data.seriesId;
@@ -90,7 +86,7 @@ async function saveRecentMatchesData(data) {
       // Create a new document
       const recentMatches = new RecentMatches({
         name: data.name,
-        startdate: data.startDate,
+        startDate: data.startDate,
         endDate: data.endDate,
         seriesName: data.seriesName,
         seriesId: data.seriesId,
@@ -105,8 +101,6 @@ async function saveRecentMatchesData(data) {
       console.log('Match Data saved successfully!');
 
     }
-
-
 
     for (const team of data.teams) {
       try {
@@ -132,7 +126,6 @@ async function saveRecentMatchesData(data) {
       }
     }
 
-
     for (const player of data.teamPlayers) {
       try {
         const existingPlayer = await PlayerStats.findOne({ playerId: player.playerId });
@@ -153,7 +146,6 @@ async function saveRecentMatchesData(data) {
         console.log(error.message);
       }
     }
-
 
     for (const playerId in data.batting) {
       const battingStats = data.batting[playerId];
@@ -205,21 +197,17 @@ async function saveRecentMatchesData(data) {
       }
     }
 
-
-
-
-
     for (const playerId in data.bowling) {
       const bowlingStats = data.bowling[playerId];
       let bowlingPoints = data.bowlPoints[playerId];
       bowlingPoints = parseFloat(bowlingPoints).toFixed(2);
-    
+
       if (bowlingStats.match_id && playerId) {
         const existingBowlingStats = await BowlingStats.findOne({
           matchId: bowlingStats.match_id,
           playerId: bowlingStats.player_id,
         });
-    
+
         if (existingBowlingStats) {
           existingBowlingStats.runs_given = bowlingStats.runs_given;
           existingBowlingStats.four_given = bowlingStats.four_given;
@@ -230,7 +218,7 @@ async function saveRecentMatchesData(data) {
           existingBowlingStats.maiden_over = bowlingStats.maiden_over;
           existingBowlingStats.isBall = bowlingStats.is_ball;
           existingBowlingStats.points = bowlingPoints;
-    
+
           try {
             await existingBowlingStats.save();
             console.log(`BowlingStats with matchId ${bowlingStats.match_id} and playerId ${bowlingStats.player_id} updated successfully!`);
@@ -251,7 +239,7 @@ async function saveRecentMatchesData(data) {
             isBall: bowlingStats.is_ball,
             points: bowlingPoints,
           });
-    
+
           try {
             await bowlingStatsInstance.save();
             console.log('Bowling Data saved successfully!');
@@ -263,24 +251,24 @@ async function saveRecentMatchesData(data) {
         console.log(`Invalid match_id or player_id for bowlingStats:`, bowlingStats);
       }
     }
-    
+
     for (const playerId in data.fieding) {
       const fieldingStats = data.fieding[playerId];
       let fieldingPoints = data.fieldoints[playerId];
       fieldingPoints = parseFloat(fieldingPoints).toFixed(2);
-    
+
       if (fieldingStats.matchId && playerId) {
         const existingFieldingStats = await FieldingStats.findOne({
           matchId: fieldingStats.matchId,
           playerId: fieldingStats.playerId,
         });
-    
+
         if (existingFieldingStats) {
           existingFieldingStats.catches = fieldingStats.catches;
           existingFieldingStats.runouts = fieldingStats.runouts;
           existingFieldingStats.stumping = fieldingStats.stumping;
           existingFieldingStats.points = fieldingPoints;
-    
+
           try {
             await existingFieldingStats.save();
             console.log(`FieldingStats with matchId ${fieldingStats.matchId} and playerId ${fieldingStats.playerId} updated successfully!`);
@@ -296,7 +284,7 @@ async function saveRecentMatchesData(data) {
             stumping: fieldingStats.stumping,
             points: fieldingPoints,
           });
-    
+
           try {
             await fieldingStatsInstance.save();
             console.log('Fielding Data saved successfully!');
@@ -308,7 +296,7 @@ async function saveRecentMatchesData(data) {
         console.log(`Invalid matchId or playerId for fieldingStats:`, fieldingStats);
       }
     }
-    
+
 
   } catch (error) {
     console.error('Error occurred while saving recent matches data:', error.message);
