@@ -60,16 +60,7 @@ async function getRecentMacthes() {
 
     await Promise.all(promises);
 
-    /*  matches.forEach(async (match) => {
-         const seriesId = match.series.objectId;
-         const matchId = match.objectId;
- 
-         const data = await getMatchData(seriesId, matchId);
-         console.log(data);
- 
-     }) */
-    /* 
-    
+    /*     
     Returns 
     1. Teams 
     2. Players 

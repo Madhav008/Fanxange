@@ -9,6 +9,7 @@ module.exports = () => {
       pass: process.env.DB_PASS,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+
     })
     .then(() => {
       console.log('Mongodb connected....');

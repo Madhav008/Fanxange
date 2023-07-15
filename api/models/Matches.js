@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 
 const matchesSchema = new mongoose.Schema({
     name:String,
-    date:String,
-    series:String,
-    matchId:String,
+    startDate:String,
+    endDate:String,
+    seriesName:String,
+    seriesId:String,
+    matchId:{
+        type:String,
+        unique:true 
+    },
     teams:[],
     teamPlayers:[]
 });
 
-const User = mongoose.model('Matches', matchesSchema);
+const RecentMatches = mongoose.model('RecentMatches', matchesSchema);
 
-module.exports = User;
+module.exports = RecentMatches;
