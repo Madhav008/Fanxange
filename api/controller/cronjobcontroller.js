@@ -4,6 +4,8 @@ const RecentMatches = require('../models/Matches');
 const PlayerStats = require('../models/PlayerStats');
 const Team = require('../models/Teams');
 const BattingStats = require('../models/PlayerBattingStats');
+const BowlingStats = require('../models/PlayerBowlingStats');
+const FieldingStats = require('../models/PlayerFieldingStats');
 
 let cronJob;
 
@@ -99,6 +101,9 @@ async function saveRecentMatchesData(data) {
 
       // Save the new document to the database
       await recentMatches.save();
+
+      console.log('Match Data saved successfully!');
+
     }
 
 
@@ -107,7 +112,7 @@ async function saveRecentMatchesData(data) {
       try {
         const existingTeam = await Team.findOne({ teamid: team.objectId });
         if (existingTeam) {
-          console.log(`Team with teamid ${team.objectId} already exists. Skipping...`);
+          // console.log(`Team with teamid ${team.objectId} already exists. Skipping...`);
           continue;
         }
 
@@ -121,6 +126,7 @@ async function saveRecentMatchesData(data) {
         });
 
         await teamdata.save();
+        console.log('Team Data saved successfully!');
       } catch (error) {
         console.log(error.message);
       }
@@ -131,7 +137,7 @@ async function saveRecentMatchesData(data) {
       try {
         const existingPlayer = await PlayerStats.findOne({ playerId: player.playerId });
         if (existingPlayer) {
-          console.log(`Player with playerId ${player.playerId} already exists. Skipping...`);
+          // console.log(`Player with playerId ${player.playerId} already exists. Skipping...`);
           continue;
         }
 
@@ -142,6 +148,7 @@ async function saveRecentMatchesData(data) {
         });
 
         await playerdata.save();
+        console.log('Player Data saved successfully!');
       } catch (error) {
         console.log(error.message);
       }
@@ -157,24 +164,42 @@ async function saveRecentMatchesData(data) {
         const existingBattingStats = await BattingStats.findOne({ matchId: battingStats.matchId, playerId });
 
         if (existingBattingStats) {
-          console.log(`BattingStats with matchId ${battingStats.matchId} and playerId ${playerId} already exists. Skipping...`);
-          continue;
+          existingBattingStats.bats_runs = battingStats.bats_runs;
+          existingBattingStats.four_hit = battingStats.four_hit;
+          existingBattingStats.six_hit = battingStats.six_hit;
+          existingBattingStats.balls_faced = battingStats.balls_faced;
+          existingBattingStats.fifty = battingStats.fifty;
+          existingBattingStats.hundred = battingStats.hundred;
+          existingBattingStats.isBat = true;
+          existingBattingStats.points = battingPoints;
+
+          try {
+            await existingBattingStats.save();
+            console.log(`BattingStats with matchId ${battingStats.matchId} and playerId ${playerId} updated successfully!`);
+          } catch (error) {
+            console.error(`Error occurred while updating BattingStats with matchId ${battingStats.matchId} and playerId ${playerId}:`, error.message);
+          }
+        } else {
+          const BattingStatsInstance = new BattingStats({
+            playerId,
+            matchId: battingStats.matchId,
+            bats_runs: battingStats.bats_runs,
+            four_hit: battingStats.four_hit,
+            six_hit: battingStats.six_hit,
+            balls_faced: battingStats.balls_faced,
+            fifty: battingStats.fifty,
+            hundred: battingStats.hundred,
+            isBat: true,
+            points: battingPoints,
+          });
+
+          try {
+            await BattingStatsInstance.save();
+            console.log('Batting Data saved successfully!');
+          } catch (error) {
+            console.error(`Error occurred while saving BattingStats with matchId ${battingStats.matchId} and playerId ${playerId}:`, error.message);
+          }
         }
-
-        const BattingStatsInstance = new BattingStats({
-          playerId,
-          matchId: battingStats.matchId,
-          bats_runs: battingStats.bats_runs,
-          four_hit: battingStats.four_hit,
-          six_hit: battingStats.six_hit,
-          balls_faced: battingStats.balls_faced,
-          fifty: battingStats.fifty,
-          hundred: battingStats.hundred,
-          isBat: true,
-          points: battingPoints,
-        });
-
-        await BattingStatsInstance.save();
       } else {
         console.log(`Invalid matchId or playerId for battingStats:`, battingStats);
       }
@@ -183,21 +208,108 @@ async function saveRecentMatchesData(data) {
 
 
 
+
     for (const playerId in data.bowling) {
       const bowlingStats = data.bowling[playerId];
       let bowlingPoints = data.bowlPoints[playerId];
       bowlingPoints = parseFloat(bowlingPoints).toFixed(2);
-      console.log(bowlingPoints);
+    
+      if (bowlingStats.match_id && playerId) {
+        const existingBowlingStats = await BowlingStats.findOne({
+          matchId: bowlingStats.match_id,
+          playerId: bowlingStats.player_id,
+        });
+    
+        if (existingBowlingStats) {
+          existingBowlingStats.runs_given = bowlingStats.runs_given;
+          existingBowlingStats.four_given = bowlingStats.four_given;
+          existingBowlingStats.six_given = bowlingStats.six_given;
+          existingBowlingStats.balls_bowled = bowlingStats.balls_bowled;
+          existingBowlingStats.wicket = bowlingStats.wicket;
+          existingBowlingStats.dot_balls = bowlingStats.dot_balls;
+          existingBowlingStats.maiden_over = bowlingStats.maiden_over;
+          existingBowlingStats.isBall = bowlingStats.is_ball;
+          existingBowlingStats.points = bowlingPoints;
+    
+          try {
+            await existingBowlingStats.save();
+            console.log(`BowlingStats with matchId ${bowlingStats.match_id} and playerId ${bowlingStats.player_id} updated successfully!`);
+          } catch (error) {
+            console.error(`Error occurred while updating BowlingStats with matchId ${bowlingStats.match_id} and playerId ${bowlingStats.player_id}:`, error.message);
+          }
+        } else {
+          const bowlingStatsInstance = new BowlingStats({
+            playerId: bowlingStats.player_id,
+            matchId: bowlingStats.match_id,
+            runs_given: bowlingStats.runs_given,
+            four_given: bowlingStats.four_given,
+            six_given: bowlingStats.six_given,
+            balls_bowled: bowlingStats.balls_bowled,
+            wicket: bowlingStats.wicket,
+            dot_balls: bowlingStats.dot_balls,
+            maiden_over: bowlingStats.maiden_over,
+            isBall: bowlingStats.is_ball,
+            points: bowlingPoints,
+          });
+    
+          try {
+            await bowlingStatsInstance.save();
+            console.log('Bowling Data saved successfully!');
+          } catch (error) {
+            console.error(`Error occurred while saving BowlingStats with matchId ${bowlingStats.match_id} and playerId ${bowlingStats.player_id}:`, error.message);
+          }
+        }
+      } else {
+        console.log(`Invalid match_id or player_id for bowlingStats:`, bowlingStats);
+      }
     }
-
-    for (const playerId in data.fielding) {
-      const fieldingStats = data.fielding[playerId];
+    
+    for (const playerId in data.fieding) {
+      const fieldingStats = data.fieding[playerId];
       let fieldingPoints = data.fieldoints[playerId];
       fieldingPoints = parseFloat(fieldingPoints).toFixed(2);
-      console.log(fieldingPoints);
+    
+      if (fieldingStats.matchId && playerId) {
+        const existingFieldingStats = await FieldingStats.findOne({
+          matchId: fieldingStats.matchId,
+          playerId: fieldingStats.playerId,
+        });
+    
+        if (existingFieldingStats) {
+          existingFieldingStats.catches = fieldingStats.catches;
+          existingFieldingStats.runouts = fieldingStats.runouts;
+          existingFieldingStats.stumping = fieldingStats.stumping;
+          existingFieldingStats.points = fieldingPoints;
+    
+          try {
+            await existingFieldingStats.save();
+            console.log(`FieldingStats with matchId ${fieldingStats.matchId} and playerId ${fieldingStats.playerId} updated successfully!`);
+          } catch (error) {
+            console.error(`Error occurred while updating FieldingStats with matchId ${fieldingStats.matchId} and playerId ${fieldingStats.playerId}:`, error.message);
+          }
+        } else {
+          const fieldingStatsInstance = new FieldingStats({
+            playerId: fieldingStats.playerId,
+            matchId: fieldingStats.matchId,
+            catches: fieldingStats.catches,
+            runouts: fieldingStats.runouts,
+            stumping: fieldingStats.stumping,
+            points: fieldingPoints,
+          });
+    
+          try {
+            await fieldingStatsInstance.save();
+            console.log('Fielding Data saved successfully!');
+          } catch (error) {
+            console.error(`Error occurred while saving FieldingStats with matchId ${fieldingStats.matchId} and playerId ${fieldingStats.playerId}:`, error.message);
+          }
+        }
+      } else {
+        console.log(`Invalid matchId or playerId for fieldingStats:`, fieldingStats);
+      }
     }
+    
 
-    console.log('Data saved successfully!');
   } catch (error) {
     console.error('Error occurred while saving recent matches data:', error.message);
   }

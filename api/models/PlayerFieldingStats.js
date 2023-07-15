@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 
 const FieldingSchema = new mongoose.Schema({
     playerId: String,
-    matchId: {
-        type: String,
-        unique: true
-    },
-    bats_runs: Number,
+    matchId: String,
     catches: Number,
     runouts: Number,
     stumping: Number,

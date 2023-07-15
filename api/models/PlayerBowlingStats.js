@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 
 const BowlingSchema = new mongoose.Schema({
     playerId: String,
-    matchId: {
-        type: String,
-        unique: true
-    },
+    matchId: String,
     runs_given: Number,
     four_given: Number,
     six_given: Number,
