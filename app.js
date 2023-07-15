@@ -26,7 +26,9 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 
 // Use the API routes
-app.use('/', isAuthenticated, apiRoutes);
+// app.use('/', isAuthenticated, apiRoutes);
+app.use('/', apiRoutes);
+
 
 const cronJob = require('./api/routes/cronjob')
 app.use('/corn',cronJob);
