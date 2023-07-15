@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
 const serieSchema = new mongoose.Schema({
-  seriesId:String,
+  seriesId:{
+    type: String,
+    unique: true,
+  },
   name:String,
 });
 
-const User = mongoose.model('Series', serieSchema);
+const Series = mongoose.model('Series', serieSchema);
 
-module.exports = User;
+module.exports = Series;

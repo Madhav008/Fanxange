@@ -6,6 +6,7 @@ const Team = require('../models/Teams');
 const BattingStats = require('../models/PlayerBattingStats');
 const BowlingStats = require('../models/PlayerBowlingStats');
 const FieldingStats = require('../models/PlayerFieldingStats');
+const Series = require('../models/Series');
 
 let cronJob;
 
@@ -18,7 +19,7 @@ const startCronJob = async (req, res) => {
       try {
         const data = await getRecentMacthes();
         //Save the data in the database
-        
+
         for (const match of data) {
           try {
             await saveRecentMatchesData(match);
@@ -54,6 +55,23 @@ const stopCronJob = (req, res) => {
 const checkCronJobStatus = async (req, res) => {
   if (cronJob) {
     res.json({ message: 'Cron job is running.' });
+    try {
+      const data = await getRecentMacthes();
+      //Save the data in the database
+
+      for (const match of data) {
+        try {
+          await saveRecentMatchesData(match);
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+
+      // res.json(data);
+    } catch (error) {
+      console.error('Error occurred while retrieving recent matches:', error);
+      // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
+    }
   }
 };
 
@@ -67,9 +85,26 @@ module.exports = {
 
 async function saveRecentMatchesData(data) {
   try {
+
+    //Create the New Series document
+    const newSeries = new Series({
+      seriesId: data.seriesId,
+      name: data.seriesName
+    })
+
+    try {
+      await newSeries.save()
+      console.log("New Series saved")
+    } catch (error) {
+      console.log(error.message)
+    }
+
+
     // Create a new RecentMatches document
     const existingMatch = await RecentMatches.findOne({ matchId: data.matchId });
-
+    if (data.matchId === "1347700") {
+      console.log(data.teams)
+    }
     if (existingMatch) {
       // Update the fields that are not in the database
       existingMatch.name = data.name;
@@ -101,6 +136,7 @@ async function saveRecentMatchesData(data) {
       console.log('Match Data saved successfully!');
 
     }
+
 
     for (const team of data.teams) {
       try {

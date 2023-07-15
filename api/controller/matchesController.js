@@ -39,4 +39,14 @@ async function getRecentMacthes(req,res) {
     } 
 }
 
-module.exports = {getRecentMacthes}
+
+async function getAllMatches(req,res){
+    const matches = await RecentMatches.find({});
+
+    try {
+        res.status(200).json({matches});
+    } catch (error) {
+        console.log('Error occurred:', error.message);
+    }
+}
+module.exports = {getRecentMacthes,getAllMatches}
