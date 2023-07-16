@@ -1,6 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Hero = () => {
+
+    const [auth, setauth] = useState()
+
+    const _handleSignInClick = () => {
+        // Authenticate using via passport api in the backend
+        // Open Twitter login page
+        // Upon successful login, a cookie session will be stored in the client
+        window.open("http://localhost:3132/auth/google/login", "_self");
+    };
+
+    const _handleLogoutClick = () => {
+        // Logout using Twitter passport api
+        // Set authenticated state to false in the HomePage
+        window.open("http://localhost:3132/auth/google/logout", "_self");
+    };
+
+    useEffect(() => {
+
+        function checkAuth() {
+            fetch("http://localhost:3132/auth/success", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) return response.json();
+                    throw new Error("failed to authenticate user");
+                })
+                .then(responseJson => {
+                    console.log(responseJson);
+                    setauth({
+                        authenticated: true,
+                        user: responseJson.user
+                    });
+                })
+                .catch(error => {
+                    setauth({
+                        authenticated: false,
+                        error: "Failed to authenticate user"
+                    });
+                });
+        }
+
+        checkAuth()
+    }, [])
+
+
     return (
         <div>
 
@@ -10,7 +61,7 @@ const Hero = () => {
                     <span className='text-accent'>Fan</span>Xange
                 </div>
 
-                <div className='btn bg-primary text-white'>
+                <div className='btn bg-primary text-white' onClick={_handleSignInClick}>
                     Login With Google
                 </div>
             </div>
@@ -27,11 +78,11 @@ const Hero = () => {
                     Invest with Fanxange, and make profit from your favourite players.
                 </div>
                 <div className='flex justify-center'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold '>
-                    <div className='p-2'>Quick start</div>
-                    <div className='p-2'>24/7 trading</div>
-                    <div className='p-2'>Easy to use</div>
-                </div>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold '>
+                        <div className='p-2'>Quick start</div>
+                        <div className='p-2'>24/7 trading</div>
+                        <div className='p-2'>Easy to use</div>
+                    </div>
                 </div>
 
                 <div className='btn btn-primary w-[250px]'>
@@ -54,13 +105,13 @@ const Hero = () => {
                     Transfer your funds safely via reliable payment methods.
                     All transactions are securely encrypted
                 </div>
-               <div className='flex justify-center w-max mx-auto '>
-               <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold'>
-                    <div className='border card p-2 m-5'><img src="./src/assets/imps.svg" alt="" srcset="" /></div>
-                    <div className=' border card p-2 m-5'><img src="./src/assets/paytm.svg" alt="" /></div>
-                    <div className=' border card p-2 m-5'><img src="./src/assets/upi.svg" alt="" /></div>
+                <div className='flex justify-center w-max mx-auto '>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold'>
+                        <div className='border card p-2 m-5'><img src="./src/assets/imps.svg" alt="" srcset="" /></div>
+                        <div className=' border card p-2 m-5'><img src="./src/assets/paytm.svg" alt="" /></div>
+                        <div className=' border card p-2 m-5'><img src="./src/assets/upi.svg" alt="" /></div>
+                    </div>
                 </div>
-               </div>
 
                 <div className='btn btn-primary text-secondary  w-[250px]'>
                     Try trading now

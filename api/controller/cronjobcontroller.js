@@ -72,6 +72,8 @@ const checkCronJobStatus = async (req, res) => {
       console.error('Error occurred while retrieving recent matches:', error);
       // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
     }
+  } else {
+    res.json({ "message": 'Cron job is not running.' });
   }
 };
 
@@ -98,7 +100,6 @@ async function saveRecentMatchesData(data) {
     } catch (error) {
       console.log(error.message)
     }
-
 
     // Create a new RecentMatches document
     const existingMatch = await RecentMatches.findOne({ matchId: data.matchId });

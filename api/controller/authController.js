@@ -48,35 +48,30 @@ passport.deserializeUser(async (user, done) => {
   done(null, user);
 });
 
-// Google login controller
-const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] });
-
-// Google callback controller
-const googleCallback = passport.authenticate('google', {
-  successRedirect: '/auth/success', // Redirect to a success endpoint
-  failureRedirect: '/auth/failure', // Redirect to a failure endpoint
-});
-
 // Success endpoint controller
 const successEndpoint = ((req, res) => {
   // Handle the successful authentication response
   res.json({
     message: 'Authentication successful',
     user: req.user,
-  });
-
-  console.log(req.user)
+  })
 });
 
 // Failure endpoint controller
 const failureEndpoint = (req, res) => {
   // Handle the failed authentication response
-  res.json({ message: 'Authentication failed' });
+  res.status(401).json({ success: false, message: 'Authentication failed' });
 };
+
+
+// Google login controller
+const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] });
+
+
+
 
 module.exports = {
   googleLogin,
-  googleCallback,
   successEndpoint,
   failureEndpoint,
 };
