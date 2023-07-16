@@ -109,6 +109,8 @@ async function saveRecentMatchesData(data) {
     if (existingMatch) {
       // Update the fields that are not in the database
       existingMatch.name = data.name;
+      existingMatch.title=data.title,
+      existingMatch.groundName=data.groundName,
       existingMatch.startDate = data.startDate;
       existingMatch.endDate = data.endDate;
       existingMatch.seriesName = data.seriesName;
@@ -122,6 +124,8 @@ async function saveRecentMatchesData(data) {
       // Create a new document
       const recentMatches = new RecentMatches({
         name: data.name,
+        title:data.title,
+        groundName:data.groundName,
         startDate: data.startDate,
         endDate: data.endDate,
         seriesName: data.seriesName,

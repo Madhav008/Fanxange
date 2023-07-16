@@ -15,7 +15,7 @@ async function getMatchData(seriesId, matchId) {
     const url = `https://hs-consumer-api.espncricinfo.com/v1/ui/match/details?latest=true&lang=en&seriesId=${seriesId}&matchId=${matchId}`;
 
     // const url = "https://hs-consumer-api.espncricinfo.com/v1/ui/match/details?latest=true&lang=en&seriesId=1347399&matchId=1347569"
-    // console.log(url)
+    console.log(url)
     const matchData = await getEspnData(url);
     let fieldingStats = new Map();
     let battingStats = new Map();
@@ -330,6 +330,8 @@ async function getMatchData(seriesId, matchId) {
 
     let result = {
         "matchId": matchId,
+        "title":matchData.match.title,
+        "groundName":matchData.match.ground.smallName,
         "startDate": matchData.match.startDate,
         "endDate": matchData.match.endDate,
         "name": matchData.match.slug,

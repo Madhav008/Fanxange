@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const matchesSchema = new mongoose.Schema({
     name:String,
     startDate:String,
+    title:String,
+    groundName:String,
     endDate:String,
     seriesName:String,
     seriesId:String,
