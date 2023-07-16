@@ -45,7 +45,7 @@ app.use(
 app.use('/auth', authRoutes);
 
 // Use the API routes
-app.use('/', isAuthenticated, apiRoutes);
+app.use('/api', isAuthenticated, apiRoutes);
 // app.use('/', apiRoutes);
 
 
