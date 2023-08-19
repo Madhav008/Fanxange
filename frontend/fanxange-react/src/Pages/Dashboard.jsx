@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Charts from '../Components/Charts'
 import Navbar from '../Components/Navbar'
-import Tabbar from '../Components/Tabbar'
 import PlayerStats from '../Components/PlayerStats'
 import Order from '../Components/Order'
 import BuySell from '../Components/BuySell'

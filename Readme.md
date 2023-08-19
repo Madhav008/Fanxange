@@ -14,6 +14,7 @@
 
     node index.js
 ****
+
 # Design the System
 
     [] One Time rates of the player factors
@@ -48,13 +49,17 @@
                 [*] Median over    
 
 # TODO
+
     [] Saturday
-        [] Authenticatication with frontend
-        [] Homepage screen
-        [] Display the player with price on screen
-        [] Display the tournament
-        [] Display the matches
+        [*] Authenticatication with frontend
+        [*] Homepage screen
+        [*] Display the player with price on screen
+        [*] Display the tournament
+        [*] Display the matches
         [] Display the players stats and chart of performance
+        [] Made a frontend for the stats
+        [] Made api endpoints for the stats,player and tournament 
+        
     [] Sunday
         [] Made the Trading exchange api
         [] Do the trade 
@@ -73,3 +78,17 @@
 
     [*] How to decide the current price on the basis of past performance
     [*] We are able to calculate the current performace of the player using the points system 
+
+# Facebook Token
+
+    IGQVJVNjB2VEZAKSjR2LU9tZAi16czhPTlZAMZAkNBaU1YWUYxRlRvWUVCd0dWS3B4TEZAtdmpkamNLUEMxWkxwVmd0VHB2eVRWZAGM5UmtqNndyaXktbV9oeFg4WDlTeUlnc2NCcE9uZAFNITl9sYlhrTHpEVwZDZD
+
+
+ffmpeg -i .\init.mp4 -i .\overlay.mp4 -filter_complex "[1:v]scale=320:240 [ov]; [0:v][ov]overlay=10:10" -c:a copy output_video_with_overlay.mp4
+
+#   Commad To add Text watermark
+
+     ffmpeg -i .\10000000_224662343884766_5172096714754494654_n.mp4 -vf "drawtext=text='@saneha_basal_2':x=(w-tw)/2:y=h/2:fontsize=42:fontcolor=white:fontfile=font.ttf:box=1:boxcolor=black@0.5:boxborderw=5" -c:a copy .\output_video_with_overlay.mp4
+
+
+      yt-dlp URL https://www.youtube.com/shorts/DlrouUfAcLc --format 136

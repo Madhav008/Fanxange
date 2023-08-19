@@ -5,7 +5,10 @@ import OrderBook from '../Components/OrderBook'
 import TradeHistory from '../Components/TradeHistory'
 import Order from '../Components/Order'
 import BuySell from '../Components/BuySell'
-import Matches from '../Components/Macthes.json'
+import MatchCard from '../Components/MatchCard'
+import TournamentBar from '../Components/TournamentBar'
+import MenuBar from '../Components/UpcomingMatches'
+import Navbar from '../Components/Navbar'
 const Wazirx = () => {
 
 
@@ -99,7 +102,6 @@ const Wazirx = () => {
   }
 
 
-
   useEffect(() => {
     getMatches();
     getSeries();
@@ -112,47 +114,21 @@ const Wazirx = () => {
   return (
     <div className='min-h-screen mx-2'>
       {/* Navbar */}
-      <div className='flex p-2 w-xl '>
-        <div className=' flex text-xl font-bold hover:bg-gray-900 rounded-full p-3'>
-          <img className="mr-2" src="./src/assets/react.svg" alt="" srcset="" />
-          <h1>Fan</h1><span className='text-accent'>Xange</span>
-        </div>
-        <h1 className='ml-auto font-bold sm:text-lg hover:bg-gray-900 rounded-full p-3 max-w-2 min-h-2'>Invite and Earn</h1>
-      </div>
+      <Navbar/>
+      {/* RightBar */}
+      <MenuBar/>
+     
       {/* Series */}
       <div>
         {/* Tournaments */}
-        <div className='flex space-x-3 flex-wrap px-5'>
-          <p className='text-white text-xs cursor-pointer hover:opacity-50 font-bold'>All Matches({matches?.result.length})</p>
+        <TournamentBar matches={matches} Seies={Seies} />
 
-          {
-            Seies?.map((matches) => {
-              return <p className='text-white text-xs cursor-pointer hover:opacity-50'>{matches.name}({matches.count})</p>
-            })
-          }
-        </div>
         {/* Matches */}
         <div className='overflow-x-scroll flex space-x-2 p-2 cursor-pointer'>
-          {
-            matches?.result.map((match) => {
-              return <div key={match.mactchId} className='card shadow-lg w-max mt-4 bg-slate-900 p-5 hover:opacity-70'>
-                <p className='font-semibold mb-2 text-xs border-b whitespace-nowrap'>{match.title} . {match?.groundName}</p>
-                <div className='flex text-center justify-between align-middle'>
-                  <div>
-                    <img className='rounded-full w-[40px] h-[35px] mt-1' src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci${match.teams[0].imageUrl}`} width="40" height="35" alt="" />
-                    <span className='text-bold text-white whitespace-nowrap'>{match.teams[0].abbreviation}</span>
-                  </div>
-                  <span className='text-bold text-white m-5'>
-                    vs
-                  </span>
-                  <div>
-                    <img className='rounded-full w-[40px] h-[35px] mt-1' src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci${match.teams[1].imageUrl}`} width="40" height="35" alt="" />
-                    <span className='text-bold text-white whitespace-nowrap'>{match.teams[1].abbreviation}</span>
-                  </div>
-                </div>
-              </div>
-            })
-          }
+          {matches?.result.map(match => (
+            <MatchCard match={match} />
+          ))}
+
 
           {/*  <div className='card shadow-lg w-max mt-4 bg-slate-900 p-5 '>
             <div className='flex text-center justify-center align-middle'>
