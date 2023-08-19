@@ -7,7 +7,7 @@ import Order from '../Components/Order'
 import BuySell from '../Components/BuySell'
 import MatchCard from '../Components/MatchCard'
 import TournamentBar from '../Components/TournamentBar'
-import MenuBar from '../Components/UpcomingMatches'
+// import MenuBar from '../Components/MenuBar'
 import Navbar from '../Components/Navbar'
 const Wazirx = () => {
 
@@ -116,7 +116,7 @@ const Wazirx = () => {
       {/* Navbar */}
       <Navbar/>
       {/* RightBar */}
-      <MenuBar/>
+      {/* <MenuBar/> */}
      
       {/* Series */}
       <div>
@@ -124,59 +124,10 @@ const Wazirx = () => {
         <TournamentBar matches={matches} Seies={Seies} />
 
         {/* Matches */}
-        <div className='overflow-x-scroll flex space-x-2 p-2 cursor-pointer'>
+        <div className='overflow-x-scroll flex space-x-2 p-2 cursor-pointer '>
           {matches?.result.map(match => (
             <MatchCard match={match} />
           ))}
-
-
-          {/*  <div className='card shadow-lg w-max mt-4 bg-slate-900 p-5 '>
-            <div className='flex text-center justify-center align-middle'>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/340400/340493.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team1</span>
-              </div>
-              <span className='text-bold text-white m-5'>
-                vs
-              </span>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313100/313114.logo.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team2</span>
-              </div>
-            </div>
-          </div>
-
-          <div className='card shadow-lg w-max mt-4 bg-slate-900 p-5 '>
-            <div className='flex text-center justify-center align-middle'>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/340400/340493.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team1</span>
-              </div>
-              <span className='text-bold text-white m-5'>
-                vs
-              </span>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313100/313114.logo.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team2</span>
-              </div>
-            </div>
-          </div>
-
-          <div className='card shadow-lg w-max mt-4 bg-slate-900 p-5 '>
-            <div className='flex items-center justify-center align-middle'>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/340400/340493.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team1</span>
-              </div>
-              <span className='text-bold text-white m-5'>
-                vs
-              </span>
-              <div>
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313100/313114.logo.png" width="40" height="35" alt="" />
-                <span className='text-bold text-white'>Team2</span>
-              </div>
-            </div>
-          </div> */}
         </div>
 
       </div>

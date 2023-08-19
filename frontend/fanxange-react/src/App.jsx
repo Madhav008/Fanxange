@@ -18,7 +18,8 @@ function App() {
           <Route path="/wazirx" element={<Wazirx />} />
           <Route path="/series" element={<Series />} />
           <Route path="/navneet" element={<Navneet />} />
-          <Route path="/" element={<League />} />
+          <Route path="/league" element={<League />} />
+          <Route path="/" element={<Dashboard />} />
 
 
 
