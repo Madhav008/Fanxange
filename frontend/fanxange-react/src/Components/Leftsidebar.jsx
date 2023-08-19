@@ -1,36 +1,37 @@
 import React from "react";
 import PlayerPriceCard from "./PlayerPriceCard";
+import PlayerTrendCard from "./PlayerTrendCard";
 const LeftSideBar = () => {
   return (
-    <div className="p-3 flex flex-col align-middle items-center max-w-sm">
+    <div className="p-3 flex flex-col align-middle items-center lg:max-w-max sm:w-full">
       <h1 className="text-white text-sm border-b-2 font-bold p-2 text-center w-full mb-2">
         Trending Players
       </h1>
       <div className="flex items-center font-bold justify-evenly w-full">
-        <h1 className="text-sm  hover:bg-red-500 hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
+        <h1 className="text-sm  hover:bg-primary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
           Popular Players
         </h1>
-        <h1 className="text-sm  hover:bg-red-500 hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
+        <h1 className="text-sm  hover:bg-primary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
           New Players
         </h1>
-        <h1 className="text-sm  hover:bg-red-500 hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
+        <h1 className="text-sm  hover:bg-primary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center ">
           Favourite Players
         </h1>
       </div>
 
       {/* Parent with search bar and player table */}
 
-      <div className=" max-h-[xl] ">
+      <div className=" max-h-[xl] lg:max-w-max sm:w-full">
         {" "}
         {/* Set a fixed height here */}
         {/* Player Search Bar */}
         <div className="form-control w-full">
-          <div className="input-group bg-base-300 p-6 rounded-md my-2 shadow-lg shadow-base-950">
+          <div className="input-group rounded-md my-2 shadow-md shadow-neutral">
             <input
               type="text"
               placeholder="Search Players"
-              className="input input-bordered w-full"
-            />
+              className="input  w-full"
+            /> 
             <button className="btn btn-square">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +52,16 @@ const LeftSideBar = () => {
         </div>
         <div className="divider"></div>
         {/* Player Cards */}
-        <div className="h-[720px] overflow-auto">
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
-          <PlayerPriceCard />
+        <div className="h-[720px] overflow-auto pr-3">
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+          <PlayerTrendCard />
+
+   
 
           {/* Add more PlayerPriceCard components as needed */}
         </div>

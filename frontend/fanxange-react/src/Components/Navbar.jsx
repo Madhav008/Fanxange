@@ -32,7 +32,7 @@ const Navbar = () => {
          </nav> */
 
 
-        <div className="navbar bg-base-100 ">
+        <div className="navbar bg-neutral-focus mb-2">
             <div className="flex-1">
                 <div className=' flex text-xl font-bold rounded-full p-3 items-center'>
                     <img src="./src/assets/logo-bg.png" height="50px" width="50px" alt="" srcset="" />
@@ -47,18 +47,20 @@ const Navbar = () => {
                                 <img src="https://pixner.net/spovest/dark/assets/images/user/profile-sm.png" />
                             </div>
                         </label>
-                        <span className='font-semibold'>
+                        <span className='font-semibold cursor-pointer' tabIndex={0}>
                             Madhav Jindal
                         </span>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu lg:menu-lg md:menu-md dropdown-content mt-5 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
                             <a className="justify-between">
                                 Profile
-                                <span className="badge">New</span>
-                            </a>
+                                </a>
                         </li>
                         <li><a>Settings</a></li>
+                        <li><a>Notifications
+                            <span className="badge border-gray-100 text-red-600 font-bold">New</span>
+                        </a></li>
                         <li><a>Logout</a></li>
                     </ul>
                 </div>

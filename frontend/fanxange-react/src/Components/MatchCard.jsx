@@ -3,7 +3,7 @@ import React from 'react'
 const MatchCard = ({ match }) => {
     return (
         <div>
-            <div key={match?.mactchId} className='card shadow-lg w-max mt-4  p-5 hover:opacity-70'>
+            <div key={match?.mactchId} className='bg-neutral card shadow-lg w-max mt-4  p-5 hover:opacity-70'>
                 <div className='flex gap-2 items-center '>
                     <div class="flex items-center align-middle animate-blink mb-1 ml-1">
                         <div class="flex bg-red-500 rounded-full w-1 h-1 text-red-600 items-center">

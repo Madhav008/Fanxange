@@ -86,7 +86,7 @@ const Dashboard = () => {
           </div>
 
         </div>
-        <div className='flex  flex-col lg:flex-row lg:justify-around '>
+        <div className='flex   flex-col-reverse lg:flex-row lg:justify-between '>
 
 
             <LeftSideBar />
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
 
 
-          <div className=' max-w-sm shadow-2xl shadow-slate-800 mt-5 '>
+          <div className=' max-w-sm shadow-2xl shadow-slate-800 mt-5 -order-1 lg:order-1 '>
             <div className='font-bold text-white w-full my-1 border-b-2 text-center'>
               Upcomming Matches
             </div>
