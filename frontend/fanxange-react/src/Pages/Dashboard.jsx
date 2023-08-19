@@ -5,6 +5,7 @@ import UpcomingMatches from '../Components/UpcomingMatches'
 import TournamentBar from '../Components/TournamentBar'
 import MatchCard from '../Components/MatchCard'
 import LeftSideBar from '../Components/Leftsidebar'
+import Middlesidebar from '../Components/Middlesidebar'
 
 
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
 
   async function getMatches() {
     try {
-      const response = await fetch('http://192.168.1.65:3132/match/recent', {
+      const response = await fetch('https://fanxange.depthfirstsearch.tk/match/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -36,7 +37,7 @@ const Dashboard = () => {
 
   async function getSeries() {
     try {
-      const response = await fetch('http://192.168.1.65:3132/series/recent', {
+      const response = await fetch('https://fanxange.depthfirstsearch.tk/series/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -85,14 +86,11 @@ const Dashboard = () => {
           </div>
 
         </div>
-        <div className='flex max-h-[720px] flex-col lg:flex-row lg:justify-between '>
+        <div className='flex  flex-col lg:flex-row lg:justify-around '>
 
-          <LeftSideBar />
-
-          <div className='w-full max-h-max'>
 
             <LeftSideBar />
-          </div>
+            <Middlesidebar />
 
 
 
