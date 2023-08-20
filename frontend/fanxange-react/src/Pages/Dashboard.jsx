@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   async function getMatches() {
     try {
-      const response = await fetch('https://fanxange.depthfirstsearch.tk/match/recent', {
+      const response = await fetch('http://localhost:3132/match/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   async function getSeries() {
     try {
-      const response = await fetch('https://fanxange.depthfirstsearch.tk/series/recent', {
+      const response = await fetch('http://localhost:3132/series/recent', {
         method: "GET",
         credentials: "include",
         headers: {

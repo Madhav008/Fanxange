@@ -73,11 +73,11 @@ const Charts = () => {
                 color: "#1A56DB",
 
             },
-            {
+           /*  {
                 name: "series-2",
                 data: [30, 45, 40, 50, 60, 49, 91, 49, 70,],
                 color:"#fff"
-            }
+            } */
         ]
     })
 
@@ -87,7 +87,8 @@ const Charts = () => {
             <div className="row ">
                 <div className="mixed-chart text-black ">
                     <Chart
-                        height="400px"
+                        height="120px"
+                        width="120px"
                         options={chart.options}
                         series={chart.series}
                         type="area" />

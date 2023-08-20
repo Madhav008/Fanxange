@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi'
+import Charts from './Charts';
 
 
 const PlayerPriceCard = () => {
@@ -23,6 +24,7 @@ const PlayerPriceCard = () => {
                 </div>
             </div>
 
+                <Charts />
 
             <div>
                 <button className='btn btn-outline m-4  btn-success '>Buy</button>
