@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Chart from "react-apexcharts";
 
-const Charts = () => {
+const Charts = ({height,width}) => {
     const [chart, setchart] = useState({
         options: {
             chart: {
@@ -87,8 +87,8 @@ const Charts = () => {
             <div className="row ">
                 <div className="mixed-chart text-black ">
                     <Chart
-                        height="120px"
-                        width="120px"
+                        height={height}
+                        width={width}
                         options={chart.options}
                         series={chart.series}
                         type="area" />

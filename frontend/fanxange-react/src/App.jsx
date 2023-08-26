@@ -11,14 +11,14 @@ import Trade from './Pages/Trade'
 function App() {
   return (
     <>
-   
+
       <Router>
         <Routes>
           <Route path="/home" element={<Hero />} />
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/exchange" element={<Dashboard />} />
           <Route path="/wazirx" element={<Wazirx />} />
           <Route path="/league" element={<League />} />
-          <Route path="/trade" element={<Trade />} />
+          <Route path="/" element={<Trade />} />
 
         </Routes>
       </Router>

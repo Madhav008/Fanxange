@@ -88,18 +88,23 @@ module.exports = {
 async function saveRecentMatchesData(data) {
   try {
 
-    //Create the New Series document
-    const newSeries = new Series({
-      seriesId: data.seriesId,
-      name: data.seriesName
-    })
-
     try {
-      await newSeries.save()
-      console.log("New Series saved")
+      const existingSeries = await Series.findOne({ seriesId: data.seriesId });
+      if (existingSeries) {
+        console.log(`Series with seriesId ${data.seriesId} already exists. Skipping...`);
+      } else {
+        // Create the New Series document
+        const newSeries = new Series({
+          seriesId: data.seriesId,
+          name: data.seriesName
+        });
+        await newSeries.save();
+        console.log("New Series saved");
+      }
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
+
 
     // Create a new RecentMatches document
     const existingMatch = await RecentMatches.findOne({ matchId: data.matchId });
@@ -109,9 +114,9 @@ async function saveRecentMatchesData(data) {
     if (existingMatch) {
       // Update the fields that are not in the database
       existingMatch.name = data.name;
-      existingMatch.title=data.title,
-      existingMatch.groundName=data.groundName,
-      existingMatch.startDate = data.startDate;
+      existingMatch.title = data.title,
+        existingMatch.groundName = data.groundName,
+        existingMatch.startDate = data.startDate;
       existingMatch.endDate = data.endDate;
       existingMatch.seriesName = data.seriesName;
       existingMatch.seriesId = data.seriesId;
@@ -124,8 +129,8 @@ async function saveRecentMatchesData(data) {
       // Create a new document
       const recentMatches = new RecentMatches({
         name: data.name,
-        title:data.title,
-        groundName:data.groundName,
+        title: data.title,
+        groundName: data.groundName,
         startDate: data.startDate,
         endDate: data.endDate,
         seriesName: data.seriesName,
