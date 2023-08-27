@@ -1,3 +1,4 @@
+const redisClient = require('../../redis');
 const RecentMatches = require('../models/Matches');
 const { getTrendingMatches, getLiveScore } = require('./espnApiController');
 
@@ -52,10 +53,10 @@ async function getAllMatches(req, res) {
 }
 
 async function getLiveMacthes(req, res) {
-    const recentMatches = await getTrendingMatches()
 
-    const matches = recentMatches?.trendingMatches.matches;
 
+    const matches = await getCachedOrFreshTrendingMatches();
+    
     var liveMatches = [];
 
     for (const match of matches) {
@@ -177,6 +178,23 @@ async function getFinishedMacthes(req, res) {
 
 
 module.exports = { getRecentMacthes, getAllMatches, getLiveMacthes, getUpcommingMacthes, getFinishedMacthes }
+
+
+
+
+// Function to get cached or fresh trending matches data
+async function getCachedOrFreshTrendingMatches() {
+    const cachedMatches = await redisClient.get('trendingMatches');
+
+    if (cachedMatches) {
+        return JSON.parse(cachedMatches);
+    } else {
+        const recentMatches = await getTrendingMatches();
+        const matches = recentMatches?.trendingMatches.matches;
+        await redisClient.setex('trendingMatches', 3600, JSON.stringify(matches));
+        return matches;
+    }
+}
 
 
 

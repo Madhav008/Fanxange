@@ -8,13 +8,9 @@ const isAuthenticated = require('./api/midleware/authmiddlware');
 const morgan = require('morgan');
 const cors = require('cors');
 const cookieParser = require("cookie-parser"); // parse cookie header
-
 require('./initDB')();
 
 app.use(morgan('dev'));
-
-// Middleware and other configurations
-
 
 // Add express-session middleware
 app.use(
