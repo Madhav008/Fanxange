@@ -4,6 +4,7 @@ import PlayerPointsChart from '../Components/PlayerPointsChart'
 import PlayerPriceChart from '../Components/PlayerPriceChart'
 import PlayerProfile from '../Components/PlayerProfile'
 import UpcomingMatches from '../Components/UpcomingMatches'
+import RecentMatches from '../Components/RecentMatches'
 
 
 const Trade = () => {
@@ -64,14 +65,14 @@ const Trade = () => {
     <div>
       <Navbar />
       <PlayerProfile />
-      <div className='flex flex-col lg:flex-row  w-full gap-2 justify-between h-[400px]'>
+      <div className='flex flex-col lg:flex-row  w-full gap-2 justify-between'>
         <div className='flex flex-col lg:flex-row gap-3 justify-between w-full h-full'>
           <PlayerPointsChart />
           <PlayerPriceChart />
         </div>
       </div>
 
-      <div className='flex mx-auto max-w-4xl items-center align-middle justify-evenly my-6'>
+      {/*  <div className='flex mx-auto max-w-4xl items-center align-middle justify-evenly my-6'>
         <button className='border-2 font-bold text-sm  hover:bg-gradient-to-r from-[#fd746c]  to-[#ff9068] text-white rounded-full w-[200px] uppercase p-4 bg-transparent'>
           Buy SHARES
         </button>
@@ -91,7 +92,14 @@ const Trade = () => {
 
           </div>
         </div>
+      </div> */}
+
+
+
+      <div className='h-[500px] overflow-y-auto'>
+        <RecentMatches />
       </div>
+
     </div>
   )
 }

@@ -54,12 +54,15 @@ const PlayerPriceChart = () => {
                 width: 6,
             },
             xaxis: {
-                categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+                categories: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb'],
                 labels: {
                     show: false,
+                    style:{
+                        colors:"#fff"
+                    }
                 },
                 axisBorder: {
-                    show: false,
+                    show: true,
                 },
                 axisTicks: {
                     show: false,

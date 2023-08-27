@@ -60,7 +60,7 @@ const PlayerPointsChart = () => {
                     show: false,
                 },
                 axisBorder: {
-                    show: false,
+                    show: true,
                 },
                 axisTicks: {
                     show: false,
