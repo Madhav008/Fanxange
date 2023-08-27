@@ -18,6 +18,8 @@ const UpcomingMatches = ({match}) => {
                     <span className='text-bold text-white whitespace-nowrap'>{match.teams[1]?.abbreviation}</span>
                 </div>
             </div>
+            <p className='font-semibold mb-2 text-xs border-b whitespace-nowrap'>{match.title} . {match.groundName}</p>
+
         </div>
     )
 }

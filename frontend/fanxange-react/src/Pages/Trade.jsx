@@ -11,7 +11,7 @@ const Trade = () => {
 
   async function getMatches() {
     try {
-      const response = await fetch('http://192.168.1.65:3132/match/recent', {
+      const response = await fetch('http://192.168.1.65::3132/match/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -34,7 +34,7 @@ const Trade = () => {
 
   async function getSeries() {
     try {
-      const response = await fetch('http://localhost:3132/series/recent', {
+      const response = await fetch('http://192.168.1.65:3132/series/recent', {
         method: "GET",
         credentials: "include",
         headers: {

@@ -1,6 +1,6 @@
 import React from "react";
 import PlayerPriceCard from "./PlayerPriceCard";
-import PlayerTrendCard from "./PlayerTrendCard";
+import PlayerTrendCard from "./Unused/PlayerTrendCard";
 const LeftSideBar = () => {
   return (
     <div className="p-3 flex flex-col align-middle items-center lg:max-w-max sm:w-full">

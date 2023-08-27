@@ -83,7 +83,11 @@ async function getLiveMacthes(req, res) {
                 //     matchInfo.teamScoreInfo = liveMatch.teams[1].scoreInfo;
                 // }
             } else {
-                matchInfo.status = "Cancelled";
+                matchInfo.status = liveMatch.status;
+                matchInfo.title = liveMatch.title;
+                matchInfo.teams = liveMatch.teams;
+                matchInfo.statusText = liveMatch.statusText;
+                matchInfo.ground = liveMatch.ground.smallName;
             }
             liveMatches.push(matchInfo);
         }
@@ -146,7 +150,7 @@ async function getFinishedMacthes(req, res) {
 
         if (match.state == 'POST') {
             const matchInfo = {};
-            matchInfo.state = 'PRE';
+            matchInfo.state = 'POST';
             const matchStartTime = new Date(match.startTime);
             const statusText = getMatchStatusText(matchStartTime, match.statusText);
             const formattedDate = formatDateAndTime(match.startTime)

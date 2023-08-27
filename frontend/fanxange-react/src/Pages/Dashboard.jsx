@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   async function getMatches() {
     try {
-      const response = await fetch('http://localhost:3132/match/recent', {
+      const response = await fetch('http://192.168.1.65:3132/match/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   async function getSeries() {
     try {
-      const response = await fetch('http://localhost:3132/series/recent', {
+      const response = await fetch('http://192.168.1.65:3132/series/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -89,8 +89,8 @@ const Dashboard = () => {
         <div className='flex   flex-col-reverse lg:flex-row lg:justify-between '>
 
 
-            <LeftSideBar />
-            <Middlesidebar />
+          <LeftSideBar />
+          <Middlesidebar />
 
 
 
@@ -109,7 +109,7 @@ const Dashboard = () => {
 
 
 
-    
+
 
 
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import Charts from '../Components/Charts'
-import OrderBook from '../Components/OrderBook'
-import TradeHistory from '../Components/TradeHistory'
-import Order from '../Components/Order'
-import BuySell from '../Components/BuySell'
-import MatchCard from '../Components/MatchCard'
-import TournamentBar from '../Components/TournamentBar'
+import Charts from '../Charts'
+import OrderBook from './OrderBook'
+import TradeHistory from './TradeHistory'
+import Order from './Order'
+import BuySell from '../BuySell'
+import MatchCard from '../MatchCard'
+import TournamentBar from '../TournamentBar'
 // import MenuBar from '../Components/MenuBar'
-import Navbar from '../Components/Navbar'
+import Navbar from '../Navbar'
 const Wazirx = () => {
 
 
@@ -58,7 +58,7 @@ const Wazirx = () => {
 
   async function getSeries() {
     try {
-      const response = await fetch('http://localhost:3132/series/recent', {
+      const response = await fetch('http://192.168.1.65:3132/series/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -81,7 +81,7 @@ const Wazirx = () => {
 
   async function getMatches() {
     try {
-      const response = await fetch('http://localhost:3132/match/recent', {
+      const response = await fetch('http://192.168.1.65:3132/match/recent', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -114,10 +114,10 @@ const Wazirx = () => {
   return (
     <div className='min-h-screen mx-2'>
       {/* Navbar */}
-      <Navbar/>
+      <Navbar />
       {/* RightBar */}
       {/* <MenuBar/> */}
-     
+
       {/* Series */}
       <div>
         {/* Tournaments */}
