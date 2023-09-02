@@ -56,7 +56,7 @@ async function getLiveMacthes(req, res) {
 
 
     const matches = await getCachedOrFreshTrendingMatches();
-    
+
     var liveMatches = [];
 
     for (const match of matches) {
@@ -68,27 +68,22 @@ async function getLiveMacthes(req, res) {
             const liveMatch = await getLiveScore(matchId, seriesId)
 
             const matchInfo = {};
+            matchInfo.matchId = match.objectId;
+            matchInfo.seriesId = match.series.objectId;
             if (liveMatch.status === "Live" && !liveMatch.isCancelled) {
                 matchInfo.title = liveMatch.title;
                 matchInfo.teams = liveMatch.teams;
                 matchInfo.statusText = liveMatch.statusText;
-                matchInfo.ground = liveMatch.ground.smallName;
+                matchInfo.groundName = liveMatch.ground.smallName;
                 matchInfo.status = "Live";
-                // if (liveMatch.teams[0].isLive) {
-                //     matchInfo.teamBatting = "Team 1";
-                //     matchInfo.teamScore = liveMatch.teams[0].score;
-                //     matchInfo.teamScoreInfo = liveMatch.teams[0].scoreInfo;
-                // } else if (liveMatch.teams[1].isLive) {
-                //     matchInfo.teamBatting = "Team 2";
-                //     matchInfo.teamScore = liveMatch.teams[1].score;
-                //     matchInfo.teamScoreInfo = liveMatch.teams[1].scoreInfo;
-                // }
+
+
             } else {
                 matchInfo.status = liveMatch.status;
                 matchInfo.title = liveMatch.title;
                 matchInfo.teams = liveMatch.teams;
                 matchInfo.statusText = liveMatch.statusText;
-                matchInfo.ground = liveMatch.ground.smallName;
+                matchInfo.groundName = liveMatch.ground.smallName;
             }
             liveMatches.push(matchInfo);
         }
@@ -115,6 +110,8 @@ async function getUpcommingMacthes(req, res) {
         const team2 = match.teams[1].team.name;
         if (match.state == 'PRE' && team1 !== "TBA" && team2 !== "TBA") {
             const matchInfo = {};
+            matchInfo.matchId = match.objectId;
+            matchInfo.seriesId = match.series.objectId;
             matchInfo.state = 'PRE';
             const matchStartTime = new Date(match.startTime);
             const statusText = getMatchStatusText(matchStartTime, match.statusText);
@@ -123,7 +120,7 @@ async function getUpcommingMacthes(req, res) {
             matchInfo.statusText = statusText
             matchInfo.matchTime = formattedDate
             matchInfo.teams = match.teams;
-            matchInfo.ground = match.ground.smallName
+            matchInfo.groundName = match.ground.smallName
 
 
             liveMatches.push(matchInfo)
@@ -151,6 +148,8 @@ async function getFinishedMacthes(req, res) {
 
         if (match.state == 'POST') {
             const matchInfo = {};
+            matchInfo.matchId = match.objectId;
+            matchInfo.seriesId = match.series.objectId;
             matchInfo.state = 'POST';
             const matchStartTime = new Date(match.startTime);
             const statusText = getMatchStatusText(matchStartTime, match.statusText);
@@ -159,7 +158,7 @@ async function getFinishedMacthes(req, res) {
             matchInfo.statusText = statusText
             matchInfo.matchTime = formattedDate
             matchInfo.teams = match.teams;
-            matchInfo.ground = match.ground.smallName
+            matchInfo.groundName = match.ground.smallName
 
 
             liveMatches.push(matchInfo)
@@ -175,9 +174,24 @@ async function getFinishedMacthes(req, res) {
 }
 
 
+async function getMatchInfo(req, res) {
+    const {  matchId,seriesId } = req.body;
+    try {
+        const matches = await RecentMatches.find({
+            seriesId: seriesId,
+            matchId: matchId
+        })
+        res.status(200).json({matches})
+    } catch (error) {
+        console.log(error.message);
+        res.status(503).json({ error: error.message });
+    }
 
 
-module.exports = { getRecentMacthes, getAllMatches, getLiveMacthes, getUpcommingMacthes, getFinishedMacthes }
+}
+
+
+module.exports = { getMatchInfo, getRecentMacthes, getAllMatches, getLiveMacthes, getUpcommingMacthes, getFinishedMacthes }
 
 
 
@@ -187,11 +201,13 @@ async function getCachedOrFreshTrendingMatches() {
     const cachedMatches = await redisClient.get('trendingMatches');
 
     if (cachedMatches) {
+        console.log("CACHE HIT")
         return JSON.parse(cachedMatches);
     } else {
+        console.log("CACHE MISS")
         const recentMatches = await getTrendingMatches();
         const matches = recentMatches?.trendingMatches.matches;
-        await redisClient.setex('trendingMatches', 3600, JSON.stringify(matches));
+        await redisClient.setEx('trendingMatches', 360, JSON.stringify(matches));
         return matches;
     }
 }

@@ -10,10 +10,9 @@ const PlayerStatsSchema = new mongoose.Schema({
     price: Number,
     teamId: String,
     isInjured: Boolean,
-    image: String,
+    image: Object,
     longName: String,
-    country: String,
-    countryImage: String,
+    imageUrl:String,
 });
 
 const PlayerStats = mongoose.model('PlayerStats', PlayerStatsSchema);

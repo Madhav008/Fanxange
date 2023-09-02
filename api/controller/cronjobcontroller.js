@@ -7,6 +7,7 @@ const BattingStats = require('../models/PlayerBattingStats');
 const BowlingStats = require('../models/PlayerBowlingStats');
 const FieldingStats = require('../models/PlayerFieldingStats');
 const Series = require('../models/Series');
+const { updatePlayerDataInDatabase } = require('./playerController');
 
 let cronJob;
 
@@ -179,14 +180,15 @@ async function saveRecentMatchesData(data) {
           // console.log(`Player with playerId ${player.playerId} already exists. Skipping...`);
           continue;
         }
-
         const playerdata = new PlayerStats({
           name: player.name,
           playerId: player.playerId,
           teamId: player.teamId,
         });
 
-        await playerdata.save();
+        playerdata.save().then(async () => {
+          await updatePlayerDataInDatabase(player.playerId);
+        });
         console.log('Player Data saved successfully!');
       } catch (error) {
         console.log(error.message);

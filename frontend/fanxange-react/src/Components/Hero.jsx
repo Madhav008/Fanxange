@@ -57,7 +57,7 @@ const Hero = () => {
 
             <div className='flex justify-between p-2 items-center'>
                 <div className='flex space-x-1 text-center font-bold text-3xl items-center'>
-                    <img src="./src/assets/react.svg" alt="" srcset="" />
+                    <img src="./src/assets/react.svg" alt="" srcSet="" />
                     <span className='text-accent'>Fan</span>Xange
                 </div>
 
@@ -107,7 +107,7 @@ const Hero = () => {
                 </div>
                 <div className='flex justify-center w-max mx-auto '>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold'>
-                        <div className='border card p-2 m-5'><img src="./src/assets/imps.svg" alt="" srcset="" /></div>
+                        <div className='border card p-2 m-5'><img src="./src/assets/imps.svg" alt="" srcSet="" /></div>
                         <div className=' border card p-2 m-5'><img src="./src/assets/paytm.svg" alt="" /></div>
                         <div className=' border card p-2 m-5'><img src="./src/assets/upi.svg" alt="" /></div>
                     </div>

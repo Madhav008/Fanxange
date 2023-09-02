@@ -1,8 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PlayerPriceCard from './PlayerPriceCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { setTeams } from '../store/teamSlice'
+
 
 
 const Middlesidebar = () => {
+
+
+    const [players, setPlayers] = useState([])
+
+
+
+    const { teamData, matchData } = useSelector((state) => state.match);
+
+
+    const dispatch = useDispatch();
+    const { teamA, teamB ,teams} = useSelector((state) => state.team);
+
+    
+    useEffect(() => {
+        if (teamData && teamData.length > 0) {
+            setPlayers(teamData)
+        }
+    }, [teamData])
+    
+    
+    useEffect(() => {
+        if (matchData && matchData.matches) {
+            dispatch(setTeams({ players, matchData }));
+        }
+    }, [dispatch,players]);
+
+
+
+
+
     return (
         <div className='p-3 flex flex-col align-middle items-center w-full'>
             <h1 className='text-white text-sm border-b-2 font-semibold p-2 text-center w-full mb-2'>Current Match Players</h1>
@@ -20,10 +53,10 @@ const Middlesidebar = () => {
                     </div>
                 </div>
                 <div className='flex items-center'>
-                    <h1 className='text-sm  hover:bg-secondary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center break-words whitespace-nowrap'>Team A Players</h1>
-                    <h1 className='text-sm  hover:bg-secondary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center break-words whitespace-nowrap'>Team B Players</h1>
-                </div>  
-                  </div>
+                    <h1 className='text-sm  hover:bg-secondary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center break-words whitespace-nowrap'>{teams[0].longName}</h1>
+                    <h1 className='text-sm  hover:bg-secondary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center break-words whitespace-nowrap'>{teams[1].longName}</h1>
+                </div>
+            </div>
 
             {/* Parent with search bar and player table */}
 
@@ -32,20 +65,26 @@ const Middlesidebar = () => {
                 <div className='divider'></div>
                 {/* Player Cards */}
                 <div className='h-[720px] overflow-auto'>
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-                    <PlayerPriceCard />
-
-                    {/* Add more PlayerPriceCard components as needed */}
+                    {players.length === 0 ? (
+                        // Render a loading indicator here when 'players' is empty
+                        <div>Loading...</div>
+                    ) : (
+                        // Render the player cards when 'players' is not empty
+                        players.map((player) => (
+                            <PlayerPriceCard key={player.playerId} player={player} />
+                        ))
+                    )}
                 </div>
+
+
             </div>
         </div>
     )
+
+
 }
 
 export default Middlesidebar
+
+
+

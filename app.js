@@ -54,6 +54,13 @@ app.use('/match', matches)
 const series = require('./api/routes/series')
 app.use('/series', series)
 
+
+
+const player = require('./api/routes/player')
+app.use('/player', player)
+
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

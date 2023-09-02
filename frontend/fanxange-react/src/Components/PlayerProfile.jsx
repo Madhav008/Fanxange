@@ -50,10 +50,10 @@ const PlayerProfile = () => {
 
       <dialog id="my_modal_2" className="modal">
         {/* <form method="dialog" className="modal-box p-0 "> */}
-        <div class=" modal-box  p-0 relative w-full  max-h-full">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div className=" modal-box  p-0 relative w-full  max-h-full">
+          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
 
-            <div class=" text-center">
+            <div className=" text-center">
 
               <BuySell />
 

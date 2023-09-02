@@ -1,71 +1,23 @@
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Navbar from '../Components/Navbar'
 import UpcomingMatches from '../Components/UpcomingMatches'
 import TournamentBar from '../Components/TournamentBar'
 import MatchCard from '../Components/MatchCard'
 import LeftSideBar from '../Components/Leftsidebar'
 import Middlesidebar from '../Components/Middlesidebar'
+import { useGetLiveMatchesQuery, useGetMatchInfoQuery, useGetMatchResultsQuery, useGetRecentMatchQuery, useGetSeriesQuery, useGetUpcomingMatchesQuery } from '../services/fanxangeApi'
 
 
 const Dashboard = () => {
 
 
+  const { data: liveMatches } = useGetLiveMatchesQuery()
+  const { data: upcomingMatches } = useGetUpcomingMatchesQuery()
+  const { data: matchResults } = useGetMatchResultsQuery()
+  const { data: match } = useGetRecentMatchQuery()
+  const { data: Series } = useGetSeriesQuery()
 
-  async function getMatches() {
-    try {
-      const response = await fetch('http://192.168.1.65:3132/match/recent', {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      }); // Replace <series API endpoint> with the actual endpoint URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch matches');
-      }
-      const matches = await response.json();
-      setMatches(matches);
-    } catch (error) {
-      console.log(error.message);
-      return null;
-    }
-  }
-
-
-  async function getSeries() {
-    try {
-      const response = await fetch('http://192.168.1.65:3132/series/recent', {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      }); // Replace <series API endpoint> with the actual endpoint URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch series');
-      }
-      const series = await response.json();
-      setSeies(series);
-    } catch (error) {
-      console.log(error.message);
-      return null;
-    }
-  }
-
-
-  useEffect(() => {
-    getMatches();
-    getSeries();
-
-  }, [])
-
-  const [match, setMatches] = useState()
-  const [Seies, setSeies] = useState()
 
 
   return (
@@ -76,11 +28,15 @@ const Dashboard = () => {
         {/* Series */}
         <div>
           {/* Tournaments */}
-          <TournamentBar matches={match} Seies={Seies} />
+          <TournamentBar matches={match} Series={Series} />
 
           {/* Matches */}
           <div className='overflow-x-scroll flex space-x-2 p-2 cursor-pointer '>
-            {match?.result.map(match => (
+            {liveMatches?.liveMatches.map(match => (
+              <MatchCard match={match} />
+            ))}
+
+            {matchResults?.liveMatches.map(match => (
               <MatchCard match={match} />
             ))}
           </div>
@@ -99,8 +55,9 @@ const Dashboard = () => {
               Upcomming Matches
             </div>
             <div className='overflow-y-auto h-[930px]'>
-              {match?.result.map((m, index) => (
-                <UpcomingMatches key={index} match={m} />
+              {upcomingMatches?.liveMatches.map((m, index) => (
+                  <UpcomingMatches key={index} match={m} />
+                
               ))}
             </div>
           </div>
@@ -115,6 +72,9 @@ const Dashboard = () => {
 
     </div>
   )
+
+
+
 }
 
 export default Dashboard

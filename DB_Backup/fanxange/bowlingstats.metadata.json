@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"9bdafc7aefbd44bab23f710df20f1ebc","collectionName":"bowlingstats","type":"collection"}

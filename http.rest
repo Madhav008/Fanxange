@@ -1,0 +1,14 @@
+POST http://192.168.1.65:3132/player/ HTTP/1.1
+content-type: application/json
+
+{"seriesId":"1378852","matchId":"1378859"}
+
+
+###
+GET https://hs-consumer-api.espncricinfo.com/v1/pages/player/matches?playerId=1070173
+
+###
+GET http://localhost:3132/corn/start
+
+###
+GET http://localhost:3132/corn/status
