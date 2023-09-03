@@ -33,11 +33,11 @@ const Dashboard = () => {
           {/* Matches */}
           <div className='overflow-x-scroll flex space-x-2 p-2 cursor-pointer '>
             {liveMatches?.liveMatches.map(match => (
-              <MatchCard match={match} />
+              <MatchCard key={match.matchId} match={match} />
             ))}
 
             {matchResults?.liveMatches.map(match => (
-              <MatchCard match={match} />
+              <MatchCard key={match.matchId} match={match} />
             ))}
           </div>
 

@@ -4,7 +4,8 @@ const apiController = require('../controller/playerController');
 
 // Example protected API route
 router.post('/', apiController.getPlayersByTeam);
-router.post('/data', apiController.getTeamsPlayers);
+router.post('/teams', apiController.getTeamPlayers);
+router.post('/data', apiController.getPlayer);
 
 
 

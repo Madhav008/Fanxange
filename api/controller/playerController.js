@@ -85,7 +85,7 @@ async function updatePlayerDataInDatabase(playerId) {
     }
 }
 
-async function getTeamsPlayers(req, res) {
+async function getPlayer(req, res) {
     const { playerId } = req.body;
 
     try {
@@ -138,5 +138,20 @@ async function getPlayersByTeam(req, res) {
     }
 }
 
+async function getTeamPlayers(req, res) {
+    const { temaId } = req.body;
 
-module.exports = { getTeamsPlayers,getPlayersByTeam,updatePlayerDataInDatabase };
+    try {
+        // First get the match from the matchid
+        const finalPlayers = await PlayerStats.find({
+            temaId,
+        });
+
+        res.status(200).json(finalPlayers);
+    } catch (error) {
+        console.error(error);
+        // Handle any unexpected errors with a 500 status code
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+module.exports = { getPlayer, getPlayersByTeam, updatePlayerDataInDatabase,getTeamPlayers };

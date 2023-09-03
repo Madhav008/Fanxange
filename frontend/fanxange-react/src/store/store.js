@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     [fanxangeApi.reducerPath]: fanxangeApi.reducer,
     match: matchReducer,
-    team: teamReducer
+    // team: teamReducer
 
   },
   middleware: (getDefaultMiddleware) =>

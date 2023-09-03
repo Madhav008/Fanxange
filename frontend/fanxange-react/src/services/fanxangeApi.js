@@ -38,7 +38,6 @@ export const fanxangeApi = createApi({
         method: 'POST',
         body: match
       }),
-      invalidatesTags: ['Match']
     }),
 
     getPlayerInfo: builder.query({
@@ -62,7 +61,15 @@ export const fanxangeApi = createApi({
         }
       }),
     }),
-
+    getTeamPlayers: builder.query({
+      query: ({ temaId, matchId }) => ({
+        url: '/teams',
+        method: 'POST',
+        body: {
+          teamId, matchId
+        }
+      }),
+    }),
 
   }),
 })

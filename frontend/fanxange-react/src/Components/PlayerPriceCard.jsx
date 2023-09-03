@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi'
 import Charts from './Charts';
-import { useGetPlayerInfoQuery } from '../services/fanxangeApi';
 
 
 const PlayerPriceCard = ({ player }) => {
-    const [query, setquery] = useState([])
-
-    const { data: playerdata } = useGetPlayerInfoQuery(query)
 
     // useEffect(() => {
     //     setquery({ playerId: player.playerId, teamId: player.teamId })

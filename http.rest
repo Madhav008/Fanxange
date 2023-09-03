@@ -12,3 +12,15 @@ GET http://localhost:3132/corn/start
 
 ###
 GET http://localhost:3132/corn/status
+
+###
+POST http://192.168.1.65:3132/player/teams/ HTTP/1.1
+content-type: application/json
+
+{"teamId":6}
+
+###
+POST http://192.168.1.65:3132/match/info  HTTP/1.1
+content-type: application/json
+
+{"matchId":1388397,"seriesId":1388374}
