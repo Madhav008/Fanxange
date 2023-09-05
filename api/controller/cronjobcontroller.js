@@ -109,9 +109,7 @@ async function saveRecentMatchesData(data) {
 
     // Create a new RecentMatches document
     const existingMatch = await RecentMatches.findOne({ matchId: data.matchId });
-    if (data.matchId === "1347700") {
-      console.log(data.teams)
-    }
+
     if (existingMatch) {
       // Update the fields that are not in the database
       existingMatch.name = data.name;
@@ -177,19 +175,19 @@ async function saveRecentMatchesData(data) {
       try {
         const existingPlayer = await PlayerStats.findOne({ playerId: player.playerId });
         if (existingPlayer) {
-          // console.log(`Player with playerId ${player.playerId} already exists. Skipping...`);
-          continue;
-        }
-        const playerdata = new PlayerStats({
-          name: player.name,
-          playerId: player.playerId,
-          teamId: player.teamId,
-        });
 
-        playerdata.save().then(async () => {
           await updatePlayerDataInDatabase(player.playerId);
-        });
-        console.log('Player Data saved successfully!');
+        } else {
+          const playerdata = new PlayerStats({
+            name: player.name,
+            playerId: player.playerId,
+            teamId: player.teamId,
+          });
+          playerdata.save();
+          await updatePlayerDataInDatabase(player.playerId);
+
+          console.log('Player Data saved successfully!');
+        }
       } catch (error) {
         console.log(error.message);
       }
