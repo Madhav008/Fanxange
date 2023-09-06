@@ -1,9 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fanxangeApi } from '../services/fanxangeApi';
+
+
+export const STATUSES = Object.freeze({
+    IDLE: 'idle',
+    ERROR: 'error',
+    LOADING: 'loading',
+});
+
+
 
 const initialState = {
-    teams:{},
-    teamA: [],
-    teamB: [],
+    teamData: [],
+    team: [],
+    teamStatus: STATUSES.IDLE
 };
 
 export const teamSlice = createSlice({
@@ -11,33 +21,44 @@ export const teamSlice = createSlice({
     initialState,
     reducers: {
         setTeams: (state, action) => {
-            const { players, matchData } = action.payload;
-            if (matchData && matchData.matches && players) {
-                const firstMatch = matchData.matches[0];
-                if (firstMatch && players) {
-                    const { teams } = firstMatch;
-                    state.teams = teams;
-                    state.teamA = [];
-                    state.teamB = [];
-
-                    // Push players into teamA and teamB
-                    players.forEach(player => {
-                        if (player.teamId == teams[0].objectId) {
-                            state.teamA.push(player);
-                        }
-                        if (player.teamId == teams[1].objectId) {
-                            state.teamB.push(player);
-                        }
-                    });
-                }
-            }
+            state.team = [];
+            state.teamData = action.payload;
         },
+        setTeamStatus: (state, action) => {
+            state.teamStatus = action.payload;
+        },
+
+        getTeamPlayer: (state, action) => {
+            state.teamStatus = STATUSES.LOADING
+            state.team = [];
+            state.teamData.forEach((player) => {
+                if (action.payload == player.teamId) {
+                    state.team.push(player);
+                }
+            })
+            state.teamStatus = STATUSES.IDLE
+        },
+
+
     },
 });
 
 
-export const { setTeams } = teamSlice.actions;
-
-
-
+export const { setTeams, setTeamStatus, getTeamPlayer } = teamSlice.actions;
 export default teamSlice.reducer;
+
+
+export function fetchTeams(query) {
+    return async function fetchThunk(dispatch, getState) {
+        
+        dispatch(setTeamStatus(STATUSES.LOADING));
+        try {
+            const data = await fanxangeApi.getTeamData(query);
+            dispatch(setTeams(data));
+            dispatch(setTeamStatus(STATUSES.IDLE));
+        } catch (err) {
+            console.log(err);
+            dispatch(setTeamStatus(STATUSES.ERROR));
+        }
+    };
+}

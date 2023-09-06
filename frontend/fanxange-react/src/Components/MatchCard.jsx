@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useGetMatchInfoQuery, useGetTeamDataQuery } from '../services/fanxangeApi';
+import React from 'react'
+import { fetchMatchData } from '../store/matchSlice';
 import { useDispatch } from 'react-redux';
-import { setMatchData, setTeamData } from '../store/matchSlice';
+import { fetchTeams } from '../store/teamSlice';
 
 const MatchCard = ({ match }) => {
-    const [query, setquery] = useState({})
-    const { data: matchInfo } = useGetMatchInfoQuery(query);
-    const { data: teamdata } = useGetTeamDataQuery(query)
-
-
     const dispatch = useDispatch();
-
     const handleQuery = () => {
-        setquery({
+        dispatch(fetchMatchData({
             matchId: match.matchId,
             seriesId: match.seriesId,
-        })
+        }))
 
+        dispatch(fetchTeams({
+            seriesId: match.seriesId,
+            matchId: match.matchId,
+        }))
     }
 
-    useEffect(() => {
-        if (matchInfo) {
-            dispatch(setMatchData(matchInfo))
-        }
-
-        if (teamdata) {
-            dispatch(setTeamData(teamdata))
-        }
-    }, [matchInfo, query,teamdata])
     return (
         <div>
             <div onClick={handleQuery} key={match?.mactchId} className='bg-neutral card shadow-lg w-[350px] mt-4  p-5 hover:opacity-70 '>
