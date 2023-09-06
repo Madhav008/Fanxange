@@ -11,7 +11,7 @@ COPY . .
 RUN npm install -g serve
 
 # Expose the port that the app will run on
-EXPOSE 5000
+EXPOSE 5125
 
 # Start the React app using serve, explicitly specifying the port
-CMD ["serve", "-s", "dist", "-l", "5000"]
+CMD ["serve", "-s", "dist", "-l", "5125"]
