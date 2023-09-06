@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://192.168.1.65:3132/';
+const baseURL = 'https://fanxange.depthfirstsearch.tk/';
 
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
