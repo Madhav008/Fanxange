@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Hero />} />
           <Route path="/" element={<Dashboard />} />
-          <Route path="/trade" element={<Trade />} />
+          <Route path="/player/:playerId" element={<Trade />} />
 
         </Routes>
       </Router>

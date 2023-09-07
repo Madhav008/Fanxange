@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi'
 import Charts from './Charts';
 
 
 const PlayerPriceCard = ({ player }) => {
-
-    // useEffect(() => {
-    //     setquery({ playerId: player.playerId, teamId: player.teamId })
-    // }, [player])
-
+ 
 
     return (
         <div className='flex bg-base-200 rounded-lg p-3 align-middle items-center justify-evenly w-full mb-2 '>

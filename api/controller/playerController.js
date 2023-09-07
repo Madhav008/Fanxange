@@ -92,7 +92,6 @@ async function getPlayer(req, res) {
 
         // Update the database with the new data
         const updatedPlayer = await updatePlayerDataInDatabase(playerId);
-
         // Return the updated player data
         res.status(200).json({ player: updatedPlayer });
     } catch (err) {

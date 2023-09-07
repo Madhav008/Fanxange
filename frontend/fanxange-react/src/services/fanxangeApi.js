@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://fanxange.depthfirstsearch.tk/';
+const baseURL = 'http://192.168.1.65:3132';
 
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
@@ -14,9 +14,11 @@ const apiEndpoints = {
   getRecentMatch: '/match/recent',
   getSeries: '/series/recent',
   getMatchInfo: '/match/info',
-  getPlayerInfo: '/player/data',
   getTeamData: '/player',
-  getTeamPlayers: '/teams',
+  getPlayerInfo: '/player/data',
+  getTeamInfo: '/team/teamInfo',
+
+
 };
 
 // Define functions to make Axios requests for your endpoints
@@ -41,11 +43,11 @@ export const fanxangeApi = {
   getSeries: () => makeRequest(apiEndpoints.getSeries),
   getMatchInfo: ({ matchId, seriesId }) =>
     makeRequest(apiEndpoints.getMatchInfo, 'POST', { matchId, seriesId }),
-  getPlayerInfo: ({ playerId, teamId }) =>
-    makeRequest(apiEndpoints.getPlayerInfo, 'POST', { playerId, teamId }),
+  getPlayerInfo: (playerId) =>
+    makeRequest(apiEndpoints.getPlayerInfo, 'POST', { playerId }),
   getTeamData: ({ seriesId, matchId }) =>
     makeRequest(apiEndpoints.getTeamData, 'POST', { seriesId, matchId }),
-  getTeamPlayers: ({ teamId, matchId }) =>
-    makeRequest(apiEndpoints.getTeamPlayers, 'POST', { teamId, matchId }),
+  getTeamInfo: (teamId) =>
+    makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId}),
 };
 

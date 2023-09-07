@@ -5,62 +5,32 @@ import PlayerPriceChart from '../Components/PlayerPriceChart'
 import PlayerProfile from '../Components/PlayerProfile'
 import UpcomingMatches from '../Components/UpcomingMatches'
 import RecentMatches from '../Components/RecentMatches'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchplayer } from '../store/playerSlice'
 
 
 const Trade = () => {
 
-  async function getMatches() {
-    try {
-      const response = await fetch('http://192.168.1.65::3132/match/recent', {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      }); // Replace <series API endpoint> with the actual endpoint URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch matches');
-      }
-      const matches = await response.json();
-      setMatches(matches);
-    } catch (error) {
-      console.log(error.message);
-      return null;
-    }
-  }
 
-
-  async function getSeries() {
-    try {
-      const response = await fetch('http://192.168.1.65:3132/series/recent', {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      }); // Replace <series API endpoint> with the actual endpoint URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch series');
-      }
-      const series = await response.json();
-      setSeies(series);
-    } catch (error) {
-      console.log(error.message);
-      return null;
-    }
-  }
-
+  const { playerId } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getMatches();
+    dispatch(fetchplayer(playerId));
   }, [])
 
-  const [match, setMatches] = useState()
-  const [Seies, setSeies] = useState()
+
+  const { status } = useSelector((state) => state.player);
+
+
+  if (status == 'loading') {
+    return <div>
+      Loading ... 
+    </div>
+  }
+
+
   return (
     <div>
       <Navbar />

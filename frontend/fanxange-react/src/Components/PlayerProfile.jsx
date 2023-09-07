@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BiSolidDownArrow, BiSolidUpArrow, BiSolidPlusCircle, BiSolidMinusCircle } from 'react-icons/bi'
 import BuySell from './BuySell'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSeletedTeamsInfo } from '../store/teamSlice';
 
 const PlayerProfile = () => {
+  const { playerData, status } = useSelector((state) => state.player);
+
+  if (status === 'loading') {
+    return;
+  }
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchSeletedTeamsInfo(playerData?.player?.teamId))
+  }, [playerData])
+
+
+  const { selectedTeam, selectedTeamStatus } = useSelector((state) => state.team)
+
   return (
     <div className='p-5 lg:flex bg-neutral lg:items-center mb-6 '>
       <div className='flex items-center justify-between mb-6'>
-        <img className="w-[100px] h-[100px] lg:w-max lg:h-max" src="https://pixner.net/spovest/dark/assets/images/profile/profile.png" alt="" />
+        <img className="w-[100px] h-[100px] lg:w-max lg:h-max" src={playerData?.player?.imageUrl
+          ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${playerData?.player?.imageUrl}`
+          : 'https://pixner.net/spovest/dark/assets/images/profile/profile.png'}
+          alt={playerData?.player?.name} />
         <div className='text-end'>
-          <h1 className='font-bold lg:text-xl mx-5 px-5 text-white'>David Miller</h1>
-          <h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>Golden State Warriors</h1>
+          <h1 className='font-bold lg:text-xl mx-5 px-5 text-white'>{playerData?.player?.name}</h1>
+          {selectedTeamStatus === 'loading' ? (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>Loading ...</h1>) : (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>{selectedTeam?.team?.longName}</h1>)}
         </div>
       </div>
       <div className="divider"></div>

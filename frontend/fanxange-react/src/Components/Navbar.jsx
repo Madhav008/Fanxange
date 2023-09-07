@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'flowbite-react';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
 
@@ -34,10 +34,12 @@ const Navbar = () => {
 
         <div className="navbar bg-neutral-focus mb-2">
             <div className="flex-1">
-                <div className=' flex text-xl font-bold rounded-full p-3 items-center'>
-                    <img src="./src/assets/logo-bg.png" height="50px" width="50px" alt="" srcSet="" />
-                    <h1>Fan</h1><span className='text-accent'>Xange</span>
-                </div>
+                <Link to='/'>
+                    <div className=' flex text-xl font-bold rounded-full p-3 items-center'>
+                        <img src="../src/assets/logo-bg.png" height="50px" width="50px" alt="" srcSet="" />
+                        <h1>Fan</h1><span className='text-accent'>Xange</span>
+                    </div>
+                </Link>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">

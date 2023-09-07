@@ -55,11 +55,12 @@ const series = require('./api/routes/series')
 app.use('/series', series)
 
 
-
 const player = require('./api/routes/player')
 app.use('/player', player)
 
 
+const teams = require('./api/routes/teams')
+app.use('/team', teams)
 
 const PORT = process.env.PORT || 3000;
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PlayerPriceCard from './PlayerPriceCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeamPlayer } from '../store/teamSlice';
+import { Link } from 'react-router-dom';
 
 const Middlesidebar = () => {
 
@@ -78,7 +79,9 @@ const Middlesidebar = () => {
             (team.length > 0 || (teamData && teamData.length > 0)) ? (
               // Render the 'team' or 'teamData' based on availability
               (team.length > 0 ? team : teamData).map((player) => (
-                <PlayerPriceCard key={player.playerId} player={player} />
+                <Link key={player.playerId} to={`/player/${player.playerId}`}>
+                  <PlayerPriceCard key={player.playerId} player={player} />
+                </Link>
               ))
             ) : (
               <div>No player data available.</div>
