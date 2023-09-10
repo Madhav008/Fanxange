@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-
+// const baseURL = import.meta.env.VITE_APP_BACxxxxxxKEND_URL;
+const baseURL = 'http://192.168.1.65:3132/'
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
   baseURL,
@@ -17,8 +17,6 @@ const apiEndpoints = {
   getTeamData: '/player',
   getPlayerInfo: '/player/data',
   getTeamInfo: '/team/teamInfo',
-
-
 };
 
 // Define functions to make Axios requests for your endpoints

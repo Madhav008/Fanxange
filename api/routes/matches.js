@@ -9,6 +9,7 @@ router.get('/all', apiController.getAllMatches);
 router.get('/live', apiController.getLiveMacthes);
 router.get('/upcomming', apiController.getUpcommingMacthes);
 router.get('/result', apiController.getFinishedMacthes);
+router.get("/:playerId", apiController.getRecentMatchesForPlayer);
 
 
 

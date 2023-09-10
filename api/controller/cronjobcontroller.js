@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const { getRecentMacthes } = require('../../Espn_Cricket_data/CronRecentData');
+const { getRecentMacthes, getSeriesMatches } = require('../../Espn_Cricket_data/CronRecentData');
 const RecentMatches = require('../models/Matches');
 const PlayerStats = require('../models/PlayerStats');
 const Team = require('../models/Teams');

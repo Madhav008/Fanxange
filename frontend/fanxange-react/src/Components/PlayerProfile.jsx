@@ -22,8 +22,9 @@ const PlayerProfile = () => {
   return (
     <div className='p-5 lg:flex bg-neutral lg:items-center mb-6 '>
       <div className='flex items-center justify-between mb-6'>
-        <img className="w-[100px] h-[100px] lg:w-max lg:h-max" src={playerData?.player?.imageUrl
+        <img className="w-[100px] h-[100px] lg:w-[160px] lg:h-[180px]" src={playerData?.player?.imageUrl
           ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${playerData?.player?.imageUrl}`
+          //  'https://pixner.net/spovest/dark/assets/images/profile/profile.png'
           : 'https://pixner.net/spovest/dark/assets/images/profile/profile.png'}
           alt={playerData?.player?.name} />
         <div className='text-end'>

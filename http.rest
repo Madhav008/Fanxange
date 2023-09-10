@@ -24,3 +24,10 @@ POST http://192.168.1.65:3132/match/info  HTTP/1.1
 content-type: application/json
 
 {"matchId":1336051,"seriesId":1336039}
+
+###
+GET http://192.168.1.65:3132/match/530811
+
+###
+GET http://192.168.1.65:3132/performance/530811
+

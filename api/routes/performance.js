@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const apiController = require('../controller/performanceController');
+
+// Example protected API route
+router.get('/:playerId', apiController.PerformanceRoute);
+
+
+
+
+module.exports = router;

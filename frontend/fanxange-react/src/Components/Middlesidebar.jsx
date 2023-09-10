@@ -79,9 +79,8 @@ const Middlesidebar = () => {
             (team.length > 0 || (teamData && teamData.length > 0)) ? (
               // Render the 'team' or 'teamData' based on availability
               (team.length > 0 ? team : teamData).map((player) => (
-                <Link key={player.playerId} to={`/player/${player.playerId}`}>
+               
                   <PlayerPriceCard key={player.playerId} player={player} />
-                </Link>
               ))
             ) : (
               <div>No player data available.</div>

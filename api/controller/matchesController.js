@@ -175,13 +175,13 @@ async function getFinishedMacthes(req, res) {
 
 
 async function getMatchInfo(req, res) {
-    const {  matchId,seriesId } = req.body;
+    const { matchId, seriesId } = req.body;
     try {
         const matches = await RecentMatches.find({
             seriesId: seriesId,
             matchId: matchId
         })
-        res.status(200).json({matches})
+        res.status(200).json({ matches })
     } catch (error) {
         console.log(error.message);
         res.status(503).json({ error: error.message });
@@ -190,8 +190,29 @@ async function getMatchInfo(req, res) {
 
 }
 
+const getRecentMatchesForPlayer = async (req, res) => {
+    try {
+        // Extract the playerId from request parameters
+        var { playerId } = req.params;
+        playerId = parseInt(playerId, 10);
+        const aggregateMatches = [
+            {
+                '$unwind': '$teamPlayers'
+            }, {
+                '$match': {
+                    'teamPlayers.playerId': playerId
+                }
+            }
+        ]
+        const recentMatches = await RecentMatches.aggregate(aggregateMatches);
+        res.status(200).json({ recentMatches });
+    } catch (error) {
+        console.error("Error fetching recent matches:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
 
-module.exports = { getMatchInfo, getRecentMacthes, getAllMatches, getLiveMacthes, getUpcommingMacthes, getFinishedMacthes }
+module.exports = { getRecentMatchesForPlayer, getMatchInfo, getRecentMacthes, getAllMatches, getLiveMacthes, getUpcommingMacthes, getFinishedMacthes }
 
 
 
