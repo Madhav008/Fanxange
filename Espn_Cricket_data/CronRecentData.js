@@ -8,7 +8,7 @@ const { calculateTestBattingPoints, calculateTestBowlingPoints, calculateTestFie
 
 
 async function getSeriesMatches(seriesId) {
-    const allMatches = await getEspnData("https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=1381201");
+    const allMatches = await getEspnData(`https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=${seriesId}`);
 
     const matches = allMatches.content.matches;
 
