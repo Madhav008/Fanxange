@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-
+// const baseURL = 'http://192.168.1.65:3132/'
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
   baseURL,
@@ -17,8 +17,6 @@ const apiEndpoints = {
   getTeamData: '/player',
   getPlayerInfo: '/player/data',
   getTeamInfo: '/team/teamInfo',
-
-
 };
 
 // Define functions to make Axios requests for your endpoints
@@ -48,6 +46,6 @@ export const fanxangeApi = {
   getTeamData: ({ seriesId, matchId }) =>
     makeRequest(apiEndpoints.getTeamData, 'POST', { seriesId, matchId }),
   getTeamInfo: (teamId) =>
-    makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId }),
+    makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId}),
 };
 

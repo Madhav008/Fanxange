@@ -5,6 +5,69 @@ const { calculateT10FieldingPoints, calculateT10BattingPoints, calculateT10Bowli
 const { calculateBattingPoints, calculateBowlingPoints, calculateFieldingPoints } = require("../Server/Points_Server/PointType/CalculatedT20Point");
 const { calculateTestBattingPoints, calculateTestBowlingPoints, calculateTestFieldingPoints } = require("../Server/Points_Server/PointType/CalculateTestPoints");
 
+
+
+async function getSeriesMatches(seriesId) {
+    const allMatches = await getEspnData(`https://hs-consumer-api.espncricinfo.com/v1/pages/series/schedule?lang=en&seriesId=${seriesId}`);
+
+    const matches = allMatches.content.matches;
+
+    const data = [];
+
+    const promises = [];
+
+    for (const match of matches) {
+        const seriesId = match.series.objectId;
+        const matchId = match.objectId;
+
+        console.log(seriesId, matchId)
+
+        const promise = new Promise((resolve, reject) => {
+            const worker = new Worker('./Espn_Cricket_data/getMatchDataWorker.js', {
+                workerData: { seriesId, matchId },
+            });
+
+            worker.on('message', (matchData) => {
+                data.push(matchData);
+                resolve();
+            });
+
+            worker.on('error', (error) => {
+                console.error(`Error occurred in worker for seriesId: ${seriesId} and matchId: ${matchId}`, error);
+                reject(error);
+            });
+
+            worker.on('exit', (code) => {
+                if (code !== 0) {
+                    console.error(`Worker stopped with exit code ${code} for seriesId: ${seriesId} and matchId: ${matchId}`);
+                    reject(`Worker stopped with exit code ${code}`);
+                }
+            });
+        });
+
+        promises.push(promise);
+    }
+
+    await Promise.all(promises);
+
+    /*     
+    Returns 
+    1. Teams 
+    2. Players 
+    3. Batting Stats
+    4. Bowling Stats
+    5. Fielding Stats
+    6. batPoints
+    7. bowlPoints
+    8. fieldoints
+    */
+
+    return data;
+}
+
+
+
+
 async function getRecentMacthes() {
     const recentMatches = await getEspnData("https://hs-consumer-api.espncricinfo.com/v1/ui/edition/details?trendingMatches=true&keySeriesItems=true&edition=in&lang=en");
 
@@ -517,4 +580,4 @@ async function getEspnData(url) {
 
 }
 
-module.exports = { getRecentMacthes, getPlayerData }
+module.exports = { getRecentMacthes, getPlayerData, getSeriesMatches }

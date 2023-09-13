@@ -6,7 +6,7 @@ const FieldingSchema = new mongoose.Schema({
     catches: Number,
     runouts: Number,
     stumping: Number,
-    points:Number,
+    points: Number,
 });
 
 const FieldingStats = mongoose.model('FieldingStats', FieldingSchema);
