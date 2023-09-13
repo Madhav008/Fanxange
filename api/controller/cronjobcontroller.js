@@ -8,8 +8,10 @@ const BowlingStats = require('../models/PlayerBowlingStats');
 const FieldingStats = require('../models/PlayerFieldingStats');
 const Series = require('../models/Series');
 const { updatePlayerDataInDatabase } = require('./playerController');
+const { SeedPlayerPerformance } = require('./performanceController');
 
 let cronJob;
+let performanceJob;
 
 // Controller for starting the cron job
 const startCronJob = async (req, res) => {
@@ -41,6 +43,28 @@ const startCronJob = async (req, res) => {
     res.json({ "message": 'Cron job is already running.' });
   }
 };
+
+
+const startPerformanceJob = async (req, res) => {
+  if (!performanceJob) {
+    performanceJob = cron.schedule('* 12 * * *', async () => {
+      console.log('Performance job is running...');
+
+      try {
+        await SeedPlayerPerformance();
+      } catch (error) {
+        console.error('Error occurred while retrieving recent matches:', error);
+        // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
+      }
+    });
+    res.json({ "message": 'Cron job started.' });
+
+  } else {
+    res.json({ "message": 'Cron job is already running.' });
+  }
+}
+
+
 
 // Controller for stopping the cron job
 const stopCronJob = (req, res) => {
@@ -79,7 +103,7 @@ const checkCronJobStatus = async (req, res) => {
 };
 
 module.exports = {
-  startCronJob, stopCronJob, checkCronJobStatus
+  startCronJob, stopCronJob, checkCronJobStatus,startPerformanceJob
 };
 
 

@@ -9,25 +9,21 @@ const PlayerStats = require("../models/PlayerStats");
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 
-const SeedPlayerPerformance = async (req, res) => {
+const SeedPlayerPerformance = async () => {
     // Fetch all players (You may uncomment this once you have the actual code to retrieve players)
     console.log("Fetching players...");
     const players = await PlayerStats.find({});
-
-
     for (const player of players) {
-        const matches = await processPlayerMatches(player.playerId);
+        try {
+            await processPlayerMatches(player.playerId);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
+    // res.status(200).json(matches);
 
 
-
-    res.status(200).json({ "Success": "TRUE" });
-
-
-
-
-    // Respond with JSON data for the retrieved matches
 };
 
 
@@ -102,11 +98,10 @@ module.exports = {
 
 const processPlayerMatches = async (playerId) => {
     // Initialize variables to track total points, count, and oldPrice
-    let total_points = 0.0;
     let oldPrice = 25.0;
 
     // Retrieve recent matches for the player
-    const matches = await getRecentMatchesForPlayer(playerId);
+    const matches = await getRecent25MatchesOfPlayer(playerId);
 
     // Create an array to store the last 10 match points
     const last10MatchPoints = [];
@@ -168,20 +163,20 @@ const processPlayerMatches = async (playerId) => {
         });
 
         // Call the function to create or update performance entry
-        await createOrUpdatePerformanceEntry(playerId, match, current_player_price, total_points, average_points);
+        await createOrUpdatePerformanceEntry(playerId, match, current_player_price, current_match_points, average_points);
     }
 
     // writeInCSV(dataPoints)
     return matches;
 };
 
-const createOrUpdatePerformanceEntry = async (playerId, match, current_player_price, total_points, average_points) => {
+const createOrUpdatePerformanceEntry = async (playerId, match, current_player_price, current_match_points, average_points) => {
     // Create a new performance entry
     const performance_stats = new Performance({
         playerId: playerId,
         matchId: match.matchId,
         price: current_player_price,
-        total_points: total_points,
+        total_points: current_match_points,
         avg_points: average_points,
         date: match.endDate
     });
@@ -195,13 +190,13 @@ const createOrUpdatePerformanceEntry = async (playerId, match, current_player_pr
     if (existingPerformance.length > 0) {
         console.log("Updating Player Performance already exists");
 
-        existingPerformance[0].playerId = playerId;
-        existingPerformance[0].matchId = match.matchId;
-        existingPerformance[0].price = current_player_price;
-        existingPerformance[0].startDate = match.startDate;
-        existingPerformance[0].total_points = total_points;
-        existingPerformance[0].avg_points = average_points;
-        existingPerformance[0].date = match.endDate;
+        // existingPerformance[0].playerId = playerId;
+        // existingPerformance[0].matchId = match.matchId;
+        // existingPerformance[0].price = current_player_price;
+        // existingPerformance[0].startDate = match.startDate;
+        // existingPerformance[0].total_points = current_match_points;
+        // existingPerformance[0].avg_points = average_points;
+        // existingPerformance[0].date = match.endDate;
 
         // Save the updated performance entry
         try {
@@ -240,18 +235,6 @@ function writeInCSV(dataPoints) {
         .catch((error) => {
             console.error('Error writing CSV file:', error);
         });
-}
-
-
-
-function roundUpToTwoDecimalPlaces(number) {
-    // Round the number to the nearest whole number
-    const roundedWholeNumber = Math.ceil(number);
-
-    // Convert the rounded whole number to a string and add '.00'
-    const formattedNumber = roundedWholeNumber.toFixed(2);
-
-    return formattedNumber;
 }
 
 function extractDateFromTimestamp(timestampString) {
@@ -369,3 +352,87 @@ const getRecentMatchesForPlayer = async (playerId) => {
         console.error("Error fetching recent matches:", error);
     }
 };
+
+
+
+const getRecent25MatchesOfPlayer = async function (playerId) {
+    try {
+        playerId = parseInt(playerId, 10);
+        const aggregateMatches = [
+            {
+                $unwind: "$teamPlayers",
+            },
+            {
+                $match: {
+                    "teamPlayers.playerId": playerId, // Replace with the actual playerId you want to find
+                },
+            },
+            {
+                $addFields: {
+                    startDate: {
+                        $dateToString: {
+                            format: "%Y-%m-%d",
+                            date: {
+                                $toDate: "$startDate",
+                            },
+                        },
+                    },
+                    endDate: {
+                        $dateToString: {
+                            format: "%Y-%m-%d",
+                            date: {
+                                $toDate: "$endDate",
+                            },
+                        },
+                    },
+                },
+            },
+            {
+                $addFields: {
+                    startDateYear: {
+                        $year: {
+                            $toDate: "$endDate",
+                        },
+                    },
+                    startDateMonth: {
+                        $month: {
+                            $toDate: "$endDate",
+                        },
+                    },
+                    startDateDay: {
+                        $dayOfMonth: {
+                            $toDate: "$endDate",
+                        },
+                    },
+                },
+            },
+            {
+                $sort: {
+                    startDateYear: -1, // Sort by startDateYear in descending order (2023 first)
+                    startDateMonth: -1, // Then sort by startDateMonth in descending order (December first)
+                    startDateDay: -1, // Sort by startDateDay in descending order (30th of the month first)
+                    startDate: -1, // Finally, sort by startDate in descending order within the same year, month, and day
+                },
+            },
+            {
+                $match: {
+                    startDate: {
+                        $lte: new Date()
+                            .toISOString()
+                            .slice(0, 10),
+                    },
+                },
+            },
+            {
+                $limit: 25, // Limit the result to the first 5 matches
+            },
+        ]
+        var recentMatches = await RecentMatches.aggregate(aggregateMatches);
+        recentMatches = recentMatches.reverse();
+        return recentMatches;
+
+
+    } catch (error) {
+        console.error("Error fetching recent matches:", error);
+    }
+}
