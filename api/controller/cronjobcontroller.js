@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const { getRecentMacthes, getSeriesMatches } = require('../../Espn_Cricket_data/CronRecentData');
+const { getRecentMacthes } = require('../../Espn_Cricket_data/CronRecentData');
 const RecentMatches = require('../models/Matches');
 const PlayerStats = require('../models/PlayerStats');
 const Team = require('../models/Teams');
@@ -9,6 +9,7 @@ const FieldingStats = require('../models/PlayerFieldingStats');
 const Series = require('../models/Series');
 const { updatePlayerDataInDatabase } = require('./playerController');
 const { SeedPlayerPerformance, processPlayerMatches } = require('./performanceController');
+const { getRecent10Macthes } = require('../../Espn_Cricket_data/get10RecentMatches');
 
 let cronJob;
 let performanceJob;
@@ -30,12 +31,32 @@ const startCronJob = async (req, res) => {
             console.log(error.message);
           }
         }
-
-        // res.json(data);
       } catch (error) {
         console.error('Error occurred while retrieving recent matches:', error);
         // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
       }
+
+      console.log("Fetching players...");
+      const players = await PlayerStats.find({});
+      for (const player of players) {
+        try {
+          const data = await getRecent10Macthes(player.playerId)
+          for (const match of data) {
+            try {
+              await saveRecentMatchesData(match);
+            } catch (error) {
+              console.log(error.message);
+            }
+          }
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+
+
+
+      // res.json(data);
+
     });
     res.json({ "message": 'Cron job started.' });
 
@@ -97,6 +118,25 @@ const checkCronJobStatus = async (req, res) => {
       console.error('Error occurred while retrieving recent matches:', error);
       // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
     }
+
+
+    const players = await PlayerStats.find({});
+    for (const player of players) {
+      try {
+        const data = await getRecent10Macthes(player.playerId)
+        for (const match of data) {
+          try {
+            await saveRecentMatchesData(match);
+          } catch (error) {
+            console.log(error.message);
+          }
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+
   } else {
     res.json({ "message": 'Cron job is not running.' });
   }
@@ -202,7 +242,7 @@ async function saveRecentMatchesData(data) {
           //Update the player performance of the Live player as the match progresses the points changes 
           await processPlayerMatches(player.playerId)
 
-          
+
           await updatePlayerDataInDatabase(player.playerId);
         } else {
           const playerdata = new PlayerStats({

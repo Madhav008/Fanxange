@@ -1,3 +1,4 @@
+const { getRecent10Macthes } = require("../../Espn_Cricket_data/get10RecentMatches");
 const { calculatePlayerPrice } = require("../../Server/PlayerPrice/PlayerPriceFormula");
 const RecentMatches = require("../models/Matches");
 const Performance = require("../models/Performance");
@@ -15,6 +16,7 @@ const SeedPlayerPerformance = async () => {
     const players = await PlayerStats.find({});
     for (const player of players) {
         try {
+            // await getRecent10Macthes(player.playerId)
             await processPlayerMatches(player.playerId);
         } catch (error) {
             console.log(error.message);

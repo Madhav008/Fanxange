@@ -1,4 +1,10 @@
-# System design for Player Performance
+# Seed the Player 10 recent matches
+    1. Get the Player
+    2. Get the 10 recent matches
+    3. Pass the matchesid and series id in the worker 
+
+
+## System design for Player Performance
 
     1. Select the Player
     2. Find the Player in the Matches Collection
