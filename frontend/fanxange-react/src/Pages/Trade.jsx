@@ -7,7 +7,7 @@ import UpcomingMatches from '../Components/UpcomingMatches'
 import RecentMatches from '../Components/RecentMatches'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchplayer } from '../store/playerSlice'
+import { fetchPlayerRecentMatches, fetchplayer } from '../store/playerSlice'
 
 
 const Trade = () => {
@@ -18,6 +18,7 @@ const Trade = () => {
 
   useEffect(() => {
     dispatch(fetchplayer(playerId));
+    dispatch(fetchPlayerRecentMatches(playerId))
   }, [])
 
 
@@ -26,7 +27,7 @@ const Trade = () => {
 
   if (status == 'loading') {
     return <div>
-      Loading ... 
+      Loading ...
     </div>
   }
 

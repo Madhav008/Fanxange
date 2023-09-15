@@ -9,6 +9,8 @@ export const STATUSES = Object.freeze({
 
 const initialState = {
     playerData: [],
+    playerRecentMatches:[],
+    playerRecentMatchesStatus:STATUSES.IDLE,
     status: STATUSES.IDLE,
 
 }
@@ -27,10 +29,17 @@ export const playerSlice = createSlice({
             state.status = action.payload;
         },
 
+        setPlayerRecentMatches: (state, action) => {
+            state.playerRecentMatches = action.payload;
+        },
+        setPlayerRecentMatchesStatus: (state, action) => {
+            state.playerRecentMatchesStatus = action.payload;
+         }
+
     }
 })
 
-export const { setplayer, setStatus } = playerSlice.actions;
+export const { setplayer, setStatus,setPlayerRecentMatches,setPlayerRecentMatchesStatus } = playerSlice.actions;
 export default playerSlice.reducer;
 
 
@@ -48,6 +57,24 @@ export function fetchplayer(query) {
         } catch (err) {
             console.log(err);
             dispatch(setStatus(STATUSES.ERROR));
+        }
+    };
+}
+
+// Thunks
+export function fetchPlayerRecentMatches(query) {
+    return async function fetchThunk(dispatch, getState) {
+        dispatch(setPlayerRecentMatchesStatus(STATUSES.LOADING));
+        try {
+            // var pageno = getState().questions.page 
+            // var difficulty = getState().questions.difficulty
+            const data = await fanxangeApi.getPlayerRecentMatchesInfo(query);
+
+            dispatch(setPlayerRecentMatches(data));
+            dispatch(setPlayerRecentMatchesStatus(STATUSES.IDLE));
+        } catch (err) {
+            console.log(err);
+            dispatch(setPlayerRecentMatchesStatus(STATUSES.ERROR));
         }
     };
 }

@@ -1,6 +1,7 @@
 const RecentMatches = require("../models/Matches");
 const PlayerStats = require("../models/PlayerStats");
 const axios = require('axios');
+const { LatestPerformance } = require("./performanceController");
 
 async function fetchPlayerDataFromAPI(playerId) {
     console.log('Fetching player data from API');
@@ -92,8 +93,15 @@ async function getPlayer(req, res) {
 
         // Update the database with the new data
         const updatedPlayer = await updatePlayerDataInDatabase(playerId);
+
+
+        const playerPriceData = await LatestPerformance(playerId);
+        const finalPlayers = {
+            ...updatedPlayer.toObject(),
+            playerPriceData
+        }
         // Return the updated player data
-        res.status(200).json({ player: updatedPlayer });
+        res.status(200).json({ player: finalPlayers });
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -153,4 +161,4 @@ async function getTeamPlayers(req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
-module.exports = { getPlayer, getPlayersByTeam, updatePlayerDataInDatabase,getTeamPlayers };
+module.exports = { getPlayer, getPlayersByTeam, updatePlayerDataInDatabase, getTeamPlayers };

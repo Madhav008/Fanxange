@@ -30,68 +30,158 @@ const SeedPlayerPerformance = async () => {
 const PerformanceRoute = async (req, res) => {
     // Handle the protected API route logic
     const { playerId } = req.params;
-    const matches = await getRecentMatchesForPlayer(playerId);
-    //Get the MatchID 
-    const playerPerfomanceMatches = [];
-    for (const match of matches) {
-        const dateObject = extractDateFromTimestamp(match.endDate);
-        const currentDateObject = extractDateFromTimestamp(new Date());
-        console.log(dateObject)
-        console.log(currentDateObject)
-        if (dateObject != currentDateObject) {
+    const playerPerformanceMatches = await Performance.find({ playerId: playerId }).sort({ date: -1 });
+    const result = [];
+
+    // Fetch match names for each performance entry
+    for (const performance of playerPerformanceMatches) {
+        const match = await RecentMatches.findOne({ matchId: performance.matchId });
+
+        if (match) {
             const matchId = match.matchId;
+
+            // Retrieve batting, bowling, and fielding statistics for the match
             var batStats = await getBatStatsForPlayer(playerId, matchId);
             var bowlStats = await getBowlStatsForPlayer(playerId, matchId);
             var fieldStats = await getFieldStatsForPlayer(playerId, matchId);
-
-
+            // Handle cases where statistics are null (no data available)
             if (batStats == null) {
                 batStats = { points: 0 };
-
             }
 
             if (fieldStats == null) {
                 fieldStats = { points: 0 };
-
             }
 
             if (bowlStats == null) {
                 bowlStats = { points: 0 };
             }
 
-            const points = batStats.points + bowlStats.points + fieldStats.points
-
-            const player_price = calculatePlayerPrice(points, points);
-
-            const player_performance = {
-                price: player_price,
-                total_points: points,
-                avg_bat_points: batStats.points,
-                avg_bowl_points: bowlStats.points,
-                avg_field_points: fieldStats.points,
-            }
-
-            const matchStats = {
-                match: match,
-                batStats: batStats,
-                bowlStats: bowlStats,
-                fieldStats: fieldStats,
-                performance: player_performance
+            const performanceWithMatchName = {
+                ...performance.toObject(),
+                bowlStats: bowlStats.points, batStats: batStats.points, fieldStats: fieldStats.points,
+                name: match.name,
+                teams: match.teams // Add the match name to the performance object
             };
-
-            playerPerfomanceMatches.push(matchStats);
+            result.push(performanceWithMatchName);
         }
     }
 
-
-
-    res.status(200).json((playerPerfomanceMatches));
-
+    res.status(200).json(result);
 };
+
+const LatestPerformance = async (playerId) => {
+    playerId = parseInt(playerId, 10);
+    const getLatestMatchOfPlayer = [
+        {
+            $unwind: "$teamPlayers",
+        },
+        {
+            $match: {
+                "teamPlayers.playerId": playerId, // Replace with the actual playerId you want to find
+            },
+        },
+        {
+            $addFields: {
+                startDate: {
+                    $dateToString: {
+                        format: "%Y-%m-%d",
+                        date: {
+                            $toDate: "$startDate",
+                        },
+                    },
+                },
+                endDate: {
+                    $dateToString: {
+                        format: "%Y-%m-%d",
+                        date: {
+                            $toDate: "$endDate",
+                        },
+                    },
+                },
+            },
+        },
+        {
+            $addFields: {
+                startDateYear: {
+                    $year: {
+                        $toDate: "$endDate",
+                    },
+                },
+                startDateMonth: {
+                    $month: {
+                        $toDate: "$endDate",
+                    },
+                },
+                startDateDay: {
+                    $dayOfMonth: {
+                        $toDate: "$endDate",
+                    },
+                },
+            },
+        },
+        {
+            $sort: {
+                startDateYear: -1,
+                // Sort by startDateYear in descending order (2023 first)
+                startDateMonth: -1,
+                // Then sort by startDateMonth in descending order (December first)
+                startDateDay: -1,
+                // Sort by startDateDay in descending order (30th of the month first)
+                startDate: -1, // Finally, sort by startDate in descending order within the same year, month, and day
+            },
+        },
+        {
+            $match: {
+                startDate: {
+                    $lt: new Date()
+                        .toISOString()
+                        .slice(0, 10),
+                },
+            },
+        },
+        {
+            $limit: 1, // Limit the result to the first 5 matches
+        },
+    ]
+    try {
+        const matches = await RecentMatches.aggregate(getLatestMatchOfPlayer)
+        const match = matches[0];
+        const matchId = match.matchId;
+        const playerPerformanceMatches = await Performance.findOne({ playerId: playerId, matchId });
+        // Retrieve batting, bowling, and fielding statistics for the match
+        var batStats = await getBatStatsForPlayer(playerId, matchId);
+        var bowlStats = await getBowlStatsForPlayer(playerId, matchId);
+        var fieldStats = await getFieldStatsForPlayer(playerId, matchId);
+        // Handle cases where statistics are null (no data available)
+        if (batStats == null) {
+            batStats = { points: 0 };
+        }
+
+        if (fieldStats == null) {
+            fieldStats = { points: 0 };
+        }
+
+        if (bowlStats == null) {
+            bowlStats = { points: 0 };
+        }
+
+        const performanceWithMatchName = {
+            ...playerPerformanceMatches.toObject(),
+            bowlStats: bowlStats.points, batStats: batStats.points, fieldStats: fieldStats.points,
+            name: match.name,
+            teams: match.teams // Add the match name to the performance object
+        };
+        return performanceWithMatchName
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 module.exports = {
     PerformanceRoute,
-    SeedPlayerPerformance
+    SeedPlayerPerformance,
+    LatestPerformance
 };
 
 

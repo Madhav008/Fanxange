@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-// const baseURL = 'http://192.168.1.65:3132/'
+// const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+const baseURL = 'http://192.168.1.65:3132/'
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
   baseURL,
@@ -16,6 +16,7 @@ const apiEndpoints = {
   getMatchInfo: '/match/info',
   getTeamData: '/player',
   getPlayerInfo: '/player/data',
+  getPlayerMatchInfo: '/performance/:playerId',
   getTeamInfo: '/team/teamInfo',
 };
 
@@ -35,17 +36,23 @@ const makeRequest = async (url, method = 'GET', data = null) => {
 
 export const fanxangeApi = {
   getLiveMatches: () => makeRequest(apiEndpoints.getLiveMatches),
+
   getUpcomingMatches: () => makeRequest(apiEndpoints.getUpcomingMatches),
+
   getMatchResults: () => makeRequest(apiEndpoints.getMatchResults),
+
   getRecentMatch: () => makeRequest(apiEndpoints.getRecentMatch),
+
   getSeries: () => makeRequest(apiEndpoints.getSeries),
-  getMatchInfo: ({ matchId, seriesId }) =>
-    makeRequest(apiEndpoints.getMatchInfo, 'POST', { matchId, seriesId }),
-  getPlayerInfo: (playerId) =>
-    makeRequest(apiEndpoints.getPlayerInfo, 'POST', { playerId }),
-  getTeamData: ({ seriesId, matchId }) =>
-    makeRequest(apiEndpoints.getTeamData, 'POST', { seriesId, matchId }),
-  getTeamInfo: (teamId) =>
-    makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId}),
+
+  getMatchInfo: ({ matchId, seriesId }) => makeRequest(apiEndpoints.getMatchInfo, 'POST', { matchId, seriesId }),
+
+  getPlayerInfo: (playerId) => makeRequest(apiEndpoints.getPlayerInfo, 'POST', { playerId }),
+
+  getPlayerRecentMatchesInfo: (playerId) => makeRequest(apiEndpoints.getPlayerMatchInfo.replace(':playerId', playerId)),
+
+  getTeamData: ({ seriesId, matchId }) => makeRequest(apiEndpoints.getTeamData, 'POST', { seriesId, matchId }),
+
+  getTeamInfo: (teamId) => makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId }),
 };
 

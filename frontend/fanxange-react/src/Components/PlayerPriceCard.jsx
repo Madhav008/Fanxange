@@ -10,7 +10,7 @@ const PlayerPriceCard = ({ player }) => {
     return (
         <div className='flex bg-base-200 rounded-lg p-3 align-middle items-center justify-evenly w-full mb-2 '>
             <Link key={player.playerId} to={`/player/${player.playerId}`}>
-                <div className='flex items-center'>
+                <div className='flex items-center '>
                     <div className='flex gap-2 p-5 items-center'>
                         <img
                             className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'

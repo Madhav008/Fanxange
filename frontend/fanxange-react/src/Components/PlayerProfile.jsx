@@ -36,17 +36,17 @@ const PlayerProfile = () => {
       <div className='lg:flex gap-2 justify-evenly items-center'>
         <div className="lg:divider lg:divider-horizontal "></div>
         <div className='whitespace-nowrap'>
-          <h1><span className='font-bold lg:text-xl text-white'>$0.00</span> <span className='break-words whitespace-nowrap'>(0 Shares)</span></h1>
+          <h1><span className='font-bold lg:text-xl text-white'>₹0.00</span> <span className='break-words whitespace-nowrap'>(0 Shares)</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Total value</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
         <div>
-          <h1><span className='font-bold lg:text-xl text-white'>$1.06</span></h1>
+          <h1><span className='font-bold lg:text-xl text-white'>₹{playerData?.player?.playerPriceData?.price}</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Price</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
         <div>
-          <h1><span className='font-bold lg:text-xl text-white'>Points 1.30</span></h1>
+          <h1><span className='font-bold lg:text-xl text-white'>Points {playerData?.player?.playerPriceData?.avg_points}</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Points</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
