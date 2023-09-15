@@ -21,8 +21,7 @@ const SeedPlayerPerformance = async () => {
         }
     }
 
-    // res.status(200).json(matches);
-
+    console.log("DONE");
 
 };
 
@@ -30,6 +29,8 @@ const SeedPlayerPerformance = async () => {
 const PerformanceRoute = async (req, res) => {
     // Handle the protected API route logic
     const { playerId } = req.params;
+
+    await processPlayerMatches(parseInt(playerId, 10));
     const playerPerformanceMatches = await Performance.find({ playerId: playerId }).sort({ date: -1 });
     const result = [];
 
@@ -178,14 +179,6 @@ const LatestPerformance = async (playerId) => {
     }
 }
 
-module.exports = {
-    PerformanceRoute,
-    SeedPlayerPerformance,
-    LatestPerformance
-};
-
-
-
 const processPlayerMatches = async (playerId) => {
     // Initialize variables to track total points, count, and oldPrice
     let oldPrice = 25.0;
@@ -220,7 +213,7 @@ const processPlayerMatches = async (playerId) => {
 
         // Calculate the current match points
         const current_match_points = batStats.points + bowlStats.points + fieldStats.points;
-        console.log("Current Match Points:", current_match_points);
+        // console.log("Current Match Points:", current_match_points);
 
         // Add the current match points to the last 10 match points array
         last10MatchPoints.push(current_match_points);
@@ -232,25 +225,28 @@ const processPlayerMatches = async (playerId) => {
 
         // Calculate the average of the last 10 match points
         const average_points = last10MatchPoints.reduce((acc, val) => acc + val, 0) / last10MatchPoints.length;
-        console.log("Average Points:", average_points);
+        // console.log("Average Points:", average_points);
 
-        console.log("Old Price:", oldPrice);
+        temp_old_price = oldPrice;
+        // console.log("Old Price:", oldPrice);
 
         // Calculate the current player price based on the current match points, average points, and old price
         const current_player_price = calculatePlayerPrice(current_match_points, average_points, oldPrice);
-        console.log("Current Player Price:", current_player_price);
+        // console.log("Current Player Price:", current_player_price);
 
         // Update the old price with the current player price for the next iteration
         oldPrice = current_player_price;
 
         // Push the data points for each match into the array
-        dataPoints.push({
+        var data = {
             "DATE": match.endDate,
             "Current Match Points": current_match_points,
             "Average Points": average_points,
-            "Old Price": oldPrice,
+            "Old Price": temp_old_price,
             "Current Player Price": current_player_price
-        });
+        }
+        console.table(data);
+        dataPoints.push(data);
 
         // Call the function to create or update performance entry
         await createOrUpdatePerformanceEntry(playerId, match, current_player_price, current_match_points, average_points);
@@ -259,6 +255,16 @@ const processPlayerMatches = async (playerId) => {
     // writeInCSV(dataPoints)
     return matches;
 };
+
+module.exports = {
+    PerformanceRoute,
+    SeedPlayerPerformance,
+    LatestPerformance,
+    processPlayerMatches
+};
+
+
+
 
 const createOrUpdatePerformanceEntry = async (playerId, match, current_player_price, current_match_points, average_points) => {
     // Create a new performance entry
@@ -280,13 +286,13 @@ const createOrUpdatePerformanceEntry = async (playerId, match, current_player_pr
     if (existingPerformance.length > 0) {
         console.log("Updating Player Performance already exists");
 
-        // existingPerformance[0].playerId = playerId;
-        // existingPerformance[0].matchId = match.matchId;
-        // existingPerformance[0].price = current_player_price;
-        // existingPerformance[0].startDate = match.startDate;
-        // existingPerformance[0].total_points = current_match_points;
-        // existingPerformance[0].avg_points = average_points;
-        // existingPerformance[0].date = match.endDate;
+        existingPerformance[0].playerId = playerId;
+        existingPerformance[0].matchId = match.matchId;
+        existingPerformance[0].price = current_player_price;
+        existingPerformance[0].startDate = match.startDate;
+        existingPerformance[0].total_points = current_match_points;
+        existingPerformance[0].avg_points = average_points;
+        existingPerformance[0].date = match.endDate;
 
         // Save the updated performance entry
         try {
@@ -327,17 +333,6 @@ function writeInCSV(dataPoints) {
         });
 }
 
-function extractDateFromTimestamp(timestampString) {
-    const dateObject = new Date(timestampString);
-    const dateYear = dateObject.getUTCFullYear();
-    const dateMonth = dateObject.getUTCMonth() + 1; // Months are 0-based, so add 1
-    const dateDay = dateObject.getUTCDate();
-
-
-    return dateYear + "-" + dateMonth + "-" + dateDay
-
-}
-
 
 const getFieldStatsForPlayer = async (playerId, matchId) => {
     try {
@@ -366,83 +361,6 @@ const getBatStatsForPlayer = async (playerId, matchId) => {
         console.log(error);
     }
 }
-const getRecentMatchesForPlayer = async (playerId) => {
-    try {
-        playerId = parseInt(playerId, 10);
-        const aggregateMatches = [
-            {
-                $unwind: "$teamPlayers"
-            },
-            {
-                $match: {
-                    "teamPlayers.playerId": playerId // Replace with the actual playerId you want to find
-                }
-            },
-            {
-                $addFields: {
-                    startDate: {
-                        $dateToString: {
-                            format: "%Y-%m-%d",
-                            date: {
-                                $toDate: "$startDate"
-                            }
-                        }
-                    },
-                    endDate: {
-                        $dateToString: {
-                            format: "%Y-%m-%d",
-                            date: {
-                                $toDate: "$endDate"
-                            }
-                        }
-                    }
-                }
-            },
-            {
-                $addFields: {
-                    startDateYear: {
-                        $year: {
-                            $toDate: "$endDate"
-                        }
-                    },
-                    startDateMonth: {
-                        $month: {
-                            $toDate: "$endDate"
-                        }
-                    },
-                    startDateDay: {
-                        $dayOfMonth: {
-                            $toDate: "$endDate"
-                        }
-                    }
-                }
-            },
-            {
-                $sort: {
-                    startDateYear: 1, // Sort by startDateYear in descending order (2023 first)
-                    startDateMonth: 1, // Then sort by startDateMonth in descending order (December first)
-                    startDateDay: 1, // Sort by startDateDay in descending order (30th of the month first)
-                    startDate: 1 // Finally, sort by startDate in descending order within the same year, month, and day
-                }
-            },
-            {
-                $match: {
-                    startDate: {
-                        $lte: new Date()
-                            .toISOString()
-                            .slice(0, 10),
-                    },
-                },
-            }
-        ]
-
-        const recentMatches = await RecentMatches.aggregate(aggregateMatches);
-        return recentMatches;
-    } catch (error) {
-        console.error("Error fetching recent matches:", error);
-    }
-};
-
 
 
 const getRecent25MatchesOfPlayer = async function (playerId) {
@@ -526,3 +444,81 @@ const getRecent25MatchesOfPlayer = async function (playerId) {
         console.error("Error fetching recent matches:", error);
     }
 }
+
+
+const getRecentMatchesForPlayer = async (playerId) => {
+    try {
+        playerId = parseInt(playerId, 10);
+        const aggregateMatches = [
+            {
+                $unwind: "$teamPlayers"
+            },
+            {
+                $match: {
+                    "teamPlayers.playerId": playerId // Replace with the actual playerId you want to find
+                }
+            },
+            {
+                $addFields: {
+                    startDate: {
+                        $dateToString: {
+                            format: "%Y-%m-%d",
+                            date: {
+                                $toDate: "$startDate"
+                            }
+                        }
+                    },
+                    endDate: {
+                        $dateToString: {
+                            format: "%Y-%m-%d",
+                            date: {
+                                $toDate: "$endDate"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                $addFields: {
+                    startDateYear: {
+                        $year: {
+                            $toDate: "$endDate"
+                        }
+                    },
+                    startDateMonth: {
+                        $month: {
+                            $toDate: "$endDate"
+                        }
+                    },
+                    startDateDay: {
+                        $dayOfMonth: {
+                            $toDate: "$endDate"
+                        }
+                    }
+                }
+            },
+            {
+                $sort: {
+                    startDateYear: 1, // Sort by startDateYear in descending order (2023 first)
+                    startDateMonth: 1, // Then sort by startDateMonth in descending order (December first)
+                    startDateDay: 1, // Sort by startDateDay in descending order (30th of the month first)
+                    startDate: 1 // Finally, sort by startDate in descending order within the same year, month, and day
+                }
+            },
+            {
+                $match: {
+                    startDate: {
+                        $lte: new Date()
+                            .toISOString()
+                            .slice(0, 10),
+                    },
+                },
+            }
+        ]
+
+        const recentMatches = await RecentMatches.aggregate(aggregateMatches);
+        return recentMatches;
+    } catch (error) {
+        console.error("Error fetching recent matches:", error);
+    }
+};

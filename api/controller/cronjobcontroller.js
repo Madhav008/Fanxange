@@ -8,7 +8,7 @@ const BowlingStats = require('../models/PlayerBowlingStats');
 const FieldingStats = require('../models/PlayerFieldingStats');
 const Series = require('../models/Series');
 const { updatePlayerDataInDatabase } = require('./playerController');
-const { SeedPlayerPerformance } = require('./performanceController');
+const { SeedPlayerPerformance, processPlayerMatches } = require('./performanceController');
 
 let cronJob;
 let performanceJob;
@@ -103,7 +103,7 @@ const checkCronJobStatus = async (req, res) => {
 };
 
 module.exports = {
-  startCronJob, stopCronJob, checkCronJobStatus,startPerformanceJob
+  startCronJob, stopCronJob, checkCronJobStatus, startPerformanceJob
 };
 
 
@@ -199,7 +199,10 @@ async function saveRecentMatchesData(data) {
       try {
         const existingPlayer = await PlayerStats.findOne({ playerId: player.playerId });
         if (existingPlayer) {
+          //Update the player performance of the Live player as the match progresses the points changes 
+          await processPlayerMatches(player.playerId)
 
+          
           await updatePlayerDataInDatabase(player.playerId);
         } else {
           const playerdata = new PlayerStats({
