@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className="flex-1">
                 <Link to='/'>
                     <div className=' flex text-xl font-bold rounded-full p-3 items-center'>
-                        <img src="../src/assets/logo-bg.png" height="50px" width="50px" alt="" srcSet="" />
+                        <img src="/logo-bg.png" height="50px" width="50px" alt="" srcSet="" />
                         <h1>Fan</h1><span className='text-accent'>Xange</span>
                     </div>
                 </Link>
