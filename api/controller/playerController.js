@@ -45,16 +45,17 @@ async function fetchPlayerDataFromAPI(playerId) {
 async function updatePlayerDataInDatabase(playerId) {
     try {
         // Find the existing player data in the database
-        const existingPlayer = await PlayerStats.findOne({ playerId });
+        const existingPlayer = await PlayerStats.findOne({ playerId }).lean();
 
         if (existingPlayer) {
 
             const missingFields = [];
+            if (!existingPlayer.hasOwnProperty('image')) missingFields.push('image');
+            if (!existingPlayer.hasOwnProperty('imageUrl')) missingFields.push('imageUrl');
 
-            if (!existingPlayer.image) missingFields.push('image');
-            if (!existingPlayer.imageUrl) missingFields.push('imageUrl');
-
+            // console.log(existingPlayer);
             if (missingFields.length > 0) {
+                // console.log(missingFields)
                 const newData = await fetchPlayerDataFromAPI(playerId);
 
                 // If any specified fields are missing, update them with new data
