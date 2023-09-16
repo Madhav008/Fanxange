@@ -98,7 +98,7 @@ async function getPlayer(req, res) {
 
         const playerPriceData = await LatestPerformance(playerId);
         const finalPlayers = {
-            ...updatedPlayer.toObject(),
+            ...updatedPlayer,
             playerPriceData
         }
         // Return the updated player data
