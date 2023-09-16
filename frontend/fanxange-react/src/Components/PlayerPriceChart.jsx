@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Chart from "react-apexcharts";
+import { useSelector } from 'react-redux';
+
 
 const PlayerPriceChart = () => {
-    const [chart, setchart] = useState({
+    const { playerRecentMatchesStatus, playerRecentMatches } = useSelector((state) => state.player);
+    const [date, setDate] = useState(['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February']);
+    const [price, setPrice] = useState([30, 40, 45, 50, 49, 60, 70, 91]);
+    const chart = {
         options: {
             // enable and customize data labels using the following example, learn more from here: https://apexcharts.com/docs/datalabels/
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // offsetX: 10,
                 style: {
                     cssClass: 'text-xs text-white font-medium'
@@ -54,7 +59,7 @@ const PlayerPriceChart = () => {
                 width: 6,
             },
             xaxis: {
-                categories: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb'],
+                categories: date,
                 labels: {
                     show: false,
                     style: {
@@ -82,18 +87,21 @@ const PlayerPriceChart = () => {
             }, */
             {
                 name: "Points",
-                data: [30, 45, 40, 50, 60, 49, 91, 49, 70,],
+                data: price,
                 color: "#3E3B99"
             }
         ]
-    })
-
+    }
+    useEffect(() => {
+        setDate(playerRecentMatches.map(match => match.date).reverse())
+        setPrice(playerRecentMatches.map(match => parseFloat(match.avg_points, 10).toFixed(2)).reverse())
+    }, [playerRecentMatchesStatus])
     return (
         <div className=" bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 w-full">
             <div className="flex justify-between mb-5">
                 <div>
-                    <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">$12,423</h5>
-                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+                    <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">{price[price.length - 1]}</h5>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">25 Matches Points</p>
                 </div>
                 <div
                     className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">

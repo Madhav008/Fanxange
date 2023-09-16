@@ -8,10 +8,10 @@ const PlayerPriceCard = ({ player }) => {
 
 
     return (
-        <div className='flex bg-base-200 rounded-lg p-3 align-middle items-center justify-evenly w-full mb-2 '>
+        <div className='flex bg-base-200 rounded-lg p-3 align-middle items-center justify-evenly w-[100%] mb-2 '>
             <Link key={player.playerId} to={`/player/${player.playerId}`}>
                 <div className='flex items-center '>
-                    <div className='flex gap-2 p-5 items-center'>
+                    <div className='flex gap-2 p-5 items-center '>
                         <img
                             className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
                             src={player.imageUrl
@@ -29,11 +29,11 @@ const PlayerPriceCard = ({ player }) => {
 
 
 
-                    <div className='flex p-5 ml-5'>
-                        <div className='flex flex-col align-middle items-center'>
-                            <h1 className='text-sm font-semibold '>$4.2</h1>
+                    <div className='flex p-5 ml-5 '>
+                        <div className='flex justify-between align-middle items-center text-center'>
+                            <h1 className='text-sm font-semibold pr-2'>$4.2</h1>
                             <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-                            <h1 className='text-sm font-semibold  text-red-400 flex items-center gap-1'>-5.1<BiSolidDownArrow /></h1>
+                            {/* <h1 className='text-sm font-semibold  text-red-400 flex items-center gap-1'>-5.1<BiSolidDownArrow /></h1> */}
 
                         </div>
                     </div>

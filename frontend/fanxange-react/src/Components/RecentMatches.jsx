@@ -53,18 +53,18 @@ const RecentMatches = () => {
                 {matches.name}
               </td>
               <td className="px-6 py-4">
-                {matches.total_points}
+                {parseFloat(matches.total_points).toFixed(2)}
               </td>
 
               <td className="px-6 py-4">
-                {matches.batStats}
+                {parseFloat(matches.batStats).toFixed(2)}
               </td>
 
               <td className="px-6 py-4">
-                {matches.bowlStats}
+                {parseFloat(matches.bowlStats).toFixed(2)}
               </td>
               <td className="px-6 py-4">
-                {matches.fieldStats}
+                {parseFloat(matches.fieldStats).toFixed(2)}
               </td>
             </tr>
           })}

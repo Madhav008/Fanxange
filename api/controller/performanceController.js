@@ -12,17 +12,20 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const SeedPlayerPerformance = async () => {
     // Fetch all players (You may uncomment this once you have the actual code to retrieve players)
-    console.log("Fetching players...");
-    const players = await PlayerStats.find({});
-    for (const player of players) {
-        try {
-            // await getRecent10Macthes(player.playerId)
-            await processPlayerMatches(player.playerId);
-        } catch (error) {
-            console.log(error.message);
+    /*     console.log("Fetching players...");
+        const players = await PlayerStats.find({});
+        for (const player of players) {
+            try {
+                // await getRecent10Macthes(player.playerId)
+                await processPlayerMatches(player.playerId);
+            } catch (error) {
+                console.log(error.message);
+            }
         }
-    }
+     */
 
+
+    await processPlayerMatches(1070173);
     console.log("DONE");
 
 };
@@ -33,7 +36,7 @@ const PerformanceRoute = async (req, res) => {
     const { playerId } = req.params;
 
     await processPlayerMatches(parseInt(playerId, 10));
-    const playerPerformanceMatches = await Performance.find({ playerId: playerId }).sort({ date: -1 });
+    const playerPerformanceMatches = await Performance.find({ playerId: playerId }).sort({ date: -1 }).limit(25);
     const result = [];
 
     // Fetch match names for each performance entry
@@ -433,9 +436,7 @@ const getRecent25MatchesOfPlayer = async function (playerId) {
                     },
                 },
             },
-            {
-                $limit: 25, // Limit the result to the first 5 matches
-            },
+
         ]
         var recentMatches = await RecentMatches.aggregate(aggregateMatches);
         recentMatches = recentMatches.reverse();

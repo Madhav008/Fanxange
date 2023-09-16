@@ -41,12 +41,12 @@ const PlayerProfile = () => {
         </div>
         <div className="divider lg:divider-horizontal "></div>
         <div>
-          <h1><span className='font-bold lg:text-xl text-white'>₹{playerData?.player?.playerPriceData?.price}</span></h1>
+          <h1><span className='font-bold lg:text-xl text-white'>₹{parseFloat(playerData?.player?.playerPriceData?.price).toFixed(2)}</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Price</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
         <div>
-          <h1><span className='font-bold lg:text-xl text-white'>Points {playerData?.player?.playerPriceData?.avg_points}</span></h1>
+          <h1><span className='font-bold lg:text-xl text-white'>Points {parseFloat(playerData?.player?.playerPriceData?.avg_points).toFixed(2)}</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Points</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
