@@ -36,7 +36,7 @@ const startCronJob = async (req, res) => {
         // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
       }
 
-      console.log("Fetching players...");
+ /*      console.log("Fetching players...");
       const players = await PlayerStats.find({});
       for (const player of players) {
         try {
@@ -52,7 +52,7 @@ const startCronJob = async (req, res) => {
           console.log(error.message);
         }
       }
-
+ */
 
 
       // res.json(data);
@@ -119,7 +119,7 @@ const checkCronJobStatus = async (req, res) => {
       // res.status(500).json({ error: 'An error occurred while retrieving recent matches.' });
     }
 
-
+/* 
     const players = await PlayerStats.find({});
     for (const player of players) {
       try {
@@ -135,7 +135,7 @@ const checkCronJobStatus = async (req, res) => {
         console.log(error.message);
       }
     }
-
+ */
 
   } else {
     res.json({ "message": 'Cron job is not running.' });
@@ -240,7 +240,7 @@ async function saveRecentMatchesData(data) {
         const existingPlayer = await PlayerStats.findOne({ playerId: player.playerId });
         if (existingPlayer) {
           //Update the player performance of the Live player as the match progresses the points changes 
-          await processPlayerMatches(player.playerId)
+          // await processPlayerMatches(player.playerId)
 
 
           await updatePlayerDataInDatabase(player.playerId);
