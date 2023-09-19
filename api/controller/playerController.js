@@ -60,7 +60,7 @@ async function updatePlayerDataInDatabase(playerId) {
 
                 // If any specified fields are missing, update them with new data
                 const updatedData = {
-                    ...existingPlayer.toObject(),
+                    ...existingPlayer,
                     image: newData.image,
                     imageUrl: newData.imageUrl,
                 };
