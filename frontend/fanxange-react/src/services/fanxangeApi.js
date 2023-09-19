@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-const baseURL = 'http://192.168.1.65:3132/'
+const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+// const baseURL = 'http://192.168.1.65:3132/'
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
   baseURL,
