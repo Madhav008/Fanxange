@@ -101,7 +101,7 @@ const PlayerPriceChart = () => {
             <div className="flex justify-between mb-5">
                 <div>
                     <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">{price[price.length - 1]}</h5>
-                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">25 Matches Points</p>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">25 Matches Avg Points</p>
                 </div>
                 <div
                     className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">

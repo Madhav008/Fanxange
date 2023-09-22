@@ -53,8 +53,18 @@ const PlayerProfile = () => {
 
         <div className='flex  mx-auto w-full justify-between  items-center'>
           <div>
-            <h1><span className='font-bold lg:text-xl flex text-success '>$0.21(11%) <BiSolidUpArrow className=' m-1' /> </span></h1>
-            <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>24H Change</h1>
+            <h1>
+              <span className={`font-bold lg:text-xl flex text-${Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? 'success' : 'error'}`}>
+                ₹{Number(playerData?.player?.playerPriceData?.change_price)}({playerData?.player?.playerPriceData?.change_percent}%)
+                {Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? (
+                  <BiSolidUpArrow className='m-1' />
+                ) : (
+                  <BiSolidDownArrow className='m-1' />
+                )}
+              </span>
+            </h1>
+
+            <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Last Match Change</h1>
           </div>
 
 

@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 
 const PerformanceSchema = new mongoose.Schema({
     playerId: String,
-    matchId:String,
+    matchId: String,
     price: String,
-    total_points :String,
+    old_price: String,
+    total_points: String,
     avg_points: String,
+    change_price: String,
+    change_percent: String,
     date: String,
 });
 

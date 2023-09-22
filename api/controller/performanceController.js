@@ -76,8 +76,12 @@ const PerformanceRoute = async (req, res) => {
     res.status(200).json(result);
 };
 
+//Get the Last match Performance 
+
 const LatestPerformance = async (playerId) => {
     playerId = parseInt(playerId, 10);
+    // await processPlayerMatches(playerId);
+
     const getLatestMatchOfPlayer = [
         {
             $unwind: "$teamPlayers",
@@ -140,7 +144,7 @@ const LatestPerformance = async (playerId) => {
         {
             $match: {
                 startDate: {
-                    $lt: new Date()
+                    $lte: new Date()
                         .toISOString()
                         .slice(0, 10),
                 },
@@ -254,7 +258,7 @@ const processPlayerMatches = async (playerId) => {
         dataPoints.push(data);
 
         // Call the function to create or update performance entry
-        await createOrUpdatePerformanceEntry(playerId, match, current_player_price, current_match_points, average_points);
+        await createOrUpdatePerformanceEntry(playerId, match, temp_old_price, current_player_price, current_match_points, average_points);
     }
 
     // writeInCSV(dataPoints)
@@ -271,14 +275,25 @@ module.exports = {
 
 
 
-const createOrUpdatePerformanceEntry = async (playerId, match, current_player_price, current_match_points, average_points) => {
+const createOrUpdatePerformanceEntry = async (playerId, match, oldPrice, current_player_price, current_match_points, average_points) => {
     // Create a new performance entry
+
+    let change_price = Number(current_player_price - oldPrice).toFixed(2)
+    let change_percent = (change_price / current_player_price.toFixed(2)) * 100;
+
+
+    console.log("Change In Price: " + change_price);
+    console.log("Change In Price % : " + change_percent)
+
     const performance_stats = new Performance({
         playerId: playerId,
         matchId: match.matchId,
         price: current_player_price,
+        old_price: oldPrice,
         total_points: current_match_points,
         avg_points: average_points,
+        change_price: change_price,
+        change_percent: change_percent.toFixed(2),
         date: match.endDate
     });
 
@@ -294,10 +309,13 @@ const createOrUpdatePerformanceEntry = async (playerId, match, current_player_pr
         existingPerformance[0].playerId = playerId;
         existingPerformance[0].matchId = match.matchId;
         existingPerformance[0].price = current_player_price;
+        existingPerformance[0].old_price = oldPrice;
         existingPerformance[0].startDate = match.startDate;
         existingPerformance[0].total_points = current_match_points;
         existingPerformance[0].avg_points = average_points;
-        existingPerformance[0].date = match.endDate;
+        existingPerformance[0].change_price = change_price,
+            existingPerformance[0].change_percent = change_percent.toFixed(2),
+            existingPerformance[0].date = match.endDate;
 
         // Save the updated performance entry
         try {
@@ -436,6 +454,9 @@ const getRecent25MatchesOfPlayer = async function (playerId) {
                     },
                 },
             },
+            {
+                $limit: 25
+            }
 
         ]
         var recentMatches = await RecentMatches.aggregate(aggregateMatches);
