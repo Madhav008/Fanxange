@@ -198,395 +198,395 @@ const MyPortfolio = () => {
               </td>
             </tr>
 
-            
- {/* row 1 */}
- <tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
 
- {/* row 1 */}
- <tr>
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
-<td>
-  <div className='flex gap-2 items-center '>
-    <img
-      className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-      src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
-    />
-    <div className='flex flex-col items-center align-middle'>
-      <h1 className='text-white font-semibold text-sm'>player.name</h1>
+            {/* row 1 */}
+            <tr>
 
-      <h2 className='text-yellow-200'>player.teamName</h2>
+              <td>
+                <div className='flex gap-2 items-center '>
+                  <img
+                    className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                    src='https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'
+                  />
+                  <div className='flex flex-col items-center align-middle'>
+                    <h1 className='text-white font-semibold text-sm'>player.name</h1>
 
-    </div>
-  </div>
+                    <h2 className='text-yellow-200'>player.teamName</h2>
 
-</td>
-<td>
-  <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  $34.23
-</td>
-<td>
-  34
-</td>
-<td>
-  $3400
-</td>
-</tr>
+                  </div>
+                </div>
+
+              </td>
+              <td>
+                <h1 className='text-sm font-semibold  text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                $34.23
+              </td>
+              <td>
+                34
+              </td>
+              <td>
+                $3400
+              </td>
+            </tr>
 
 
 
-            
+
 
 
           </tbody>
