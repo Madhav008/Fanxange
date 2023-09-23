@@ -55,6 +55,12 @@ const Navbar = () => {
                     </div>
                     <ul tabIndex={0} className="menu lg:menu-lg md:menu-md dropdown-content mt-5 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
+                            <Link to="/portfolio"
+                                className="justify-between">
+                                My Portfolio
+                            </Link>
+                        </li>
+                        <li>
                             <a className="justify-between">
                                 Profile
                             </a>
