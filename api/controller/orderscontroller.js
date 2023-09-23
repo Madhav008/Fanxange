@@ -3,11 +3,11 @@ const Orders = require("../models/Orders");
 
 // Example protected route controller
 const createOrder = async (req, res) => {
-    const { price, qty, timestamp, status, user, orderType, playerId } = req.body;
+    const { price, amount, qty, timestamp, status, user, orderType, playerId } = req.body;
 
     try {
         const order = new Orders({
-            price, qty, timestamp, status, user, orderType, playerId
+            price, amount, qty, timestamp, status, user, orderType, playerId
         });
 
         // Save the order to the database
@@ -27,7 +27,6 @@ const createOrder = async (req, res) => {
                 { $push: { sellOrders: order._id } }, // Push the order's ID into sellOrders
                 { new: true }
             );
-            console.log(orderBook)
 
         } else {
             return res.status(400).json({ message: "Invalid orderType" });
@@ -52,6 +51,24 @@ const createOrderBook = async (req, res) => {
     }
 }
 
+
+const getOrders = async (req, res) => {
+
+    const { userId } = req.params;
+    try {
+
+        const orders = await Orders.find({
+            userId: userId
+        })
+        res.status(200).json(orders)
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: "No Orders found" })
+    }
+}
+
+
+
 module.exports = {
-    createOrder, createOrderBook
+    createOrder, createOrderBook, getOrders
 };

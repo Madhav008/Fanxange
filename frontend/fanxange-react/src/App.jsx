@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchLiveMatches, fetchRecentMatches, fetchResultMatches, fetchUpcomingMatches } from './store/matchSlice'
 import { fetchSeries } from './store/seriesSlice'
+import MyPortfolio from './Pages/MyPortfolio'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Hero />} />
           <Route path="/" element={<Dashboard />} />
+          <Route path="/portfolio" element={<MyPortfolio />} />
           <Route path="/player/:playerId" element={<Trade />} />
 
         </Routes>

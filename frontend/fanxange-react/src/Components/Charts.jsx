@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Chart from "react-apexcharts";
 
-const Charts = ({height,width}) => {
+const Charts = ({ height, width, color }) => {
     const [chart, setchart] = useState({
         options: {
             chart: {
-                height: "100%",
-                maxWidth: "100%",
+                height: height || '100%', // Use the provided height or default to '100%'
+                maxWidth: '100%',
                 type: "area",
                 fontFamily: "Inter, sans-serif",
                 dropShadow: {
@@ -27,8 +27,8 @@ const Charts = ({height,width}) => {
                 gradient: {
                     opacityFrom: 0.55,
                     opacityTo: 0,
-                    shade: "#1C64F2",
-                    gradientToColors: ["#1C64F2"],
+                    shade: color || "#1C64F2",
+                    gradientToColors: [color || "#1C64F2"],
                 },
             },
             dataLabels: {
@@ -63,21 +63,21 @@ const Charts = ({height,width}) => {
             },
             yaxis: {
                 show: false,
-              },
-            
+            },
+
         },
         series: [
             {
                 name: "series-1",
                 data: [30, 40, 45, 50, 49, 60, 70, 91],
-                color: "#1A56DB",
+                color: color || "#1A56DB",
 
             },
-           /*  {
-                name: "series-2",
-                data: [30, 45, 40, 50, 60, 49, 91, 49, 70,],
-                color:"#fff"
-            } */
+            /*  {
+                 name: "series-2",
+                 data: [30, 45, 40, 50, 60, 49, 91, 49, 70,],
+                 color:"#fff"
+             } */
         ]
     })
 
@@ -87,8 +87,8 @@ const Charts = ({height,width}) => {
             <div className="row ">
                 <div className="mixed-chart text-black ">
                     <Chart
-                        height={height}
-                        width={width}
+                        height={height || '100%'} // Use the provided height or default to '100%'
+                        width={width || '100%'}
                         options={chart.options}
                         series={chart.series}
                         type="area" />

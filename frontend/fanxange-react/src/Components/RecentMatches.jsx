@@ -44,9 +44,9 @@ const RecentMatches = () => {
               <td className="m-5 hidden md:block w-20">
                 <div className='flex items-center justify-between '>
 
-                  <img width="40px" src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci/${matches.teams[0].imageUrl}`} alt={matches.teams[0].abbreviation} />
+                  <img width="40px" src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci/${matches.teams[0]?.imageUrl}`} alt={matches.teams[0]?.abbreviation} />
                   <div className='text-white font-bold px-2'>VS</div>
-                  <img width="40px" src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci/${matches.teams[1].imageUrl}`} alt={matches.teams[1].abbreviation} />
+                  <img width="40px" src={`https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_80/lsci/${matches.teams[1]?.imageUrl}`} alt={matches.teams[1]?.abbreviation} />
                 </div>
               </td>
               <td className=" p-4 font-semibold text-gray-900 dark:text-white text-sm w-30px  ">

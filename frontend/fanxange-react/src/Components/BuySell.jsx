@@ -1,26 +1,50 @@
 import React, { useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux';
+import { createOrder } from '../store/orderSlice';
 
-const BuySell = () => {
+const BuySell = ({ data }) => {
+    const { playerData, status } = useSelector((state) => state.player);
 
-    const [count, setcount] = useState(0)
+    const [count, setcount] = useState(1)
     const increment = () => {
         setcount(count + 1);
     }
 
     const decrement = () => {
-        setcount(count - 1);
+        if (count > 1) {
+            setcount(count - 1);
+        }
+    }
+
+    const dispatch = useDispatch();
+    const price = playerData?.player?.playerPriceData?.price;
+    const _handleOrder = () => {
+        const price = playerData?.player?.playerPriceData?.price;
+        const amount = price * count;
+        const timestamp = Date.now();
+        const status = "Pending";
+        const user = "650e9bea3671e2f8171430d0";
+        const orderType = data;
+        const playerId = playerData.player.playerId
+        const qty = count;
+        if (data) {
+            const order = {
+                price, amount, qty, timestamp, status, user, orderType, playerId
+            }
+            dispatch(createOrder(order))
+        }
     }
 
     return (
         <div className=' w-full p-5'>
-            <a className="font-bold text-white text-lg">David Miller</a>
-            <h1>Batsman</h1>
+            <a className="font-bold text-white text-lg">{playerData?.player?.name}</a>
+            {/* <h1>Batsman</h1> */}
             <div className='divider '></div>
             <div >
                 <div className='flex justify-between w-full '>
                     <h1 className='font-semibold'>Initial Price</h1>
-                    <h1 className=''>₹32</h1>
+                    <h1 className=''>₹{parseFloat(playerData?.player?.playerPriceData?.price).toFixed(2)}</h1>
                 </div>
 
                 <div className='divider'></div>
@@ -62,7 +86,7 @@ const BuySell = () => {
 
                 <div className='flex justify-between w-full '>
                     <h1 className='font-semibold'>Total Amount</h1>
-                    <h1 className=''>₹33.92</h1>
+                    <h1 className=''>{(price * count + 1.92).toFixed(2)}</h1>
                 </div>
 
                 <div className='divider'></div>
@@ -75,7 +99,7 @@ const BuySell = () => {
                 <div className='divider'></div>
             </div >
 
-            <button className='btn bg-primary-focus w-full mt-3 text-white font-bold mb-3'>
+            <button onClick={_handleOrder} className='btn bg-primary-focus w-full mt-3 text-white font-bold mb-3'>
                 Execute Order
             </button>
         </div >

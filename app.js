@@ -37,6 +37,7 @@ app.use(
 
 
 
+
 // Use the authentication routes
 app.use('/auth', authRoutes);
 

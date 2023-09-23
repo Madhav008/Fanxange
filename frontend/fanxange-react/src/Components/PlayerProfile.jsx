@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiSolidDownArrow, BiSolidUpArrow, BiSolidPlusCircle, BiSolidMinusCircle } from 'react-icons/bi'
 import BuySell from './BuySell'
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,13 @@ import { fetchSeletedTeamsInfo } from '../store/teamSlice';
 
 const PlayerProfile = () => {
   const { playerData, status } = useSelector((state) => state.player);
+  const [modalData, setModalData] = useState(null);
+  const handleClick = (data) => {
+    // Set the data for a Buy operation
+    console.log(data)
+    setModalData(data);
+    window.my_modal_2.showModal();
+  };
 
   if (status === 'loading') {
     return;
@@ -35,11 +42,12 @@ const PlayerProfile = () => {
       <div className="divider"></div>
       <div className='lg:flex gap-2 justify-evenly items-center'>
         <div className="lg:divider lg:divider-horizontal "></div>
-        <div className='whitespace-nowrap'>
+        {/* <div className='whitespace-nowrap'>
           <h1><span className='font-bold lg:text-xl text-white'>₹0.00</span> <span className='break-words whitespace-nowrap'>(0 Shares)</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Total value</h1>
-        </div>
+          </div> 
         <div className="divider lg:divider-horizontal "></div>
+        */}
         <div>
           <h1><span className='font-bold lg:text-xl text-white'>₹{parseFloat(playerData?.player?.playerPriceData?.price).toFixed(2)}</span></h1>
           <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Price</h1>
@@ -71,8 +79,8 @@ const PlayerProfile = () => {
           <div className="divider lg:divider-horizontal "></div>
 
           <div className='flex text-center gap-5 text-lg items-center py-5'>
-            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-green-500 text-white hover:text-white ' onClick={() => window.my_modal_2.showModal()}>Buy</button>
-            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-red-500 text-white hover:text-white ' onClick={() => window.my_modal_2.showModal()}>Sell</button>
+            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-green-500 text-white hover:text-white ' onClick={() => handleClick("Buy")}>Buy</button>
+            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-red-500 text-white hover:text-white ' onClick={() => handleClick("Sell")}>Sell</button>
           </div>
         </div>
 
@@ -84,15 +92,7 @@ const PlayerProfile = () => {
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
 
             <div className=" text-center">
-
-              <BuySell />
-
-
-
-
-
-
-
+              <BuySell data={modalData} />
             </div>
           </div>
         </div>
@@ -103,6 +103,9 @@ const PlayerProfile = () => {
       </dialog>
     </div>
   )
+
+
+
 }
 
 export default PlayerProfile
