@@ -31,3 +31,17 @@ GET http://192.168.1.65:3132/match/530811
 ###
 GET http://192.168.1.65:3132/performance/530811
 
+
+###
+POST http://192.168.1.65:3132/order/create
+content-type: application/json
+
+{
+    "price": 100,
+    "qty": 10,
+    "timestamp": "2023-09-23T12:00:00.000Z", 
+    "status": "Pending",
+    "user": "madhavjjinfa",
+    "orderType": "Sell",
+    "playerId": "asdfsdfsdfsdfd"
+}

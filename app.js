@@ -65,6 +65,10 @@ app.use('/team', teams)
 const performance = require('./api/routes/performance')
 app.use('/performance', performance)
 
+
+const order = require('./api/routes/order');
+app.use("/order", order)
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
