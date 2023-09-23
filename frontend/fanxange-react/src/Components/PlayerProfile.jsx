@@ -54,7 +54,7 @@ const PlayerProfile = () => {
         <div className='flex  mx-auto w-full justify-between  items-center'>
           <div>
             <h1>
-              <span className={`font-bold lg:text-xl flex text-${Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? 'success' : 'error'}`}>
+              <span className={`font-bold lg:text-xl flex text-${Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? 'green-500' : 'red-500'}`}>
                 ₹{Number(playerData?.player?.playerPriceData?.change_price)}({playerData?.player?.playerPriceData?.change_percent}%)
                 {Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? (
                   <BiSolidUpArrow className='m-1' />
