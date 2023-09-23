@@ -57,7 +57,7 @@ export function fetchorder() {
         try {
             // var pageno = getState().questions.page 
             // var difficulty = getState().questions.difficulty
-            const data = await fanxangeApi.getorders("650e9bea3671e2f8171430d0");
+            const data = await fanxangeApi.getUserOrder("650e9bea3671e2f8171430d0");
 
             dispatch(setorders(data));
             dispatch(setStatus(STATUSES.IDLE));

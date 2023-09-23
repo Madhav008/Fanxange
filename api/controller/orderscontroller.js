@@ -1,5 +1,7 @@
 const OrderBook = require("../models/OrderBook");
 const Orders = require("../models/Orders");
+const Performance = require("../models/Performance");
+const PlayerStats = require("../models/PlayerStats");
 
 // Example protected route controller
 const createOrder = async (req, res) => {
@@ -57,10 +59,31 @@ const getOrders = async (req, res) => {
     const { userId } = req.params;
     try {
 
+        let portfolio = [];
+
         const orders = await Orders.find({
-            userId: userId
+            user: userId
         })
-        res.status(200).json(orders)
+        for (const order of orders) {
+            // console.log(order)
+            const playerId = order.playerId;
+
+            //Get latest performance of the player
+            const playerPerformanceMatches = await Performance.findOne({ playerId: playerId }).sort({ date: -1 });
+
+            //Get the player stats
+            const playerInfo = await PlayerStats.findOne({ playerId })
+
+            const portObj = {
+                order,
+                playerPerformanceMatches,
+                playerInfo
+            }
+
+            portfolio.push(portObj)
+        }
+
+        res.status(200).json(portfolio)
     } catch (error) {
         console.log(error.message);
         res.status(500).json({ message: "No Orders found" })
