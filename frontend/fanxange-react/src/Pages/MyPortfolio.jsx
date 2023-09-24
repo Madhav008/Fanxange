@@ -4,6 +4,7 @@ import Charts from '../Components/Charts'
 import { BiSolidUpArrow } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchorder } from '../store/orderSlice'
+import { Link } from 'react-router-dom'
 const MyPortfolio = () => {
   const { orders, status } = useSelector((state) => state.order)
   const dispatch = useDispatch();
@@ -90,19 +91,21 @@ const MyPortfolio = () => {
                 /* row 1 */
                 <tr key={order.id} >
                   <td>
-                    <div className='flex flex-col gap-2 items-center lg:flex-row text-center'>
-                      <img
-                        className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-                        src={order.playerInfo.imageUrl
-                          ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${order.playerInfo?.imageUrl}`
-                          : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
-                        alt='Player Avatar'
-                      />
-                      <div className='flex flex-col items-center align-middle'>
-                        <h1 className='text-white font-semibold text-sm'>{order.playerInfo?.name}</h1>
+                    <Link to={`/player/${order.order.playerId}`}>
+                      <div className='cursor-pointer flex flex-col gap-2 items-center lg:flex-row text-center'>
+                        <img
+                          className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
+                          src={order.playerInfo.imageUrl
+                            ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${order.playerInfo?.imageUrl}`
+                            : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
+                          alt='Player Avatar'
+                        />
+                        <div className='flex flex-col items-center align-middle'>
+                          <h1 className='text-white font-semibold text-sm'>{order.playerInfo?.name}</h1>
 
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </td>
                   <td>
                     <h1 className='text-sm font-semibold text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
@@ -134,7 +137,7 @@ const MyPortfolio = () => {
 
                   </td>
                   <td>
-                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>Pending</h1>
+                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>{order.order.status}</h1>
                   </td>
                   <td>
                     <h1 className='text-sm font-semibold text-purple-500 flex items-center gap-1 cursor-pointer'>Close</h1>
@@ -153,11 +156,11 @@ const MyPortfolio = () => {
 
 
         </table>
-      </div>
+      </div >
 
 
 
-    </div>
+    </div >
   )
 }
 
