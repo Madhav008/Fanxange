@@ -4,7 +4,7 @@ import teamReducer from './teamSlice';
 import seriesReducer from './seriesSlice';
 import playerReducer from './playerSlice';
 import orderReducer from './orderSlice';
-
+import userReducer from './userSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ export const store = configureStore({
     series: seriesReducer,
     player:playerReducer,
     order:orderReducer,
-
+    user:userReducer,
 
   }, middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

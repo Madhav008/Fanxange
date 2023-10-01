@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const authRoutes = require('./api/routes/auth');
 const apiRoutes = require('./api/routes/api');
-const cookieSession = require("cookie-session");
-const passport = require('passport');
 const isAuthenticated = require('./api/midleware/authmiddlware');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -12,19 +10,11 @@ require('./initDB')();
 
 app.use(morgan('dev'));
 
-// Add express-session middleware
-app.use(
-  cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
-);
-
 
 // parse cookies
 app.use(cookieParser());
 
 
-// Add Passport.js middleware
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.json());
 
 app.use(

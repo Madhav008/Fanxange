@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { STATUSES, setStatus, setUserdata } from '../store/userSlice';
 
 const Hero = () => {
 
@@ -16,10 +18,12 @@ const Hero = () => {
         // Set authenticated state to false in the HomePage
         window.open("http://localhost:3132/auth/google/logout", "_self");
     };
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
         function checkAuth() {
+            dispatch(setStatus(STATUSES.LOADING))
             fetch("http://localhost:3132/auth/success", {
                 method: "GET",
                 credentials: "include",
@@ -34,17 +38,18 @@ const Hero = () => {
                     throw new Error("failed to authenticate user");
                 })
                 .then(responseJson => {
-                    console.log(responseJson);
-                    setauth({
+                    dispatch(setStatus(STATUSES.IDLE))
+                    dispatch(setUserdata({
                         authenticated: true,
                         user: responseJson.user
-                    });
+                    }))
                 })
                 .catch(error => {
-                    setauth({
+                    dispatch(setStatus(STATUSES.ERROR))
+                    dispatch(setUserdata({
                         authenticated: false,
                         error: "Failed to authenticate user"
-                    });
+                    }))
                 });
         }
 
@@ -62,6 +67,7 @@ const Hero = () => {
                 </div>
 
                 <div className='btn bg-primary text-white' onClick={_handleSignInClick}>
+                    <img className='w-10 h-10' src="./assets/google.png" alt="" />
                     Login With Google
                 </div>
             </div>
@@ -77,6 +83,7 @@ const Hero = () => {
                 <div className='py-6 text-lg'>
                     Invest with Fanxange, and make profit from your favourite players.
                 </div>
+                {/* <Authentication /> */}
                 <div className='flex justify-center'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 text-center justify-center py-6 font-bold '>
                         <div className='p-2'>Quick start</div>
@@ -86,8 +93,10 @@ const Hero = () => {
                 </div>
 
                 <div onClick={_handleSignInClick} className='btn btn-primary w-[250px]'>
+                    <img className='w-10 h-10' src="./assets/google.png" alt="" />
                     Login With Google
                 </div>
+
                 <div className='mt-3'>
                     No registration required
                 </div>
@@ -113,9 +122,6 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className='btn btn-primary text-secondary  w-[250px]'>
-                    Try trading now
-                </div>
             </section>
 
 

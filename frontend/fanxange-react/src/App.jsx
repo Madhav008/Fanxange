@@ -25,8 +25,8 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/home" element={<Hero />} />
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Hero />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/portfolio" element={<MyPortfolio />} />
           <Route path="/player/:playerId" element={<Trade />} />
 
