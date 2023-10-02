@@ -20,9 +20,6 @@ const Dashboard = () => {
   } = useSelector((state) => state.match);
   const { series: Series, status: seriesStatus } = useSelector((state) => state.series);
 
-
-
-
   return (
     <div>
       <Navbar />

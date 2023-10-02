@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const Hero = () => {
     const _handleSignInClick = () => {
@@ -11,11 +12,11 @@ const Hero = () => {
     };
 
 
-    const { user } = useSelector((state) => state.user);
-    const { authenticated } = user;
-    if (user && authenticated) {
+    const { userData } = useSelector((state) => state.user);
+    if (userData.authenticated === true) {
         return <Navigate to="/dashboard" />
     }
+
 
     return (
         <div>

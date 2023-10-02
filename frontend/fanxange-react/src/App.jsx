@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from './Components/Hero';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import Trade from './Pages/Trade';
 import { useEffect } from 'react';
@@ -22,6 +22,10 @@ function App() {
     dispatch(fetchUser());
   }, [dispatch]);
 
+  const {  status } = useSelector((state) => state.user);
+  if (status === 'loading') {
+    return <div>Loading...</div>
+  }
 
   return (
     <>

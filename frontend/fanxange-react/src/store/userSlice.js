@@ -9,8 +9,8 @@ export const STATUSES = Object.freeze({
 
 
 const initialState = {
-    user: {},
-    status:STATUSES.IDLE
+    userData: {},
+    status: STATUSES.IDLE
 };
 
 const userSlice = createSlice({
@@ -18,7 +18,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUserdata: (state, actions) => {
-            state.user = actions.payload;
+            state.userData = actions.payload;
         },
         setStatus(state, action) {
             state.status = action.payload;

@@ -1,7 +1,12 @@
 import React from 'react'
 import { Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+
+
+    const { userData } = useSelector((state) => state.user);
+    const { name, picture } = userData.user;
     return (
 
 
@@ -41,19 +46,19 @@ const Navbar = () => {
                     </div>
                 </Link>
             </div>
-            <div className="flex-none">
-                <div className="dropdown dropdown-end">
-                    <div className='flex items-center gap-2'>
+            <div className="flex-none ">
+                <div className="dropdown dropdown-end ">
+                    <div className='flex items-center gap-2 '>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="rounded-full ">
-                                <img src="https://pixner.net/spovest/dark/assets/images/user/profile-sm.png" />
+                                <img src={picture ? picture : "https://pixner.net/spovest/dark/assets/images/user/profile-sm.png"} />
                             </div>
                         </label>
                         <span className='font-semibold cursor-pointer' tabIndex={0}>
-                            Madhav Jindal
+                            {name}
                         </span>
                     </div>
-                    <ul tabIndex={0} className="menu lg:menu-lg md:menu-md dropdown-content mt-5 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu lg:menu-lg md:menu-md dropdown-content mt-5 z-[2] p-2 shadow bg-base-100 rounded-box w-52 ">
                         <li>
                             <Link to="/portfolio"
                                 className="justify-between">

@@ -5,11 +5,10 @@ import { Outlet, Navigate } from 'react-router-dom';
 
 
 const ProtectedRoutes = () => {
-    const { user } = useSelector((state) => state.user);
-    const { authenticated } = user;
-    if (user && authenticated) {
-        return authenticated ? <Outlet /> : <Navigate to="/" />
-    }
+    const { userData } = useSelector((state) => state.user);
+
+    return userData.authenticated === true ? <Outlet /> : <Navigate to="/" />
+
 
 };
 
