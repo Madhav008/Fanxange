@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-const baseURL = 'http://192.168.1.65:3132/'
+const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+// const baseURL = 'http://192.168.1.65:3132/'
 // Define Axios requests for each of your endpoints
 const axiosInstance = axios.create({
   baseURL,
@@ -20,9 +20,6 @@ const apiEndpoints = {
   getTeamInfo: '/team/teamInfo',
   placeOder: '/order/create',
   getOrders: '/order/:userId',
-  login: '/auth/google/login',
-  success:'auth/success'
-
 };
 
 // Define functions to make Axios requests for your endpoints
@@ -40,23 +37,6 @@ const makeRequest = async (url, method = 'GET', data = null) => {
 };
 
 
-const checkLogin = async (url, method = 'GET') => {
-  try {
-    const response = await axiosInstance({
-      method,
-      url,
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      }
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
 
 export const fanxangeApi = {
   getLiveMatches: () => makeRequest(apiEndpoints.getLiveMatches),
@@ -82,9 +62,6 @@ export const fanxangeApi = {
   placeOder: (order) => makeRequest(apiEndpoints.placeOder, 'POST', order),
 
   getUserOrder: (userId) => makeRequest(apiEndpoints.getOrders.replace(':userId', userId)),
-
-  getUser: () => checkLogin(apiEndpoints.success)
-
 
 };
 

@@ -1,61 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { STATUSES, setStatus, setUserdata } from '../store/userSlice';
+import React from 'react'
+import { useSelector } from 'react-redux';
 
 const Hero = () => {
-
-    const [auth, setauth] = useState()
-
     const _handleSignInClick = () => {
-        // Authenticate using via passport api in the backend
-        // Open Twitter login page
-        // Upon successful login, a cookie session will be stored in the client
         window.open("http://localhost:3132/auth/google/login", "_self");
     };
 
     const _handleLogoutClick = () => {
-        // Logout using Twitter passport api
-        // Set authenticated state to false in the HomePage
         window.open("http://localhost:3132/auth/google/logout", "_self");
     };
-    const dispatch = useDispatch();
 
-    useEffect(() => {
 
-        function checkAuth() {
-            dispatch(setStatus(STATUSES.LOADING))
-            fetch("http://localhost:3132/auth/success", {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Credentials": true
-                }
-            })
-                .then(response => {
-                    if (response.status === 200) return response.json();
-                    throw new Error("failed to authenticate user");
-                })
-                .then(responseJson => {
-                    dispatch(setStatus(STATUSES.IDLE))
-                    dispatch(setUserdata({
-                        authenticated: true,
-                        user: responseJson.user
-                    }))
-                })
-                .catch(error => {
-                    dispatch(setStatus(STATUSES.ERROR))
-                    dispatch(setUserdata({
-                        authenticated: false,
-                        error: "Failed to authenticate user"
-                    }))
-                });
-        }
-
-        checkAuth()
-    }, [])
-
+    const { user } = useSelector((state) => state.user);
+    const { authenticated } = user;
+    if (user && authenticated) {
+        return <Navigate to="/dashboard" />
+    }
 
     return (
         <div>

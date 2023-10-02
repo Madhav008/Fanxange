@@ -1,13 +1,15 @@
-import Hero from './Components/Hero'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Dashboard from './Pages/Dashboard'
-import Trade from './Pages/Trade'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { fetchLiveMatches, fetchRecentMatches, fetchResultMatches, fetchUpcomingMatches } from './store/matchSlice'
-import { fetchSeries } from './store/seriesSlice'
-import MyPortfolio from './Pages/MyPortfolio'
-
+import React from 'react';
+import Hero from './Components/Hero';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
+import Trade from './Pages/Trade';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLiveMatches, fetchRecentMatches, fetchResultMatches, fetchUpcomingMatches } from './store/matchSlice';
+import { fetchSeries } from './store/seriesSlice';
+import MyPortfolio from './Pages/MyPortfolio';
+import ProtectedRoutes from './Components/ProtectedRoutes';
+import { fetchUser } from './store/userSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,24 +19,24 @@ function App() {
     dispatch(fetchRecentMatches());
     dispatch(fetchResultMatches());
     dispatch(fetchSeries());
-  }, [dispatch])
+    dispatch(fetchUser());
+  }, [dispatch]);
 
 
   return (
     <>
-
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/portfolio" element={<MyPortfolio />} />
-          <Route path="/player/:playerId" element={<Trade />} />
-
+          <Route element={<ProtectedRoutes />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path="/portfolio" element={<MyPortfolio />} />
+            <Route path="/player/:playerId" element={<Trade />} />
+          </Route>
         </Routes>
       </Router>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
