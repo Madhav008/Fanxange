@@ -1,9 +1,14 @@
 import React from 'react'
 import { Button } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+
 const Navbar = () => {
 
+    const handleLogout = () => {
+        window.open("http://localhost:3132/auth/logout", "_self");
+    };
 
     const { userData } = useSelector((state) => state.user);
     const { name, picture } = userData.user;
@@ -74,7 +79,7 @@ const Navbar = () => {
                         <li><a>Notifications
                             <span className="badge border-gray-100 text-red-600 font-bold">New</span>
                         </a></li>
-                        <li><a>Logout</a></li>
+                        <li onClick={handleLogout}><a>Logout</a></li>
                     </ul>
                 </div>
             </div>

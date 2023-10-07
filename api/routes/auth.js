@@ -10,7 +10,7 @@ router.get('/google/login', authController.googleLogin);
 router.get('/success', authController.successEndpoint);
 
 
-router.get('/google/callback',authController.googleCallback)
+router.get('/google/callback', authController.googleCallback)
 
 /* router.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/failed' }),
@@ -19,10 +19,9 @@ router.get('/google/callback',authController.googleCallback)
     });
  */
 router.get('/logout', function (req, res) {
-    req.logout(function (err) {
-        if (err) { return next(err); }
-        res.redirect(process.env.CLIENT_URL);
-    });
+    res.clearCookie('token');
+    res.redirect(process.env.CLIENT_URL);
+
 })
 
 module.exports = router;

@@ -22,7 +22,7 @@ function App() {
     dispatch(fetchUser());
   }, [dispatch]);
 
-  const {  status } = useSelector((state) => state.user);
+  const { status, userData } = useSelector((state) => state.user);
   if (status === 'loading') {
     return <div>Loading...</div>
   }
@@ -32,10 +32,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
+          {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} /> }
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path="/portfolio" element={<MyPortfolio />} />
-            <Route path="/player/:playerId" element={<Trade />} />
           </Route>
         </Routes>
       </Router>

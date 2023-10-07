@@ -7,10 +7,6 @@ const Hero = () => {
         window.open("http://localhost:3132/auth/google/login", "_self");
     };
 
-    const _handleLogoutClick = () => {
-        window.open("http://localhost:3132/auth/google/logout", "_self");
-    };
-
 
     const { userData } = useSelector((state) => state.user);
     if (userData.authenticated === true) {

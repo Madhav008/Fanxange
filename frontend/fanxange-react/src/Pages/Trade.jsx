@@ -23,9 +23,10 @@ const Trade = () => {
 
 
   const { status } = useSelector((state) => state.player);
+  const { status: userStatus } = useSelector((state) => state.user);
 
 
-  if (status == 'loading') {
+  if (status == 'loading' || userStatus == 'loading') {
     return <div>
       Loading ...
     </div>
