@@ -4,7 +4,8 @@ import { Navigate } from 'react-router-dom';
 
 const Hero = () => {
     const _handleSignInClick = () => {
-        window.open("http://localhost:3132/auth/google/login", "_self");
+        const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+        window.open(`${baseURL}auth/google/login`, "_self");
     };
 
 
