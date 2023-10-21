@@ -9,10 +9,11 @@ export const STATUSES = Object.freeze({
 
 const initialState = {
     playerData: [],
-    playerRecentMatches:[],
-    playerRecentMatchesStatus:STATUSES.IDLE,
+    playerRecentMatches: [],
+    trendingPlayers: [],
+    playerRecentMatchesStatus: STATUSES.IDLE,
     status: STATUSES.IDLE,
-
+    trendingPlayerStatus: STATUSES.IDLE,
 }
 
 
@@ -34,12 +35,18 @@ export const playerSlice = createSlice({
         },
         setPlayerRecentMatchesStatus: (state, action) => {
             state.playerRecentMatchesStatus = action.payload;
-         }
+        },
+        setTrendingPlayers :(state,action)=>{
+            state.trendingPlayers = action.payload;
+        },
+        setTrendingPlayerStatus: (state, action) => {
+            state.trendingPlayerStatus = action.payload;
+        }
 
     }
 })
 
-export const { setplayer, setStatus,setPlayerRecentMatches,setPlayerRecentMatchesStatus } = playerSlice.actions;
+export const { setplayer, setStatus, setPlayerRecentMatches, setPlayerRecentMatchesStatus, setTrendingPlayerStatus,setTrendingPlayers } = playerSlice.actions;
 export default playerSlice.reducer;
 
 
@@ -75,6 +82,20 @@ export function fetchPlayerRecentMatches(query) {
         } catch (err) {
             console.log(err);
             dispatch(setPlayerRecentMatchesStatus(STATUSES.ERROR));
+        }
+    };
+}
+
+export function fetchtrendingplayer(query) {
+    return async function fetchThunk(dispatch, getState) {
+        dispatch(setTrendingPlayerStatus(STATUSES.LOADING));
+        try {
+            const data = await fanxangeApi.getTrending();
+            dispatch(setTrendingPlayers(data));
+            dispatch(setTrendingPlayerStatus(STATUSES.IDLE));
+        } catch (err) {
+            console.log(err);
+            dispatch(setTrendingPlayerStatus(STATUSES.ERROR));
         }
     };
 }

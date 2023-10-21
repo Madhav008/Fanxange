@@ -40,8 +40,13 @@ export default ordersSlice.reducer;
 export function createOrder(order) {
     return async function fetchThunk(dispatch, getState) {
         dispatch(setStatus(STATUSES.LOADING));
+        const userid = getState().user.userData.user.id;
+        var newOrder = {
+            ...order,
+            user: userid,
+        }
         try {
-            const data = await fanxangeApi.placeOder(order);
+            const data = await fanxangeApi.placeOder(newOrder);
 
             dispatch(setStatus(STATUSES.IDLE));
         } catch (err) {
@@ -55,9 +60,9 @@ export function fetchorder() {
     return async function fetchThunk(dispatch, getState) {
         dispatch(setStatus(STATUSES.LOADING));
         try {
-            // var pageno = getState().questions.page 
+            var userid = getState().user.userData.user.id
             // var difficulty = getState().questions.difficulty
-            const data = await fanxangeApi.getUserOrder("650e9bea3671e2f8171430d0");
+            const data = await fanxangeApi.getUserOrder(userid);
 
             dispatch(setorders(data));
             dispatch(setStatus(STATUSES.IDLE));

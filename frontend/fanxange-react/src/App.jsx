@@ -10,6 +10,7 @@ import { fetchSeries } from './store/seriesSlice';
 import MyPortfolio from './Pages/MyPortfolio';
 import ProtectedRoutes from './Components/ProtectedRoutes';
 import { fetchUser } from './store/userSlice';
+import { fetchtrendingplayer } from './store/playerSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
     dispatch(fetchResultMatches());
     dispatch(fetchSeries());
     dispatch(fetchUser());
+    dispatch(fetchtrendingplayer());
   }, [dispatch]);
 
   const { status, userData } = useSelector((state) => state.user);
@@ -32,7 +34,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
-          {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} /> }
+           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path="/portfolio" element={<MyPortfolio />} />

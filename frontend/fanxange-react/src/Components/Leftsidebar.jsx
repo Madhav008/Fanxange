@@ -1,7 +1,10 @@
 import React from "react";
-import PlayerPriceCard from "./PlayerPriceCard";
 import PlayerTrendCard from "./Unused/PlayerTrendCard";
+import { useSelector } from "react-redux";
 const LeftSideBar = () => {
+
+  const { trendingPlayers, trendingPlayersStatus } = useSelector((state) => state.player);
+
   return (
     <div className="p-3 flex flex-col align-middle items-center lg:max-w-max sm:w-full">
       <h1 className="text-white text-sm border-b-2 font-bold p-2 text-center w-full mb-2">
@@ -53,15 +56,13 @@ const LeftSideBar = () => {
         <div className="divider"></div>
         {/* Player Cards */}
         <div className="h-[720px] overflow-auto pr-3">
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-          <PlayerTrendCard />
-
-
+          {trendingPlayersStatus === "loading" ? (
+            <p>Loading...</p>
+          ) : (
+            trendingPlayers.map((player, index) => (
+              <PlayerTrendCard key={index} player={player} />
+            ))
+          )}
 
           {/* Add more PlayerPriceCard components as needed */}
         </div>

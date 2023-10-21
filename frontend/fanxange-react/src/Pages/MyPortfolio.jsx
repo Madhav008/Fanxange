@@ -10,7 +10,7 @@ const MyPortfolio = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchorder("650e9bea3671e2f8171430d0"))
+    dispatch(fetchorder())
   }, [])
 
 

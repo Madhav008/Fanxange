@@ -24,13 +24,12 @@ const BuySell = ({ data }) => {
         const amount = price * count;
         const timestamp = Date.now();
         const status = "Pending";
-        const user = "650e9bea3671e2f8171430d0";
         const orderType = data;
         const playerId = playerData.player.playerId
         const qty = count;
         if (data) {
             const order = {
-                price, amount, qty, timestamp, status, user, orderType, playerId
+                price, amount, qty, timestamp, status, orderType, playerId
             }
             dispatch(createOrder(order))
         }

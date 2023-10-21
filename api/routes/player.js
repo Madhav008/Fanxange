@@ -6,6 +6,8 @@ const apiController = require('../controller/playerController');
 router.post('/', apiController.getPlayersByTeam);
 router.post('/teams', apiController.getTeamPlayers);
 router.post('/data', apiController.getPlayer);
+router.get('/trending', apiController.trendingPlayer);
+
 
 
 
