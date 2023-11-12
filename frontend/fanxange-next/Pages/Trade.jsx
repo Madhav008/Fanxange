@@ -5,16 +5,16 @@ import PlayerPriceChart from '../Components/PlayerPriceChart'
 import PlayerProfile from '../Components/PlayerProfile'
 import UpcomingMatches from '../Components/UpcomingMatches'
 import RecentMatches from '../Components/RecentMatches'
-import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPlayerRecentMatches, fetchplayer } from '../app/store/playerSlice'
+import { fetchPlayerRecentMatches, fetchplayer } from '../app/front1/store/playerSlice'
 import './index.css'
+import { useSearchParams } from 'next/navigation'
 
 
 const Trade = () => {
 
 
-  const { playerId } = useParams();
+  const { playerId } = useSearchParams();
   const dispatch = useDispatch();
 
   useEffect(() => {

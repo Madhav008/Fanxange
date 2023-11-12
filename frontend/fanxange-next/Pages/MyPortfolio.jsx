@@ -3,9 +3,9 @@ import Navbar from '../Components/Navbar'
 import Charts from '../Components/Charts'
 import { BiSolidUpArrow } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchorder } from '../app/store/orderSlice'
-import { Link } from 'react-router-dom'
+import { fetchorder } from '../app/front1/store/orderSlice'
 import './index.css'
+import Link from 'next/link'
 
 const MyPortfolio = () => {
   const { orders, status } = useSelector((state) => state.order)
