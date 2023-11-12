@@ -1,14 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'flowbite-react';
 import { Link, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { FaClock, FaWallet } from 'react-icons/fa';
+import { RiArrowDownSFill, RiWalletLine } from "react-icons/ri"
+import { useEffect } from 'react';
 
 const Navbar = () => {
 
     const handleLogout = () => {
-        window.open("http://localhost:3132/auth/logout", "_self");
+        const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+        // window.open(`${baseURL}auth/google/login`, "_self");
+        window.open(`${baseURL}auth/logout`, "_self");
+
     };
+
+    const [time, settime] = useState();
+
+    useEffect(() => {
+
+        const currentDate = new Date();
+
+        // Target date (March 3, 2024)
+        const targetDate = new Date('2024-03-03');
+
+        // Calculate the difference in milliseconds
+        const differenceInMilliseconds = targetDate - currentDate;
+
+        // Convert milliseconds to days
+        const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+        settime(differenceInDays.toFixed(0))
+
+    }, [])
+
 
     const { userData } = useSelector((state) => state.user);
     const { name, picture } = userData.user;
@@ -50,17 +76,28 @@ const Navbar = () => {
                         <h1>Fan</h1><span className='text-accent'>Xange</span>
                     </div>
                 </Link>
+
+                <div>
+                    <h1 className='text-white text-sm font-bold font-mono'>Time Left in IPL2024 <span className='flex gap-1 text-center items-center'><FaClock /> {time} Days</span></h1>
+                </div>
             </div>
             <div className="flex-none ">
+                <Link to='/wallet'>
+                    <div className='border-gray-200 border rounded-md m-4 cursor-pointer '>
+                        <h1 className='mx-2 text-white text-sm font-mono'> <span className='items-center flex gap-2'><FaWallet /> <span className='text-lg'>₹0.00</span></span></h1>
+                        {/* <h2 className='m-2 flex items-center'> <span className='mx-2'><FaWallet /></span> <span className='font-bold uppercase '>Deposit</span></h2> */}
+                    </div>
+                </Link>
                 <div className="dropdown dropdown-end ">
-                    <div className='flex items-center gap-2 '>
+                    <div className='flex items-center'>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="rounded-full ">
                                 <img src={picture ? picture : "https://pixner.net/spovest/dark/assets/images/user/profile-sm.png"} />
                             </div>
                         </label>
-                        <span className='font-semibold cursor-pointer' tabIndex={0}>
+                        <span className='mx-3 flex items-center font-semibold cursor-pointer' tabIndex={0}>
                             {name}
+                            <RiArrowDownSFill />
                         </span>
                     </div>
                     <ul tabIndex={0} className="menu lg:menu-lg md:menu-md dropdown-content mt-5 z-[2] p-2 shadow bg-base-100 rounded-box w-52 ">

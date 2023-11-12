@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Orders = require('./Orders');
 
 const orderBookSchema = new mongoose.Schema({
   buyOrders: [
@@ -16,5 +17,8 @@ const orderBookSchema = new mongoose.Schema({
 });
 
 const OrderBook = mongoose.model('OrderBook', orderBookSchema);
+
+
+
 
 module.exports = OrderBook;

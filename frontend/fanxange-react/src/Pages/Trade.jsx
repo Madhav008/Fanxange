@@ -8,6 +8,7 @@ import RecentMatches from '../Components/RecentMatches'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlayerRecentMatches, fetchplayer } from '../store/playerSlice'
+import './index.css'
 
 
 const Trade = () => {
