@@ -68,7 +68,7 @@ const Navbar = () => {
          </nav> */
 
 
-        <div className="navbar bg-neutral-focus mb-2">
+        <div className="navbar bg-secondary mb-2">
             <div className="flex-1">
                 <Link to='/'>
                     <div className=' flex text-xl font-bold rounded-full p-3 items-center'>
