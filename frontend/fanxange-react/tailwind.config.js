@@ -28,7 +28,7 @@ export default {
 
           'base-100': '#2D325A',
           'base-200': '#25294A',
-          'base-300': '#16181d',
+          'base-300': '#3a3982',
           'base-content': '#ebecf0',
 
           'info': '#FD7270',
