@@ -213,7 +213,7 @@ const Landing = () => {
 
 
 
-            <section class="='w-full mx-auto flex justify-center p-2">
+            <section class="w-full mx-auto flex justify-center p-2">
                 <div class="container">
                     <div className="bg-no-repeat bg-center bg-contain rounded-lg pt-[120px] md:p-12 flex flex-col items-center justify-between" style={{ backgroundImage: 'url("/assets/images/faq/faq_bg.png")' }}>
                         <div class="text-center">
@@ -232,8 +232,52 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
+
+
+
+            <section className='w-full mx-auto flex justify-center p-2'>
+                <div class="container">
+                    <div class="experience">
+                        <div class="experience_content text-center">
+                            <h1 class="section_title">Experience the future of fantasy sports</h1>
+                            <p class="section_info">Buy &amp; Sell Shares in Favourite Players</p>
+                            <a href="trade.html" class="btn btn-info text-white">Start Trading</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <footer className='w-full mx-auto flex justify-center p-6'>
+                <div class="container">
+                    <div class="font-bold flex justify-between items-center mb-2">
+
+                        <ul class=" flex flex-wrap gap-10 items-start text-sm lg:text-md   justify-start lg:justify-end">
+                            <span>CONTACT US</span>
+                            <span>TERMS OF USE</span>
+                            <span>PRIVACY POLICY</span>
+                        </ul>
+
+                        <ul class="flex flex-wrap gap-5 justify-center lg:justify-end m-4">
+                            <span class="nav-link ml-0">
+                                <img src="assets/images/footer/apple_store.png" alt="Download from Apple Store" />
+                            </span>
+                            <span class="nav-link mr-0">
+                                <img src="assets/images/footer/google_store.png" alt="Download from Google Play Store" />
+                            </span>
+                        </ul>
+                    </div>
+                    <hr className=' border-base-300 ' />
+                    <div class="justify-center gap-4 flex items-center mt-4">
+                        <p class="para">Copyright © 2023.</p>
+                        <p class="para">All rights reserved</p>
+                    </div>
+                </div >
+            </footer >
         </div >
     );
+
+
 };
 
 export default Landing;
