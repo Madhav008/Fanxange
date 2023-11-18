@@ -72,9 +72,9 @@ const Middlesidebar = () => {
       </div>
 
       {/* Parent with search bar and player table */}
-      <div className='max-h-[xl] w-full'>
+      <div className='max-h-[xl] w-full overflow-x-auto'>
         <div className='divider'></div>
-        <table className='table'>
+        <table className='table '>
           <tbody>
             <div className='h-[720px] overflow-auto'>
               {teamStatus === 'loading' ? (

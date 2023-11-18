@@ -54,7 +54,11 @@ export default {
 
 
   theme: [{
-    extend: {},
+    extend: {
+      fontFamily: {
+        'open-sans': ['Open Sans', 'sans-serif'],
+      },
+    },
   }],
   plugins: [require("daisyui"), require('flowbite/plugin')({
     charts: true,
