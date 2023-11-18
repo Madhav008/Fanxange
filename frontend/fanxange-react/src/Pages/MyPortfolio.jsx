@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchorder } from '../store/orderSlice'
 import { Link } from 'react-router-dom'
 import LoadingAnimation from '../Components/LoadingAnimation'
+import PlayerTable from '../Components/PlayerTable'
 const MyPortfolio = () => {
   const { orders, status } = useSelector((state) => state.order)
   const dispatch = useDispatch();
@@ -13,9 +14,6 @@ const MyPortfolio = () => {
   useEffect(() => {
     dispatch(fetchorder())
   }, [])
-
-
-
 
 
   if (status === 'loading') {
@@ -26,23 +24,30 @@ const MyPortfolio = () => {
     <div>
       <Navbar />
       <div className='flex justify-between overflow-x-auto overflow-y-hidden'>
-        <div className='bg-[#3d447a] m-4 w-[400px] h-[200px] rounded-xl'>
+        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
           <div className='m-5 '>
-            <h1 className='text-lg font-bold text-white py-2'>PORTFOLIO VALUE</h1>
+            <div class="flex items-center justify-between text-md font-bold  text-white">
+              <p class="">PORTFOLIO VALUE</p>
+              <p class="flex items-center text-green-500">
+                <i class="fas fa-plus mr-1"></i>
+                09.84%
+                <img className='ml-2' src="assets/images/user/arrow.png" alt="Arrow" />
+              </p>
+            </div>
             <h1 className='text-2xl font-bold text-yellow-300'>$1500</h1>
 
             {/* Specify the dimensions for the chart */}
             <Charts height="70%" width="100%" color="#ffc107" />
           </div>
         </div>
-        <div className='bg-[#3d447a] m-4 w-[400px] h-[200px] rounded-xl'>
+        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
           <div className='m-5'>
             <h1 className='text-lg font-bold text-white py-2'>ACCOUNT BALANCE</h1>
             <h1 className='text-2xl font-bold text-yellow-300 '>$1500</h1>
             <Charts height="70%" width="100%" color="#0dcaf0" />
 
           </div></div>
-        <div className='bg-[#3d447a] m-4 w-[400px] h-[200px] rounded-xl'>
+        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
           <div className='m-5'>
             <h1 className='text-lg font-bold text-white py-2'>EARNINGS</h1>
             <h1 className='text-2xl font-bold text-yellow-300 '>$1500</h1>
@@ -50,115 +55,37 @@ const MyPortfolio = () => {
           </div></div>
       </div>
 
-      <div className="overflow-x-auto px-2  bg-neutral-focus">
-        <table className="table table-xs table-pin-rows	">
-          {/* head */}
-          <thead className='text-white text-xl'>
-            <tr>
-              <th >
-                Players
-              </th>
-              <th >
-                Change
-              </th>
-              <th >
-                Share Price
-              </th>
-              <th >
-                Bought At
-              </th>
-              <th >
-                My Share
-              </th>
-              <th >
-                Earning
-              </th>
-              <th>
-                Type
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
 
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              orders.map((order) => (
-                /* row 1 */
-                <tr key={order.id} >
-                  <td>
-                    <Link to={`/player/${order.order.playerId}`}>
-                      <div className='cursor-pointer flex flex-col gap-2 items-center lg:flex-row text-center'>
-                        <img
-                          className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
-                          src={order.playerInfo.imageUrl
-                            ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${order.playerInfo?.imageUrl}`
-                            : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
-                          alt='Player Avatar'
-                        />
-                        <div className='flex flex-col items-center align-middle'>
-                          <h1 className='text-white font-semibold text-sm'>{order.playerInfo?.name}</h1>
+      <div class="font-open-sans text-28 font-bold leading-1.357 text-white mt-50 mb-2">
+        <h5>My Players</h5>
+        <div class="overflow-x-auto bg-accent-focus">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Players</th>
+                <th scope="col">Change</th>
+                <th scope="col">Share Price</th>
+                <th scope="col">Bought At</th>
+                <th scope="col">My Share</th>
+                <th scope="col">Earning</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
 
-                        </div>
-                      </div>
-                    </Link>
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-green-400 flex items-center gap-1'>+4.1<BiSolidUpArrow /></h1>
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>{Number(order?.playerPerformanceMatches?.price).toFixed(2)}</h1>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                orders.map((order) => (
+                  /* row 1 */
+                  <PlayerTable order={order} />
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
 
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>{Number(order?.order?.price).toFixed(2)}</h1>
-
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>{order?.order?.qty}</h1>
-
-                  </td>
-                  <td>
-                    {(order.order.orderType === 'Buy'
-                      ? (Number(order.playerPerformanceMatches.price).toFixed(2) - Number(order.order.price).toFixed(2)).toFixed(2)
-                      : (Number(order.order.price).toFixed(2) - Number(order.playerPerformanceMatches.price).toFixed(2)).toFixed(2)
-                    )}
-
-                  </td>
-                  <td>
-                    <h1 className={`text-sm font-semibold flex items-center gap-1 ${order.order.orderType === 'Buy' ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                      {order.order.orderType}
-                    </h1>
-
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-white flex items-center gap-1'>{order.order.status}</h1>
-                  </td>
-                  <td>
-                    <h1 className='text-sm font-semibold text-purple-500 flex items-center gap-1 cursor-pointer'>Close</h1>
-                  </td>
-                </tr>
-              ))
-            }
-
-
-
-
-
-
-
-          </tbody>
-
-
-        </table>
-      </div >
-
-
-
+      </div>
     </div >
   )
 }

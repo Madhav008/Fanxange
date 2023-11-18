@@ -36,7 +36,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/loading" element={<LoadingAnimation />} />
           <Route path="/home" element={<Landing />} />
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
