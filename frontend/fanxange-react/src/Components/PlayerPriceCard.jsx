@@ -20,7 +20,7 @@ const PlayerPriceCard = ({ player }) => {
                             <span class="flex items-end justify-center">
                                 <img class='w-[55px] h-[60px] rounded-full border-none outline-none' src={player.imageUrl
                                     ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${player?.imageUrl}`
-                                    : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
+                                    : '/assets/images/player_search/avatar_1.png'}
                                     alt='Player Avatar' />
                             </span>
 

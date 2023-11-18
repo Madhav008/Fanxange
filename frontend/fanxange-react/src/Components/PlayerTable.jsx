@@ -11,7 +11,7 @@ const PlayerTable = ({ order, }) => {
                             <span class="flex items-end justify-center">
                                 <img class='w-[55px] h-[60px] rounded-full border-none outline-none' src={order.playerInfo.imageUrl
                                     ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${order.playerInfo?.imageUrl}`
-                                    : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
+                                    : '/assets/images/player_search/avatar_1.png'}
                                     alt='Player Avatar' />
                             </span>
                             <span class="absolute bottom-[-14px] left-1/2 transform -translate-x-1/2 w-[50px] h-[20px] text-[10px] font-bold uppercase font-open-sans leading-2 text-white bg-black text-center rounded-full" >Cricket</span>

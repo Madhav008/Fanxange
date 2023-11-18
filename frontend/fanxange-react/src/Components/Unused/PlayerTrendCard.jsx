@@ -10,7 +10,7 @@ const PlayerTrendCard = ({ player }) => {
                     className='bg-primary rounded-full w-[80px] h-[80px] border-red-700 border-4'
                     src={player.playerData.imageUrl
                         ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${player.playerData?.imageUrl}`
-                        : 'https://pixner.net/spovest/dark/assets/images/player_search/avatar_1.png'}
+                        : '/assets/images/player_search/avatar_1.png'}
                     alt={player.name}
                 />
                 <div className='flex flex-col items-center align-middle'>

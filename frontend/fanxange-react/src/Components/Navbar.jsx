@@ -81,7 +81,7 @@ const Navbar = () => {
                         <div>
                             <button className=' rounded-3xl truncate hidden md:flex px-4 items-center gap-2'>
 
-                                <img className='rounded-full hidden md:flex w-[40px]' src={picture ? picture : "https://pixner.net/spovest/dark/assets/images/user/profile-sm.png"} />
+                                <img className='rounded-full hidden md:flex w-[40px]' src={picture ? picture : "/assets/images/user/profile-sm.png"} />
                                 <span className='font-bold text-lg'> {name}</span>
 
                                 <div className='hidden lg:flex' onClick={toggleMenu}>
@@ -96,7 +96,7 @@ const Navbar = () => {
 
 
                         <div className='flex lg:hidden items-center gap-2' onClick={toggleMenu}>
-                            <img className='rounded-full  md:hidden w-[40px]' src={picture ? picture : "https://pixner.net/spovest/dark/assets/images/user/profile-sm.png"} />
+                            <img className='rounded-full  md:hidden w-[40px]' src={picture ? picture : "/assets/images/user/profile-sm.png"} />
                             {isMenuOpen ? (
                                 <AiOutlineClose className='transition-all duration-500 ease-in-out' />
                             ) : (
@@ -117,7 +117,7 @@ const Navbar = () => {
 
                         <li className='hover:text-primary-content text-sm p-5 md:hidden flex justify-between items-center '>
                             <span> {name}</span>
-                            <img className='rounded-full hidden md:flex w-[40px]' src={picture ? picture : "https://pixner.net/spovest/dark/assets/images/user/profile-sm.png"} />
+                            <img className='rounded-full hidden md:flex w-[40px]' src={picture ? picture : "/assets/images/user/profile-sm.png"} />
                         </li>
                     </ul>
                 </div>
