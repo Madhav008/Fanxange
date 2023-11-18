@@ -115,7 +115,11 @@ const Wallet = () => {
                             <h1 className='font-bold text-lg text-white'>₹31,200</h1>
                         </div>
                     </div>
-
+                    <div className='p-4  '>
+                        <p className='btn btn-primary w-full font-bold'>
+                            Withdraw Money
+                        </p>
+                    </div>
                 </div>
             </div>
 
