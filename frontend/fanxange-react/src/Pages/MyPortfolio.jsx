@@ -22,7 +22,7 @@ const MyPortfolio = () => {
 
   return (
     <div className='font-open-sans'>
-      <Navbar />
+      <Navbar portfolio={true} />
       <div className='flex flex-wrap justify-evenly overflow-x-auto overflow-y-hidden'>
         <div className='bg-accent m-4 w-[300px] h-[200px] rounded-xl'>
           <div className='m-5 '>

@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { RiLuggageDepositFill } from "react-icons/ri";
 
-const Navbar = ({ wallet }) => {
+const Navbar = ({ wallet, dashboard, portfolio }) => {
 
     const handleLogout = () => {
         const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
@@ -61,6 +61,43 @@ const Navbar = ({ wallet }) => {
                                 </div>
                             </div>
                         </Link>
+                    </div>
+
+                    <div className='flex items-center gap-4'>
+                        <ul className='text-md hidden lg:flex'>
+                            <li>
+
+                                <div
+                                    className={`rounded-md ${dashboard ? 'bg-base-100' : ''} cursor-pointer items-start flex flex-col`}
+                                    onClick={() => handleTabClick('dashboard')}
+                                ><Link to='/dashboard'>
+                                        <h1 className='mx-2 text-white p-4'>
+                                            <span className='items-center flex gap-2 text-gray-200 font-semibold'>
+                                                <span>Dashboard</span>
+                                            </span>
+                                        </h1>
+                                    </Link>
+                                </div>
+                                <div className={`border-accent border-b relative -bottom-5 ${dashboard ? 'visible' : 'hidden'}`}>
+                                </div>
+                            </li>
+                            <li>
+                                <div
+                                    className={`rounded-md ${portfolio ? 'bg-base-100' : ''} cursor-pointer items-start flex flex-col`}
+                                    onClick={() => handleTabClick('portfolio')}
+                                >
+                                    <Link to='/portfolio'>
+                                        <h1 className='mx-2 text-white p-4'>
+                                            <span className='items-center flex gap-2 text-gray-200 font-semibold'>
+                                                <span>My Portfolio</span>
+                                            </span>
+                                        </h1>
+                                    </Link>
+                                </div>
+                                <div className={` border-accent border-b relative -bottom-5 ${portfolio ? 'visible' : 'hidden'}`}>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div className='flex items-center flex-1 justify-end'>
                         <ul className='text-md hidden lg:flex '>
@@ -152,7 +189,6 @@ const Navbar = ({ wallet }) => {
 
                 <div className={`${isMenuOpen ? 'top-22' : '-top-full'} absolute z-10 right-0  bg-base-200 transition-all duration-500 ease-in-out hidden lg:flex`}>
                     <ul className='gap-4 font-semibold uppercase'>
-                        <Link to="/portfolio"><li className='hover:text-primary-content text-sm p-5 border-b'>My Portfolio</li></Link>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Profile</li>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Settings</li>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Notifications</li>

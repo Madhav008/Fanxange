@@ -32,7 +32,7 @@ const Dashboard = () => {
   };
   return (
     <div className='font-open-sans'>
-      <Navbar />
+      <Navbar dashboard={true} />
 
       {/* <TournamentBar matches={match} Series={Series} seriesStatus={seriesStatus} recentMatchesStatus={recentMatchesStatus} /> */}
 
