@@ -1,5 +1,4 @@
 import React from 'react';
-import Hero from './Components/Hero';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import Trade from './Pages/Trade';
@@ -35,8 +34,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/home" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PlayerPriceCard from './PlayerPriceCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeamPlayer } from '../store/teamSlice';
-import { Link } from 'react-router-dom';
 import LoadingAnimation from './LoadingAnimation';
 
 const Middlesidebar = () => {
@@ -75,26 +74,34 @@ const Middlesidebar = () => {
       {/* Parent with search bar and player table */}
       <div className='max-h-[xl] w-full'>
         <div className='divider'></div>
-        {/* Player Cards */}
-        <div className='h-[720px] overflow-auto'>
-          {teamStatus === 'loading' ? (
-            <LoadingAnimation />
-          ) : teamStatus === 'error' ? (
-            <div>Error loading data.</div>
-          ) : (
-            (team.length > 0 || (teamData && teamData.length > 0)) ? (
-              // Render the 'team' or 'teamData' based on availability
-              (team.length > 0 ? team : teamData).filter((player) =>
-                player.name.toLowerCase().includes(search.toLowerCase())
-              ).map((player) => (
+        <table className='table'>
+          <tbody>
+            <div className='h-[720px] overflow-auto'>
+              {teamStatus === 'loading' ? (
+                <LoadingAnimation />
+              ) : teamStatus === 'error' ? (
+                <div>Error loading data.</div>
+              ) : (
+                (team.length > 0 || (teamData && teamData.length > 0)) ? (
+                  // Render the 'team' or 'teamData' based on availability
+                  (team.length > 0 ? team : teamData).filter((player) =>
+                    player.name.toLowerCase().includes(search.toLowerCase())
+                  ).map((player) => (
 
-                <PlayerPriceCard key={player.playerId} player={player} />
-              ))
-            ) : (
-              <div>No player data available.</div>
-            )
-          )}
-        </div>
+                    <PlayerPriceCard key={player.playerId} player={player} />
+                    // <PlayerPriceCard2 key={player.playerId} player={player} />
+                  ))
+                ) : (
+                  <div>No player data available.</div>
+                )
+              )}
+            </div>
+
+          </tbody>
+
+        </table>
+        {/* Player Cards */}
+
       </div>
 
     </div>

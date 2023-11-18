@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import Accordion from '../Components/Accordion';
 import SliderItem from '../Components/SliderItem';
 import CustomCarousel from '../Components/CustomCarosul';
+import { Navigate } from 'react-router-dom';
 
 const Landing = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const _handleSignInClick = () => {
+        const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
+        window.open(`${baseURL}auth/google/login`, "_self");
+    };
+
+
+
+    const { userData } = useSelector((state) => state.user);
+    if (userData.authenticated === true) {
+        return <Navigate to="/dashboard" />
+    }
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
@@ -34,7 +47,7 @@ const Landing = () => {
                             <li className='hover:text-primary-content'>FAQ</li>
                         </ul>
                         <div>
-                            <button className=' btn btn-primary rounded-3xl truncate hidden md:flex px-4 bg-info '>
+                            <button onClick={_handleSignInClick} className=' btn btn-primary rounded-3xl truncate hidden md:flex px-4 bg-info '>
                                 <span className='btn btn-info text-white'>
                                     Login With Google
                                 </span>
@@ -56,7 +69,7 @@ const Landing = () => {
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Rules</li>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>How to Play</li>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>FAQ</li>
-                        <li className='hover:text-primary-content text-sm p-5 bg-info text-white md:hidden'>
+                        <li onClick={_handleSignInClick} className='hover:text-primary-content text-sm p-5 bg-info text-white md:hidden'>
                             Login With Google
                         </li>
                     </ul>
@@ -68,7 +81,7 @@ const Landing = () => {
                     <h1 className='font-bold text-3xl md:text-4xl lg:text-5xl text-primary-content'>Invest of Your Favourite Players
                     </h1>
                     <h2 className='text-sm md:text-lg lg:text-xl text-primary-content my-5  max-w-xl'>Best fantasy sports stock exchange where users can buy/sell shares of professional athletes as if they were stocks.</h2>
-                    <button className='bg-info w-[200px] rounded-xl font-bold uppercase text-white my-6  py-3 '>Start Trading </button>
+                    <button onClick={_handleSignInClick} className='bg-info w-[200px] rounded-xl font-bold uppercase text-white my-6  py-3 '>Start Trading </button>
                 </div>
                 <div class="items-center text-center block my-[30px] col-span-7 ">
                     <div class="text-center">
