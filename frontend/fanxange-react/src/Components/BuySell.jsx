@@ -36,7 +36,7 @@ const BuySell = ({ data }) => {
     }
 
     return (
-        <div className=' w-full p-5 bg-base-100'>
+        <div className=' w-full p-5 bg-base-100 text-white'>
             <a className="font-bold text-white text-lg">{playerData?.player?.name}</a>
             {/* <h1>Batsman</h1> */}
             <div className='divider '></div>
