@@ -21,7 +21,7 @@ const Dashboard = () => {
   const { series: Series, status: seriesStatus } = useSelector((state) => state.series);
 
   return (
-    <div>
+    <div className='font-open-sans'>
       <Navbar />
 
       <TournamentBar matches={match} Series={Series} seriesStatus={seriesStatus} recentMatchesStatus={recentMatchesStatus} />

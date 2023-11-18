@@ -21,38 +21,59 @@ const MyPortfolio = () => {
   }
 
   return (
-    <div>
+    <div className='font-open-sans'>
       <Navbar />
-      <div className='flex justify-between overflow-x-auto overflow-y-hidden'>
-        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
+      <div className='flex flex-wrap justify-evenly overflow-x-auto overflow-y-hidden'>
+        <div className='bg-accent m-4 w-[300px] h-[200px] rounded-xl'>
           <div className='m-5 '>
-            <div class="flex items-center justify-between text-md font-bold  text-white">
-              <p class="">PORTFOLIO VALUE</p>
+            <div class="flex items-center justify-between  font-bold  text-white">
+              <p class="text-sm ">PORTFOLIO VALUE</p>
               <p class="flex items-center text-green-500">
                 <i class="fas fa-plus mr-1"></i>
                 09.84%
                 <img className='ml-2' src="assets/images/user/arrow.png" alt="Arrow" />
               </p>
             </div>
-            <h1 className='text-2xl font-bold text-yellow-300'>$1500</h1>
+            <h1 className='text-sm font-bold text-yellow-300'>$1500</h1>
 
             {/* Specify the dimensions for the chart */}
             <Charts height="70%" width="100%" color="#ffc107" />
           </div>
         </div>
-        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
-          <div className='m-5'>
-            <h1 className='text-lg font-bold text-white py-2'>ACCOUNT BALANCE</h1>
-            <h1 className='text-2xl font-bold text-yellow-300 '>$1500</h1>
-            <Charts height="70%" width="100%" color="#0dcaf0" />
 
-          </div></div>
-        <div className='bg-accent m-4 w-[400px] h-[200px] rounded-xl'>
-          <div className='m-5'>
-            <h1 className='text-lg font-bold text-white py-2'>EARNINGS</h1>
-            <h1 className='text-2xl font-bold text-yellow-300 '>$1500</h1>
+        <div className='bg-accent m-4 w-[300px] h-[200px] rounded-xl'>
+          <div className='m-5 '>
+            <div class="flex items-center justify-between  font-bold  text-white">
+              <p class="text-sm ">ACCOUNT BALANCE</p>
+              <p class="flex items-center text-green-500">
+                <i class="fas fa-plus mr-1"></i>
+                09.84%
+                <img className='ml-2' src="assets/images/user/arrow.png" alt="Arrow" />
+              </p>
+            </div>
+            <h1 className='text-sm font-bold text-yellow-300'>$1500</h1>
+
+            {/* Specify the dimensions for the chart */}
+            <Charts height="70%" width="100%" color="#0dcaf0" />
+          </div>
+        </div>
+        <div className='bg-accent m-4 w-[300px] h-[200px] rounded-xl'>
+          <div className='m-5 '>
+            <div class="flex items-center justify-between  font-bold  text-white">
+              <p class="text-sm ">EARNINGS</p>
+              <p class="flex items-center text-green-500">
+                <i class="fas fa-plus mr-1"></i>
+                09.84%
+                <img className='ml-2' src="assets/images/user/arrow.png" alt="Arrow" />
+              </p>
+            </div>
+            <h1 className='text-sm font-bold text-yellow-300'>$1500</h1>
+
+            {/* Specify the dimensions for the chart */}
             <Charts height="70%" width="100%" color="#6f42c1" />
-          </div></div>
+          </div>
+        </div>
+
       </div>
 
 
@@ -63,11 +84,10 @@ const MyPortfolio = () => {
             <thead>
               <tr>
                 <th scope="col">Players</th>
-                <th scope="col">Change</th>
+                <th scope="col">Earning</th>
                 <th scope="col">Share Price</th>
                 <th scope="col">Bought At</th>
                 <th scope="col">My Share</th>
-                <th scope="col">Earning</th>
                 <th scope="col">Type</th>
                 <th scope="col">Status</th>
 

@@ -8,7 +8,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-const Navbar = () => {
+const Navbar = ({ wallet }) => {
 
     const handleLogout = () => {
         const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
@@ -63,10 +63,10 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className='flex gap-6 items-center flex-1 justify-end'>
-                        <ul className='gap-4  text-md hidden lg:flex'>
+                        <ul className='gap-4  text-md hidden lg:flex '>
                             <li>
                                 <Link to='/wallet'>
-                                    <div className='bg-neutral rounded-md m-4 cursor-pointer items-start flex flex-col'>
+                                    <div className={`${wallet ? `border-blue-500  border-2` : ''} bg-neutral rounded-md m-4  cursor-pointer items-start flex flex-col`}>
                                         <h1 className='mx-2 text-white  p-4'>
                                             <span className='items-center flex gap-2'>
                                                 <FaWallet />
@@ -109,16 +109,19 @@ const Navbar = () => {
                     className={`${isMenuOpen ? 'top-24' : '-top-full'} absolute z-10 bg-base-200  w-full transition-all duration-500 ease-in-out`}>
                     <ul className='gap-4 font-semibold uppercase lg:hidden'>
                         <Link to="/portfolio"><li className='hover:text-primary-content text-sm p-5 border-b'>My Portfolio</li></Link>
+                        <Link to="/wallet"><li className='hover:text-primary-content text-sm p-5 border-b'>Wallet</li></Link>
+
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Profile</li>
+                      
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Settings</li>
                         <li className='hover:text-primary-content text-sm p-5 border-b'>Notifications</li>
                         <li onClick={handleLogout} className='hover:text-primary-content text-sm p-5 border-b'>Logout</li>
 
 
-                        <li className='hover:text-primary-content text-sm p-5 md:hidden flex justify-between items-center '>
+                      {/*   <li className='hover:text-primary-content text-sm p-5 md:hidden flex justify-between items-center '>
                             <span> {name}</span>
                             <img className='rounded-full hidden md:flex w-[40px]' src={picture ? picture : "/assets/images/user/profile-sm.png"} />
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 

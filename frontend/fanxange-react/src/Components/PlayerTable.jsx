@@ -18,15 +18,18 @@ const PlayerTable = ({ order, }) => {
                         </div>
 
                         <div class="flex flex-col justify-center items-start ml-2">
-                            <a href="player-profile.html">{order.playerInfo?.name}</a>
-                            <p>{order.playerInfo?.name}</p>
+                            <span>{order.playerInfo?.name}</span>
+                            <p>{order.playerInfo?.teamName}</p>
                         </div>
                     </div>
                 </Link>
             </td>
             <td>
-                <p class="change flex items-center"> <i class="fas fa-plus"></i>
-                    8.12% <i class="fas fa-caret-down"></i>
+                <p class="earning flex items-center">
+                    <i class="fas fa-dollar-sign"></i> {(order.order.orderType === 'Buy'
+                        ? (Number(order.playerPerformanceMatches.price).toFixed(2) - Number(order.order.price).toFixed(2)).toFixed(2)
+                        : (Number(order.order.price).toFixed(2) - Number(order.playerPerformanceMatches.price).toFixed(2)).toFixed(2)
+                    )}
                 </p>
             </td>
             <td>
@@ -38,14 +41,7 @@ const PlayerTable = ({ order, }) => {
             <td>
                 <p class="share">{order?.order?.qty}</p>
             </td>
-            <td>
-                <p class="earning flex items-center">
-                    <i class="fas fa-dollar-sign"></i> {(order.order.orderType === 'Buy'
-                        ? (Number(order.playerPerformanceMatches.price).toFixed(2) - Number(order.order.price).toFixed(2)).toFixed(2)
-                        : (Number(order.order.price).toFixed(2) - Number(order.playerPerformanceMatches.price).toFixed(2)).toFixed(2)
-                    )}
-                </p>
-            </td>
+
 
             <td>
                 <p className={`text-sm font-semibold flex items-center gap-1 ${order.order.orderType === 'Buy' ? 'text-green-400' : 'text-red-400'

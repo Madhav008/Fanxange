@@ -12,6 +12,7 @@ import { fetchUser } from './store/userSlice';
 import { fetchtrendingplayer } from './store/playerSlice';
 import Landing from './Pages/Landing';
 import LoadingAnimation from './Components/LoadingAnimation';
+import Wallet from './Pages/Wallet';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/wallet' element={<Wallet />} />
             <Route path="/portfolio" element={<MyPortfolio />} />
           </Route>
         </Routes>
