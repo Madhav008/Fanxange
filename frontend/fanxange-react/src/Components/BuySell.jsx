@@ -98,9 +98,11 @@ const BuySell = ({ data }) => {
                 <div className='divider'></div>
             </div >
 
-            <button onClick={_handleOrder} className='btn bg-accent w-full mt-3 text-white font-bold mb-3'>
-                Execute Order
-            </button>
+            <form method="dialog" className="modal-backdrop">
+                <button onClick={_handleOrder} className='btn bg-accent w-full mt-3 text-white font-bold mb-3'>
+                    Execute Order
+                </button>
+            </form>
         </div >
 
 

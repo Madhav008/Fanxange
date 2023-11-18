@@ -29,19 +29,19 @@ const PlayerProfile = () => {
 
   return (
     <div className='p-5 lg:flex bg-neutral lg:items-center mb-6 '>
-      <div className='flex items-center justify-between mb-6'>
+      {<div className='flex items-center justify-between mb-6 '>
         <img className="w-[100px] h-[100px] lg:w-[160px] lg:h-[180px]" src={playerData?.player?.imageUrl
           ? `https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_640,q_50/lsci${playerData?.player?.imageUrl}`
           //  '/assets/images/profile/profile.png'
           : '/assets/images/profile/profile.png'}
           alt={playerData?.player?.name} />
-        <div className='text-end'>
+        <div className='text-start'>
           <h1 className='font-bold lg:text-xl mx-5 px-5 text-white'>{playerData?.player?.name}</h1>
           {selectedTeamStatus === 'loading' ? (<LoadingAnimation />) : (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>{selectedTeam?.team?.longName}</h1>)}
         </div>
-      </div >
+      </div >}
       <div className="divider"></div>
-      <div className='lg:flex gap-2 justify-evenly items-center'>
+      <div className='lg:flex gap-2 justify-evenly items-center '>
         <div className="lg:divider lg:divider-horizontal "></div>
         {/* <div className='whitespace-nowrap'>
           <h1><span className='font-bold lg:text-xl text-white'>₹0.00</span> <span className='break-words whitespace-nowrap'>(0 Shares)</span></h1>
@@ -60,7 +60,7 @@ const PlayerProfile = () => {
         </div>
         <div className="divider lg:divider-horizontal "></div>
 
-        <div className='flex  mx-auto w-full justify-between  items-center'>
+        <div className='flex  mx-auto w-full justify-between  items-center flex-wrap'>
           <div>
             <h1>
               <span className={`font-bold lg:text-xl flex text-${Number(playerData?.player?.playerPriceData?.change_price) >= 0 ? 'green-500' : 'red-500'}`}>
@@ -79,9 +79,9 @@ const PlayerProfile = () => {
 
           <div className="divider lg:divider-horizontal "></div>
 
-          <div className='flex text-center gap-5 text-lg items-center py-5'>
-            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-green-500 text-white hover:text-white ' onClick={() => handleClick("Buy")}>Buy</button>
-            <button className='outline rounded-full w-[100px] btn btn-outline hover:bg-red-500 text-white hover:text-white ' onClick={() => handleClick("Sell")}>Sell</button>
+          <div className='flex text-center gap-5 text-lg items-center py-5 flex-wrap'>
+            <button className='outline rounded-full md:w-[100px] btn btn-outline hover:bg-green-500 text-white hover:text-white ' onClick={() => handleClick("Buy")}>Buy</button>
+            <button className='outline rounded-full md:w-[100px] btn btn-outline hover:bg-red-500 text-white hover:text-white ' onClick={() => handleClick("Sell")}>Sell</button>
           </div>
         </div>
 

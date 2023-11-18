@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fanxangeApi } from '../services/fanxangeApi'
+import toast from 'react-hot-toast';
+
 export const STATUSES = Object.freeze({
     IDLE: 'idle',
     ERROR: 'error',
@@ -47,7 +49,9 @@ export function createOrder(order) {
         }
         try {
             const data = await fanxangeApi.placeOder(newOrder);
-
+            if (data != null) {
+                toast.success('Order Executed Successfully!')
+            }
             dispatch(setStatus(STATUSES.IDLE));
         } catch (err) {
             console.log(err);

@@ -13,6 +13,7 @@ import { fetchtrendingplayer } from './store/playerSlice';
 import Landing from './Pages/Landing';
 import LoadingAnimation from './Components/LoadingAnimation';
 import Wallet from './Pages/Wallet';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,8 @@ function App() {
           </Route>
         </Routes>
       </Router>
+      <Toaster />
+
     </>
   );
 }
