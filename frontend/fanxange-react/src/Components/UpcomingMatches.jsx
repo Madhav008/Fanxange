@@ -21,7 +21,7 @@ const UpcomingMatches = ({ match }) => {
 
 
     return (
-        <div onClick={handleQuery} key={match?.mactchId} className='card shadow-lg hover:opacity-70 p-10 bg-base-200 mb-3'>
+        <div onClick={handleQuery} key={match?.mactchId} className='card shadow-lg hover:opacity-70 p-10 bg-base-200 w-[300px] ml-3'>
             <p className='font-semibold mb-2 text-xs border-b whitespace-nowrap flex justify-between'> <div>{match.groundName}</div> <div>{match.matchTime}</div> </p>
             <div className='flex text-center justify-between align-middle'>
                 <div>

@@ -51,7 +51,7 @@ const Navbar = ({ wallet }) => {
     return (
         <>
             <header className='max-w-full bg-secondary'>
-                <div className='flex justify-between mx-auto h-24 items-center px-6 md:px-12 '>
+                <div className='flex justify-between mx-auto h-24 items-center px-6 md:px-6 '>
                     <div className='font-bold text-lg uppercase flex-none'>
                         <Link to='/'>
                             <div className=' flex flex-col md:flex-row md:text-lg text-xs font-bold rounded-full p-3 items-center'>
@@ -62,12 +62,23 @@ const Navbar = ({ wallet }) => {
                             </div>
                         </Link>
                     </div>
-                    <div className='flex gap-6 items-center flex-1 justify-end'>
-                        <ul className='gap-4  text-md hidden lg:flex '>
+                    <div className='flex items-center flex-1 justify-end'>
+                        <ul className='text-md hidden lg:flex '>
+                            <li>
+                                <div className={`rounded-md   cursor-pointer items-start flex flex-col `}>
+                                    <h1 className='mx-2 text-white p-4'>
+                                        <span className='items-center flex gap-2 font-bold font-mono '>
+                                            <FaWallet />
+                                            <span>₹100</span>
+
+                                        </span>
+                                    </h1 >
+                                </div>
+                            </li>
 
                             <li>
                                 <Link to='/wallet'>
-                                    <div className={`${wallet ? `border-blue-500  border-2` : ''} bg-neutral rounded-md m-4  cursor-pointer items-start flex flex-col`}>
+                                    <div className={`${wallet ? `border-blue-500  border-2` : ''} bg-neutral rounded-md  border-2 cursor-pointer items-start flex flex-col`}>
                                         <h1 className='mx-2 text-white  p-4'>
                                             <span className='items-center flex gap-2'>
                                                 <RiLuggageDepositFill />
@@ -77,18 +88,7 @@ const Navbar = ({ wallet }) => {
                                     </div>
                                 </Link>
                             </li>
-                            <li>
-                                <div className={`border-2 rounded-md m-4  cursor-pointer items-start flex flex-col`}>
-                                    <h1 className='mx-2 text-white  p-4'>
-                                        <span className='items-center flex gap-2'>
-                                            <FaWallet />
-                                            <span>₹100</span>
-
-                                        </span>
-                                    </h1 >
-                                </div>
-                            </li>
-                            <li className='hidden lg:flex items-center '>
+                            <li className='hidden  items-center '>
                                 <div className=' rounded-md m-4 bg-neutral p-2 cursor-pointer items-start flex flex-col'>
                                     <span className='font-bold font-mono'>{time} days left</span>
                                 </div>

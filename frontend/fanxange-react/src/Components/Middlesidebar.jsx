@@ -18,7 +18,7 @@ const Middlesidebar = () => {
 
   return (
     <div className='p-3 flex flex-col align-middle items-center w-full'>
-      <h1 className='text-white text-sm border-b-2 font-semibold p-2 text-center w-full mb-2'>Current Match Players</h1>
+      <h1 className='text-white text-sm border-b-2 font-semibold p-2 text-center w-full mb-2'>Match Players</h1>
       <div className='flex items-center font-bold justify-evenly w-full mx-auto flex-wrap xl:flex-nowrap'>
         {/* Player Search Bar */}
         <div className="form-control w-full">
