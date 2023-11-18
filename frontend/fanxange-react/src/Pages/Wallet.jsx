@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { IoWalletSharp } from "react-icons/io5";
 import { RiLuggageDepositFill } from "react-icons/ri";
@@ -7,6 +7,20 @@ import { LuArrowDownToLine, LuArrowUpFromLine } from "react-icons/lu";
 
 
 const Wallet = () => {
+
+    const [enteredAmount, setEnteredAmount] = useState('');
+
+    const handleAmountButtonClick = (amount) => {
+        setEnteredAmount((prevAmount) => {
+            if (!prevAmount) {
+                // If prevAmount is empty, set the amount directly
+                return amount.toString();
+            }
+            // Add the amounts and return the updated string
+            const totalAmount = (parseInt(prevAmount) + parseInt(amount)).toString();
+            return totalAmount;
+        });
+    };
     return (
         <div className='font-open-sans '>
             <Navbar wallet={true} />
@@ -17,7 +31,7 @@ const Wallet = () => {
                     <h1 className='font-semibold text-xl'>Wallet</h1>
                     <div className='mt-8 text-sm text-gray-400 flex items-center gap-2'>
                         <IoWalletSharp />
-                        <h1 className='font-semibold   '>Wallet Balance</h1>
+                        <h1 className='font-semibold'>Wallet Balance</h1>
                     </div>
 
                     <div className='mt-4'>
@@ -32,21 +46,41 @@ const Wallet = () => {
                             <h1 className='font-bold text-sm text-gray-400'>Enter Amount</h1>
                         </div>
                         <div className='flex items-center gap-2 m-4'>
-                          
-                            <input type="number" placeholder="₹100" className="input input-bordered input-secondary w-full max-w-xs" />
+                            <input type="number" placeholder="₹100" className="input input-bordered input-secondary w-full max-w-xs"
+                                value={enteredAmount}
+                                onChange={(e) => setEnteredAmount(e.target.value)}
+                            />
                         </div>
                     </div>
-
                     <div className='flex gap-2 p-2 font-bold ml-2 flex-wrap'>
-                        <div className='btn btn-info text-white'>
+                        <div
+                            className='btn btn-info text-white'
+                            onClick={() => handleAmountButtonClick('50')}
+                        >
                             ₹50
-                        </div><div className='btn btn-info text-white'>
+                        </div>
+                        <div
+                            className='btn btn-info text-white'
+                            onClick={() => handleAmountButtonClick('100')}
+                        >
                             ₹100
-                        </div><div className='btn btn-info text-white'>
+                        </div>
+                        <div
+                            className='btn btn-info text-white'
+                            onClick={() => handleAmountButtonClick('200')}
+                        >
                             ₹200
-                        </div><div className='btn btn-info text-white'>
+                        </div>
+                        <div
+                            className='btn btn-info text-white'
+                            onClick={() => handleAmountButtonClick('500')}
+                        >
                             ₹500
-                        </div><div className='btn btn-info text-white'>
+                        </div>
+                        <div
+                            className='btn btn-info text-white'
+                            onClick={() => handleAmountButtonClick('1000')}
+                        >
                             ₹1000
                         </div>
                     </div>

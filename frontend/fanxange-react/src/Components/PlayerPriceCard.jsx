@@ -36,7 +36,7 @@ const PlayerPriceCard = ({ player }) => {
                     <td class="flex items-center  text-center justify-center relative" >
                         <div class="m-4 p-1">
                             <p className='font-bold text-md mb-4'><i class="fas fa-dollar-sign "></i> 3.91</p>
-                            <p className='text-sm font-bold'>+8.12 <i class="fas fa-caret-up"></i></p>
+                            <p className='text-sm font-bold flex items-center'>+8.12 <i class="fas fa-caret-up"></i></p>
                         </div>
                     </td>
 
