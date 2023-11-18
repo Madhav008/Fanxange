@@ -18,7 +18,7 @@
 
 /* Style the thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: #2e333c;
+  background-color: #25294A;
   border-radius: 10px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #09090a;
+  background: #25294A;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -586,3 +586,4 @@ section .container .play_row .col-lg-7::after {
     transform: rotate(1turn);
   }
 }
+

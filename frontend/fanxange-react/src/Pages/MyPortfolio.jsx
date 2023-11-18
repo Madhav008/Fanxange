@@ -57,7 +57,7 @@ const MyPortfolio = () => {
 
 
       <div class="font-open-sans text-28 font-bold leading-1.357 text-white mt-50 mb-2">
-        <h5>My Players</h5>
+        <h5 className='font-bold text-xl md:text-2xl lg:text-3xl m-4'>My Players</h5>
         <div class="overflow-x-auto bg-accent-focus">
           <table class="table">
             <thead>

@@ -51,12 +51,12 @@ const PlayerProfile = () => {
         */}
         <div>
           <h1><span className='font-bold lg:text-xl text-white'>₹{parseFloat(playerData?.player?.playerPriceData?.price).toFixed(2)}</span></h1>
-          <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Price</h1>
+          <h1 className='lg:text-lg text-gray-400 font-semibold break-words whitespace-nowrap'>Current Price</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
         <div>
           <h1><span className='font-bold lg:text-xl text-white'>Points {parseFloat(playerData?.player?.playerPriceData?.avg_points).toFixed(2)}</span></h1>
-          <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Current Points</h1>
+          <h1 className='lg:text-lg text-gray-400 font-semibold break-words whitespace-nowrap'>Current Points</h1>
         </div>
         <div className="divider lg:divider-horizontal "></div>
 
@@ -73,7 +73,7 @@ const PlayerProfile = () => {
               </span>
             </h1>
 
-            <h1 className='lg:text-lg text-info break-words whitespace-nowrap'>Last Match Change</h1>
+            <h1 className='lg:text-lg text-gray-400 font-semibold break-words whitespace-nowrap'>Last Match Change</h1>
           </div>
 
 
@@ -89,7 +89,7 @@ const PlayerProfile = () => {
 
       <dialog id="my_modal_2" className="modal">
         {/* <form method="dialog" className="modal-box p-0 "> */}
-        <div className=" modal-box  p-0 relative w-full  max-h-full">
+        <div className=" modal-box  p-0 relative max-w-lg  max-h-lg">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
 
             <div className=" text-center">

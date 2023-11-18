@@ -86,9 +86,9 @@ const Navbar = () => {
 
                                 <div className='hidden lg:flex' onClick={toggleMenu}>
                                     {isMenuOpen ? (
-                                        <IoIosArrowDown className='transition-all duration-500 ease-in-out' />
-                                    ) : (
                                         <IoIosArrowUp className='transition-all duration-500 ease-in-out' />
+                                    ) : (
+                                        <IoIosArrowDown className='transition-all duration-500 ease-in-out' />
                                     )}
                                 </div>
                             </button>

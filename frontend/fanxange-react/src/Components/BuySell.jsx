@@ -36,7 +36,7 @@ const BuySell = ({ data }) => {
     }
 
     return (
-        <div className=' w-full p-5'>
+        <div className=' w-full p-5 bg-base-100'>
             <a className="font-bold text-white text-lg">{playerData?.player?.name}</a>
             {/* <h1>Batsman</h1> */}
             <div className='divider '></div>
@@ -50,7 +50,7 @@ const BuySell = ({ data }) => {
 
                 <div className='flex justify-between w-full '>
                     <h1 className='font-semibold'>No. of Shares</h1>
-                    <div className=" flex items-center gap-2 rounded-full p-2 bg-primary-focus">
+                    <div className=" flex items-center gap-2 rounded-full p-2 bg-accent">
                         <div className="flex items-center justify-center">
                             <FaMinus onClick={decrement} className=' mx-1' />
                         </div>
@@ -98,7 +98,7 @@ const BuySell = ({ data }) => {
                 <div className='divider'></div>
             </div >
 
-            <button onClick={_handleOrder} className='btn bg-primary-focus w-full mt-3 text-white font-bold mb-3'>
+            <button onClick={_handleOrder} className='btn bg-accent w-full mt-3 text-white font-bold mb-3'>
                 Execute Order
             </button>
         </div >
