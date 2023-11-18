@@ -1,6 +1,7 @@
 import React from "react";
 import PlayerTrendCard from "./Unused/PlayerTrendCard";
 import { useSelector } from "react-redux";
+import LoadingAnimation from "./LoadingAnimation";
 const LeftSideBar = () => {
 
   const { trendingPlayers, trendingPlayersStatus } = useSelector((state) => state.player);
@@ -57,7 +58,9 @@ const LeftSideBar = () => {
         {/* Player Cards */}
         <div className="h-[720px] overflow-auto pr-3">
           {trendingPlayersStatus === "loading" ? (
-            <p>Loading...</p>
+            <p>
+              <LoadingAnimation />
+            </p>
           ) : (
             trendingPlayers.map((player, index) => (
               <PlayerTrendCard key={index} player={player} />

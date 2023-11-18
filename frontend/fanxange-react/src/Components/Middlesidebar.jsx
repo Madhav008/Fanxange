@@ -3,6 +3,7 @@ import PlayerPriceCard from './PlayerPriceCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeamPlayer } from '../store/teamSlice';
 import { Link } from 'react-router-dom';
+import LoadingAnimation from './LoadingAnimation';
 
 const Middlesidebar = () => {
 
@@ -34,7 +35,7 @@ const Middlesidebar = () => {
         <div className='flex items-center'>
           {matchDataStatus === 'loading' ? (
             <div className="text-sm hover:bg-secondary hover:text-white border rounded-lg w-max p-2 m-2 items-center text-center break-words whitespace-nowrap">
-              Loading...
+              <LoadingAnimation />
             </div>
           ) : (
             <>
@@ -77,7 +78,7 @@ const Middlesidebar = () => {
         {/* Player Cards */}
         <div className='h-[720px] overflow-auto'>
           {teamStatus === 'loading' ? (
-            <div>Loading...</div>
+            <LoadingAnimation />
           ) : teamStatus === 'error' ? (
             <div>Error loading data.</div>
           ) : (

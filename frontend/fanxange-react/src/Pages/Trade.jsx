@@ -8,6 +8,7 @@ import RecentMatches from '../Components/RecentMatches'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlayerRecentMatches, fetchplayer } from '../store/playerSlice'
+import LoadingAnimation from '../Components/LoadingAnimation'
 
 
 const Trade = () => {
@@ -27,9 +28,7 @@ const Trade = () => {
 
 
   if (status == 'loading' || userStatus == 'loading') {
-    return <div>
-      Loading ...
-    </div>
+    return <LoadingAnimation />
   }
 
 

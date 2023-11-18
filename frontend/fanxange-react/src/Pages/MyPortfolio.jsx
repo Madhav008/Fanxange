@@ -5,6 +5,7 @@ import { BiSolidUpArrow } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchorder } from '../store/orderSlice'
 import { Link } from 'react-router-dom'
+import LoadingAnimation from '../Components/LoadingAnimation'
 const MyPortfolio = () => {
   const { orders, status } = useSelector((state) => state.order)
   const dispatch = useDispatch();
@@ -18,9 +19,7 @@ const MyPortfolio = () => {
 
 
   if (status === 'loading') {
-    return <div>
-      Loading ...
-    </div>
+    return <LoadingAnimation />
   }
 
   return (

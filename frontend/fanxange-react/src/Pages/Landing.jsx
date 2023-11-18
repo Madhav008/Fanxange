@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import Accordion from '../Components/Accordion';
+import SliderItem from '../Components/SliderItem';
+import CustomCarousel from '../Components/CustomCarosul';
 
 const Landing = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -8,6 +10,16 @@ const Landing = () => {
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
     };
+    const items = [
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+        <SliderItem price={"3.84"} priceChange={"+5.54"} name={"DON Delon"} team={"India"} />,
+    ];
 
     return (
         <div>
@@ -15,7 +27,7 @@ const Landing = () => {
                 <div className='flex justify-between mx-auto h-24 items-center px-6 md:px-12 bg-base-100'>
                     <div className='font-bold text-lg uppercase flex-none'>Fanxange</div>
                     <div className='flex gap-6 items-center flex-1 justify-end'>
-                        <ul className='gap-4 font-semibold uppercase text-lg hidden lg:flex'>
+                        <ul className='gap-4 font-semibold uppercase text-md hidden lg:flex'>
                             <li className='hover:text-primary-content'>Home</li>
                             <li className='hover:text-primary-content'>Rules</li>
                             <li className='hover:text-primary-content'>How to Play</li>
@@ -23,7 +35,7 @@ const Landing = () => {
                         </ul>
                         <div>
                             <button className=' btn btn-primary rounded-3xl truncate hidden md:flex px-4 bg-info '>
-                                <span className='text-lg font-bold text-center items-center'>
+                                <span className='btn btn-info text-white'>
                                     Login With Google
                                 </span>
                             </button>
@@ -40,11 +52,11 @@ const Landing = () => {
                 <div
                     className={`${isMenuOpen ? 'top-24' : '-top-full'} absolute bg-base-200  w-full transition-all duration-500 ease-in-out`}>
                     <ul className='gap-4 font-semibold uppercase lg:hidden'>
-                        <li className='hover:text-primary-content text-xl p-5 border-b'>Home</li>
-                        <li className='hover:text-primary-content text-xl p-5 border-b'>Rules</li>
-                        <li className='hover:text-primary-content text-xl p-5 border-b'>How to Play</li>
-                        <li className='hover:text-primary-content text-xl p-5 border-b'>FAQ</li>
-                        <li className='hover:text-primary-content text-xl p-5 bg-info text-white md:hidden'>
+                        <li className='hover:text-primary-content text-sm p-5 border-b'>Home</li>
+                        <li className='hover:text-primary-content text-sm p-5 border-b'>Rules</li>
+                        <li className='hover:text-primary-content text-sm p-5 border-b'>How to Play</li>
+                        <li className='hover:text-primary-content text-sm p-5 border-b'>FAQ</li>
+                        <li className='hover:text-primary-content text-sm p-5 bg-info text-white md:hidden'>
                             Login With Google
                         </li>
                     </ul>
@@ -61,6 +73,14 @@ const Landing = () => {
                 <div class="items-center text-center block my-[30px] col-span-7 ">
                     <div class="text-center">
                         <img src="/assets/images/home_banner/home_two_banner_illustration.png" alt="Home Banner Illustration" />
+                    </div>
+                </div>
+            </section>
+
+            <section class="slider_wrapper w-full mx-auto flex justify-center p-2">
+                <div class="container">
+                    <div class="slider_row flex gap-4">
+                        <CustomCarousel items={items} />
                     </div>
                 </div>
             </section>

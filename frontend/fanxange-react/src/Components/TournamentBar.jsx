@@ -1,9 +1,10 @@
 import React from 'react';
+import LoadingAnimation from './LoadingAnimation';
 
 const LoadingComponent = () => {
     return (
         <div className='text-white text-xs cursor-pointer hover:opacity-50 font-bold'>
-            Loading...
+            <LoadingAnimation/>
         </div>
     );
 };

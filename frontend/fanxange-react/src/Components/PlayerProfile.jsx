@@ -3,6 +3,7 @@ import { BiSolidDownArrow, BiSolidUpArrow, BiSolidPlusCircle, BiSolidMinusCircle
 import BuySell from './BuySell'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSeletedTeamsInfo } from '../store/teamSlice';
+import LoadingAnimation from './LoadingAnimation';
 
 const PlayerProfile = () => {
   const { playerData, status } = useSelector((state) => state.player);
@@ -15,7 +16,7 @@ const PlayerProfile = () => {
   };
 
   if (status === 'loading') {
-    return;
+    return <LoadingAnimation />;
   }
 
   const dispatch = useDispatch();
@@ -36,9 +37,9 @@ const PlayerProfile = () => {
           alt={playerData?.player?.name} />
         <div className='text-end'>
           <h1 className='font-bold lg:text-xl mx-5 px-5 text-white'>{playerData?.player?.name}</h1>
-          {selectedTeamStatus === 'loading' ? (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>Loading ...</h1>) : (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>{selectedTeam?.team?.longName}</h1>)}
+          {selectedTeamStatus === 'loading' ? (<LoadingAnimation />) : (<h1 className='font-bold lg:text-xl mx-5 px-5 text-yellow-400'>{selectedTeam?.team?.longName}</h1>)}
         </div>
-      </div>
+      </div >
       <div className="divider"></div>
       <div className='lg:flex gap-2 justify-evenly items-center'>
         <div className="lg:divider lg:divider-horizontal "></div>
@@ -101,7 +102,7 @@ const PlayerProfile = () => {
           <button>close</button>
         </form>
       </dialog>
-    </div>
+    </div >
   )
 
 

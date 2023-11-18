@@ -12,6 +12,7 @@ import ProtectedRoutes from './Components/ProtectedRoutes';
 import { fetchUser } from './store/userSlice';
 import { fetchtrendingplayer } from './store/playerSlice';
 import Landing from './Pages/Landing';
+import LoadingAnimation from './Components/LoadingAnimation';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
 
   const { status, userData } = useSelector((state) => state.user);
   if (status === 'loading') {
-    return <div>Loading...</div>
+    return <LoadingAnimation />
   }
 
   return (
@@ -35,6 +36,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
+          <Route path="/loading" element={<LoadingAnimation />} />
           <Route path="/home" element={<Landing />} />
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
