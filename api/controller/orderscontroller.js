@@ -154,7 +154,7 @@ function calculateEarningOrLoss(order, currentPrice) {
 
     const earningOrLoss = (currentPrice - parseFloat(order.price).toFixed(2)) * order.qty;
 
-    return earningOrLoss;
+    return earningOrLoss + currentPrice * order.qty;
 }
 
 async function updateWallet(walletId, earningOrLoss) {
