@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Button } from 'flowbite-react';
 import { Link, Navigate } from 'react-router-dom';
@@ -17,7 +18,7 @@ const Navbar = ({ wallet, dashboard, portfolio }) => {
         window.open(`${baseURL}auth/logout`, "_self");
 
     };
-
+    const { balance } = useSelector((state) => state.wallet)
     const [time, settime] = useState();
 
     useEffect(() => {
@@ -106,7 +107,7 @@ const Navbar = ({ wallet, dashboard, portfolio }) => {
                                     <h1 className='mx-2 text-white p-4'>
                                         <span className='items-center flex gap-2 font-bold font-mono '>
                                             <FaWallet />
-                                            <span>₹100</span>
+                                            <span>₹{balance}</span>
 
                                         </span>
                                     </h1 >
@@ -153,7 +154,7 @@ const Navbar = ({ wallet, dashboard, portfolio }) => {
                                 <h1 className='mx-2 text-white '>
                                     <span className='items-center flex gap-2'>
                                         <FaWallet />
-                                        <span>₹100</span>
+                                        <span>₹{balance}</span>
                                     </span>
                                 </h1 >
                             </div>

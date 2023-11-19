@@ -60,6 +60,11 @@ app.use('/performance', performance)
 const order = require('./api/routes/order');
 app.use("/order", order)
 
+
+const wallet = require('./api/routes/wallet');
+app.use("/wallet", wallet)
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

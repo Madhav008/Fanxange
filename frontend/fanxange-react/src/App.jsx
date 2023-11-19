@@ -14,6 +14,7 @@ import Landing from './Pages/Landing';
 import LoadingAnimation from './Components/LoadingAnimation';
 import Wallet from './Pages/Wallet';
 import { Toaster } from 'react-hot-toast';
+import { getWallet } from './store/walletSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
     dispatch(fetchSeries());
     dispatch(fetchUser());
     dispatch(fetchtrendingplayer());
+    dispatch(getWallet())
   }, [dispatch]);
 
   const { status, userData } = useSelector((state) => state.user);

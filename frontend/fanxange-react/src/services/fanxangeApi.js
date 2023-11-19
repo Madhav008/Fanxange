@@ -20,7 +20,17 @@ const apiEndpoints = {
   getTeamInfo: '/team/teamInfo',
   placeOder: '/order/create',
   getOrders: '/order/:userId',
-  trendingPlayer: '/player/trending'
+  trendingPlayer: '/player/trending',
+  //Wallet 
+  createWallet: '/wallet/createwallet',
+  getBalance: '/wallet/getbalance/:userid',
+  deposit: '/wallet/deposit',
+  withdraw: '/wallet/withdraw',
+  getTransactions: '/wallet/gettransactions',
+  getUserTransactions: '/wallet/getusertransactions/:walletId',
+  updateTransaction: '/wallet/updatetransaction/:transactionId',
+  getPendingDeposits: '/wallet/getpendingdeposits',
+  getPendingWithdrawals: '/wallet/getpendingwithdrawals',
 };
 
 // Define functions to make Axios requests for your endpoints
@@ -65,5 +75,18 @@ export const fanxangeApi = {
   getUserOrder: (userId) => makeRequest(apiEndpoints.getOrders.replace(':userId', userId)),
 
   getTrending: () => makeRequest(apiEndpoints.trendingPlayer),
+
+  // Wallets Endpoints
+  createWallet: ({ userid }) => makeRequest(apiEndpoints.createWallet, 'POST', { userid }),
+  getBalance: (userid) => makeRequest(apiEndpoints.getBalance.replace(':userid', userid), 'GET'),
+  deposit: (data) => makeRequest(apiEndpoints.deposit, 'POST', data),
+  withdraw: (data) => makeRequest(apiEndpoints.withdraw, 'POST', data),
+  getUserTransactions: (walletId) => makeRequest(apiEndpoints.getUserTransactions.replace(':walletId', walletId), 'GET'),
+  
+  //Admin Endpoints
+  getTransactions: () => makeRequest(apiEndpoints.getTransactions, 'GET'),
+  getPendingDeposits: () => makeRequest(apiEndpoints.getPendingDeposits, 'GET'),
+  getPendingWithdrawals: () => makeRequest(apiEndpoints.getPendingWithdrawals, 'GET'),
+  updateTransaction: (transactionId, data) => makeRequest(apiEndpoints.updateTransaction.replace(':transactionId', transactionId), 'PUT', data),
 };
 
