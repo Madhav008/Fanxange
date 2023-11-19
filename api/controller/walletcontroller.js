@@ -1,6 +1,23 @@
 // Import the necessary models and modules
 const { Wallet, Transaction } = require('../models/Wallet');
 
+
+const createWalletHelper = async (userid) => {
+    // Check if the wallet already exists for the user
+    const existingWallet = await Wallet.findOne({ userid });
+
+    if (existingWallet) {
+        return;
+    }
+
+    // Create a new wallet
+    const newWallet = await Wallet.create({ userid });
+
+    return newWallet
+}
+
+
+
 // Controller function to create a wallet
 const createwallet = async (req, res) => {
     try {
@@ -65,22 +82,30 @@ const deposit = async (req, res) => {
             return res.status(400).json({ error: 'User ID and amount are required.' });
         }
 
+
+        // Check if the amount is a positive number
+        const parsedAmount = parseFloat(amount);
+        if (isNaN(parsedAmount) || parsedAmount <= 0) {
+            return res.status(400).json({ error: 'Amount must be a positive number.' });
+        }
+
         // Find the wallet for the specified user
         const userWallet = await Wallet.findOne({ userid });
 
         if (!userWallet) {
             return res.status(404).json({ error: 'Wallet not found for the user.' });
         }
+        const roundedAmount = parseFloat(parsedAmount.toFixed(2));
 
         // Update the balance in the wallet
-        userWallet.balance += parseInt(amount);
+        userWallet.balance += roundedAmount;
         await userWallet.save();
 
         // Create a transaction record
         const depositTransaction = await Transaction.create({
             walletId: userWallet._id,
             transactionId: `txn_${Date.now()}`,
-            amount,
+            amount: roundedAmount,
             type: 'credit',
             description: 'Deposit',
             transactionStatus: false, // Set initial status to false
@@ -104,6 +129,12 @@ const withdraw = async (req, res) => {
             return res.status(400).json({ error: 'User ID and amount are required.' });
         }
 
+        // Check if the amount is a positive number
+        const parsedAmount = parseFloat(amount);
+        if (isNaN(parsedAmount) || parsedAmount <= 0) {
+            return res.status(400).json({ error: 'Amount must be a positive number.' });
+        }
+
         // Find the wallet for the specified user
         const userWallet = await Wallet.findOne({ userid });
 
@@ -116,15 +147,18 @@ const withdraw = async (req, res) => {
             return res.status(400).json({ error: 'Insufficient balance.' });
         }
 
+        // Round the amount to two decimal places
+        const roundedAmount = parseFloat(parsedAmount.toFixed(2));
+
         // Update the balance in the wallet
-        userWallet.balance -= amount;
+        userWallet.balance -= roundedAmount;
         await userWallet.save();
 
         // Create a transaction record
         const withdrawTransaction = await Transaction.create({
             walletId: userWallet._id,
             transactionId: `txn_${Date.now()}`,
-            amount,
+            amount: roundedAmount,
             type: 'debit',
             description: 'Withdrawal',
             transactionStatus: false, // Set initial status to false
@@ -225,6 +259,7 @@ const getPendingWithdrawals = async (req, res) => {
 };
 
 module.exports = {
+    createWalletHelper,
     createwallet,
     getwallet,
     deposit,

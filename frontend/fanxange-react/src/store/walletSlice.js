@@ -22,7 +22,7 @@ export const walletSlice = createSlice({
     reducers: {
 
         setbalance: (state, action) => {
-            state.balance = action.payload;
+            state.balance = parseFloat(action.payload).toFixed(2);
         },
 
         setWallet: (state, action) => {

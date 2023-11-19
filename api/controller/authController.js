@@ -2,6 +2,7 @@ const { google } = require('googleapis');
 require('dotenv').config();
 const User = require('../models/User'); // Import the User model
 const jwt = require('jsonwebtoken');
+const { createwallet, createWalletHelper } = require('./walletcontroller');
 
 
 
@@ -75,7 +76,7 @@ const googleCallback = async (req, res) => {
   }
 }
 
-const successEndpoint = ((req, res) => {
+const successEndpoint = (async (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {
@@ -83,15 +84,16 @@ const successEndpoint = ((req, res) => {
   }
 
   try {
-    
+
     // Verify the JWT token
-    jwt.verify(token, jwtSecret, (err, decoded) => {
+    jwt.verify(token, jwtSecret, async (err, decoded) => {
       if (err) {
         // If there's an error during verification, return a 403 Forbidden
         return res.sendStatus(403);
       }
       const userData = decoded.userData;
       console.log('User Data:', userData);
+      await createWalletHelper(userData.id)
       res.status(200).json({ authenticated: true, user: userData });
 
     });

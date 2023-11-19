@@ -3,7 +3,7 @@ import Navbar from '../Components/Navbar'
 import { IoWalletSharp } from "react-icons/io5";
 import { RiLuggageDepositFill } from "react-icons/ri";
 import { LuArrowDownToLine, LuArrowUpFromLine } from "react-icons/lu";
-import {  deposit, transactions, withdraw } from '../store/walletSlice';
+import { deposit, transactions, withdraw } from '../store/walletSlice';
 import { useDispatch, useSelector } from "react-redux"
 import LoadingAnimation from '../Components/LoadingAnimation';
 const Wallet = () => {
@@ -27,10 +27,21 @@ const Wallet = () => {
 
 
     const handleAddMoney = () => {
+        const amount = parseInt(enteredAmount);
+        if (isNaN(amount) || amount <= 0) {
+            // Show an error message or take appropriate action
+            return;
+        }
         dispatch(deposit(enteredAmount))
     }
 
     const handleWithdraw = () => {
+        // Validate that withdrawAmount is a positive number
+        const amount = parseInt(withdrawAmount);
+        if (isNaN(amount) || amount <= 0) {
+            // Show an error message or take appropriate action
+            return;
+        }
         dispatch(withdraw(withdrawAmount))
     }
 
@@ -117,7 +128,7 @@ const Wallet = () => {
 
 
                 <div className='bg-neutral p-2 rounded-xl'>
-                  {/*   <div className='flex items-center justify-between'>
+                    {/*   <div className='flex items-center justify-between'>
                         <div className='flex items-center gap-4 m-4'>
                             <RiLuggageDepositFill />
                             <h1 className='font-bold text-sm text-gray-400'>Total Deposit</h1>
@@ -177,17 +188,29 @@ const Wallet = () => {
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
                             {muserTransactions?.userTransactions?.map((transaction, index,) => (
-                                <tr className='my-4 '>
+                                <tr className='my-4 ' key={index}>
                                     <td className='font-semibold text-white'>{index + 1}</td>
-                                    <td className='flex gap-1 text-bold items-center'><RiLuggageDepositFill /> {transaction.description}</td>
+                                    <td className='flex gap-1 text-bold items-center'>
+                                        <RiLuggageDepositFill />
+                                        {transaction.type === 'credit' ? transaction.description : 'Withdrawal'}
+                                    </td>
                                     <td className='font-semibold text-white'>₹{transaction.amount}</td>
                                     <td>{formatDate(transaction.createdAt)}</td>
-                                    <td className='text-green-500 font-bold'>Successful</td>
+                                    <td className={`${transaction.transactionStatus ? `text-green-500` : `text-red-500`} font-bold`}>
+                                        {transaction.transactionStatus
+                                            ? transaction.type === 'debit'
+                                                ? 'Successful'
+                                                : 'Withdrawal Successful'
+                                            : transaction.type === 'credit'
+                                                ? 'Failed'
+                                                : 'Request Pending'}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
+
                     </table>
                 </div>
             </div>
