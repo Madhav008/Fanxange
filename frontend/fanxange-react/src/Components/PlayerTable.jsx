@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { closeOrder } from '../store/orderSlice'
 const PlayerTable = ({ order, }) => {
+    const dispatch = useDispatch()
+    const handleCloseOrder = () => {
+        var data = {
+            orderId: order.order._id,
+            currentPrice: Number(order.playerPerformanceMatches.price).toFixed(2)
+        }
+        dispatch(closeOrder(data))
+    }
     return (
         <tr key={order.id}>
             <td class="mt-4">
@@ -52,7 +61,7 @@ const PlayerTable = ({ order, }) => {
                 <p class="status">{order.order.status}</p>
             </td>
             <td>
-                <span class="hover:bg-info font-open-sans text-[16px] font-bold leading-[1.75] uppercase text-white bg-transparent px-4 py-2 border border-white border-opacity-30 rounded-[25px] transition-all duration-600">Close</span>
+                <span onClick={handleCloseOrder} class="hover:bg-info font-open-sans text-[16px] font-bold leading-[1.75] uppercase text-white bg-transparent px-4 py-2 border border-white border-opacity-30 rounded-[25px] transition-all duration-600">Close</span>
             </td>
         </tr>
 

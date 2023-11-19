@@ -5,7 +5,9 @@ const apiController = require('../controller/orderscontroller');
 // Example protected API route
 router.get('/create/orderbook', apiController.createOrderBook);
 router.post('/create', apiController.createOrder);
-router.get('/:userId', apiController.getOrders);
+router.post('/close', apiController.closeOrder);
+router.get('/:userId', apiController.getOpenOrders);
+//Todo Creae getCloseOrders of the user
 
 
 

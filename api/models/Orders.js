@@ -35,6 +35,12 @@ const orderSchema = new mongoose.Schema({
     playerId: {
         type: String,
         required: true
+    },
+    orderStatus: {
+        type: String,
+        enum: ["Open", "Close"],
+        default: "Open",
+        required: true
     }
 });
 

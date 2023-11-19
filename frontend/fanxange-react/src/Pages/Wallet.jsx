@@ -189,7 +189,7 @@ const Wallet = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {muserTransactions?.userTransactions?.map((transaction, index,) => (
+                            {muserTransactions?.userTransactions?.slice().reverse().map((transaction, index,) => (
                                 <tr className='my-4 ' key={index}>
                                     <td className='font-semibold text-white'>{index + 1}</td>
                                     <td className='flex gap-1 text-bold items-center'>
@@ -198,15 +198,16 @@ const Wallet = () => {
                                     </td>
                                     <td className='font-semibold text-white'>₹{transaction.amount}</td>
                                     <td>{formatDate(transaction.createdAt)}</td>
-                                    <td className={`${transaction.transactionStatus ? `text-green-500` : `text-red-500`} font-bold`}>
+                                    <td className={`${transaction.transactionStatus ? (transaction.type === 'debit' ? 'text-green-500' : 'text-green-500') : 'text-red-500'} font-bold`}>
                                         {transaction.transactionStatus
                                             ? transaction.type === 'debit'
-                                                ? 'Successful'
-                                                : 'Withdrawal Successful'
-                                            : transaction.type === 'credit'
-                                                ? 'Failed'
-                                                : 'Request Pending'}
+                                                ? transaction.transactionStatus ? 'Withdrawal Successful' : 'Withdrawal Failed'
+                                                : transaction.type === 'credit'
+                                                    ? transaction.transactionStatus ? 'Deposit Successful' : 'Deposit Failed'
+                                                    : 'Request Pending'
+                                            : 'Request Pending'}
                                     </td>
+
                                 </tr>
                             ))}
                         </tbody>

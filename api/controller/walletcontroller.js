@@ -108,7 +108,7 @@ const deposit = async (req, res) => {
             amount: roundedAmount,
             type: 'credit',
             description: 'Deposit',
-            transactionStatus: false, // Set initial status to false
+            transactionStatus: true, // Set initial status to false
         });
 
         res.status(200).json({ balance: userWallet.balance, depositTransaction });
@@ -161,7 +161,7 @@ const withdraw = async (req, res) => {
             amount: roundedAmount,
             type: 'debit',
             description: 'Withdrawal',
-            transactionStatus: false, // Set initial status to false
+            transactionStatus: true, // Set initial status to false
         });
 
         res.status(200).json({ balance: userWallet.balance, withdrawTransaction });

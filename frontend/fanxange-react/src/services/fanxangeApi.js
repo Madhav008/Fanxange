@@ -18,9 +18,13 @@ const apiEndpoints = {
   getPlayerInfo: '/player/data',
   getPlayerMatchInfo: '/performance/:playerId',
   getTeamInfo: '/team/teamInfo',
+  trendingPlayer: '/player/trending',
+
+  //Order
   placeOder: '/order/create',
   getOrders: '/order/:userId',
-  trendingPlayer: '/player/trending',
+  closeOrder: '/order/close',
+
   //Wallet 
   createWallet: '/wallet/createwallet',
   getBalance: '/wallet/getbalance/:userid',
@@ -70,11 +74,13 @@ export const fanxangeApi = {
 
   getTeamInfo: (teamId) => makeRequest(apiEndpoints.getTeamInfo, 'POST', { teamId }),
 
-  placeOder: (order) => makeRequest(apiEndpoints.placeOder, 'POST', order),
-
-  getUserOrder: (userId) => makeRequest(apiEndpoints.getOrders.replace(':userId', userId)),
-
   getTrending: () => makeRequest(apiEndpoints.trendingPlayer),
+
+
+  //Order Endpoints
+  placeOder: (order) => makeRequest(apiEndpoints.placeOder, 'POST', order),
+  getUserOrder: (userId) => makeRequest(apiEndpoints.getOrders.replace(':userId', userId)),
+  closeOrder: (data) => makeRequest(apiEndpoints.closeOrder, 'POST', data),
 
   // Wallets Endpoints
   createWallet: ({ userid }) => makeRequest(apiEndpoints.createWallet, 'POST', { userid }),
@@ -82,7 +88,7 @@ export const fanxangeApi = {
   deposit: (data) => makeRequest(apiEndpoints.deposit, 'POST', data),
   withdraw: (data) => makeRequest(apiEndpoints.withdraw, 'POST', data),
   getUserTransactions: (walletId) => makeRequest(apiEndpoints.getUserTransactions.replace(':walletId', walletId), 'GET'),
-  
+
   //Admin Endpoints
   getTransactions: () => makeRequest(apiEndpoints.getTransactions, 'GET'),
   getPendingDeposits: () => makeRequest(apiEndpoints.getPendingDeposits, 'GET'),

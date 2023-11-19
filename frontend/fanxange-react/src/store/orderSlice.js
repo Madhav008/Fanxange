@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fanxangeApi } from '../services/fanxangeApi'
 import toast from 'react-hot-toast';
+import { getWallet } from './walletSlice';
 
 export const STATUSES = Object.freeze({
     IDLE: 'idle',
@@ -43,14 +44,18 @@ export function createOrder(order) {
     return async function fetchThunk(dispatch, getState) {
         dispatch(setStatus(STATUSES.LOADING));
         const userid = getState().user.userData.user.id;
+        const walletId = getState().wallet.mWallet._id;
+
         var newOrder = {
             ...order,
             user: userid,
+            walletId
         }
         try {
             const data = await fanxangeApi.placeOder(newOrder);
             if (data != null) {
                 toast.success('Order Executed Successfully!')
+                dispatch(getWallet())
             }
             dispatch(setStatus(STATUSES.IDLE));
         } catch (err) {
@@ -69,6 +74,31 @@ export function fetchorder() {
             const data = await fanxangeApi.getUserOrder(userid);
 
             dispatch(setorders(data));
+            dispatch(setStatus(STATUSES.IDLE));
+        } catch (err) {
+            console.log(err);
+            dispatch(setStatus(STATUSES.ERROR));
+        }
+    };
+}
+
+
+export function closeOrder(order) {
+    return async function fetchThunk(dispatch, getState) {
+        dispatch(setStatus(STATUSES.LOADING));
+        try {
+            const walletId = getState().wallet.mWallet._id;
+
+            var mdata = {
+                ...order,
+                walletId
+            }
+
+            // var difficulty = getState().questions.difficulty
+            const data = await fanxangeApi.closeOrder(mdata);
+            dispatch(getWallet())
+            dispatch(fetchorder())
+            // dispatch(setorders(data));
             dispatch(setStatus(STATUSES.IDLE));
         } catch (err) {
             console.log(err);
