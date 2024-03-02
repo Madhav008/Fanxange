@@ -38,7 +38,7 @@ export function fetchUser() {
     return async function fetchUserThunk(dispatch, getState) {
         dispatch(setStatus(STATUSES.LOADING))
         const baseURL = import.meta.env.VITE_APP_BACKEND_URL;
-        fetch(`${baseURL}/auth/success`, {
+        fetch(`${baseURL}auth/success`, {
             method: "GET",
             credentials: "include",
             headers: {
