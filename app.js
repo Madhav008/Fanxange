@@ -37,7 +37,7 @@ app.use('/api', isAuthenticated, apiRoutes);
 
 
 const cronJob = require('./api/routes/cronjob')
-app.use('/corn', cronJob);
+app.use('/cron', cronJob);
 
 const matches = require('./api/routes/matches')
 app.use('/match', matches)
