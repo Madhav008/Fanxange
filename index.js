@@ -4,7 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const app = express();
-
+require('dotenv').config();
 // Configure passport Google strategy
 passport.use(
   new GoogleStrategy(
@@ -79,10 +79,11 @@ async function getRecentMatches() {
   }
 }
 
-function seedRecentMatches(){
-  
-}
+function seedRecentMatches() {
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+}
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log('Server is running on port ' + port);
 });
