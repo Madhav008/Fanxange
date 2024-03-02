@@ -1,4 +1,4 @@
-const redisClient = require('../../redis');
+const { redisClient } = require('../../redis');
 const RecentMatches = require('../models/Matches');
 const { getTrendingMatches, getLiveScore } = require('./espnApiController');
 
