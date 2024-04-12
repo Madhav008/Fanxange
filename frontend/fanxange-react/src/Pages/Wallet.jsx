@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { IoWalletSharp } from "react-icons/io5";
 import { RiLuggageDepositFill } from "react-icons/ri";
-import { LuArrowDownToLine, LuArrowUpFromLine } from "react-icons/lu";
+// import { LuArrowDownToLine, LuArrowUpFromLine } from "react-icons/lu";
 import { deposit, transactions, withdraw } from '../store/walletSlice';
 import { useDispatch, useSelector } from "react-redux"
 import LoadingAnimation from '../Components/LoadingAnimation';

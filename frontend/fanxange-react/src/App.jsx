@@ -15,6 +15,7 @@ import LoadingAnimation from './Components/LoadingAnimation';
 import Wallet from './Pages/Wallet';
 import { Toaster } from 'react-hot-toast';
 import { getWallet } from './store/walletSlice';
+import DepositPage from './Pages/Deposit';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path='/deposit/:orderId' element={<DepositPage />} />
+
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />

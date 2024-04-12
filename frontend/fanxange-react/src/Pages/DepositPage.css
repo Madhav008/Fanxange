@@ -1,0 +1,110 @@
+:root {
+    --color-primary: #fc8080;
+    --font-family-base: 'Poppin', sans-serif;
+    --font-size-h1: 1.25rem;
+    --font-color: #333;
+    /* Dark grey for better readability */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-base);
+    color: var(--font-color);
+    /* Default font color for better visibility */
+}
+
+.iphone {
+    background-color: #fbf6f7;
+    background-image: linear-gradient(to bottom, #fbf6f7, #fff);
+    border-radius: 2em;
+    width: 375px;
+    /* adjusted for standard CSS */
+    height: 420px;
+    /* adjusted for standard CSS */
+    overflow: auto;
+    padding: 2em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-top: 30%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1em;
+    /* added space below header */
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    color: #000;
+    font-weight: bold;
+}
+
+.card {
+    /* Adding a card class for specific styling */
+    background-color: #fff;
+    /* Light background for the card */
+    border-radius: 1em;
+    /* Rounded corners */
+    width: 100%;
+    /* Use full width of the container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    padding: 1em;
+    /* Padding inside the card */
+    display: flex;
+    /* Flex container */
+    flex-direction: column;
+    /* Stack children vertically */
+    align-items: center;
+    /* Align children in the center */
+}
+
+.form {
+    width: 100%;
+    /* ensures form takes full width of its parent */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 0.5em;
+    /* increased padding for better readability */
+}
+
+tfoot {
+    border-top: 1px solid #b4b4b4;
+    font-weight: 600;
+}
+
+.button {
+    background-color: var(--color-primary);
+    border-radius: 999em;
+    color: #fff;
+    padding: 0.75em 1em;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* full-width button */
+    margin-top: 60px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #e96363;
+}
