@@ -28,7 +28,7 @@ const DepositPage = () => {
 
     const getOrderData = async (orderId) => {
         try {
-            let res = await axios.post(`http://localhost:3132/payment/order/${orderId}`);
+            let res = await axios.post(`http://test.fanxange.live/payment/order/${orderId}`);
             console.log(res.data);
             setOrderData(res.data);
         } catch (error) {
