@@ -29,13 +29,12 @@ const DepositPage = () => {
     const getOrderData = async (orderId) => {
         try {
             let res = await axios.post(`https://test.fanxange.live/payment/order/${orderId}`);
-            console.log(res.data);
             setOrderData(res.data);
         } catch (error) {
             console.error("Failed to fetch order data:", error);
         }
     };
-
+    
     const handleClick = async (e) => {
         e.preventDefault()
         try {
@@ -43,9 +42,8 @@ const DepositPage = () => {
                 paymentSessionId: orderData.payment_session_id,
                 redirectTarget: "_self",
             }
-            cashfree.checkout(checkoutOptions).then((res) => {
-                console.log("payment initialized")
-
+            cashfree.checkout(checkoutOptions).then(async (res) => {
+                await verifyPayment();
             })
         } catch (error) {
             console.log(error)

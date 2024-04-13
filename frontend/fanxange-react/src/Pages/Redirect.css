@@ -1,0 +1,128 @@
+/* General settings for the container and message boxes */
+.container {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensures padding doesn't affect width */
+}
+
+.message-box {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    /* Prepare for success/failure colors */
+}
+
+/* Media query for small devices */
+@media (max-width: 480px) {
+    .message-box {
+        width: 90%;
+        /* Use more of the screen on very small devices */
+    }
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: #4CAF50;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Success and failure styles */
+._success {
+    border-bottom-color: #28a745;
+    /* Green for success */
+}
+
+._failed {
+    border-bottom-color: red;
+    /* Red for failure */
+}
+
+._success i,
+._failed i {
+    font-size: 48px;
+    /* Slightly smaller icons for mobile */
+    animation: pulse 1s infinite;
+    /* Subtle pulse effect */
+}
+
+/* Keyframes for pulse effect on icons */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+._success h2,
+._failed h2 {
+    font-size: 24px;
+    /* Smaller font size for mobile readability */
+    margin: 10px 0;
+}
+
+._success p,
+._failed p {
+    font-size: 16px;
+    /* Smaller paragraph text for mobile */
+    color: #495357;
+}
+
+
+/* Keyframe animations for icon scaling and color pulsing */
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    85% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Applying the animations to the success and failure icons */
+._success i.fa-check-circle,
+._failed i.fa-times-circle {
+    animation: scaleIn 0.6s ease-in-out forwards; /* Use scaleIn for a dramatic effect */
+    color: #28a745; /* Default green for success */
+}
+
+._failed i.fa-times-circle {
+    color: red; /* Change color for failure */
+}
+
+/* General styles for the icons */
+i.fa {
+    font-size: 55px; /* Adjust size as needed */
+    display: block; /* Ensure icons are block level for margin adjustments */
+    margin-bottom: 20px; /* Space below icon */
+}

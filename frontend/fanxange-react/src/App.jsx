@@ -42,7 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path='/deposit/:orderId' element={<DepositPage />} />
-          <Route path='/redirect' element={<Redirect />} />
+          <Route path='/redirect/:orderId' element={<Redirect />} />
           {userData.authenticated === true && <Route path="/player/:playerId" element={<Trade />} />}
           <Route element={<ProtectedRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />
