@@ -14,7 +14,7 @@ const DepositPage = () => {
     let insitialzeSDK = async function () {
 
         cashfree = await load({
-            mode: "sandbox",
+            mode: "production",
         })
     }
 
@@ -45,6 +45,7 @@ const DepositPage = () => {
             }
             cashfree.checkout(checkoutOptions).then((res) => {
                 console.log("payment initialized")
+
             })
         } catch (error) {
             console.log(error)
